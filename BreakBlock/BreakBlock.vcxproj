@@ -140,27 +140,27 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Ball.cpp" />
-    <ClCompile Include="Bar.cpp" />
-    <ClCompile Include="Block.cpp" />
-    <ClCompile Include="BlockArray.cpp" />
-    <ClCompile Include="Collision.cpp" />
-    <ClCompile Include="Drawer.cpp" />
-    <ClCompile Include="Main.cpp" />
-    <ClCompile Include="ObjectBase.cpp" />
-    <ClCompile Include="Definition.cpp" />
+    <ClCompile Include="Sorce\Ball.cpp" />
+    <ClCompile Include="Sorce\Bar.cpp" />
+    <ClCompile Include="Sorce\Block.cpp" />
+    <ClCompile Include="Sorce\BlockArray.cpp" />
+    <ClCompile Include="Sorce\Collision.cpp" />
+    <ClCompile Include="Sorce\Definition.cpp" />
+    <ClCompile Include="Sorce\Drawer.cpp" />
+    <ClCompile Include="Sorce\Main.cpp" />
+    <ClCompile Include="Sorce\ObjectBase.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Ball.h" />
-    <ClInclude Include="Bar.h" />
-    <ClInclude Include="Block.h" />
-    <ClInclude Include="BlockArray.h" />
-    <ClInclude Include="Collision.h" />
-    <ClInclude Include="Definition.h" />
-    <ClInclude Include="Drawer.h" />
-    <ClInclude Include="ObjectBase.h" />
-    <ClInclude Include="Vec2.h" />
-    <ClInclude Include="World.h" />
+    <ClInclude Include="Header\Ball.h" />
+    <ClInclude Include="Header\Bar.h" />
+    <ClInclude Include="Header\Block.h" />
+    <ClInclude Include="Header\BlockArray.h" />
+    <ClInclude Include="Header\Collision.h" />
+    <ClInclude Include="Header\Definition.h" />
+    <ClInclude Include="Header\Drawer.h" />
+    <ClInclude Include="Header\ObjectBase.h" />
+    <ClInclude Include="Header\Vec2.h" />
+    <ClInclude Include="Header\World.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

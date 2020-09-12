@@ -1,5 +1,5 @@
-#include "Bar.h"
-#include "Definition.h"
+#include "../Header/Bar.h"
+#include "../Header/Definition.h"
 
 /* ƒƒ“ƒo•Ï”‚Ì‰Šú‰» */
 void Bar::Init()

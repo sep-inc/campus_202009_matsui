@@ -1,6 +1,6 @@
-#include "BlockArray.h"
-#include "Drawer.h"
-#include "Definition.h"
+#include "../Header/BlockArray.h"
+#include "../Header/Drawer.h"
+#include "../Header/Definition.h"
 
 /* ƒƒ“ƒo•Ï”‚Ì‰Šú‰» */
 void BlockArray::Init()

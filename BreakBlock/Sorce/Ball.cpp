@@ -1,6 +1,6 @@
-#include "Ball.h"
-#include "ObjectBase.h"
-#include "Definition.h"
+#include "../Header/Ball.h"
+#include "../Header/ObjectBase.h"
+#include "../Header/Definition.h"
 
 /* ƒƒ“ƒo•Ï”‚Ì‰Šú‰» */
 void Ball::Init()

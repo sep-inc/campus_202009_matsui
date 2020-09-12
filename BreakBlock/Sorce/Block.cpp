@@ -1,7 +1,7 @@
-#include "Block.h"
-#include "Drawer.h"
-#include "Definition.h"
-#include "BlockArray.h"
+#include "../Header/Block.h"
+#include "../Header/Drawer.h"
+#include "../Header/Definition.h"
+#include "../Header/BlockArray.h"
 
 /* ƒƒ“ƒo•Ï”‚Ì‰Šú‰» */
 void Block::Init(Vec2 pos_, float speed_, bool eneable_)
