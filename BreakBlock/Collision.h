@@ -5,5 +5,6 @@
 /* ‹éŒ`‚Æ‰~‚Ì‚ ‚½‚è”»’è */
 bool Hit_Rect_TopUnder(Vec2 pos_a_, Vec2 pos_b_, float radius_, float width_, float height_);    //ã‰º
 bool Hit_Rect_LeftRight(Vec2 pos_a_, Vec2 pos_b_, float radius_, float width_, float height_);   //¶‰E
+bool HitVec(Vec2 pos_a_, Vec2 pos_b_, float width_, float height_);
 
 #endif

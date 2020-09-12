@@ -1,6 +1,6 @@
 #include "BlockArray.h"
 #include "Drawer.h"
-
+#include "Definition.h"
 
 /* ƒƒ“ƒo•Ï”‚Ì‰Šú‰» */
 void BlockArray::Init()
@@ -18,7 +18,7 @@ void BlockArray::Update()
 		Init();
 		break;
 	case BlockArray::STEP_RUN:
-		
+		DeleteBlock();
 		break;
 	case BlockArray::STEP_OUT:
 
@@ -66,5 +66,17 @@ void BlockArray::SetUpDrawBuufer()
 		{
 			m_block[y][x].SetBlockBuufer();
 		}
+	}
+}
+
+void BlockArray::DeleteBlock()
+{
+	if (g_ball.GetHitBlock().m_top_under_block == true
+		|| g_ball.GetHitBlock().m_left_right_block == true)
+	{
+		int x = static_cast<__int8>(g_ball.GetDeletePos().X);
+		int y = static_cast<__int8>(g_ball.GetDeletePos().Y);
+
+		m_block[y][x].Init(Vec2(-10.0f, -10.0f), 0.0f, false);
 	}
 }

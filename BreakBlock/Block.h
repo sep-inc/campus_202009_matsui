@@ -20,6 +20,8 @@ public:
 	void SetBlockBuufer();  //ワールド座標を描画座標に変換
 
 
+
+
 };
 
 #endif

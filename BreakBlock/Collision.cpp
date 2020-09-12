@@ -32,3 +32,18 @@ bool Hit_Rect_LeftRight(Vec2 pos_a_, Vec2 pos_b_, float radius_, float width_, f
 	}
 }
 
+/* Ball‚ª‹éŒ`‚ÉŽÎ‚ß‚©‚ç“ü‚Á‚½Žž—p */
+bool HitVec(Vec2 pos_a_, Vec2 pos_b_, float width_, float height_)
+{
+	if (pos_a_.X >= pos_b_.X && 
+		pos_a_.X <= pos_b_.X + width_  && 
+		pos_a_.Y >= pos_b_.Y && 
+		pos_a_.Y <= pos_b_.Y + height_)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}

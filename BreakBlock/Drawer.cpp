@@ -80,6 +80,7 @@ void Drawer::SetUpBuffer(Vec2 pos_, OBJECTKIND kind_, int width_)
 	{
 		m_map[y][x + x2].m_kind = kind_;
 	}
-	
+
+	m_map[0][0].m_kind = WALL;
 }
 

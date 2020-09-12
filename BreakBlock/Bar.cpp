@@ -8,7 +8,7 @@ void Bar::Init()
 	pos.X = UNIT_X + ((GAME_WIDTH / 2) - BAR_WIDTH);    //Game‰¡•‚Ì’†‰›‚ ‚½‚è
 	pos.Y = UNIT_X + (GAME_HEIGHT / 2);				   //Gamec•‚Ì’†‰›‚ ‚½‚è
 
-	__int8 speed = 16.0f;
+	float speed = 16.0f;
 
 	ObjectBase::Init(pos, speed, true);
 

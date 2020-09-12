@@ -16,6 +16,10 @@ public:
 	void SetUpBlocks();       //Block初期化
 	void SetUpDrawBuufer();   //ワールド座標を描画座標に変換
 
+	void DeleteBlock();
+
+	const Vec2 GetBlockPos(__int8 x_, __int8 y_) { return m_block[y_][x_].GetPos(); }
+	//const Block(&GetBlock())[BLOCK_NUM_Y][BLOCK_NUM_X]{ return m_block; }
 private:
 	enum STEP
 	{

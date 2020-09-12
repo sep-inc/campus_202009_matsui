@@ -28,7 +28,8 @@ private:
 	}m_step;
 
 	bool m_hit_wall;        //フレームに当たったかフラグ
-	__int8 m_direction_X;   //方向ベクトル(左右にしか移動しないのでX軸だけ)
+	float m_direction_X;    //方向ベクトル(左右にしか移動しないのでX軸だけ)
+
 
 };
 
