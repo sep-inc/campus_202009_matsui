@@ -7,6 +7,9 @@ void BlockArray::Init()
 {
 	/* Blockをワールド座標で配置 */
 	SetUpBlocks();
+
+	/* 次のステップへ */
+	m_step = BlockArray::STEP_RUN;
 }
 
 /* ステップ処理 */
@@ -14,14 +17,11 @@ void BlockArray::Update()
 {
 	switch (m_step)
 	{
-	case BlockArray::STEP_INIT:
+	case BlockArray::STEP_INIT:  //初期化
 		Init();
 		break;
-	case BlockArray::STEP_RUN:
+	case BlockArray::STEP_RUN:  //ブロック消去までの処理
 		DeleteBlock();
-		break;
-	case BlockArray::STEP_OUT:
-
 		break;
 	default:
 		break;
@@ -52,9 +52,6 @@ void BlockArray::SetUpBlocks()
 		pos.X = 0.0f;
 		pos.Y += BLOCK_HEIGHT;   //Wallの次のpos(16,16)に
 	}
-
-	/* 次のステップへ */
-	m_step = BlockArray::STEP_RUN;
 }
 
 /* 各BlockのWorld座標を描画座標に変換 */
@@ -77,6 +74,6 @@ void BlockArray::DeleteBlock()
 		int x = static_cast<__int8>(g_ball.GetDeletePos().X);
 		int y = static_cast<__int8>(g_ball.GetDeletePos().Y);
 
-		m_block[y][x].Init(Vec2(-10.0f, -10.0f), 0.0f, false);
+		m_block[y][x].Init(Vec2(-30.0f, -30.0f), 0.0f, false);
 	}
 }

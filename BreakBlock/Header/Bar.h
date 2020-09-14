@@ -17,6 +17,7 @@ public:
 	void SetUpDrawBuffer();   //ワールド座標を描画座標に変換
 	void Move();              //移動関数
 	void Hit();               //あたり判定関数
+	void Out();               //終了処理
 
 private:
 	//ステップの種類

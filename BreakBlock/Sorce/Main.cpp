@@ -28,6 +28,11 @@ int main()
 
 		getchar();
 
+		if (g_ball.GetHitBlock().m_out == true)
+		{
+			break;
+		}
+
 		/* –ˆ‰ñ•\¦‚ª‰º‚És‚©‚È‚¢‚æ‚¤‚É‚µ‚Ä‚¢‚é */
 		system("cls");
 	}

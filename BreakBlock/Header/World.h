@@ -3,7 +3,7 @@
 
 //ワールド座標(float)
 #define GAME_WIDTH 320
-#define GAME_HEIGHT 640
+#define GAME_HEIGHT 320
 
 //ワールド座標初期化用
 #define Start_Pos_X 0  
@@ -16,6 +16,10 @@
 
 #define BLOCK_WIDTH 32    //1Blockの横幅(float)
 #define BLOCK_HEIGHT 16   //1Blockの縦幅(float)
+
+
+#define BLOCK_STAGE_WIDTH 320
+#define BLOCK_STAGE_HEIGHT 16
 
 
 ///////////////////////////////////////////////////////////////

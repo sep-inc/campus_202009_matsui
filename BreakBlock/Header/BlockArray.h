@@ -25,7 +25,6 @@ private:
 	{
 		STEP_INIT,    //‰Šú‰»
 		STEP_RUN,     //ˆ—
-		STEP_OUT	  //‰ğ•ú
 	}m_step;
 
 

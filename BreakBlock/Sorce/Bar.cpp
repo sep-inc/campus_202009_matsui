@@ -20,13 +20,13 @@ void Bar::Update()
 {
 	switch (m_step)
 	{
-	case Bar::STEP_INIT:
+	case Bar::STEP_INIT:  //‰Šú‰»
 		Init();
 		break;
-	case Bar::STEP_MOVE:
+	case Bar::STEP_MOVE:  //ˆÚ“®‚Ü‚Å‚Ìˆ—
 		Move();
 		break;
-	case Bar::STEP_OUT:
+	case Bar::STEP_OUT:   //’â~
 
 		break;
 	default:
@@ -70,4 +70,10 @@ void Bar::Hit()
 	{
 		m_hit_wall = false;
 	}
+}
+
+/* I—¹ˆ— */
+void Bar::Out()
+{
+	m_speed = 0.0f; //“®‚«‚ğ~‚ß‚é
 }
