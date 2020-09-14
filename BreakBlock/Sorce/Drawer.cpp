@@ -70,8 +70,12 @@ void Drawer::BufferClear()
 /* World配列を描画座標に変換(各Objectで行う )*/
 void Drawer::SetUpBuffer(Vec2 pos_, OBJECTKIND kind_, int width_)
 {
-	int x = (pos_.X + UNIT_X) / UNIT_X;
-	int y = (pos_.Y + UNIT_Y) / UNIT_Y;
+	__int16 x = static_cast<__int16>(pos_.X / UNIT_X);
+	__int16 y = static_cast<__int16>(pos_.Y / UNIT_Y);
+
+	/* フレーム分ずらす */
+	/*x += WALL_FRAME;
+	y += WALL_FRAME;*/
 
 	int num_x = width_ / UNIT_X;
 

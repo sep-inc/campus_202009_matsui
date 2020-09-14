@@ -28,7 +28,8 @@ int main()
 
 		getchar();
 
-		if (g_ball.GetHitBlock().m_out == true)
+		/* Ball‚ª‰º‚É—‚¿‚½‚Æ‚«I—¹(Œ»İ“®ìŠm”F’†‚Ì‚½‚ß~‚Ü‚ç‚È‚¢) */
+		if (g_ball.GetHiter().m_out == true)
 		{
 			break;
 		}

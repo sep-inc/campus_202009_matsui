@@ -8,7 +8,7 @@
 class ObjectBase
 {
 protected:
-	ObjectBase() :m_pos(Vec2(Start_Pos_X, Start_Pos_Y)), m_speed(0.0f), m_eneable(true)
+	ObjectBase() :m_pos(Vec2(0.0f, 0.0f)), m_speed(0.0f), m_eneable(true)
 	{}
 	~ObjectBase() {}
 

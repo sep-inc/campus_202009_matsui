@@ -6,12 +6,13 @@ void Bar::Init()
 {
 	Vec2 pos;
 	pos.X = UNIT_X + ((GAME_WIDTH / 2) - BAR_WIDTH);    //Game横幅の中央あたり
-	pos.Y = UNIT_X + (GAME_HEIGHT / 2);				   //Game縦幅の中央あたり
+	pos.Y = UNIT_X + (GAME_HEIGHT / 2);				    //Game縦幅の中央あたり
 
 	float speed = 16.0f;
 
 	ObjectBase::Init(pos, speed, true);
 
+	/* 次のステップへ */
 	m_step = Bar::STEP_MOVE;
 }
 
@@ -27,7 +28,7 @@ void Bar::Update()
 		Move();
 		break;
 	case Bar::STEP_OUT:   //停止
-
+		Out();
 		break;
 	default:
 		break;
@@ -39,7 +40,7 @@ void Bar::SetUpDrawBuffer()
 {
 	if (m_eneable == true)
 	{
-		g_drawer.SetUpBuffer(m_pos, OBJECTKIND::BAR, BAR_WIDTH);
+		g_drawer.SetUpBuffer(Vec2(m_pos.X + START_POS_X, m_pos.Y + START_POS_Y), OBJECTKIND::BAR, BAR_WIDTH);
 	}
 }
 
@@ -56,13 +57,18 @@ void Bar::Move()
 
 	/* 移動 */
 	m_pos.X += m_direction_X * m_speed;
+
+	if (g_ball.GetHiter().m_out == true)
+	{
+		m_step = STEP_OUT;
+	}
 }
 
 /* 当たり判定まとめ */
 void Bar::Hit()
 {
 	/* ワールド座標をフレームを除いて考えてるので右のMax値はUnitはx2 */
-	if (m_pos.X <= Start_Pos_X || m_pos.X + BAR_WIDTH >= GAME_WIDTH)
+	if (m_pos.X <= START_POS_X || m_pos.X + BAR_WIDTH >= GAME_WIDTH)
 	{
 		m_hit_wall = true;
 	}

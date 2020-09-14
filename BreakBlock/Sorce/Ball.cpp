@@ -16,8 +16,9 @@ void Ball::Init()
 		false,false,false,false,false,false,false,false
 	};
 
-	m_first_blocks_pos = Vec2(0.0f, 0.0f);
-	m_second_blocks_pos = Vec2(0.0f, 16.0f);
+
+	m_first_blocks_pos = Vec2(0.0f, 0.0f);      //1段目のBlock群の初期化
+	m_second_blocks_pos = Vec2(0.0f, 16.0f);    //2段目のBlock群の初期化
 
 	/* 次のステップへ */
 	m_step = Ball::STEP_RUN;
@@ -106,17 +107,18 @@ void Ball::HitWall()
 
 
 	/* 上下の壁 */
-	if (m_pos.Y - BALL_RADIUS <= Start_Pos_X || m_pos.Y + BALL_RADIUS >= GAME_HEIGHT)
+	if (m_pos.Y - BALL_RADIUS <= START_POS_X || m_pos.Y + BALL_RADIUS >= GAME_HEIGHT)
 	{
 		m_collision_type.m_top_under_wall = true;
 
-		if (m_pos.Y + BALL_RADIUS >= GAME_HEIGHT)
-		{
-			m_collision_type.m_out = true;
-		}
+		/* Ballが下に落ちたとき */
+		//if (m_pos.Y + BALL_RADIUS >= GAME_HEIGHT)
+		//{
+		//	m_collision_type.m_out = true;  //終了フラグtrue
+		//}
 	}
 	/* 左右の壁 */
-	if (m_pos.X - BALL_RADIUS <= Start_Pos_X || m_pos.X + BALL_RADIUS >= GAME_WIDTH)
+	if (m_pos.X - BALL_RADIUS <= START_POS_X || m_pos.X + BALL_RADIUS >= GAME_WIDTH)
 	{
 		m_collision_type.m_left_right_wall = true;
 	}
@@ -132,12 +134,16 @@ void Ball::HitBar()
 	if (Hit_Rect_TopUnder(m_pos, g_bar.GetPos() , BALL_RADIUS, BAR_WIDTH, BAR_HEIGHT) == true)
 	{
 		m_collision_type.m_top_under_bar = true;
+
+		/* 1フレーム先のposを変更(BallがBarに埋まっているかどうか判定用) */
 		m_next_pos = Vec2(m_pos.X + m_speed * m_direction_vec.X, m_pos.Y + m_speed * -m_direction_vec.Y);
 	}
 	/* Barとの左右辺のあたり判定 */
 	else if (Hit_Rect_LeftRight(m_pos, g_bar.GetPos(), BALL_RADIUS, BAR_WIDTH, BAR_HEIGHT) == true)
 	{
 		m_collision_type.m_left_right_bar = true;
+
+		/* 1フレーム先のposを変更(BallがBarに埋まっているかどうか判定用) */
 		m_next_pos = Vec2(m_pos.X + m_speed * -m_direction_vec.X, m_pos.Y + m_speed * m_direction_vec.Y);
 	}
 	else
@@ -186,7 +192,7 @@ void Ball::HitBlocks()
 }
 
 /* Block単体の当たり判定 */
-void Ball::HitBlockUnit(float y_)
+void Ball::HitBlockUnit(__int8 y_)
 {
 	for (int x = FOR_FARST_NUM; x < BLOCK_NUM_X; x++)
 	{
@@ -194,7 +200,9 @@ void Ball::HitBlockUnit(float y_)
 		if (Hit_Rect_TopUnder(m_pos, g_blockarray.GetBlockPos(x, y_), BALL_RADIUS, BLOCK_WIDTH, BLOCK_HEIGHT) == true)
 		{
 			m_collision_type.m_top_under_block = true;
-			m_delete_pos.X = static_cast<float>(x);
+
+			/* Block消去座標保存 */
+			m_delete_pos.X = static_cast<float>(x);      
 			m_delete_pos.Y = static_cast<float>(y_);
 			break;
 		}
@@ -202,6 +210,8 @@ void Ball::HitBlockUnit(float y_)
 		else if (Hit_Rect_LeftRight(m_pos, g_blockarray.GetBlockPos(x, y_), BALL_RADIUS, BLOCK_WIDTH, BLOCK_HEIGHT) == true)
 		{
 			m_collision_type.m_left_right_block = true;
+
+			/* Block消去座標保存 */
 			m_delete_pos.X = static_cast<float>(x);
 			m_delete_pos.Y = static_cast<float>(y_);
 			break;
@@ -215,7 +225,9 @@ void Ball::HitBlockUnit(float y_)
 			{
 				m_collision_type.m_top_under_block = true;     //フラグ変更
 				m_collision_type.m_left_right_block = true;    //フラグ変更
-				m_delete_pos.X = static_cast<float>(x);        //どのBlockに当たったかを知るために保存用変数に代入
+
+				/* Block消去座標保存 */
+				m_delete_pos.X = static_cast<float>(x);        
 				m_delete_pos.Y = static_cast<float>(y_);
 				break;
 			}
@@ -231,37 +243,37 @@ void Ball::DirectionChange()
 	/* 壁に当たった時 */
 	if (m_collision_type.m_left_right_wall == true)
 	{
-		m_direction_vec.X *= -1.0f;
+		m_direction_vec.X = -m_direction_vec.X;
 	}
 	if (m_collision_type.m_top_under_wall == true)
 	{
-		m_direction_vec.Y *= -1.0f;
+		m_direction_vec.Y = -m_direction_vec.Y;
 	}
 
 	/* Barに当たった時 */
 	if (m_collision_type.m_left_right_bar == true)
 	{
-		m_direction_vec.X *= -1.0f;
+		m_direction_vec.X = -m_direction_vec.X;
 	}
 	else if (m_collision_type.m_top_under_bar == true)
 	{
-		m_direction_vec.Y *= -1.0f;
+		m_direction_vec.Y = -m_direction_vec.Y;
 	}
 
 	/* Blockに当たった時 */
 	if (m_collision_type.m_left_right_block == true)
 	{
-		m_direction_vec.X *= -1.0f;
+		m_direction_vec.X = -m_direction_vec.X;
 	}
 	if (m_collision_type.m_top_under_block == true)
 	{
-		m_direction_vec.Y *= -1.0f;
+		m_direction_vec.Y = -m_direction_vec.Y;
 	}
 
 	/* Barに埋まった時(例外処理) */
 	if (m_collision_type.m_during_bar == true)
 	{
-		m_direction_vec.Y *= -1.0f;
+		m_direction_vec.Y = -m_direction_vec.Y;
 	}
 
 	/* 移動ステップへ */
@@ -280,6 +292,7 @@ void Ball::SetDrawBuffer()
 {
 	if (m_eneable == true)
 	{
-		g_drawer.SetUpBuffer(Vec2(m_pos.X - BALL_RADIUS, m_pos.Y - BALL_RADIUS), OBJECTKIND::BALL, (BALL_RADIUS + BALL_RADIUS));
+		/* 中心座標を左上に直すため */
+		g_drawer.SetUpBuffer(Vec2(m_pos.X - BALL_RADIUS + START_POS_X, m_pos.Y - BALL_RADIUS + START_POS_Y), OBJECTKIND::BALL, (BALL_RADIUS + BALL_RADIUS));
 	}
 }

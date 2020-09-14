@@ -66,14 +66,17 @@ void BlockArray::SetUpDrawBuufer()
 	}
 }
 
+/* Block消去関数 */
 void BlockArray::DeleteBlock()
 {
-	if (g_ball.GetHitBlock().m_top_under_block == true
-		|| g_ball.GetHitBlock().m_left_right_block == true)
+	/* BallがBlockに当たった時 */
+	if (g_ball.GetHiter().m_top_under_block == true
+		|| g_ball.GetHiter().m_left_right_block == true)
 	{
-		int x = static_cast<__int8>(g_ball.GetDeletePos().X);
-		int y = static_cast<__int8>(g_ball.GetDeletePos().Y);
+		int x = static_cast<__int8>(g_ball.GetDeletePos().X);   //消去する座標(X)
+		int y = static_cast<__int8>(g_ball.GetDeletePos().Y);	//消去する座標(Y)
 
+		/* 当たり判定時に座標が残っていると困るので当たらない位置に変える */
 		m_block[y][x].Init(Vec2(-30.0f, -30.0f), 0.0f, false);
 	}
 }

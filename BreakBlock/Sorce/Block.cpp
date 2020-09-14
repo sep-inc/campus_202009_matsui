@@ -15,7 +15,7 @@ void Block::SetBlockBuufer()
 
 	if (m_eneable == true)
 	{
-		g_drawer.SetUpBuffer(m_pos, OBJECTKIND::BLOCK, BLOCK_WIDTH);
+		g_drawer.SetUpBuffer(Vec2(m_pos.X + START_POS_X, m_pos.Y + START_POS_Y), OBJECTKIND::BLOCK, BLOCK_WIDTH);
 	}
 }
 

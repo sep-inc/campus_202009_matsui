@@ -11,22 +11,29 @@
 class Ball : public ObjectBase
 {
 public:
-	Ball() :m_step(STEP::STEP_INIT), m_move_step(STEP_HIT), m_hit_step(STEP_WALL), m_direction_vec(Vec2(1.0f, 1.0f)), m_next_pos(Vec2(0.0f, 0.0f)),m_delete_pos(Vec2(0.0f, 0.0f)) {}
+	Ball() :m_step(STEP::STEP_INIT), m_move_step(STEP_HIT), m_hit_step(STEP_WALL),
+		m_direction_vec(Vec2(1.0f, 1.0f)), m_next_pos(Vec2(0.0f, 0.0f)), m_delete_pos(Vec2(0.0f, 0.0f)),
+		m_rote_volume(2.0f)
+	{}
 	~Ball() {}
 
-	void Init();                  //初期化
-	void Update();			      //ステップ処理関数
-	void SetDrawBuffer();         //ワールド座標を描画座標に変換
-							      
-	void Move();                  //移動関数
-	void DirectionChange();       //方向ベクトル変換関数
+	void Init();                       //初期化
+	void Update();			           //ステップ処理関数
+	void SetDrawBuffer();              //ワールド座標を描画座標に変換
+							           
+	void Move();                       //移動関数
+	void DirectionChange();         //方向ベクトル変換関数
+	
+	
+
+
 							      
 	void Hit();                   //当たり判定まとめ関数
 	void HitWall();			      //壁との当たり判定
 	void HitBar();			      //Barとの当たり判定
 	void HitBlocks();		      //Block群との当たり判定
 
-	void HitBlockUnit(float y_);  //Block単体との当たり判定
+	void HitBlockUnit(__int8 y_);  //Block単体との当たり判定
 
 	void Out();
 
@@ -49,7 +56,7 @@ public:
 	const Vec2 GetDeletePos() { return m_delete_pos; }
 
 	/* Block消去時のフラグ */
-	const CollisionType GetHitBlock() { return m_collision_type; }
+	const CollisionType GetHiter() { return m_collision_type; }
 
 private:
 	//ステップの種類
@@ -82,9 +89,12 @@ private:
 
 	Vec2 m_delete_pos;          //Block消去pos_x保存用
 
+
+	/* 横1列のBlockを1群と考える */
 	Vec2 m_first_blocks_pos;    //1段目のBlock群のpos
 	Vec2 m_second_blocks_pos;	//2段目のBlock群のpos
 
+	float m_rote_volume;
 };
 
 
