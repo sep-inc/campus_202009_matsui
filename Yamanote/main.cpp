@@ -1,11 +1,11 @@
-#include "World.h"
+ï»¿#include "World.h"
 
 int main()
 {
-
+	/* å…¥åŠ›å‡¦ç† */
 	g_inputter.InputStation();
 
-	/* ƒXƒeƒbƒvˆ— */
+	/* ã‚¹ãƒ†ãƒƒãƒ—å‡¦ç† */
 	g_database.StepChange();
 
 	g_drawer.Draw();
