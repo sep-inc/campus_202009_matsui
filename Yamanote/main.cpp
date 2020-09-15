@@ -1,14 +1,19 @@
-﻿#include "World.h"
+﻿#include "Typedef.h"
 
 int main()
 {
-	/* 入力処理 */
-	g_inputter.InputStation();
 
-	/* ステップ処理 */
-	g_database.StepChange();
+	while (true)
+	{
+		/* 入力処理 */
+		g_inputter.InputStation();
 
-	g_drawer.Draw();
+		/* ステップ処理 */
+		g_database.StepChange();
 
+		/* 表示 */
+		g_drawer.Draw();
+		
+	}
 	return 0;
 }

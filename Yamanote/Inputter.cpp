@@ -1,10 +1,11 @@
-#include "Inputter.h"
+ï»¿#include "Inputter.h"
 
+/* å…¥åŠ›å¾…ã¡é–¢æ•° */
 void Inputter::InputStation()
 {
-	printf("n‚Ü‚è‚Ì‰w–¼‚ğ“ü—Í‚µ‚Ä‚­‚¾‚³‚¢B\n");
+	printf("å§‹ã¾ã‚Šã®é§…åã‚’å…¥åŠ›ã—ã¦ãã ã•ã„ã€‚\n");
     scanf_s("%s", &m_start_station_name, 64);
 
-    printf("I‚í‚è‚Ì‰w–¼‚ğ“ü—Í‚µ‚Ä‚­‚¾‚³‚¢B\n");
+    printf("çµ‚ã‚ã‚Šã®é§…åã‚’å…¥åŠ›ã—ã¦ãã ã•ã„ã€‚\n");
     scanf_s("%s", &m_end_station_name, 64);
 }

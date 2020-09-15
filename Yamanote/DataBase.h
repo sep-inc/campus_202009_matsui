@@ -24,6 +24,9 @@ public:
 	void StepChange();     //ステップ処理
 	void Init();           //入力処理
 	void Caluculation();   //計算処理
+	void SearchName();     //駅名検索
+	void RoteValue(__int8 start_, __int8 end_);   //計算処理
+
 	void SetTotalValue();  //値わたし関数
 	
 

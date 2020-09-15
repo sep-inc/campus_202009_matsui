@@ -1,135 +1,183 @@
-#include "DataBase.h"
-#include "World.h"
+п»ї#include "DataBase.h"
+#include "Typedef.h"
 #include <iostream>
 
-/* ‰wЏо•сЏ‰Љъ‰» */
+/* й§…жѓ…е ±е€ќжњџеЊ– */
 StationInfo m_station_info[STATION_NUM] =
 {
-    //‰w–ј(‰E‰с“]‚ЕЏ‰Љъ‰»ЃAЌ¶‰с“]Ћћ‚Н‰є‚©‚з)
-    {"“Њ‹ћ"    ,   2},
-    {"—LЉy’¬"  ,   2},
-    {"ђV‹ґ"    ,   2},
-    {"•lЏј’¬"  ,   2},
-    {"“c’¬"    ,   2},
-    {"•iђм"    ,   3},
-    {"‘еЌи"    ,   2},
-    {"ЊЬ”Ѕ“c"  ,   2},
-    {"–ЪЌ•"    ,   3},
-    {"Њb”дЋх"  ,   2},
-    {"Џa’J"    ,   2},
-    {"ЊґЏh"    ,   2},
-    {"‘гЃX–Ш"  ,   2},
-    {"ђVЏh"    ,   2},
-    {"ђV‘е‹v•Ы",   2},
-    {"Ќ‚“c”nЏк",   2},
-    {"–Ъ”’"    ,   3},
-    {"’r‘Ь"    ,   2},
-    {"‘е’Л"    ,   2},
-    {"‘ѓЉ›"    ,   2},
-    {"‹оЌћ"    ,   2},
-    {"“c’["    ,   2},
-    {"ђј“ъ•ж—ў",   1},
-    {"“ъ•ж—ў"  ,   2},
-    {"йт’J"    ,   2},
-    {"Џг–м"    ,   2},
-    {"Њд“k’¬"  ,   2},
-    {"ЏH—tЊґ"  ,   2},
-    {"ђ_“c"    ,   1}
+    /* й§…еђЌ(жњЂе€ќгЃЇж™‚иЁ€е›ћг‚Љ(й…Ќе€—гЃ§иЁЂгЃ†гЃЁ0пЅћ28)гЃ§е€ќжњџеЊ–гЂЃ
+       еЏЌж™‚иЁ€е›ћг‚ЉгЃЇй…Ќе€—гЃ§иЁЂгЃ†гЃЁ28пЅћ0гЃ«гЃЄгЃЈгЃ¦гЃ„г‚‹) */
+
+    //й§…еђЌ       з§»е‹•ж™‚й–“
+    {"жќ±дє¬"    ,   2},
+    {"жњ‰жҐЅз”є"  ,   2},
+    {"ж–°ж©‹"    ,   2},
+    {"жµњжќѕз”є"  ,   2},
+    {"з”°з”є"    ,   2},
+    {"е“Ѓе·ќ"    ,   3},
+    {"е¤§еґЋ"    ,   2},
+    {"дє”еЏЌз”°"  ,   2},
+    {"з›®й»’"    ,   3},
+    {"жЃµжЇ”еЇї"  ,   2},
+    {"жё‹и°·"    ,   2},
+    {"еЋџе®ї"    ,   2},
+    {"д»ЈгЂ…жњЁ"  ,   2},
+    {"ж–°е®ї"    ,   2},
+    {"ж–°е¤§д№…дїќ",   2},
+    {"й«з”°й¦¬е ґ",   2},
+    {"з›®з™Ѕ"    ,   3},
+    {"ж± иў‹"    ,   2},
+    {"е¤§еЎљ"    ,   2},
+    {"е·ЈйґЁ"    ,   2},
+    {"й§’иѕј"    ,   2},
+    {"з”°з«Ї"    ,   2},
+    {"иҐїж—Ґеў“й‡Њ",   1},
+    {"ж—Ґеў“й‡Њ"  ,   2},
+    {"й¶Їи°·"    ,   2},
+    {"дёЉй‡Ћ"    ,   2},
+    {"еѕЎеѕ’з”є"  ,   2},
+    {"з§‹и‘‰еЋџ"  ,   2},
+    {"зҐћз”°"    ,   1}
 };
 
-
+/* г‚№гѓ†гѓѓгѓ—е‡¦зђ†й–ўж•° */
 void DataBase::StepChange()
 {
     switch (m_step)
     {
-    case DataBase::STEP_INPUT:
+    case DataBase::STEP_INPUT:            //е…ҐеЉ›жѓ…е ±еЏ‚з…§
         Init();
-    case DataBase::STEP_CALUCULATION:
+    case DataBase::STEP_CALUCULATION:     //иЁ€з®—е‡¦зђ†
         Caluculation();
-    case DataBase::STEP_SET:
+    case DataBase::STEP_SET:              //иЁ€з®—зµђжћњдїќе­е‡¦зђ†
         SetTotalValue();
     default:
         break;
     }
 }
 
+/* е…ҐеЉ›жѓ…е ±еЏ‚з…§й–ўж•° */
 void DataBase::Init()
 {   
-    /* “ь—Н‚µ‚Ѕ–ј‘O‚р•Ы‘¶ */
+    m_left_total_value = 0;   //еЏЌж™‚иЁ€е›ћг‚Љеђ€иЁ€ж™‚й–“е€ќжњџеЊ–
+    m_right_total_value = 0;  //ж™‚иЁ€е›ћг‚Љеђ€иЁ€ж™‚й–“е€ќжњџеЊ–
+
+    /* е…ҐеЉ›гЃ—гЃџеђЌе‰Ќг‚’дїќе­ */
     strcpy_s(input_start_station, g_inputter.GetStartStationName());
     strcpy_s(input_end_station, g_inputter.GetEndStationName());
 
-    /* Ћn‚Ь‚и‚ЖЏI‚н‚и‚М‰w–ј‚Є“Ї‚¶—v‘fђ”‚р•Ы‘¶ */
+    /* й§…еђЌж¤њзґў */
+    SearchName(); 
+
+    /* ж¬ЎгЃ®г‚№гѓ†гѓѓгѓ—гЃё */
+    m_step = STEP_CALUCULATION;
+}
+
+/* иЁ€з®—й–ўж•° */
+void DataBase::Caluculation()
+{
+    RoteValue(m_start_station, m_end_station);  //з§»е‹•ж™‚й–“
+
+    m_step = STEP_SET;
+}
+
+/* й§…еђЌж¤њзґўй–ўж•° */
+void DataBase::SearchName()
+{
+    /* е§‹гЃѕг‚ЉгЃ®й§…еђЌгЃЊеђЊгЃи¦Ѓзґ ж•°г‚’дїќе­ */
     for (int i = 0; i < STATION_NUM; i++)
     {
         if (strcmp(g_inputter.GetStartStationName(), m_station_info[i].station) == 0)
         {
-            m_start_station = i;   //Ћn‚Ь‚и
+            m_start_station = i;       //е§‹гЃѕг‚Љ
+            g_drawer.NoneName(false);  //й§…еђЌз„ЎгЃ—гѓ•гѓ©г‚°false
+            break;
         }
+        /* й§…еђЌгЃЊеђ€г‚ЏгЃЄгЃ‹гЃЈгЃџе ґеђ€ */
+        else
+        {
+            g_drawer.NoneName(true);   //й§…еђЌз„ЎгЃ—гѓ•гѓ©г‚°true
+        }
+    }
+
+    /* зµ‚г‚Џг‚ЉгЃ®й§…еђЌгЃЊеђЊгЃи¦Ѓзґ ж•°г‚’дїќе­ */
+    for (int i = 0; i < STATION_NUM; i++)
+    {
         if (strcmp(g_inputter.GetEndStationName(), m_station_info[i].station) == 0)
         {
-            m_end_station = i;    //ЏI‚н‚и
+            m_end_station = i;         //зµ‚г‚Џг‚Љ
+            g_drawer.NoneName(false);  //й§…еђЌз„ЎгЃ—гѓ•гѓ©г‚°false
+            break;
+        }
+        /* й§…еђЌгЃЊеђ€г‚ЏгЃЄгЃ‹гЃЈгЃџе ґеђ€ */
+        else
+        {
+            g_drawer.NoneName(true);   //й§…еђЌз„ЎгЃ—гѓ•гѓ©г‚°true
         }
     }
-
-    /* Ћџ‚МѓXѓeѓbѓv‚Ц */
-    m_step = STEP_CALUCULATION;
 }
 
-/* ЊvЋZЉЦђ” */
-void DataBase::Caluculation()
+
+/* з§»е‹•ж™‚й–“иЁ€з®— */ 
+void DataBase::RoteValue(__int8 start_, __int8 end_)
 {
-    /* ‰E‰с‚иЋћЃA”z—с‚МЌЕЊг‚©‚зЌЕЏ‰‚Ь‚Е’К‚й‚Ж‚«(—б28Ѓ`3‚И‚З) */
-    if (m_end_station - m_start_station < 0)
+    /* еЏіе›ћг‚Љж™‚(й…Ќе€—гЃ®и¦Ѓзґ е†…гЃ§гѓ«гѓјгѓ—гЃЊе›ћгЃ›г‚‹гЃЁгЃЌ) */
+    if (end_ - start_ > 0)
     {
-        /* ЏI‚н‚и‚М‰wЃ`”z—с‚МЌЕЊг‚М‰w‚Ь‚Е‚МЌ‡Њv‚рЏo‚· */
-        for (int i = m_end_station; i < STATION_NUM; i++)
+        for (int i = start_; i < end_; i++)
         {
-            m_right_total_value += m_station_info[i].Spin;    //Ћџ‚М‰w‚Ь‚ЕЉ|‚©‚йЋћЉФ‚рЌ‡Њv’l‚Й‘«‚·
+            m_right_total_value += m_station_info[i].Spin;
         }
-        /* ”z—с‚МЌЕЏ‰‚М‰wЃ`Ћn‚Ь‚и‚М‰w‚Ь‚Е‚МЌ‡Њv‚рЏo‚· */
-        for (int i = START_STATION; i < m_start_station; i++)
-        {
-            m_right_total_value += m_station_info[i].Spin;    //Ћџ‚М‰w‚Ь‚ЕЉ|‚©‚йЋћЉФ‚рЌ‡Њv’l‚Й‘«‚·
-        }
+      
     }
-
-    /* ‰E‰с‚иЋћ */
-    for (int i = m_start_station; i < m_end_station; i++)
+    /* еЏіе›ћг‚Љж™‚гЂЃй…Ќе€—гЃ®жњЂеѕЊгЃ‹г‚‰жњЂе€ќгЃѕгЃ§йЂљг‚‹гЃЁгЃЌ(дѕ‹:зҐћз”°пЅћжќ±дє¬[28]пЅћ[0]гЃЄгЃ©) */
+    else
     {
-        m_right_total_value += m_station_info[i].Spin;
-    }
-
-
-    /* Ќ¶‰с‚иЋћЃA”z—с‚МЌЕЏ‰‚©‚зЌЕЊг‚Ь‚Е’К‚й‚Ж‚«(—б3Ѓ`28‚И‚З) */
-    if (m_end_station - m_start_station > 0)
-    {
-        /* ЏI‚н‚и‚М‰wЃ`”z—с‚МЌЕЊг‚М‰w‚Ь‚Е‚МЌ‡Њv‚рЏo‚· */
-        for (int i = STATION_NUM; i > m_end_station; i--)
+        /* зµ‚г‚Џг‚ЉгЃ®й§…пЅћй…Ќе€—гЃ®жњЂеѕЊгЃ®й§…гЃѕгЃ§гЃ®еђ€иЁ€г‚’е‡єгЃ™ */
+        for (int i = start_; i <= STATION_NUM; i++)
         {
-            m_left_total_value += m_station_info[i].Spin;   //Ћџ‚М‰w‚Ь‚ЕЉ|‚©‚йЋћЉФ‚рЌ‡Њv’l‚Й‘«‚·
+            m_right_total_value += m_station_info[i].Spin;    //ж¬ЎгЃ®й§…гЃѕгЃ§жЋ›гЃ‹г‚‹ж™‚й–“г‚’еђ€иЁ€еЂ¤гЃ«и¶ігЃ™
         }
-
-        /* ”z—с‚МЌЕЏ‰‚М‰wЃ`Ћn‚Ь‚и‚М‰w‚Ь‚Е‚МЌ‡Њv‚рЏo‚· */
-        for (int i = m_start_station; i > START_STATION; i--)
+        /* й…Ќе€—гЃ®жњЂе€ќгЃ®й§…пЅће§‹гЃѕг‚ЉгЃ®й§…гЃѕгЃ§гЃ®еђ€иЁ€г‚’е‡єгЃ™ */
+        for (int i = START_STATION; i < end_; i++)
         {
-            m_left_total_value += m_station_info[i].Spin;   //Ћџ‚М‰w‚Ь‚ЕЉ|‚©‚йЋћЉФ‚рЌ‡Њv’l‚Й‘«‚·
+            m_right_total_value += m_station_info[i].Spin;    //ж¬ЎгЃ®й§…гЃѕгЃ§жЋ›гЃ‹г‚‹ж™‚й–“г‚’еђ€иЁ€еЂ¤гЃ«и¶ігЃ™
         }
     }
 
-    /*Ѓ@Ќ¶‰с‚иЋћ */
-    for (int i = m_end_station; i < m_start_station; i--)
-    {
-        m_left_total_value += m_station_info[i].Spin;
-    }
-    m_step = STEP_SET;
 
+    /* е·¦е›ћг‚Љж™‚(й…Ќе€—гЃ®и¦Ѓзґ е†…гЃ§гѓ«гѓјгѓ—гЃЊе›ћгЃ›г‚‹гЃЁгЃЌ) */
+    if (end_ - start_ < 0)
+    {
+        /*гЂЂе·¦е›ћг‚Љж™‚(й…Ќе€—г‚’ж™‚иЁ€е›ћг‚ЉгЃ§е€ќжњџеЊ–гЃ—гЃ¦гЃ„г‚‹гЃџг‚ЃеЏЌж™‚иЁ€е›ћг‚Љж™‚гЃЇй™Ќг‚Љг‚‹й§…гЃ®дєєй§…е‰ЌгЃ®ж™‚й–“г‚’е…Ґг‚ЊгЃ¦г‚„г‚‹) */
+        for (int i = start_ - 1; i >= end_; i--)
+        {
+            m_left_total_value += m_station_info[i].Spin;
+        }
+    }
+    /* е·¦е›ћг‚Љж™‚гЂЃй…Ќе€—гЃ®жњЂе€ќгЃ‹г‚‰жњЂеѕЊгЃѕгЃ§йЂљг‚‹гЃЁгЃЌ(дѕ‹:жќ±дє¬пЅћзҐћз”°[0]пЅћ[28]гЃЄгЃ©) */
+    else
+    { 
+        /* й…Ќе€—гЃ®жњЂе€ќгЃ®й§…пЅће§‹гЃѕг‚ЉгЃ®й§…гЃѕгЃ§гЃ®еђ€иЁ€г‚’е‡єгЃ™ */
+        for (int i = start_; i > START_STATION; i--)
+        {
+            m_left_total_value += m_station_info[i].Spin;   //ж¬ЎгЃ®й§…гЃѕгЃ§жЋ›гЃ‹г‚‹ж™‚й–“г‚’еђ€иЁ€еЂ¤гЃ«и¶ігЃ™
+        }
+        /* зµ‚г‚Џг‚ЉгЃ®й§…пЅћй…Ќе€—гЃ®жњЂеѕЊгЃ®й§…гЃѕгЃ§гЃ®еђ€иЁ€г‚’е‡єгЃ™ */
+        for (int i = STATION_NUM; i >= end_; i--)
+        {
+            m_left_total_value += m_station_info[i].Spin;   //ж¬ЎгЃ®й§…гЃѕгЃ§жЋ›гЃ‹г‚‹ж™‚й–“г‚’еђ€иЁ€еЂ¤гЃ«и¶ігЃ™
+        }
+    }
 }
 
-/* ’l‚н‚Ѕ‚µЉЦђ” */
+
+/* еЂ¤жёЎгЃ—й–ўж•° */
 void DataBase::SetTotalValue()
 {
     g_drawer.SetRightTotalValue(m_right_total_value, m_left_total_value);
+
+    m_step = STEP_INPUT;
 }
 
 

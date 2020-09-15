@@ -143,13 +143,13 @@
     <ClCompile Include="Drawer.cpp" />
     <ClCompile Include="Inputter.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="World.cpp" />
+    <ClCompile Include="Typedef.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DataBase.h" />
     <ClInclude Include="Drawer.h" />
     <ClInclude Include="Inputter.h" />
-    <ClInclude Include="World.h" />
+    <ClInclude Include="Typedef.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
