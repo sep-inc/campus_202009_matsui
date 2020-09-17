@@ -13,6 +13,12 @@ int main()
 
 		/* 表示 */
 		g_drawer.Draw();
+
+		/* 終了判定 */
+		if (g_inputter.InputEnd() == true)
+		{
+			break;
+		}
 		
 	}
 	return 0;
