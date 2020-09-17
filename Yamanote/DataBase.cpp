@@ -161,12 +161,12 @@ __int8 DataBase::LeftRoteValue(__int8 start_, __int8 end_)
     else
     {
         /* 配列の最初の駅～始まりの駅までの合計を出す */
-        for (int i = start_; i > START_STATION; i--)
+        for (int i = START_STATION; i < start_; i++)
         {
             left_total_value += m_station_info[i].Spin;   //次の駅まで掛かる時間を合計値に足す
         }
         /* 終わりの駅～配列の最後の駅までの合計を出す */
-        for (int i = STATION_NUM; i >= end_; i--)
+        for (int i = end_; i <= STATION_NUM; i++)
         {
             left_total_value += m_station_info[i].Spin;   //次の駅まで掛かる時間を合計値に足す
         }
