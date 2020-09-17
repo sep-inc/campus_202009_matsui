@@ -107,7 +107,7 @@ void Ball::HitWall()
 
 
 	/* 上下の壁 */
-	if (m_pos.Y - BALL_RADIUS <= START_POS_X || m_pos.Y + BALL_RADIUS >= GAME_HEIGHT)
+	if (m_pos.Y - BALL_RADIUS <= FRAME_POS_Y || m_pos.Y + BALL_RADIUS >= GAME_HEIGHT)
 	{
 		m_collision_type.m_top_under_wall = true;
 
@@ -118,7 +118,7 @@ void Ball::HitWall()
 		//}
 	}
 	/* 左右の壁 */
-	if (m_pos.X - BALL_RADIUS <= START_POS_X || m_pos.X + BALL_RADIUS >= GAME_WIDTH)
+	if (m_pos.X - BALL_RADIUS <= FRAME_POS_X || m_pos.X + BALL_RADIUS >= GAME_WIDTH)
 	{
 		m_collision_type.m_left_right_wall = true;
 	}
@@ -174,18 +174,20 @@ void Ball::HitBlocks()
 	m_collision_type.m_top_under_block = false;
 	m_collision_type.m_left_right_block = false;
 
-	/* 2段目のBlock群の当たり判定 */
-	if (Hit_Rect_TopUnder(m_pos, m_second_blocks_pos, BALL_RADIUS, BLOCK_STAGE_WIDTH, BLOCK_STAGE_HEIGHT) == true
-		|| Hit_Rect_LeftRight(m_pos, m_second_blocks_pos, BALL_RADIUS, BLOCK_STAGE_WIDTH, BLOCK_STAGE_HEIGHT) == true)
-	{
-		HitBlockUnit(1);
-	}
 	/* 1段目のBlock群の当たり判定 */
 	if (Hit_Rect_TopUnder(m_pos, m_first_blocks_pos, BALL_RADIUS, BLOCK_STAGE_WIDTH, BLOCK_STAGE_HEIGHT) == true
 		|| Hit_Rect_LeftRight(m_pos, m_first_blocks_pos, BALL_RADIUS, BLOCK_STAGE_WIDTH, BLOCK_STAGE_HEIGHT) == true)
 	{
 		HitBlockUnit(0);
 	}
+
+	/* 2段目のBlock群の当たり判定 */
+	if (Hit_Rect_TopUnder(m_pos, m_second_blocks_pos, BALL_RADIUS, BLOCK_STAGE_WIDTH, BLOCK_STAGE_HEIGHT) == true
+		|| Hit_Rect_LeftRight(m_pos, m_second_blocks_pos, BALL_RADIUS, BLOCK_STAGE_WIDTH, BLOCK_STAGE_HEIGHT) == true)
+	{
+		HitBlockUnit(1);
+	}
+	
 	
 	/* 最初のステップへ */
 	m_hit_step = STEP_WALL;
@@ -216,9 +218,8 @@ void Ball::HitBlockUnit(__int8 y_)
 			m_delete_pos.Y = static_cast<float>(y_);
 			break;
 		}
-		
-		/* 1番上の段以外のBlock群との当たり判定 */
-		if (y_ != 0)
+	    /* 1番上の段以外のBlock群との当たり判定 */
+		else
 		{
 			/* 斜めの当たり判定 */
 			if (HitVec(m_next_pos, g_blockarray.GetBlockPos(x, y_), BLOCK_WIDTH, BLOCK_HEIGHT) == true)

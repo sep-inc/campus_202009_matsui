@@ -9,9 +9,9 @@ int main()
 	while (true)
 	{
 		/* 各オブジェクトStepChange */
-		g_blockarray.Update();
 		g_bar.Update();
 		g_ball .Update();
+		g_blockarray.Update();
 
 
 		//* Bufferの中身をクリア */

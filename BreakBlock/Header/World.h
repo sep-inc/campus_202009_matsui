@@ -32,5 +32,8 @@
 
 #define BALL_RADIUS 8    //îºåa
 
+#define FRAME_POS_X 0  //ï«ç¿ïW_X
+#define FRAME_POS_Y 0  //ï«ç¿ïW_Y
+
 
 #endif
