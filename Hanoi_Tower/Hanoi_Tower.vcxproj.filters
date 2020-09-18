@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Object">
+      <UniqueIdentifier>{1bd0f36b-f888-46f0-923e-bbe812ddb585}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="System">
+      <UniqueIdentifier>{d02318f7-35a2-4714-8238-6e2b5ca5597b}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Sor\Object\ObjectBase.cpp">
+      <Filter>Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\Object\Box.cpp">
+      <Filter>Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\Object\Disk.cpp">
+      <Filter>Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\Object\DiskArray.cpp">
+      <Filter>Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\Object\BoxArray.cpp">
+      <Filter>Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\System\Drawer.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\System\Inputter.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\Typedef.cpp" />
+    <ClCompile Include="Sor\Main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Sor\Object\ObjectBase.h">
+      <Filter>Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\Object\Box.h">
+      <Filter>Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\Object\Disk.h">
+      <Filter>Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\Object\DiskArray.h">
+      <Filter>Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\Object\BoxArray.h">
+      <Filter>Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\System\Drawer.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\System\Inputter.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\World.h" />
+    <ClInclude Include="Sor\Vec.h" />
+    <ClInclude Include="Sor\Typedef.h" />
+  </ItemGroup>
+</Project>
