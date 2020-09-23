@@ -47,4 +47,22 @@ void Inputter::InputNumber()
 
 }
 
+/* 終了待ち関数 */
+bool Inputter::InputEnd()
+{
+    int end;  //終了キー番号保存
+
+    end = _getch();  //入力
+
+    /* Escならばtrue */
+    if (end == ESC)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
 

@@ -25,6 +25,11 @@ int main()
 		{
 			break;
 		}
+		//!ƒL[“ü—Í(ESC)
+		else if (g_inputter.InputEnd() == true)
+		{
+			break;
+		}
 
 		g_inputter.InputNumber();    //!“ü—Í”»’è
 	}
