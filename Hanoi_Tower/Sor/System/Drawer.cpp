@@ -3,20 +3,20 @@
 #include <string.h>
 #include "../Vec.h"
 
+/* 初期化関数 */
 void Drawer::Init()
 {
 	memset(&m_clear_buffer, OBJECT_TYPE::BLANK, sizeof(m_clear_buffer));  //クリア用配列初期
-	memset(&m_draw_buffer, OBJECT_TYPE::BLANK, sizeof(m_draw_buffer));  //クリア用配列初期
-
-
-	//memcpy(&m_clear_buffer, &m_draw_buffer, sizeof(m_draw_buffer)); //クリア用配列に壁(不変なObject)をコピー
+	memset(&m_draw_buffer, OBJECT_TYPE::BLANK, sizeof(m_draw_buffer));    //描画用配列初期
 }
 
+/* クリア関数*/
 void Drawer::Clear()
 {
 	memcpy(&m_draw_buffer, &m_clear_buffer, sizeof(m_draw_buffer));
 }
 
+/* 描画座標変換関数 */
 void Drawer::SetUpBuffer(Vec pos_,__int16 width_, __int16 height_,OBJECT_TYPE kind_)
 {
 	__int16 x = static_cast<__int16>(pos_.x);
@@ -33,6 +33,7 @@ void Drawer::SetUpBuffer(Vec pos_,__int16 width_, __int16 height_,OBJECT_TYPE ki
 	}
 }
 
+/* 描画関数 */
 void Drawer::Draw()
 {
 	for (int y = START_UNIT; y < BUFFER_HEIGHT; y++)

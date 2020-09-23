@@ -8,6 +8,8 @@ public:
     ~Inputter() {}
 
     void InputNumber();   //入力した値をメンバ変数に保存する
+    int ReInputNumber();   //入力した値をメンバ変数に保存する
+
 
     int GetStartNumber() { return m_start_number; }   //移動元の番号を返す
     int GetEndNumber() { return m_end_number; }       //移動先の番号を返す

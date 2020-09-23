@@ -13,6 +13,7 @@ void Disk::SetUpBuffer()
 	g_drawer.SetUpBuffer(m_pos, m_width, m_height, OBJECT_TYPE::DISK);
 }
 
+/* 駒座標変更関数 */
 void Disk::SetPos(unsigned __int8 number_, unsigned __int8 width_)
 {
     /*  一度左端のBoxに座標をリセットする */
