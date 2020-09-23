@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="System">
+      <UniqueIdentifier>{c3ec07f5-75cb-4b06-a58f-55795410623b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object">
+      <UniqueIdentifier>{ae8d0141-29d3-4dd9-bd26-a313aff200d9}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Sor\Main.cpp" />
+    <ClCompile Include="Sor\System\Inputter.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\System\Drawer.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\Object\Bord.cpp">
+      <Filter>Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\Object\Piece.cpp">
+      <Filter>Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\Entity.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Sor\Vec.h" />
+    <ClInclude Include="Sor\World.h" />
+    <ClInclude Include="Sor\System\Inputter.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\System\Drawer.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\Object\Bord.h">
+      <Filter>Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\Object\Piece.h">
+      <Filter>Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\Object\ObjectBase.h">
+      <Filter>Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\Entity.h" />
+  </ItemGroup>
+</Project>
