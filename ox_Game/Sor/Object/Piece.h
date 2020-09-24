@@ -1,10 +1,10 @@
-#ifndef PIECE_H_
+ï»¿#ifndef PIECE_H_
 #define PIECE_H_
 #include "../Vec.h"
 
 /**
- *@clss   ‹îƒNƒ‰ƒX
- *@brief  ƒvƒŒƒCƒ„[A“G‚Ì‹îî•ñ‚ğ‚Â
+ *@clss   é§’ã‚¯ãƒ©ã‚¹
+ *@brief  ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã€æ•µã®é§’æƒ…å ±ã‚’æŒã¤
  */
 class Piece
 {
@@ -13,44 +13,38 @@ public:
 	~Piece() {}
 
 	/**
-     * @brief  ƒXƒeƒbƒvˆ—ŠÖ”
-     * @detail ƒXƒeƒbƒv•ÏXˆ—
+     * @brief  ã‚¹ãƒ†ãƒƒãƒ—å‡¦ç†é–¢æ•°
+     * @detail ã‚¹ãƒ†ãƒƒãƒ—å¤‰æ›´å‡¦ç†
      */
 	void StepChange();   
 	
     /**
-	 * @brief  ‰Šú‰»ŠÖ”
-	 * @detail ƒƒ“ƒo•Ï”‚Ì‰Šú‰»
+	 * @brief  åˆæœŸåŒ–é–¢æ•°
+	 * @detail ãƒ¡ãƒ³ãƒå¤‰æ•°ã®åˆæœŸåŒ–
 	 */
 	void Init();          
 	
 	/**
-	 * @brief  XVŠÖ”
-	 * @detail XVˆ—
-	 */
-	void Update();        
-	
-	/**
-	 * @brief  •`‰æÀ•W‘ã“üŠÖ”
-	 * @detail ‹îÀ•W‚ğ•`‰æÀ•W‚É‘ã“ü
+	 * @brief  æç”»åº§æ¨™ä»£å…¥é–¢æ•°
+	 * @detail é§’åº§æ¨™ã‚’æç”»åº§æ¨™ã«ä»£å…¥
 	 */
 	void SetUpDrawBuffer();
 	
 	/**
-	 * @brief  ˆÚ“®ŠÖ”‚Ü‚Æ‚ß
-	 * @detail ‹î‚ÌˆÚ“®ˆ—‚Ü‚Æ‚ß
+	 * @brief  ç§»å‹•é–¢æ•°ã¾ã¨ã‚
+	 * @detail é§’ã®ç§»å‹•å‡¦ç†ã¾ã¨ã‚
 	 */
 	void Put();         
 	
 	/**
-	 * @brief  ƒvƒŒƒCƒ„[ˆÚ“®ŠÖ”
-	 * @detail ƒvƒŒƒCƒ„[‚ÌˆÚ“®ˆ—
+	 * @brief  ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ç§»å‹•é–¢æ•°
+	 * @detail ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®ç§»å‹•å‡¦ç†
 	 */
 	void PlayerPut();         
 	
 	/**
-	 * @brief  “GˆÚ“®ŠÖ”
-	 * @detail “G‚ÌˆÚ“®ˆ—
+	 * @brief  æ•µç§»å‹•é–¢æ•°
+	 * @detail æ•µã®ç§»å‹•å‡¦ç†
 	 */
 	void EnemyPut();        
 
@@ -59,14 +53,14 @@ private:
 	enum Step
 	{
 		STEP_INIT,
-		STEP_UPDATE,
+		STEP_PUT,
 		STEP_SET
 	}m_step;
 
-	Vec m_player_pos;     //!ƒvƒŒƒCƒ„[‹îÀ•W
-	Vec m_enemy_pos;      //!“G‹îÀ•W
+	Vec m_player_pos;     //!ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼é§’åº§æ¨™
+	Vec m_enemy_pos;      //!æ•µé§’åº§æ¨™
 
-	Vec m_randm_number;   //!“G‚Ì”z’uÀ•W
+	Vec m_randm_number;   //!æ•µã®é…ç½®åº§æ¨™
 };
 
 

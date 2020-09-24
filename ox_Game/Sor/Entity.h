@@ -1,8 +1,8 @@
-#ifndef ENTITY_H_
+ï»¿#ifndef ENTITY_H_
 #define ENTITY_H_
 
 /**
-*@brief ŠeƒNƒ‰ƒXÀ‘Ì’u‚«ê
+*@brief å„ã‚¯ãƒ©ã‚¹å®Ÿä½“ç½®ãå ´
 */
 
 #include "System/Drawer.h"
@@ -11,9 +11,9 @@
 #include "Object/Piece.h"
 
 
-extern Drawer g_drawer;      //!•`‰æƒNƒ‰ƒX
-extern Inputter g_inputter;  //!“ü—ÍƒNƒ‰ƒX
-extern Bord g_bord;          //!”ÕƒNƒ‰ƒX
-extern Piece g_piece;        //!‹îƒNƒ‰ƒX
+extern Drawer g_drawer;      //!æç”»ã‚¯ãƒ©ã‚¹
+extern Inputter g_inputter;  //!å…¥åŠ›ã‚¯ãƒ©ã‚¹
+extern Bord g_bord;          //!ç›¤ã‚¯ãƒ©ã‚¹
+extern Piece g_piece;        //!é§’ã‚¯ãƒ©ã‚¹
 
 #endif

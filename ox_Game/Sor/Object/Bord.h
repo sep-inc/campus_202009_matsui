@@ -1,10 +1,10 @@
-#ifndef BORD_H_
+ï»¿#ifndef BORD_H_
 #define BORD_H_
 #include "../Vec.h"
 
 /**
- *@clss   ”ÕƒNƒ‰ƒX
- *@brief  ”Õî•ñ‚ğ‚Â
+ *@clss   ç›¤ã‚¯ãƒ©ã‚¹
+ *@brief  ç›¤æƒ…å ±ã‚’æŒã¤
  */
 class Bord
 {
@@ -13,60 +13,60 @@ public:
 	~Bord() {}
 
 	/**
-	 * @brief  ‰Šú‰»ŠÖ”
-	 * @detail ƒƒ“ƒo•Ï”‚Ì‰Šú‰»
+	 * @brief  åˆæœŸåŒ–é–¢æ•°
+	 * @detail ãƒ¡ãƒ³ãƒå¤‰æ•°ã®åˆæœŸåŒ–
 	 */
 	void Init();          
 	
 	/**
-	 * @brief  XVŠÖ”
-	 * @detail XVˆ—
+	 * @brief  æ›´æ–°é–¢æ•°
+	 * @detail æ›´æ–°å‡¦ç†
 	 */
 	bool Search();        
 
 	/**
-	 * @brief  I—¹”»’èŠÖ”(Ÿ”s)
-	 * @param (object) ƒvƒŒƒCƒ„[‚©“G‚Ì‹î
-	 * @detail ”Õã‚É“¯‚¶‹î‚ª3‚ÂˆÈãc‰¡Î‚ß‚Å‚»‚ë‚Á‚Ä‚¢‚é‚©‚ğ”»’è
+	 * @brief  çµ‚äº†åˆ¤å®šé–¢æ•°(å‹æ•—)
+	 * @param (object) ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã‹æ•µã®é§’
+	 * @detail ç›¤ä¸Šã«åŒã˜é§’ãŒ3ã¤ä»¥ä¸Šç¸¦æ¨ªæ–œã‚ã§ãã‚ã£ã¦ã„ã‚‹ã‹ã‚’åˆ¤å®š
 	 */
 	bool EndSearch(__int8 object);	 
 
 	/**
-	 * @brief  I—¹”»’èŠÖ”(ˆø‚«•ª‚¯)
-	 * @detail Ÿ‚¿•‰‚¯‚ªŒˆ‚Ü‚ç‚¸’u‚¯‚éêŠ‚ª‚ ‚é‚©‚ğ”»’è
+	 * @brief  çµ‚äº†åˆ¤å®šé–¢æ•°(å¼•ãåˆ†ã‘)
+	 * @detail å‹ã¡è² ã‘ãŒæ±ºã¾ã‚‰ãšç½®ã‘ã‚‹å ´æ‰€ãŒã‚ã‚‹ã‹ã‚’åˆ¤å®š
 	 */
 	bool DrawSearch();
 
 	
 	/**
-	 * @brief  ”z’u”»’èŠÖ”
-	 * @param (input_font) “ü—Í‚µ‚½•¶š
-	 * @param (input_number) “ü—Í‚µ‚½”š
-	 * @detail w’è‚µ‚½”Õã‚É’u‚¯‚é‚©‚Ç‚¤‚©”»’è‚·‚é
+	 * @brief  é…ç½®åˆ¤å®šé–¢æ•°
+	 * @param (input_font) å…¥åŠ›ã—ãŸæ–‡å­—
+	 * @param (input_number) å…¥åŠ›ã—ãŸæ•°å­—
+	 * @detail æŒ‡å®šã—ãŸç›¤ä¸Šã«ç½®ã‘ã‚‹ã‹ã©ã†ã‹åˆ¤å®šã™ã‚‹
 	 */
 	bool PutSearch(__int8 input_font, __int8 input_number);	
 
 	/**
-	 * @brief  ”z’u”Ô†”»’èŠÖ”
-	 * @detail ”Õã‚É’u‚­êŠ‚ª‚ ‚é‚©‚Ç‚¤‚©
+	 * @brief  é…ç½®ç•ªå·åˆ¤å®šé–¢æ•°
+	 * @detail ç›¤ä¸Šã«ç½®ãå ´æ‰€ãŒã‚ã‚‹ã‹ã©ã†ã‹
 	 */
 	bool SearchNumber();
 
 
 	/**
-	 * @brief  ”Õã”z—ñ‹î”z’uŠÖ”
-	 * @param (piece_) ‹î‚ÌÀ•W
-	 * @param (object_) ‹î‚Ìí—Ş
-	 * @detail w’è‚µ‚½”Õã”z—ñ‚É‹î‚ğ”z’u‚·‚é
+	 * @brief  ç›¤ä¸Šé…åˆ—é§’é…ç½®é–¢æ•°
+	 * @param (piece_) é§’ã®åº§æ¨™
+	 * @param (object_) é§’ã®ç¨®é¡
+	 * @detail æŒ‡å®šã—ãŸç›¤ä¸Šé…åˆ—ã«é§’ã‚’é…ç½®ã™ã‚‹
 	 */
 	void SetPiecePos(Vec piece_, __int8 object_);
 
 private:
-	/* ”Õã\‘¢‘Ì */
+	/* ç›¤ä¸Šæ§‹é€ ä½“ */
 	struct BordInfo
 	{
-		 __int8 m_put_number;  //!’u‚¯‚é”Õã”Ô†
-		 __int8 m_put_object;  //!’u‚¢‚Ä‚¢‚éObject‚Ìí—Ş
+		 __int8 m_put_number;  //!ç½®ã‘ã‚‹ç›¤ä¸Šç•ªå·
+		 __int8 m_put_object;  //!ç½®ã„ã¦ã„ã‚‹Objectã®ç¨®é¡
 
 	}m_bord_info[3][3];
 

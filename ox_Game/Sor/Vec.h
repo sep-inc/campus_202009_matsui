@@ -1,7 +1,7 @@
-#ifndef VEC_H_
+ï»¿#ifndef VEC_H_
 #define VEC_H_
 /**
-*@brief intŒ^•Ï”‚ğ‚ÂVecŒ^\‘¢‘Ì
+*@brief intå‹å¤‰æ•°ã‚’æŒã¤Vecå‹æ§‹é€ ä½“
 */
 
 #define VEC_SIZE __int8

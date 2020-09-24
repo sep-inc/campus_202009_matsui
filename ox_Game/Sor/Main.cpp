@@ -1,37 +1,37 @@
-#include "Entity.h"
+ï»¿#include "Entity.h"
 #include <stdlib.h>
 #include <time.h>
 
 
 int main()
 {
-	g_drawer.Init();  //!•`‰æƒNƒ‰ƒX‰Šú‰»
+	g_drawer.Init();  //!æç”»ã‚¯ãƒ©ã‚¹åˆæœŸåŒ–
 
-	g_bord.Init();    //!”ÕƒNƒ‰ƒX‰Šú‰»
+	g_bord.Init();    //!ç›¤ã‚¯ãƒ©ã‚¹åˆæœŸåŒ–
 
-	srand((unsigned int)time(NULL));   //—”‰Šú‰»
+	srand((unsigned int)time(NULL));   //ä¹±æ•°åˆæœŸåŒ–
 
 	while (true)
 	{
 
-		g_piece.StepChange();  //!‹î‚ÌƒXƒeƒbƒvˆ—
+		g_piece.StepChange();  //!é§’ã®ã‚¹ãƒ†ãƒƒãƒ—å‡¦ç†
 
-		g_piece.SetUpDrawBuffer();  //!‹î‚ğ•`‰æÀ•W‚É•ÏŠ·
+		g_piece.SetUpDrawBuffer();  //!é§’ã‚’æç”»åº§æ¨™ã«å¤‰æ›
 
-		g_drawer.Draw();            //!•`‰æ
+		g_drawer.Draw();            //!æç”»
 
-		//!I—¹”»’è
+		//!çµ‚äº†åˆ¤å®š
 		if (g_bord.Search() == true)
 		{
 			break;
 		}
-		//!ƒL[“ü—Í(ESC)
+		//!ã‚­ãƒ¼å…¥åŠ›(ESC)
 		else if (g_inputter.InputEnd() == true)
 		{
 			break;
 		}
 
-		g_inputter.InputNumber();    //!“ü—Í”»’è
+		g_inputter.InputNumber();    //!å…¥åŠ›åˆ¤å®š
 	}
 
 	return 1;

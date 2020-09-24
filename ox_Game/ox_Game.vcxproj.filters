@@ -39,9 +39,6 @@
     <ClInclude Include="Sor\Object\Piece.h">
       <Filter>Object</Filter>
     </ClInclude>
-    <ClInclude Include="Sor\Object\ObjectBase.h">
-      <Filter>Object</Filter>
-    </ClInclude>
     <ClInclude Include="Sor\Entity.h" />
   </ItemGroup>
 </Project>

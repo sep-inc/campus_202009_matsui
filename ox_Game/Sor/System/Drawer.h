@@ -1,11 +1,13 @@
-#ifndef DRAWER_H_
+ï»¿#ifndef DRAWER_H_
 #define DRAWER_H_
 #include "../Vec.h"
 #include "../World.h"
 
+#define BITE 4
+
 /**
-*@clss   •`‰æƒNƒ‰ƒX
-*@brief  ŠeƒIƒuƒWƒFƒNƒg‚Ìî•ñ‚ğ‚à‚Æ‚É•`‰æ‚·‚é
+*@clss   æç”»ã‚¯ãƒ©ã‚¹
+*@brief  å„ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®æƒ…å ±ã‚’ã‚‚ã¨ã«æç”»ã™ã‚‹
 */
 class Drawer
 {
@@ -14,22 +16,22 @@ public:
     ~Drawer() {}
 
     /**
-     * @brief  ‰Šú‰»ŠÖ”
-     * @detail ƒƒ“ƒo•Ï”‚Ì‰Šú‰»
+     * @brief  åˆæœŸåŒ–é–¢æ•°
+     * @detail ãƒ¡ãƒ³ãƒå¤‰æ•°ã®åˆæœŸåŒ–
      */
     void Init();                        
     
      /**
-     * @brief  Object•`‰æÀ•W•ÏŠ·ŠÖ”
-     * @param (pos_) Object‚ÌÀ•W
-	 * @param (font_) •\¦‚·‚éŒ`
-     * @detail •`‰æÀ•W‚ÉƒIƒuƒWƒFƒNƒgî•ñ‘ã“ü
+     * @brief  Objectæç”»åº§æ¨™å¤‰æ›é–¢æ•°
+     * @param (pos_) Objectã®åº§æ¨™
+	 * @param (font_) è¡¨ç¤ºã™ã‚‹å½¢
+     * @detail æç”»åº§æ¨™ã«ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆæƒ…å ±ä»£å…¥
      */
     void SetUpBuffer(Vec pos_,const char* font_);   
     
      /**
-     * @brief  •`‰æŠÖ”
-     * @detail •`‰æ
+     * @brief  æç”»é–¢æ•°
+     * @detail æç”»
      */
     void Draw();               
 
@@ -42,8 +44,8 @@ private:
         char kind[4];
     };
 
-    DrawBuffer m_draw_buffer[8][8];  //!•`‰æ—p”z—ñ
-    DrawBuffer m_clear_buffer[8][8]; //!ƒNƒŠƒA—p”z—ñ
+    DrawBuffer m_draw_buffer[8][8];  //!æç”»ç”¨é…åˆ—
+    DrawBuffer m_clear_buffer[8][8]; //!ã‚¯ãƒªã‚¢ç”¨é…åˆ—
 
 };
 

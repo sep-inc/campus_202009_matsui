@@ -1,21 +1,21 @@
-#include "Inputter.h"
+ï»¿#include "Inputter.h"
 #include <stdio.h>
 #include <conio.h>
 
-//!“ü—Í‘Ò‚¿ŠÖ”‚Ü‚Æ‚ß
+//!å…¥åŠ›å¾…ã¡é–¢æ•°ã¾ã¨ã‚
 void Inputter::InputNumber()
 {
-    char input_font = 0;    //!•¶š•Û‘¶—p
-    char input_number = 0;  //!”š•Û‘¶—p
+    char input_font = 0;    //!æ–‡å­—ä¿å­˜ç”¨
+    char input_number = 0;  //!æ•°å­—ä¿å­˜ç”¨
 
 
-    printf("A,B,C‚ğ‘I‚ñ‚Å‚­‚¾‚³‚¢\n");
+    printf("A,B,Cã‚’é¸ã‚“ã§ãã ã•ã„\n");
     input_font = _getch();
 
-    printf("1,2,3,‚ğ‘I‚ñ‚Å‚­‚¾‚³‚¢\n");
+    printf("1,2,3,ã‚’é¸ã‚“ã§ãã ã•ã„\n");
     input_number = _getch();
 
-    //!•¶š‚ğ”š‚É•ÏŠ·
+    //!æ–‡å­—ã‚’æ•°å­—ã«å¤‰æ›
     if (input_font == 'A')
     {
         m_input_font = 0;
@@ -29,7 +29,7 @@ void Inputter::InputNumber()
         m_input_font = 2;
     }
    
-    //!•¶š‚ğ”š‚É•ÏŠ·
+    //!æ–‡å­—ã‚’æ•°å­—ã«å¤‰æ›
     switch (input_number)
     {
     case '1':
@@ -47,14 +47,14 @@ void Inputter::InputNumber()
 
 }
 
-/* I—¹‘Ò‚¿ŠÖ” */
+/* çµ‚äº†å¾…ã¡é–¢æ•° */
 bool Inputter::InputEnd()
 {
-    int end;  //I—¹ƒL[”Ô†•Û‘¶
+    int end;  //çµ‚äº†ã‚­ãƒ¼ç•ªå·ä¿å­˜
 
-    end = _getch();  //“ü—Í
+    end = _getch();  //å…¥åŠ›
 
-    /* Esc‚È‚ç‚Îtrue */
+    /* Escãªã‚‰ã°true */
     if (end == ESC)
     {
         return true;

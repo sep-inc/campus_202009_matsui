@@ -11,11 +11,8 @@ void Piece::StepChange()
 	case Piece::STEP_INIT:
 		Init();
 		break;
-	case Piece::STEP_UPDATE:
-		Update();
-		break;
-	case Piece::STEP_SET:
-
+	case Piece::STEP_PUT:
+		Put();
 		break;
 	default:
 		break;
@@ -25,20 +22,15 @@ void Piece::StepChange()
 //!初期化関数
 void Piece::Init()
 {
-	m_player_pos = Vec(-5, -5);
-	m_enemy_pos = Vec(-5, -5);
+	//!座標の初期値は表示されても見えない位置にする
+	m_player_pos = Vec(-5, -5); 
+	m_enemy_pos = Vec(-5, -5);   
 
 	//!0～2の乱数で初期化
-	m_randm_number.x = rand() % 3;
-	m_randm_number.y = rand() % 3;
+	m_randm_number.x = rand() % BORD_SIZE;
+	m_randm_number.y = rand() % BORD_SIZE;
 
-	m_step = STEP_UPDATE;
-}
-
-//!更新処理関数
-void Piece::Update()
-{
-	Put();
+	m_step = STEP_PUT;
 }
 
 //!描画座標代入関数
@@ -89,8 +81,8 @@ void Piece::EnemyPut()
 	while (g_bord.PutSearch(m_randm_number.x, m_randm_number.y) == false
 		&& g_bord.SearchNumber() == true)
 	{
-		m_randm_number.x = rand() % 3;
-		m_randm_number.y = rand() % 3;
+		m_randm_number.x = rand() % BORD_SIZE;
+		m_randm_number.y = rand() % BORD_SIZE;
 	}
 
 	m_enemy_pos = Vec(m_randm_number.x, m_randm_number.y);

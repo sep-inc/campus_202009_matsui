@@ -1,6 +1,6 @@
-#include "Entity.h"
+ï»¿#include "Entity.h"
 
-Drawer g_drawer;      //•`‰æƒNƒ‰ƒX
-Inputter g_inputter;  //“ü—ÍƒNƒ‰ƒX
-Bord g_bord;          //”ÕƒNƒ‰ƒX
-Piece g_piece;        //‹îƒNƒ‰ƒX
+Drawer g_drawer;      //!æç”»ã‚¯ãƒ©ã‚¹
+Inputter g_inputter;  //!å…¥åŠ›ã‚¯ãƒ©ã‚¹
+Bord g_bord;          //!ç›¤ã‚¯ãƒ©ã‚¹
+Piece g_piece;        //!é§’ã‚¯ãƒ©ã‚¹

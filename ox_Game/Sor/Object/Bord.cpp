@@ -1,77 +1,77 @@
-#include "Bord.h"
+ï»¿#include "Bord.h"
 #include "../Entity.h"
 
-//!‰Šú‰»ŠÖ”
+//!åˆæœŸåŒ–é–¢æ•°
 void Bord::Init()
 {
-	__int8 number = 1;  //!’u‚¯‚éêŠ”Ô†‚ğ1`9‚Å’è‹`‚·‚é‚½‚ß
+	__int8 number = 1;  //!ç½®ã‘ã‚‹å ´æ‰€ç•ªå·ã‚’1ï½9ã§å®šç¾©ã™ã‚‹ãŸã‚
 
-	for (int y = 0; y < 3; y++)
+	for (int y = 0; y < BORD_SIZE; y++)
 	{
-		for (int x = 0; x < 3; x++)
+		for (int x = 0; x < BORD_SIZE; x++)
 		{
-			m_bord_info[y][x].m_put_number = number;  //!’u‚¯‚éêŠ”Ô†
-			m_bord_info[y][x].m_put_object = 0;       //!‰½‚à”Õã‚É’u‚¢‚Ä‚¢‚È‚¢‚Ì‚Å0‰Šú‰»
+			m_bord_info[y][x].m_put_number = number;  //!ç½®ã‘ã‚‹å ´æ‰€ç•ªå·
+			m_bord_info[y][x].m_put_object = 0;       //!ä½•ã‚‚ç›¤ä¸Šã«ç½®ã„ã¦ã„ãªã„ã®ã§0åˆæœŸåŒ–
 
 			number++;
 		}
 	}
 }
 
-//!’²¸ŠÖ”
+//!èª¿æŸ»é–¢æ•°
 bool Bord::Search()
 {
-	//!Ÿ‚¿”»’è
+	//!å‹ã¡åˆ¤å®š
 	if (EndSearch(OBJECT_TYPE::PLAYER_PIECE) == true)
 	{
-		g_drawer.DrawJudgment(WIN);  //!•¶š•\¦
+		g_drawer.DrawJudgment(WIN);  //!æ–‡å­—è¡¨ç¤º
 		return true;
 	}
-	//!•‰‚¯”»’è
+	//!è² ã‘åˆ¤å®š
 	if(EndSearch(OBJECT_TYPE::ENEMY_PIECE) == true)
 	{
-		g_drawer.DrawJudgment(LOSE); //!•¶š•\¦
+		g_drawer.DrawJudgment(LOSE); //!æ–‡å­—è¡¨ç¤º
 		return true;
 	}
-	//!ˆø‚«•ª‚¯”»’è
+	//!å¼•ãåˆ†ã‘åˆ¤å®š
 	else if (DrawSearch() == true)
 	{
-		g_drawer.DrawJudgment(DRAW); //!•¶š•\¦
+		g_drawer.DrawJudgment(DRAW); //!æ–‡å­—è¡¨ç¤º
 		return true;
 	}
 
 	return false;
 }
 
-//!I—¹”»’è(Ÿ”s)ŠÖ”
+//!çµ‚äº†åˆ¤å®š(å‹æ•—)é–¢æ•°
 bool Bord::EndSearch(__int8 object)
 {
-	__int8 piece_count_x = 0;  //!‰¡‚Ì”»’è—p
-	__int8 piece_count_y = 0;  //!c‚Ì”»’è—p
+	__int8 piece_count_x = 0;  //!æ¨ªã®åˆ¤å®šç”¨
+	__int8 piece_count_y = 0;  //!ç¸¦ã®åˆ¤å®šç”¨
 
 
-	for (int y = 0; y < 3; y++)
+	for (int y = 0; y < BORD_SIZE; y++)
 	{
-		for (int x = 0; x < 3; x++)
+		for (int x = 0; x < BORD_SIZE; x++)
 		{
-			//!‰¡‚Éw’è‚µ‚½‹î‚ª’u‚¢‚Ä‚ ‚éê‡ƒJƒEƒ“ƒg+1
+			//!æ¨ªã«æŒ‡å®šã—ãŸé§’ãŒç½®ã„ã¦ã‚ã‚‹å ´åˆã‚«ã‚¦ãƒ³ãƒˆ+1
 			if (m_bord_info[y][x].m_put_object == object)
 			{
 				piece_count_x++;
 
-				//!“¯‚¶‹î‚ª3‚ÂˆÈã‚ ‚éê‡I—¹
-				if (piece_count_x == 3)
+				//!åŒã˜é§’ãŒ3ã¤ä»¥ä¸Šã‚ã‚‹å ´åˆçµ‚äº†
+				if (piece_count_x == BORD_SIZE)
 				{
 					return true;
 				}
 			}
-			//!c‚Éw’è‚µ‚½‹î‚ª’u‚¢‚Ä‚ ‚éê‡ƒJƒEƒ“ƒg+1
+			//!ç¸¦ã«æŒ‡å®šã—ãŸé§’ãŒç½®ã„ã¦ã‚ã‚‹å ´åˆã‚«ã‚¦ãƒ³ãƒˆ+1
 			else if (m_bord_info[x][y].m_put_object == object)
 			{
 				piece_count_y++;
 
-				//!“¯‚¶‹î‚ª3‚ÂˆÈã‚ ‚éê‡I—¹
-				if (piece_count_y == 3)
+				//!åŒã˜é§’ãŒ3ã¤ä»¥ä¸Šã‚ã‚‹å ´åˆçµ‚äº†
+				if (piece_count_y == BORD_SIZE)
 				{
 					return true;
 				}
@@ -81,14 +81,14 @@ bool Bord::EndSearch(__int8 object)
 		piece_count_y = 0;
 	}
 
-	//!‰E‰º•ûŒü‚ÌÎ‚ß‚Ì”»’è
+	//!å³ä¸‹æ–¹å‘ã®æ–œã‚ã®åˆ¤å®š
 	if (m_bord_info[0][0].m_put_object == object &&
 		m_bord_info[1][1].m_put_object == object &&
 		m_bord_info[2][2].m_put_object == object)
 	{
 		return true;
 	}
-	//!¶‰º•ûŒü‚ÌÎ‚ß‚Ì”»’è
+	//!å·¦ä¸‹æ–¹å‘ã®æ–œã‚ã®åˆ¤å®š
 	else if (m_bord_info[0][2].m_put_object == object &&
 		     m_bord_info[1][1].m_put_object == object &&
 		     m_bord_info[2][0].m_put_object == object)
@@ -102,10 +102,10 @@ bool Bord::EndSearch(__int8 object)
 	
 }
 
-//!I—¹”»’è(ˆø‚«•ª‚¯)ŠÖ”
+//!çµ‚äº†åˆ¤å®š(å¼•ãåˆ†ã‘)é–¢æ•°
 bool Bord::DrawSearch()
 {
-	//!”Õã‚É‹î‚ª‚·‚×‚Ä’u‚©‚ê‚Ä‚¢‚ÄA“¯‚¶‹î‚ª3‚ÂˆÈã‚»‚ë‚Á‚Ä‚¢‚È‚¢ê‡true
+	//!ç›¤ä¸Šã«é§’ãŒã™ã¹ã¦ç½®ã‹ã‚Œã¦ã„ã¦ã€åŒã˜é§’ãŒ3ã¤ä»¥ä¸Šãã‚ã£ã¦ã„ãªã„å ´åˆtrue
 	if (SearchNumber() == false && g_bord.EndSearch(OBJECT_TYPE::PLAYER_PIECE) == false
 		&& g_bord.EndSearch(OBJECT_TYPE::ENEMY_PIECE) == false)
 	{
@@ -114,13 +114,13 @@ bool Bord::DrawSearch()
 	return false;
 }
 
-//!’u‚¯‚é‚©‚Ç‚¤‚©”»’èŠÖ”
+//!ç½®ã‘ã‚‹ã‹ã©ã†ã‹åˆ¤å®šé–¢æ•°
 bool Bord::PutSearch(__int8 input_font,__int8 input_number)
 {	
-	//!w’è‚µ‚½ˆÊ’u‚É‹î‚ª‚È‚¢ê‡‚Í0
+	//!æŒ‡å®šã—ãŸä½ç½®ã«é§’ãŒãªã„å ´åˆã¯0
 	if (m_bord_info[input_number][input_font].m_put_number > 0)
 	{
-		//!‹î‚ğ’u‚¢‚½êŠ‚É‚Í-1‚É•Ï‚¦‚ÄŸ‚ÌƒtƒŒ[ƒ€ˆÈ~‚Í’u‚¯‚È‚¢‚æ‚¤‚É‚·‚é
+		//!é§’ã‚’ç½®ã„ãŸå ´æ‰€ã«ã¯-1ã«å¤‰ãˆã¦æ¬¡ã®ãƒ•ãƒ¬ãƒ¼ãƒ ä»¥é™ã¯ç½®ã‘ãªã„ã‚ˆã†ã«ã™ã‚‹
 		m_bord_info[input_number][input_font].m_put_number = -1;  
 
 		return true;
@@ -130,14 +130,14 @@ bool Bord::PutSearch(__int8 input_font,__int8 input_number)
 	
 }
 
-//!”z’uêŠ’²¸ŠÖ”
+//!é…ç½®å ´æ‰€èª¿æŸ»é–¢æ•°
 bool Bord::SearchNumber()
 {
-	for (int y = 0; y < 3; y++)
+	for (int y = 0; y < BORD_SIZE; y++)
 	{
-		for (int x = 0; x < 3; x++)
+		for (int x = 0; x < BORD_SIZE; x++)
 		{
-			//!’u‚¯‚éêŠ‚ª‚ ‚é‚Ì‚©’²‚×‚é
+			//!ç½®ã‘ã‚‹å ´æ‰€ãŒã‚ã‚‹ã®ã‹èª¿ã¹ã‚‹
 			if (m_bord_info[y][x].m_put_number >= 0)
 			{
 				return true;
@@ -148,7 +148,7 @@ bool Bord::SearchNumber()
 	return false;
 }
 
-//!’²¸À•W‘ã“üŠÖ”
+//!èª¿æŸ»åº§æ¨™ä»£å…¥é–¢æ•°
 void Bord::SetPiecePos(Vec piece_,__int8 object_)
 {
 	m_bord_info[piece_.y][piece_.x].m_put_object = object_;

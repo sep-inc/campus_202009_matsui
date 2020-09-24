@@ -1,11 +1,11 @@
-#ifndef WORLD_H_
+﻿#ifndef WORLD_H_
 #define WORLD_H_
 /**
- * @brief ���ʒ萔�A�񋓑̔z�u�ꏊ
+ * @brief 共通定数、列挙体配置場所
  */
 
 
-/* �I�u�W�F�N�g�̎�� */
+/* オブジェクトの種類 */
 enum OBJECT_TYPE
 {
     BLANK,
@@ -20,8 +20,10 @@ enum JUDGMENT_TYPE
     DRAW
 };
 
-#define GAME_Width 19
-#define GAME_Height 6
+#define GAME_Width 8    //!全体の横幅
+#define GAME_Height 8   //!全体の縦幅
+
+#define BORD_SIZE 3     //!盤のサイズ
 
 
 #endif

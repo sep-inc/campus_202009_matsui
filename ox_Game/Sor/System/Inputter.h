@@ -1,10 +1,10 @@
-#ifndef INPUTTER_H_
+ï»¿#ifndef INPUTTER_H_
 #define INPUTTER_H_
-#define ESC 27  //Esc”Ô†
+#define ESC 27  //Escç•ªå·
 
 /**
-*@clss   “ü—ÍƒNƒ‰ƒX 
-*@brief  “ü—Íî•ñ‚ğ•Û‘¶
+*@clss   å…¥åŠ›ã‚¯ãƒ©ã‚¹ 
+*@brief  å…¥åŠ›æƒ…å ±ã‚’ä¿å­˜
 */
 class Inputter
 {
@@ -13,28 +13,28 @@ public:
     ~Inputter() {}
 
     /**
-     * @brief  “ü—Í‘Ò‚¿ŠÖ”‚Ü‚Æ‚ß
-     * @detail ‘I‚ñ‚¾•¶š‚Æ”š‚ğ’l‚É‘ã“ü‚·‚é
+     * @brief  å…¥åŠ›å¾…ã¡é–¢æ•°ã¾ã¨ã‚
+     * @detail é¸ã‚“ã æ–‡å­—ã¨æ•°å­—ã‚’å€¤ã«ä»£å…¥ã™ã‚‹
      */
     void InputNumber();   
 
-    bool InputEnd();       //I—¹ƒL[“ü—ÍŠÖ”
+    bool InputEnd();       //çµ‚äº†ã‚­ãƒ¼å…¥åŠ›é–¢æ•°
     
     /**
-     * @brief  ‘I‘ğ•¶šQÆŠÖ”
-     * @return “ü—Í‚µ‚½•¶š‚ğ•Ï‚¦‚·
+     * @brief  é¸æŠæ–‡å­—å‚ç…§é–¢æ•°
+     * @return å…¥åŠ›ã—ãŸæ–‡å­—ã‚’å¤‰ãˆã™
      */
     __int8 GetSelectFont() { return m_input_font; }
     
     /**
-     * @brief  ‘I‘ğ”šQÆŠÖ”
-     * @return “ü—Í‚µ‚½”š‚ğ•Ï‚¦‚·
+     * @brief  é¸æŠæ•°å­—å‚ç…§é–¢æ•°
+     * @return å…¥åŠ›ã—ãŸæ•°å­—ã‚’å¤‰ãˆã™
      */
     __int8 GetSelectNumber() { return m_input_number; }
 
 private:
-    __int8 m_input_font;    //!“ü—Í•¶š•Ï”
-    __int8 m_input_number;  //!“ü—Í”š•Ï”
+    __int8 m_input_font;    //!å…¥åŠ›æ–‡å­—å¤‰æ•°
+    __int8 m_input_number;  //!å…¥åŠ›æ•°å­—å¤‰æ•°
 
 };
 
