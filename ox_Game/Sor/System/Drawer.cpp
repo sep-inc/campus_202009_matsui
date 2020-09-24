@@ -5,7 +5,7 @@
 //!初期化関数
 void Drawer::Init()
 {
-	char m_frame_buffer[GAME_Width][GAME_Width][BITE]=
+	char m_frame_buffer[GAME_HEIGHT][GAME_WIDTH][BYTE]=
 	{
 	   "　 "," "," A "," "," B "," "," C ","　",
 	   " 　","┏ ","━ ","┳ ","━ ","┳ ","━ ","┓ ",
@@ -29,15 +29,15 @@ void Drawer::SetUpBuffer(Vec pos_ ,const char* font_)
 	pos.x = pos.x * 2 + 2;
 	pos.y = pos.y * 2 + 2;
 
-	strcpy_s(m_draw_buffer[pos.y][pos.x].kind, BITE, font_);
+	strcpy_s(m_draw_buffer[pos.y][pos.x].kind, BYTE, font_);
 }
 
 //!描画関数
 void Drawer::Draw()
 {
-	for (int i = 0; i < GAME_Width; i++)
+	for (int i = 0; i < GAME_WIDTH; i++)
 	{
-		for (int j = 0; j < GAME_Width; j++)
+		for (int j = 0; j < GAME_WIDTH; j++)
 		{	
 			printf("%s", m_draw_buffer[i][j].kind);	
 		}

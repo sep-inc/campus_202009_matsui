@@ -3,7 +3,7 @@
 #include "../Vec.h"
 #include "../World.h"
 
-#define BITE 4
+#define BYTE 4
 
 /**
 *@clss   描画クラス

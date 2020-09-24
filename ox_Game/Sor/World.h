@@ -20,8 +20,8 @@ enum JUDGMENT_TYPE
     DRAW
 };
 
-#define GAME_Width 8    //!全体の横幅
-#define GAME_Height 8   //!全体の縦幅
+#define GAME_WIDTH 8    //!全体の横幅
+#define GAME_HEIGHT 8   //!全体の縦幅
 
 #define BORD_SIZE 3     //!盤のサイズ
 
