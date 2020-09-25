@@ -1,6 +1,9 @@
 ﻿#include "Piece.h"
 #include "../Entity.h"
 #include "../World.h"
+#include "Player.h"
+#include "Enemy.h"
+
 #include <random>
 
 //!ステップ処理関数
@@ -8,10 +11,13 @@ void Piece::StepChange()
 {
 	switch (m_step)
 	{
-	case Piece::STEP_INIT:
+	case Piece::STEP_INIT:     //!初期化
 		Init();
 		break;
-	case Piece::STEP_PUT:
+	case Piece::STEP_PLAYER:   //!プレイヤーのターン
+		Put();
+		break;
+	case Piece::STEP_ENEMY:    //!敵のターン
 		Put();
 		break;
 	default:
@@ -22,68 +28,49 @@ void Piece::StepChange()
 //!初期化関数
 void Piece::Init()
 {
-	//!座標の初期値は表示されても見えない位置にする
-	m_player_pos = Vec(-5, -5); 
-	m_enemy_pos = Vec(-5, -5);   
+	m_player = new Player;
+	m_enemy = new Enemy;
 
-	//!0～2の乱数で初期化
-	m_randm_number.x = rand() % BORD_SIZE;
-	m_randm_number.y = rand() % BORD_SIZE;
+	m_player->Init();   //!プレイヤー
+	m_enemy->Init();    //!敵
 
-	m_step = STEP_PUT;
+	m_step = STEP_PLAYER;
 }
 
 //!描画座標代入関数
 void Piece::SetUpDrawBuffer()
 {
-	g_drawer.SetUpBuffer(m_player_pos, "●");
-	g_drawer.SetUpBuffer(m_enemy_pos, "×");
+	m_player->SetUpDrawBuffer();   //!プレイヤー
+	m_enemy->SetUpDrawBuffer();	   //!敵
 }
 
-//!移動関数まとめ
+//!配置関数
 void Piece::Put()
 {
-	//!プレイヤーの配置
-	PlayerPut();
-	g_bord.SetPiecePos(m_player_pos, OBJECT_TYPE::PLAYER_PIECE);
-	
-	//!敵の配置
-	EnemyPut();
-	if (g_bord.SearchNumber() == true)
+	switch (m_step)
 	{
-		g_bord.SetPiecePos(m_enemy_pos, OBJECT_TYPE::ENEMY_PIECE);
-	}	
-}
-
-//!プレイヤー配置関数
-void Piece::PlayerPut()
-{
-	//!選択した場所が置けるかどうか調べる
-	if (g_bord.PutSearch(g_inputter.GetSelectFont(), g_inputter.GetSelectNumber()) == true)
-	{
-		m_player_pos = Vec(g_inputter.GetSelectFont(), g_inputter.GetSelectNumber());
-	}
-	//!置けない場合はもう一度選択
-	else 
-	{
-		while (g_bord.PutSearch(g_inputter.GetSelectFont(), g_inputter.GetSelectNumber()) == false)
-		{
-			g_inputter.InputNumber();
-		}
-		m_player_pos = Vec(g_inputter.GetSelectFont(), g_inputter.GetSelectNumber());
+	case Piece::STEP_PLAYER:   //!プレイヤー
+		m_player->Put();
+		m_step = STEP_ENEMY;  //!配置権を敵に
+		break;
+	case Piece::STEP_ENEMY:   //!敵
+		m_enemy->Put();
+		m_step = STEP_PLAYER; //!配置権をプレイヤーに
+		break;
+	default:
+		break;
 	}
 }
 
-//!敵配置関数
-void Piece::EnemyPut()
+//!解放関数
+void Piece::Delete()
 {
-	//!乱数で出した位置が置けるか。また、配置できる場所があるかどうか調べる
-	while (g_bord.PutSearch(m_randm_number.x, m_randm_number.y) == false
-		&& g_bord.SearchNumber() == true)
-	{
-		m_randm_number.x = rand() % BORD_SIZE;
-		m_randm_number.y = rand() % BORD_SIZE;
-	}
+	delete m_player;
+	delete m_enemy;
+}
 
-	m_enemy_pos = Vec(m_randm_number.x, m_randm_number.y);
+//!コンティニュー関数
+void Piece::Continue()
+{
+	m_step = STEP_INIT;  //!初期化ステップへ
 }

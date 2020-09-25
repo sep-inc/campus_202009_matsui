@@ -1,6 +1,8 @@
 ﻿#ifndef INPUTTER_H_
 #define INPUTTER_H_
 #define ESC 27  //Esc番号
+#define ENTER 13  //Esc番号
+
 
 /**
 *@clss   入力クラス 
@@ -19,6 +21,9 @@ public:
     void InputNumber();   
 
     bool InputEnd();       //終了キー入力関数
+
+    bool InputContinue();       //終了キー入力関数
+
     
     /**
      * @brief  選択文字参照関数

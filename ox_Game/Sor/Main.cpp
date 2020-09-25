@@ -21,17 +21,25 @@ int main()
 		g_drawer.Draw();            //!描画
 
 		//!終了判定
-		if (g_bord.Search() == true)
+		if (g_bord.Search() == true && g_inputter.InputContinue() == true)
 		{
+			g_bord.Init();      //!盤クラス初期化
+			g_drawer.Init();    //!描画クラス初期化
+			g_piece.Delete();   //!プレイヤー、敵の解放
+			g_piece.Continue(); //!初期化
+		}
+		else if (g_bord.Search() == true && g_inputter.InputContinue() == false)
+		{  
+			g_piece.Delete();   //!プレイヤー、敵の解放
 			break;
 		}
 		//!キー入力(ESC)
 		else if (g_inputter.InputEnd() == true)
 		{
+			g_piece.Delete();  //!プレイヤー、敵の解放
 			break;
 		}
 
-		g_inputter.InputNumber();    //!入力判定
 	}
 
 	return 1;
