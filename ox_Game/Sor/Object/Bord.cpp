@@ -66,7 +66,7 @@ bool Bord::EndSearch(__int8 object)
 				}
 			}
 			//!縦に指定した駒が置いてある場合カウント+1
-			else if (m_bord_info[x][y].m_put_object == object)
+			if (m_bord_info[x][y].m_put_object == object)
 			{
 				piece_count_y++;
 

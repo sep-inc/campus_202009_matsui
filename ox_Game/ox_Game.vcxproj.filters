@@ -23,6 +23,12 @@
       <Filter>Object</Filter>
     </ClCompile>
     <ClCompile Include="Sor\Entity.cpp" />
+    <ClCompile Include="Sor\Object\Player.cpp">
+      <Filter>Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\Object\Enemy.cpp">
+      <Filter>Object</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sor\Vec.h" />
@@ -40,5 +46,11 @@
       <Filter>Object</Filter>
     </ClInclude>
     <ClInclude Include="Sor\Entity.h" />
+    <ClInclude Include="Sor\Object\Player.h">
+      <Filter>Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\Object\Enemy.h">
+      <Filter>Object</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
