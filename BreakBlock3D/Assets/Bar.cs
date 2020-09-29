@@ -1,37 +1,37 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices.ComTypes;
 using UnityEngine;
 
 public class Bar : MonoBehaviour
 {
-    private float MaxMove; //!移動できるx軸の最大値
-    private float MinMove; //!移動できるx軸の最小値
+    private const float MaxMove = 7.8f; //!移動できるx軸の最大値
+    private const float MinMove = -10.0f; //!移動できるx軸の最小値
 
-    public float Speed;
+    public float Speed;      //!スピード
 
-    GameObject ball;
-    GameObject Block;
+    bool ball_deth;    //!Ballが無くなった時用フラグ
+    bool block_deth;   //!Blockが無くなった時用フラグ
 
     // Start is called before the first frame update
     void Start()
     {
-        //!初期化
-        MaxMove = 7.8f;
-        MinMove = -10.0f;
-
-        ball = GameObject.Find("Ball");         //!Ball取得
-        Block = GameObject.Find("BlockGroup");  //!BlockGroup取得
+        ball_deth = false;
+        block_deth = false;
     }
 
     // Update is called once per frame
     void Update()
     {
+         //!移動
+         Move();
 
-        if (ball != null && Block != null)  
+        //!停止
+        if (ball_deth == true || block_deth == true)
         {
-            //!移動
-            Move();
+            Speed = 0.0f;
         }
+
     }
 
     private void Move()
@@ -54,5 +54,14 @@ public class Bar : MonoBehaviour
                 transform.Translate(Speed, 0.0f, 0.0f);
             }
         }
+    }
+    public void CheckBall()  //!Ballが死んだかどうか
+    {
+        ball_deth = true;
+    }
+
+    public void CheckBlock()   //!Blockが残っているかどうか
+    {
+        block_deth = true;
     }
 }

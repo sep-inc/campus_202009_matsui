@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class Block : MonoBehaviour
 {
+    [SerializeField]GameObject blockwidth;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+       
     }
 
     // Update is called once per frame
@@ -18,6 +20,9 @@ public class Block : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Destroy(gameObject);   //!Ballにあたると削除
+       blockwidth.GetComponent<BlockWidth>().CheckBlock();   //!Blockが消えたときにBlockwidthに通知する
+       Destroy(gameObject);   //!Ballにあたると削除
     }
+
+   
 }

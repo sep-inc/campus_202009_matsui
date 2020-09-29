@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class BlockGroup : MonoBehaviour
 {
-    int count;
+    int block_width_count = 15;   //!Block横群の数
+    [SerializeField] GameObject ball;
+    [SerializeField] GameObject bar;
+
 
     // Start is called before the first frame update
     void Start()
@@ -15,12 +18,17 @@ public class BlockGroup : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //!BlockPrefabsが無くなった時
-        count = transform.childCount;
-
-        if(count<=0)
+        //!Block横群が無くなった時
+        if (block_width_count <= 0)
         {
+            ball.GetComponent<Ball>().CheckBlock();  //!Ballに通知する
+            bar.GetComponent<Bar>().CheckBlock();    //!Barに通知する
             Destroy(gameObject);
         }
+    }
+
+    public void CheckBlockWidth()
+    {
+        block_width_count--;
     }
 }

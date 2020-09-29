@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - DethLine
+  - LeftWall
+  - RightWall
+  - Block
   layers:
   - Default
   - TransparentFX

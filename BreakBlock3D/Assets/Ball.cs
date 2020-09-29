@@ -4,48 +4,47 @@ using UnityEngine;
 
 public class Ball : MonoBehaviour
 {
-    Rigidbody rb;    
-    Vector3 force;   //!押し出すベクトル用
+    Rigidbody rb;
+    [SerializeField]Vector3 force;   //!押し出すベクトル用
+    [SerializeField] GameObject bar; //!Bar取得
 
-    public int rife;
-    [SerializeField] GameObject bar;
-    GameObject block;
+    public int rife;　　　           //!ライフ数
+    
+    bool block_deth;                 //!Blockが残っているかどうか用
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();   //!コンポーネント取得
 
-        force = new Vector3(500.0f, 500.0f, 0.0f);  //!初期化
+        //!Barの上にくっつくようにする
+        gameObject.transform.position = new Vector3(bar.transform.position.x, bar.transform.position.y + bar.transform.localScale.y, bar.transform.position.z);
 
-        bar = GameObject.Find("Bar");           //!Bar取得
-        block = GameObject.Find("BlockGroup");  //!BlockGroup取得
+        //!親子関係設定
+        gameObject.transform.parent = bar.transform;
+
+        block_deth = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        //!リターンキーで押し出す
+        //!リターンキーを押した時
         if (Input.GetKeyDown(KeyCode.Return))
         {
-            rb.AddForce(force);  //!力を加える
-            bar = null;          //!Barを切り離す
+            rb.AddForce(force);                    //!力を加える
+            gameObject.transform.parent = null;    //!親子関係を切り離し
         }
-        else if (bar != null) 
-        {
-            //!Ballを押し出すまでBarの座標にくっつく
-            gameObject.transform.position = new Vector3(bar.transform.position.x, bar.transform.position.y + 2.0f, bar.transform.position.z) ;
-        }
-
+    
         //!ライフがなくなった消す
-        if (rife <= 0) 
+        if (rife <= 0)
         {
-            Destroy(gameObject);   //!削除
+            bar.GetComponent<Bar>().CheckBall();  //!Barを止めるフラグをtrueに
+            Destroy(gameObject);                  //!削除
         }
-        //!Blockがなくなった時
-        else if(block==null)
+        //!Blockが全てなくなった時
+        else if(block_deth==true)
         {
-            //!動きを止める
             rb.velocity = Vector3.zero;
             rb.angularVelocity = Vector3.zero;
         }
@@ -57,15 +56,21 @@ public class Ball : MonoBehaviour
         if(collision.gameObject.tag=="DethLine")
         {
             rife--;  //!ライフを1つ減らす
-            transform.position = new Vector3(0.0f, -10.0f, 9.5f);   //!画面中央に配置
 
             //!動きを止める
             rb.velocity = Vector3.zero;
             rb.angularVelocity = Vector3.zero;
 
-            //!Barの座標を受け取るために再びBarを見つける
-            bar = GameObject.Find("Bar");
+            //!STEP.MOVEまでBarの座標にくっつく
+            gameObject.transform.position = new Vector3(bar.transform.position.x, bar.transform.position.y + bar.transform.localScale.y, bar.transform.position.z);
+
+            //!再び親子関係設定
+            gameObject.transform.parent = bar.transform;
         }
     }
 
+    public void CheckBlock()  //!Blockが無くなったかどうか調べる
+    {
+        block_deth = true;
+    }
 }
