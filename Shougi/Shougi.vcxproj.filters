@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="System">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Object">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Sor\Main.cpp" />
+    <ClCompile Include="Sor\Object\Bord.cpp">
+      <Filter>Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\Object\Piece.cpp">
+      <Filter>Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\System\Drawer.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\System\Inputter.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\Entity.cpp" />
+    <ClCompile Include="Sor\Object\First.cpp">
+      <Filter>Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\Object\Second.cpp">
+      <Filter>Object</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Sor\Vec.h" />
+    <ClInclude Include="Sor\Object\Bord.h">
+      <Filter>Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\Object\Piece.h">
+      <Filter>Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\System\Drawer.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\System\Inputter.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\Entity.h" />
+    <ClInclude Include="Sor\Object\First.h">
+      <Filter>Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\Object\Second.h">
+      <Filter>Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\Definition.h" />
+  </ItemGroup>
+</Project>
