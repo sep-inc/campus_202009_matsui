@@ -8,12 +8,14 @@
 #include "System/Drawer.h"
 #include "System/Inputter.h"
 #include "Object/Bord.h"
-#include "Object/Piece.h"
+#include "GameController.h"
+
 
 
 extern Drawer g_drawer;      //!描画クラス
 extern Inputter g_inputter;  //!入力クラス
 extern Bord g_bord;          //!盤クラス
-extern Piece g_piece;        //!駒クラス
+extern GameController g_game_controller;        //!駒クラス
+
 
 #endif

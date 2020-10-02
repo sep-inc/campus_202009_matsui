@@ -27,31 +27,13 @@ public:
     * @param (font_) 表示する形
     * @detail 描画座標にオブジェクト情報代入
     */
-    void SetUpBuffer(Vec pos_, const char* font_,bool display_);
+    void SetUpBuffer(Vec pos_, const char* font_);
 
     /**
     * @brief  描画関数
     * @detail 描画
     */
     void Draw();
-
-    /**
-     * @brief  移動駒表示関数
-     * @param (piece_) 先手か後手
-     * @param (piece_type_) 駒の種類
-     * @detail 現在動かそうとしている駒の表示
-     */
-    void NowMovePiece(__int8 piece_type_, __int8 player_type_);
-
-    /**
-     * @brief  勝者表示関数
-     */
-    void DrawJudgment();
-
-    /**
-     * @brief  配置不可表示関数
-     */
-    void DrawNoMove();
 
     /**
      * @brief  描画配列クリア関数

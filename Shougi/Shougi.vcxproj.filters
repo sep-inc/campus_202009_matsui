@@ -25,12 +25,8 @@
       <Filter>System</Filter>
     </ClCompile>
     <ClCompile Include="Sor\Entity.cpp" />
-    <ClCompile Include="Sor\Object\First.cpp">
-      <Filter>Object</Filter>
-    </ClCompile>
-    <ClCompile Include="Sor\Object\Second.cpp">
-      <Filter>Object</Filter>
-    </ClCompile>
+    <ClCompile Include="Sor\GameController.cpp" />
+    <ClCompile Include="Sor\Player.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sor\Vec.h" />
@@ -47,12 +43,8 @@
       <Filter>System</Filter>
     </ClInclude>
     <ClInclude Include="Sor\Entity.h" />
-    <ClInclude Include="Sor\Object\First.h">
-      <Filter>Object</Filter>
-    </ClInclude>
-    <ClInclude Include="Sor\Object\Second.h">
-      <Filter>Object</Filter>
-    </ClInclude>
     <ClInclude Include="Sor\Definition.h" />
+    <ClInclude Include="Sor\GameController.h" />
+    <ClInclude Include="Sor\Player.h" />
   </ItemGroup>
 </Project>

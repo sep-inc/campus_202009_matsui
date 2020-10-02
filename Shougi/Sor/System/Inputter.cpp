@@ -1,6 +1,7 @@
 ﻿#include "Inputter.h"
 #include <stdio.h>
 #include <conio.h>
+#include <stdlib.h>
 
 //!入力待ち関数まとめ
 void Inputter::InputNumber()
@@ -21,7 +22,7 @@ void Inputter::InputNumber()
     printf("1,2,3,4,5を選んでください\n\n");
     input_number = _getch();
 
-    while (input_number != '1' && input_number != '2' && input_number != '3' && input_number != '4'&& input_number != '5')
+    while (input_number != '0' && input_number != '1' && input_number != '2' && input_number != '3'&& input_number != '4')
     {
         printf("もう一度選んでください。\n");
         input_number = _getch();
@@ -47,28 +48,8 @@ void Inputter::InputNumber()
         m_input_font = 3;
     }
 
-    //!文字を数字に変換
-    switch (input_number)
-    {
-    case '1':
-        m_input_number = 0;
-        break;
-    case '2':
-        m_input_number = 1;
-        break;
-    case '3':
-        m_input_number = 2;
-        break;
-    case '4':
-        m_input_number = 3;
-        break;
-    case '5':
-        m_input_number = 4;
-        break;
-    default:
-        break;
-    }
 
+    m_input_number = atoi(&input_number);
 }
 
 //!終了待ち関数 

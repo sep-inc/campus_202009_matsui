@@ -2,6 +2,7 @@
 #define BORD_H_
 #include "../Vec.h"
 #include "Piece.h"
+#include "../Definition.h"
 
 #define BORD_WIDTH 4     //!盤のサイズ
 #define BORD_HEIGHT 5     //!盤のサイズ
@@ -25,12 +26,12 @@ public:
 	/**
 	 * @brief  駒の種類判定関数
 	 */
-	__int8 SearchPiece(__int8 input_font_, __int8 input_number_);
+	OBJECT_TYPE SearchPiece(__int8 input_font_, __int8 input_number_);
 
 	/**
 	 * @brief  プレイヤーの種類判定関数
 	 */
-	__int8 SearchPlayer(__int8 input_font_, __int8 input_number_);
+	PLAYER_TYPE SearchPlayer(__int8 input_font_, __int8 input_number_);
 
 	/**
 	 * @brief  盤上配列駒配置関数
@@ -38,16 +39,34 @@ public:
 	 * @param (object_) 駒の種類
 	 * @detail 指定した盤上配列に駒を配置する
 	 */
-	void SetPiecePos(Vec piece_, __int8 object_, bool display_, __int8 player_);
+	void SetPiecePos(Vec piece_, OBJECT_TYPE object_, PLAYER_TYPE player_);
+
+	/**
+	 * @brief  描画配列代入関数
+	 * @detail 描画配列に情報を送る
+	 */
+	void SetUpDrawBuffer();
+
+	/**
+	 * @brief  勝利フラグGetter
+	 * @detail 先手、後手の勝利フラグを返す
+	 */
+	const bool GetFirstWin() { return m_first_win; }
+	const bool GetSecondWin() { return m_second_win; }
 
 private:
 	/* 盤上構造体 */
 	struct BordInfo
 	{
-		__int8 m_put_object;  //!置いているObjectの種類
-		__int8 m_put_player;  //!置いているプレイヤーの種類(先手か後手か)
+		OBJECT_TYPE m_put_piece;   //!置いている駒の種類
+		PLAYER_TYPE m_put_player;  //!置いているプレイヤーの種類(先手か後手か)
 
 	}m_bord_info[BORD_HEIGHT][BORD_WIDTH];
+
+	Vec m_source_pos;     //!移動元の座標保存用
+
+	bool m_first_win;     //!先手勝利判定
+	bool m_second_win;	  //!後手勝利判定
 
 };
 
