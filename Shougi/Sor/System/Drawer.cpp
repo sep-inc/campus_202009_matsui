@@ -2,6 +2,8 @@
 #include "../Entity.h"
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
+
 
 //!初期化関数
 void Drawer::Init()
@@ -53,4 +55,5 @@ void Drawer::Draw()
 void Drawer::Clear()
 {
 	memcpy(m_draw_buffer, m_clear_buffer, sizeof(m_clear_buffer));
+	system("cls");
 }

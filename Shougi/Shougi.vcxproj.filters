@@ -9,6 +9,9 @@
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
     </Filter>
+    <Filter Include="Player">
+      <UniqueIdentifier>{80881cb7-cd7d-4350-bda9-d74cc76c7812}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Sor\Main.cpp" />
@@ -26,7 +29,27 @@
     </ClCompile>
     <ClCompile Include="Sor\Entity.cpp" />
     <ClCompile Include="Sor\GameController.cpp" />
-    <ClCompile Include="Sor\Player.cpp" />
+    <ClCompile Include="Sor\Object\Piece_Ou.cpp">
+      <Filter>Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\Object\Piece_Kin.cpp">
+      <Filter>Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\Object\Piece_Keima.cpp">
+      <Filter>Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\Object\Piece_Hu.cpp">
+      <Filter>Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\Player\Player.cpp">
+      <Filter>Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\Player\Myself.cpp">
+      <Filter>Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\Player\Enemy.cpp">
+      <Filter>Player</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sor\Vec.h" />
@@ -45,6 +68,26 @@
     <ClInclude Include="Sor\Entity.h" />
     <ClInclude Include="Sor\Definition.h" />
     <ClInclude Include="Sor\GameController.h" />
-    <ClInclude Include="Sor\Player.h" />
+    <ClInclude Include="Sor\Object\Piece_Ou.h">
+      <Filter>Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\Object\Piece_Kin.h">
+      <Filter>Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\Object\Piece_Keima.h">
+      <Filter>Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\Object\Piece_Hu.h">
+      <Filter>Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\Player\Player.h">
+      <Filter>Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\Player\Myself.h">
+      <Filter>Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\Player\Enemy.h">
+      <Filter>Player</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

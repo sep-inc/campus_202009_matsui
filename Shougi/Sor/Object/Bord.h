@@ -14,7 +14,7 @@
 class Bord
 {
 public:
-	Bord() {}
+	Bord():m_winner(NONE){}
 	~Bord() {}
 
 	/**
@@ -51,8 +51,7 @@ public:
 	 * @brief  勝利フラグGetter
 	 * @detail 先手、後手の勝利フラグを返す
 	 */
-	const bool GetFirstWin() { return m_first_win; }
-	const bool GetSecondWin() { return m_second_win; }
+	const PLAYER_TYPE GetWinner() { return m_winner; }
 
 private:
 	/* 盤上構造体 */
@@ -65,8 +64,7 @@ private:
 
 	Vec m_source_pos;     //!移動元の座標保存用
 
-	bool m_first_win;     //!先手勝利判定
-	bool m_second_win;	  //!後手勝利判定
+	PLAYER_TYPE m_winner; //!勝利判定
 
 };
 

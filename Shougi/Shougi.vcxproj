@@ -159,10 +159,31 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="Sor\Player.cpp">
+    <ClCompile Include="Sor\Object\Piece_Hu.cpp">
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="Sor\Object\Piece_Keima.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Sor\Object\Piece_Kin.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Sor\Object\Piece_Ou.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Sor\Player\Enemy.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Sor\Player\Myself.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Sor\Player\Player.cpp" />
     <ClCompile Include="Sor\System\Drawer.cpp">
       <SubType>
       </SubType>
@@ -189,10 +210,31 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="Sor\Player.h">
+    <ClInclude Include="Sor\Object\Piece_Hu.h">
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="Sor\Object\Piece_Keima.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Sor\Object\Piece_Kin.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Sor\Object\Piece_Ou.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Sor\Player\Enemy.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Sor\Player\Myself.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Sor\Player\Player.h" />
     <ClInclude Include="Sor\System\Drawer.h">
       <SubType>
       </SubType>

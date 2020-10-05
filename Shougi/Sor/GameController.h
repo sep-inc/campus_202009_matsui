@@ -1,18 +1,20 @@
 ﻿#ifndef GAMECONTROLLER_H_
 #define GAMECONTROLLER_H_
 #include "Vec.h"
-#include "Player.h"
+#include "Player/Player.h"
+#include "Object/Bord.h"
+
 class GameController
 {
 public:
-	GameController() :m_step(STEP_INIT) {}
+	GameController() :m_step(STEP_INIT), m_turn(FIRST_TURN){}
 	~GameController() {}
 
 	/**
 	 * @brief  ステップ処理関数
 	 * @detail ステップ変更処理
 	 */
-	void StepChange();
+	void Update();
 
 	/**
 	 * @brief  初期化関数
@@ -24,7 +26,7 @@ public:
    　* @brief  更新関数
 	 * @detail 各更新処理をまとめた関数
    　*/
-	void Update(PLAYER_TYPE player_type_);
+	void ObjectUpdate();
 
 	/**
 	 * @brief  描画情報代入関数
@@ -48,11 +50,19 @@ protected:
 	enum STEP
 	{
 		STEP_INIT,       //!初期化
-		STEP_FIRST_PUT,  //!先手の番
-		STEP_SECOND_PUT  //!後手の番
+		STEP_UPDATE,  //!先手の番
 	}m_step;
 
-	Player* m_player;  //!プレイヤー
+	//!ステップの種類
+	enum PLAYER_TURN
+	{
+		FIRST_TURN,  //!先手の番
+		SECOND_TURN  //!後手の番
+	}m_turn;
+
+	Player* m_player[PLAYER_NUM];  //!プレイヤー
+	Bord* m_bord;  //!プレイヤー
+
 };
 
 

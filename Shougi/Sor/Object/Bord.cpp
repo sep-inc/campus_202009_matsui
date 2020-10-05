@@ -10,20 +10,15 @@ void Bord::Init()
 	BordInfo map[BORD_HEIGHT][BORD_WIDTH] =
 	{
 	//!{駒の種類 , プレイヤー}
-		{{KIN,  SECOND},{OU,   SECOND},{BLANK,SECOND},{KEIMA,SECOND}},
+		{{KIN,  SECOND},{OU,   SECOND},{BLANK,NONE},{KEIMA,SECOND}},
 		{{HU,   SECOND},{HU,   SECOND},{HU,   SECOND},{HU,   SECOND}},
 		{{BLANK,NONE  },{BLANK,NONE  },{BLANK,NONE  },{BLANK,NONE  }},
 		{{HU,   FIRST },{HU,   FIRST },{HU,   FIRST },{HU,   FIRST }},
-		{{KEIMA,FIRST },{BLANK,FIRST },{OU,   FIRST },{KIN,  FIRST }},
+		{{KEIMA,FIRST },{BLANK,NONE },{OU,   FIRST },{KIN,  FIRST }},
 	};
 
 	//!配列の初期化は宣言と同時にしかできないためコピーで代入する
 	memcpy(&m_bord_info, &map, sizeof(map));
-
-	//!終了フラグ初期化
-	m_first_win = false;
-	m_second_win = false;
-
 }
 
 //!駒調査関数
@@ -51,14 +46,7 @@ void Bord::SetPiecePos(Vec next_pos, OBJECT_TYPE object_, PLAYER_TYPE player_)
 	//!移動先が「王の場合」終了フラグをtrueにする
 	if (m_bord_info[next_pos.y][next_pos.x].m_put_piece == OU)
 	{
-		if (m_bord_info[next_pos.y][next_pos.x].m_put_player == FIRST)
-		{
-			m_first_win = true;   //!先手が勝利
-		}
-		else
-		{
-			m_second_win = true;  //!後手が勝利
-		}
+		m_winner = m_bord_info[next_pos.y][next_pos.x].m_put_player; //!勝者を保存
 	}
 
 	//!駒を移動させる

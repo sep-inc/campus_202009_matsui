@@ -17,9 +17,10 @@ enum OBJECT_TYPE
 //!プレイヤーの種類
 enum PLAYER_TYPE
 {
-    NONE,  //!空
-    FIRST, //!先手
-    SECOND //!後手
+    FIRST,  //!先手
+    SECOND, //!後手
+    NONE    //!空
+
 };
 
 #define GAME_WIDTH 10    //!全体の横幅
@@ -28,4 +29,5 @@ enum PLAYER_TYPE
 #define MOVE_MAX 3     //!駒の動ける最大範囲範囲
 #define MOVE_MIN 0     //!駒の動ける最小範囲範囲
 
+#define PLAYER_NUM 2  //!プレイヤーの人数
 #endif
