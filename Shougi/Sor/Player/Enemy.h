@@ -11,7 +11,7 @@
 class Enemy :public Player
 {
 public:
-	Enemy() {}
+	Enemy(PLAYER_TYPE player_) :m_my_player_type(player_) {}
 	~Enemy() {}
 
 	/**
@@ -70,7 +70,7 @@ public:
 	void NextPos();
 
 private:
-	static const PLAYER_TYPE m_my_player_type;   //!自分自身識別変数
+	const PLAYER_TYPE m_my_player_type;   //!自分自身識別変数
 
 	Vec m_rand_pos;        //!移動先変数
 

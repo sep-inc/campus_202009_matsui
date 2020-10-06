@@ -1,5 +1,8 @@
 ﻿#include "Bord.h"
 #include "../Entity.h"
+#include "Piece_King.h"
+#include "Piece_Knight.h"
+#include "Piece_Goldgeneral.h"
 #include "Piece_Pawn.h"
 #include <string.h>
 #include <random>
@@ -22,10 +25,15 @@ void Bord::Init()
 	memcpy(&m_bord_info, &map, sizeof(map));
 	memcpy(&m_bord_clear, &map, sizeof(map));
 
+	m_piece[KING] = new PieceKing;                //!王
+	m_piece[KNIGHT] = new PieceKnight;            //!桂
+	m_piece[GOLDGENERAL] = new PieceGoldgeneral;  //!金
+	m_piece[PAWN] = new PiecePawn;                //!歩
+
 }
 
 //!駒調査関数
-OBJECT_TYPE Bord::SearchPiece(__int8 x_, __int8 y_)
+PIECE_TYPE Bord::SearchPiece(__int8 x_, __int8 y_)
 {
 	m_source_pos = Vec(x_, y_);               //!移動させる駒の座標を保存
 	return m_bord_info[y_][x_].m_put_piece;   //!指定された場所の駒を返す
@@ -39,7 +47,7 @@ PLAYER_TYPE Bord::SearchPlayer(__int8 x_, __int8 y_)
 
 
 //!駒移動関数
-void Bord::SetPiecePos(Vec next_pos, OBJECT_TYPE object_, PLAYER_TYPE player_)
+void Bord::SetPiecePos(Vec next_pos, PIECE_TYPE object_, PLAYER_TYPE player_)
 {
 	//!移動先が「王の場合」終了フラグをtrueにする
 	if (m_bord_info[next_pos.y][next_pos.x].m_put_piece == KING)
@@ -57,7 +65,7 @@ void Bord::SetPiecePos(Vec next_pos, OBJECT_TYPE object_, PLAYER_TYPE player_)
 }
 
 //!駒座標調査関数
-Vec Bord::SearchPiecePos(OBJECT_TYPE object_, PLAYER_TYPE player_)
+Vec Bord::SearchPiecePos(PIECE_TYPE object_, PLAYER_TYPE player_)
 {
 	//!「歩」の場合(複数あるため)
 	if (object_ == PAWN)
@@ -107,60 +115,7 @@ void Bord::SetUpDrawBuffer()
 			if (m_bord_info[y][x].m_put_piece != BLANK)
 			{
 				//!駒の種類分け
-				switch (m_bord_info[y][x].m_put_piece)
-				{
-				case KING:
-					//!先手なら
-					if (m_bord_info[y][x].m_put_player == FIRST)
-					{
-						g_drawer.SetUpBuffer(Vec(x, y), "王");
-					}
-					//!後手なら
-					else
-					{
-						g_drawer.SetUpBuffer(Vec(x, y), "玉");
-					}
-					break;
-				case KNIGHT:
-					//!先手なら
-					if (m_bord_info[y][x].m_put_player == FIRST)
-					{
-						g_drawer.SetUpBuffer(Vec(x, y), "桂");
-					}
-					//!後手なら
-					else
-					{
-						g_drawer.SetUpBuffer(Vec(x, y), "軽");
-					}
-					break;
-				case GOLDGENERAL:
-					//!先手なら
-					if (m_bord_info[y][x].m_put_player == FIRST)
-					{
-						g_drawer.SetUpBuffer(Vec(x, y), "金");
-					}
-					//!後手なら
-					else
-					{
-						g_drawer.SetUpBuffer(Vec(x, y), "筋");
-					}
-					break;
-				case PAWN:
-					//!先手なら
-					if (m_bord_info[y][x].m_put_player == FIRST)
-					{
-						g_drawer.SetUpBuffer(Vec(x, y), "歩");
-					}
-					//!後手なら
-					else
-					{
-						g_drawer.SetUpBuffer(Vec(x, y), "ふ");
-					}
-					break;
-				default:
-					break;
-				}
-				
+				m_piece[m_bord_info[y][x].m_put_piece]->DrawPiece(m_bord_info[y][x].m_put_player, Vec(x, y));
 			}
 		}
 	}
@@ -171,6 +126,14 @@ void Bord::Reset()
 {
 	memcpy(&m_bord_info, &m_bord_clear, sizeof(m_bord_clear));
 	m_winner = NONE;
+}
+
+void Bord::Delete()
+{
+	for (int i = 0; i < PIECE_NUM; i++)
+	{
+		delete m_piece[i];
+	}
 }
 
 

@@ -44,6 +44,9 @@
     <ClCompile Include="Sor\Player\Enemy.cpp">
       <Filter>Player</Filter>
     </ClCompile>
+    <ClCompile Include="Sor\Object\Piece.cpp">
+      <Filter>Object</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sor\Vec.h" />

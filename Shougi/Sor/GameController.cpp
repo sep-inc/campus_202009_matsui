@@ -25,8 +25,8 @@ void GameController::Update()
 //!初期化関数
 void GameController::Init()
 {
-	m_player[FIRST] = new Myself;  //!インスタンス化
-	m_player[SECOND] = new Enemy;  //!インスタンス化
+	m_player[FIRST] = new Myself(FIRST);  //!インスタンス化
+	m_player[SECOND] = new Enemy(SECOND);  //!インスタンス化
 
 	m_bord = new Bord;  //!インスタンス化
 

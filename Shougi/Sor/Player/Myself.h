@@ -9,9 +9,7 @@
 class Myself :public Player
 {
 public:
-	//!現在2人とも手入力のためメンバイニシャライザで初期化
-	//!後々普通のイニシャライザで初期化
-	Myself() {}
+	Myself(PLAYER_TYPE player_) :m_my_player_type(player_) {}
 	~Myself() {}
 
     /**
@@ -53,7 +51,7 @@ public:
 	 * @param (piece_type_) 駒の種類
 	 * @detail 現在動かそうとしている駒の表示
 	 */
-	void NowMovePiece(OBJECT_TYPE piece_type_);
+	void NowMovePiece(PIECE_TYPE piece_type_);
 
 	/**
      * @brief  指定箇所調査
@@ -75,7 +73,7 @@ public:
 	virtual void Delete()override;
 
 private:
-	static const PLAYER_TYPE m_my_player_type;   //!プレイヤーの種類保存用
+	const PLAYER_TYPE m_my_player_type;   //!プレイヤーの種類保存用
 
 };
 #endif

@@ -7,8 +7,6 @@
 #include "../Object/Piece_Pawn.h"
 #include <stdio.h>
 
-const PLAYER_TYPE Myself::m_my_player_type = FIRST;  //!自分自身識別変数初期化
-
 //!初期化
 void Myself::Init()
 {
@@ -78,6 +76,7 @@ void Myself::Input(Bord* bord_)
 
 	m_now_pos = Vec(g_inputter.GetSelectFont(), g_inputter.GetSelectNumber());   //!動かそうとしている駒座標保存変数
 
+
 	printf("移動先を選んでください\n");
 }
 
@@ -87,6 +86,7 @@ bool Myself::NextMoveInput(Bord* bord_)
 	while (true)
 	{
 		printf("移動させる駒を変更する場合[r]を押してください。\n");
+
 		g_inputter.InputFont();      //!移動先文字番号入力
 
 		//!キャンセルボタンが押されたとき
@@ -133,7 +133,7 @@ void Myself::Move(Bord* bord_)
 }
 
 //!動かそうとしている駒表示関数
-void Myself::NowMovePiece(OBJECT_TYPE piece_type_)
+void Myself::NowMovePiece(PIECE_TYPE piece_type_)
 {
 	switch (piece_type_)
 	{

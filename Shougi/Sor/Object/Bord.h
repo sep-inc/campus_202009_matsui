@@ -28,7 +28,7 @@ public:
 	 * @param (x) 指定X座標
 	 * @param (y) 指定Y座標
 	 */
-	OBJECT_TYPE SearchPiece(__int8 x, __int8 y);
+	PIECE_TYPE SearchPiece(__int8 x, __int8 y);
 
 	/**
 	 * @brief  プレイヤーの種類判定関数
@@ -43,7 +43,7 @@ public:
 	 * @param (object_) 駒の種類
 	 * @detail 指定した盤上配列に駒を配置する
 	 */
-	void SetPiecePos(Vec piece_, OBJECT_TYPE object_, PLAYER_TYPE player_);
+	void SetPiecePos(Vec piece_, PIECE_TYPE object_, PLAYER_TYPE player_);
 
 	/**
 	 * @brief  駒座標調査関数
@@ -51,7 +51,7 @@ public:
 	 * @param (object_) 駒の種類
 	 * @detail 指定した駒の座標を返す
 	 */
-	Vec SearchPiecePos(OBJECT_TYPE object_, PLAYER_TYPE player_);
+	Vec SearchPiecePos(PIECE_TYPE object_, PLAYER_TYPE player_);
 
 
 	/**
@@ -67,6 +67,11 @@ public:
 	void Reset();
 
 	/**
+     * @brief  解放関数
+     */
+	void Delete();
+
+	/**
 	 * @brief  勝利フラグGetter
 	 * @detail 先手、後手の勝利フラグを返す
 	 */
@@ -76,7 +81,7 @@ private:
 	/* 盤上構造体 */
 	struct BordInfo
 	{
-		OBJECT_TYPE m_put_piece;   //!置いている駒の種類
+		PIECE_TYPE m_put_piece;   //!置いている駒の種類
 		PLAYER_TYPE m_put_player;  //!置いているプレイヤーの種類(先手か後手か)
 
 	};
@@ -84,12 +89,11 @@ private:
 	BordInfo m_bord_info[BORD_HEIGHT][BORD_WIDTH];
 	BordInfo m_bord_clear[BORD_HEIGHT][BORD_WIDTH];
 
-
 	Vec m_source_pos;     //!移動元の座標保存用
 
 	PLAYER_TYPE m_winner; //!勝利判定
 
-
+	Piece* m_piece[PIECE_NUM];    //!各駒
 };
 
 #endif

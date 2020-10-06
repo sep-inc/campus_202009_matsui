@@ -8,8 +8,6 @@
 #include <random>
 #include <stdio.h>
 
-const PLAYER_TYPE Enemy::m_my_player_type = SECOND;  //!自分自身識別変数初期化
-
 //!初期化
 void Enemy::Init()
 {
@@ -47,7 +45,7 @@ void Enemy::MoveSourceSelect(Bord* bord_)
 	while (true)
 	{
 		//!移動させる駒をランダムで決定
-		m_piece_type = static_cast<OBJECT_TYPE>(rand() % PIECE_NUM);
+		m_piece_type = static_cast<PIECE_TYPE>(rand() % PIECE_NUM);
 
 		//!ランダムで選ばれた駒の座標を問い合わせ
 		m_now_pos = bord_->SearchPiecePos(m_piece_type, m_my_player_type);

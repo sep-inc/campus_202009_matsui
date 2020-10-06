@@ -25,7 +25,11 @@ public:
      */
     void InputFont();
 
-    void InputEnd();       //終了キー入力関数
+    /**
+     * @brief  ctrl+c入力関数
+     * @detail ctrl+cが押されたときにゲームを終了する
+     */
+    void InputEnd();       
 
     /**
      * @brief  選択文字参照関数
@@ -39,6 +43,10 @@ public:
      */
     const __int8 GetSelectNumber() { return m_input_number; }
 
+    /**
+     * @brief  キャンセルフラグ参照関数
+     * @return キャンセルボタンが押されたかどうかを返す
+     */
     const bool GetSelectCancel() { return m_cancel; }
 
 

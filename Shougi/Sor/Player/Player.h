@@ -36,7 +36,7 @@ public:
 protected:
 	Piece* m_piece[PIECE_NUM];    //!各駒
 
-	OBJECT_TYPE m_piece_type;    //!駒の種類保存用
+	PIECE_TYPE m_piece_type;    //!駒の種類保存用
 	PLAYER_TYPE m_player_type;   //!プレイヤーの種類保存用
 
 	Vec m_now_pos;    //!動かす駒の座標保存用

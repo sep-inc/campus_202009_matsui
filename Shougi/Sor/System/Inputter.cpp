@@ -3,7 +3,7 @@
 #include <conio.h>
 #include <stdlib.h>
 #include <signal.h>
-
+#include <Windows.h>
 
 //!数字入力関数
 void Inputter::InputNumber()
@@ -49,7 +49,7 @@ void Inputter::InputFont()
     printf("A,B,C,Dを選んでください\n");
     input_font = _getch();  //!入力
 
-      //!指定文字以外入力した場合Myself
+    //!指定文字以外入力した場合Myself
     while (true)
     {
         //!文字を数字に変換
@@ -128,6 +128,8 @@ bool Inputter::InputContinue()
 
     return false;
 }
+
+
 
 
 

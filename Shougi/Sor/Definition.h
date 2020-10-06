@@ -5,7 +5,7 @@
  */
 
  /* オブジェクトの種類 */
-enum OBJECT_TYPE
+enum PIECE_TYPE
 {
     KING,        //!王
     KNIGHT,      //!桂
@@ -27,6 +27,8 @@ enum PLAYER_TYPE
 #define GAME_WIDTH 10    //!全体の横幅
 #define GAME_HEIGHT 12   //!全体の縦幅
 
-#define MOVE_MAX 3     //!駒の動ける最大範囲範囲
+#define MOVE_MAX_X 3     //!駒の動ける最大範囲範囲
+#define MOVE_MAX_Y 4     //!駒の動ける最大範囲範囲
+
 #define MOVE_MIN 0     //!駒の動ける最小範囲範囲
 #endif
