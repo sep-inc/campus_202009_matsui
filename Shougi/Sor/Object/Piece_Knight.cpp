@@ -1,14 +1,14 @@
-﻿#include "Piece_Keima.h"
+﻿#include "Piece_Knight.h"
 
-//!移動範囲配列初期化
-const __int8 PieceKeima::m_first_kei_move[MOVE_MAX][MOVE_MAX] =
+//!移動範囲配列初期化(0が移動不可,1が移動可)
+const __int8 PieceKnight::m_first_kei_move[MOVE_MAX][MOVE_MAX] =
 {
 	1,0,1,
 	0,0,0,
 	0,0,0
 }; //!桂
 
-const __int8 PieceKeima::m_second_kei_move[MOVE_MAX][MOVE_MAX] =
+const __int8 PieceKnight::m_second_kei_move[MOVE_MAX][MOVE_MAX] =
 {
 	0,0,0,
 	0,0,0,
@@ -16,7 +16,7 @@ const __int8 PieceKeima::m_second_kei_move[MOVE_MAX][MOVE_MAX] =
 }; //!桂
 
 //!置けるかどうか判定関数
-bool PieceKeima::SearchMove(Vec center_pos_, Vec input_pos_, PLAYER_TYPE player_type_)
+bool PieceKnight::SearchMove(Vec center_pos_, Vec input_pos_, PLAYER_TYPE player_type_)
 {
 	Vec difference_pos;  //!移動先と駒座標の差分保存用
 	Vec move_pos;        //!移動先(盤上)座標を移動範囲配列に直した時の座標
@@ -45,7 +45,7 @@ bool PieceKeima::SearchMove(Vec center_pos_, Vec input_pos_, PLAYER_TYPE player_
 	if (player_type_ == FIRST)
 	{
 		//!移動範囲に入っているなら
-		if (m_first_kei_move[move_pos.y][move_pos.x] == 1)
+		if (m_first_kei_move[move_pos.y][move_pos.x] == MOVE_POSSIBLE)
 		{
 			return true;
 		}
@@ -53,7 +53,7 @@ bool PieceKeima::SearchMove(Vec center_pos_, Vec input_pos_, PLAYER_TYPE player_
 	else
 	{
 		//!移動範囲に入っているなら
-		if (m_second_kei_move[move_pos.y][move_pos.x] == 1)
+		if (m_second_kei_move[move_pos.y][move_pos.x] == MOVE_POSSIBLE)
 		{
 			return true;
 		}

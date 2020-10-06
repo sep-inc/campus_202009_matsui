@@ -8,6 +8,7 @@
 //!初期化関数
 void Drawer::Init()
 {
+	//!不変的なもの
 	char m_frame_buffer[GAME_HEIGHT][GAME_WIDTH][BYTE] =
 	{
 	   "　 "," "  ," a ",  " ",  " b "," ",  " c "," "," d "," ",
@@ -24,6 +25,7 @@ void Drawer::Init()
 	   " 　","┗ ","━ ","┻ ","━ ","┻ ","━ ","┻ ","━ ","┛ ",
 	};
 
+	//!描画配列とクリア用配列に代入
 	memcpy(&m_draw_buffer, &m_frame_buffer, sizeof(m_frame_buffer));
 	memcpy(&m_clear_buffer, &m_frame_buffer, sizeof(m_frame_buffer));
 }
@@ -52,6 +54,7 @@ void Drawer::Draw()
 	}
 }
 
+//!描画配列クリア関数
 void Drawer::Clear()
 {
 	memcpy(m_draw_buffer, m_clear_buffer, sizeof(m_clear_buffer));

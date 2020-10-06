@@ -1,10 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="System">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
     <Filter Include="Object">
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
@@ -12,13 +8,14 @@
     <Filter Include="Player">
       <UniqueIdentifier>{80881cb7-cd7d-4350-bda9-d74cc76c7812}</UniqueIdentifier>
     </Filter>
+    <Filter Include="System">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Sor\Main.cpp" />
     <ClCompile Include="Sor\Object\Bord.cpp">
-      <Filter>Object</Filter>
-    </ClCompile>
-    <ClCompile Include="Sor\Object\Piece.cpp">
       <Filter>Object</Filter>
     </ClCompile>
     <ClCompile Include="Sor\System\Drawer.cpp">
@@ -29,23 +26,20 @@
     </ClCompile>
     <ClCompile Include="Sor\Entity.cpp" />
     <ClCompile Include="Sor\GameController.cpp" />
-    <ClCompile Include="Sor\Object\Piece_Ou.cpp">
-      <Filter>Object</Filter>
-    </ClCompile>
-    <ClCompile Include="Sor\Object\Piece_Kin.cpp">
-      <Filter>Object</Filter>
-    </ClCompile>
-    <ClCompile Include="Sor\Object\Piece_Keima.cpp">
-      <Filter>Object</Filter>
-    </ClCompile>
-    <ClCompile Include="Sor\Object\Piece_Hu.cpp">
-      <Filter>Object</Filter>
-    </ClCompile>
-    <ClCompile Include="Sor\Player\Player.cpp">
-      <Filter>Player</Filter>
-    </ClCompile>
     <ClCompile Include="Sor\Player\Myself.cpp">
       <Filter>Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\Object\Piece_King.cpp">
+      <Filter>Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\Object\Piece_Goldgeneral.cpp">
+      <Filter>Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\Object\Piece_Knight.cpp">
+      <Filter>Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\Object\Piece_Pawn.cpp">
+      <Filter>Object</Filter>
     </ClCompile>
     <ClCompile Include="Sor\Player\Enemy.cpp">
       <Filter>Player</Filter>
@@ -68,18 +62,6 @@
     <ClInclude Include="Sor\Entity.h" />
     <ClInclude Include="Sor\Definition.h" />
     <ClInclude Include="Sor\GameController.h" />
-    <ClInclude Include="Sor\Object\Piece_Ou.h">
-      <Filter>Object</Filter>
-    </ClInclude>
-    <ClInclude Include="Sor\Object\Piece_Kin.h">
-      <Filter>Object</Filter>
-    </ClInclude>
-    <ClInclude Include="Sor\Object\Piece_Keima.h">
-      <Filter>Object</Filter>
-    </ClInclude>
-    <ClInclude Include="Sor\Object\Piece_Hu.h">
-      <Filter>Object</Filter>
-    </ClInclude>
     <ClInclude Include="Sor\Player\Player.h">
       <Filter>Player</Filter>
     </ClInclude>
@@ -88,6 +70,18 @@
     </ClInclude>
     <ClInclude Include="Sor\Player\Enemy.h">
       <Filter>Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\Object\Piece_King.h">
+      <Filter>Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\Object\Piece_Goldgeneral.h">
+      <Filter>Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\Object\Piece_Knight.h">
+      <Filter>Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\Object\Piece_Pawn.h">
+      <Filter>Object</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

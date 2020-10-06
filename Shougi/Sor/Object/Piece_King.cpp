@@ -1,22 +1,15 @@
-﻿#include "Piece_Kin.h"
+﻿#include "Piece_King.h"
 
-//!移動範囲配列初期化
-const __int8 PieceKin::m_first_kin_move[MOVE_MAX][MOVE_MAX] =
+//!移動範囲配列初期化(0が移動不可,1が移動可)
+const __int8 PieceKing::m_ou_move[MOVE_MAX][MOVE_MAX] =
 {
 	1,1,1,
 	1,0,1,
-	0,1,0
-}; //!金
-
-const __int8 PieceKin::m_second_kin_move[MOVE_MAX][MOVE_MAX] =
-{
-	0,1,0,
-	1,0,1,
 	1,1,1
-}; //!金
+};  //!王
 
 //!置けるかどうか判定関数
-bool PieceKin::SearchMove(Vec center_pos_, Vec input_pos_,PLAYER_TYPE player_type_)
+bool PieceKing::SearchMove(Vec center_pos_, Vec input_pos_,PLAYER_TYPE player_type_)
 {
 	Vec difference_pos;  //!移動先と駒座標の差分保存用
 	Vec move_pos;        //!移動先(盤上)座標を移動範囲配列に直した時の座標
@@ -34,22 +27,12 @@ bool PieceKin::SearchMove(Vec center_pos_, Vec input_pos_,PLAYER_TYPE player_typ
 	}
 
 	//!移動範囲に入っている場合
-	if (player_type_ == FIRST)
+	//!王だけ先手も後手も移動範囲が変わらない
+	if (m_ou_move[move_pos.y][move_pos.x] == MOVE_POSSIBLE)
 	{
 		//!移動範囲に入っているなら
-		if (m_first_kin_move[move_pos.y][move_pos.x] == 1)
-		{
-			return true;
-		}
+		return true;
 	}
-	else
-	{
-		//!移動範囲に入っているなら
-		if (m_second_kin_move[move_pos.y][move_pos.x] == 1)
-		{
-			return true;
-		}
-	}
-	
+
 	return false;
 }

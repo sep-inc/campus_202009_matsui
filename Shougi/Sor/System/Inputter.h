@@ -25,10 +25,7 @@ public:
      */
     void InputFont();
 
-
-
-
-    bool InputEnd();       //終了キー入力関数
+    void InputEnd();       //終了キー入力関数
 
     /**
      * @brief  選択文字参照関数
@@ -56,6 +53,8 @@ private:
     __int8 m_input_number;  //!入力数字変数
 
     bool m_cancel;   //!キャンセル時用
+    bool m_end;   //!キャンセル時用
+
 };
 
 #endif

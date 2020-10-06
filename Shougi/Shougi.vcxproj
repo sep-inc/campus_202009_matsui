@@ -139,6 +139,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Sor\Player\Enemy.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="Sor\Entity.cpp">
       <SubType>
       </SubType>
@@ -155,27 +159,19 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="Sor\Object\Piece.cpp">
+    <ClCompile Include="Sor\Object\Piece_Pawn.cpp">
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="Sor\Object\Piece_Hu.cpp">
+    <ClCompile Include="Sor\Object\Piece_Knight.cpp">
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="Sor\Object\Piece_Keima.cpp">
+    <ClCompile Include="Sor\Object\Piece_Goldgeneral.cpp">
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="Sor\Object\Piece_Kin.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="Sor\Object\Piece_Ou.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="Sor\Player\Enemy.cpp">
+    <ClCompile Include="Sor\Object\Piece_King.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -183,7 +179,6 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="Sor\Player\Player.cpp" />
     <ClCompile Include="Sor\System\Drawer.cpp">
       <SubType>
       </SubType>
@@ -210,19 +205,19 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="Sor\Object\Piece_Hu.h">
+    <ClInclude Include="Sor\Object\Piece_Pawn.h">
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="Sor\Object\Piece_Keima.h">
+    <ClInclude Include="Sor\Object\Piece_Knight.h">
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="Sor\Object\Piece_Kin.h">
+    <ClInclude Include="Sor\Object\Piece_Goldgeneral.h">
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="Sor\Object\Piece_Ou.h">
+    <ClInclude Include="Sor\Object\Piece_King.h">
       <SubType>
       </SubType>
     </ClInclude>

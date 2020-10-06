@@ -1,15 +1,23 @@
-﻿#include "Piece_Ou.h"
+﻿#include "Piece_Pawn.h"
 
-//!移動範囲配列初期化
-const __int8 PieceOu::m_ou_move[MOVE_MAX][MOVE_MAX] =
+//!移動範囲配列初期化(0が移動不可,1が移動可)
+const __int8 PiecePawn::m_first_hu_move[MOVE_MAX][MOVE_MAX]=
 {
-	1,1,1,
-	1,0,1,
-	1,1,1
-};  //!王
+	0,1,0,
+	0,0,0,
+	0,0,0
+};  //!歩
 
+const __int8 PiecePawn::m_second_hu_move[MOVE_MAX][MOVE_MAX] =
+{
+	0,0,0,
+	0,0,0,
+	0,1,0
+};  //!歩
+
+ 
 //!置けるかどうか判定関数
-bool PieceOu::SearchMove(Vec center_pos_, Vec input_pos_,PLAYER_TYPE player_type_)
+bool PiecePawn::SearchMove(Vec center_pos_, Vec input_pos_, PLAYER_TYPE player_type_)
 {
 	Vec difference_pos;  //!移動先と駒座標の差分保存用
 	Vec move_pos;        //!移動先(盤上)座標を移動範囲配列に直した時の座標
@@ -27,11 +35,21 @@ bool PieceOu::SearchMove(Vec center_pos_, Vec input_pos_,PLAYER_TYPE player_type
 	}
 
 	//!移動範囲に入っている場合
-	//!王だけ先手も後手も移動範囲が変わらない
-	if (m_ou_move[move_pos.y][move_pos.x] == 1)
+	if (player_type_ == FIRST)
 	{
 		//!移動範囲に入っているなら
-		return true;
+		if (m_first_hu_move[move_pos.y][move_pos.x] == MOVE_POSSIBLE)
+		{
+			return true;
+		}
+	}
+	else
+	{
+		//!移動範囲に入っているなら
+		if (m_second_hu_move[move_pos.y][move_pos.x] == MOVE_POSSIBLE)
+		{
+			return true;
+		}
 	}
 
 	return false;

@@ -1,23 +1,22 @@
-﻿#include "Piece_Hu.h"
+﻿#include "Piece_Goldgeneral.h"
 
-//!移動範囲配列初期化
-const __int8 PieceHu::m_first_hu_move[MOVE_MAX][MOVE_MAX]=
+//!移動範囲配列初期化(0が移動不可,1が移動可)
+const __int8 PieceGoldgeneral::m_first_kin_move[MOVE_MAX][MOVE_MAX] =
+{
+	1,1,1,
+	1,0,1,
+	0,1,0
+}; //!先手
+
+const __int8 PieceGoldgeneral::m_second_kin_move[MOVE_MAX][MOVE_MAX] =
 {
 	0,1,0,
-	0,0,0,
-	0,0,0
-};  //!歩
+	1,0,1,
+	1,1,1
+}; //!後手
 
-const __int8 PieceHu::m_second_hu_move[MOVE_MAX][MOVE_MAX] =
-{
-	0,0,0,
-	0,0,0,
-	0,1,0
-};  //!歩
-
- 
 //!置けるかどうか判定関数
-bool PieceHu::SearchMove(Vec center_pos_, Vec input_pos_, PLAYER_TYPE player_type_)
+bool PieceGoldgeneral::SearchMove(Vec center_pos_, Vec input_pos_,PLAYER_TYPE player_type_)
 {
 	Vec difference_pos;  //!移動先と駒座標の差分保存用
 	Vec move_pos;        //!移動先(盤上)座標を移動範囲配列に直した時の座標
@@ -38,7 +37,7 @@ bool PieceHu::SearchMove(Vec center_pos_, Vec input_pos_, PLAYER_TYPE player_typ
 	if (player_type_ == FIRST)
 	{
 		//!移動範囲に入っているなら
-		if (m_first_hu_move[move_pos.y][move_pos.x] == 1)
+		if (m_first_kin_move[move_pos.y][move_pos.x] == MOVE_POSSIBLE)
 		{
 			return true;
 		}
@@ -46,11 +45,11 @@ bool PieceHu::SearchMove(Vec center_pos_, Vec input_pos_, PLAYER_TYPE player_typ
 	else
 	{
 		//!移動範囲に入っているなら
-		if (m_second_hu_move[move_pos.y][move_pos.x] == 1)
+		if (m_second_kin_move[move_pos.y][move_pos.x] == MOVE_POSSIBLE)
 		{
 			return true;
 		}
 	}
-
+	
 	return false;
 }

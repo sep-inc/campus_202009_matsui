@@ -7,20 +7,21 @@
  /* オブジェクトの種類 */
 enum OBJECT_TYPE
 {
-    BLANK,  //!空
-    OU,     //!王
-    KEIMA,  //!桂
-    KIN,    //!金
-    HU      //!歩
+    KING,        //!王
+    KNIGHT,      //!桂
+    GOLDGENERAL, //!金
+    PAWN,        //!歩
+    PIECE_NUM,   //!駒の種類の数
+    BLANK,       //!空
 };
 
 //!プレイヤーの種類
 enum PLAYER_TYPE
 {
-    FIRST,  //!先手
-    SECOND, //!後手
-    NONE    //!空
-
+    FIRST,         //!先手
+    SECOND,        //!後手
+    PLAYER_NUM,    //!プレイヤーの人数
+    NONE           //!空
 };
 
 #define GAME_WIDTH 10    //!全体の横幅
@@ -28,6 +29,4 @@ enum PLAYER_TYPE
 
 #define MOVE_MAX 3     //!駒の動ける最大範囲範囲
 #define MOVE_MIN 0     //!駒の動ける最小範囲範囲
-
-#define PLAYER_NUM 2  //!プレイヤーの人数
 #endif

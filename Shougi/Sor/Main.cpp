@@ -1,11 +1,14 @@
 ﻿#include "Entity.h"
 #include <stdlib.h>
 #include <time.h>
+#include <random>
 
 
 int main()
 {
 	g_drawer.Init();  //!描画クラス初期化
+
+	srand((unsigned)time(NULL));
 
 	while (true)
 	{
@@ -22,13 +25,12 @@ int main()
 		//!もしもゲームが終わった時
 		if (g_game_controller.Judgment() == true)
 		{
+			g_game_controller.Delete();
 			break;
 		}
-		////!キー入力(ESC)
-		//if (g_inputter.InputEnd() == true)
-		//{
-		//	break;
-		//}
+
+		//!強制終了
+		g_inputter.InputEnd();
 
 	}
 

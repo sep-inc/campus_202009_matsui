@@ -2,6 +2,8 @@
 #include "Definition.h"
 #include "Entity.h"
 #include "Object/Piece.h"
+#include "Player/Myself.h"
+#include "Player/Enemy.h"
 #include <stdio.h>
 
 //!ステップ処理関数
@@ -23,8 +25,8 @@ void GameController::Update()
 //!初期化関数
 void GameController::Init()
 {
-	m_player[FIRST] = new Player(FIRST);  //!インスタンス化
-	m_player[SECOND] = new Player(SECOND);  //!インスタンス化
+	m_player[FIRST] = new Myself;  //!インスタンス化
+	m_player[SECOND] = new Enemy;  //!インスタンス化
 
 	m_bord = new Bord;  //!インスタンス化
 
@@ -73,10 +75,11 @@ bool GameController::Judgment()
 		//!続けるかどうか
 		if (g_inputter.InputContinue() == true)
 		{
-			m_bord->Init();         //!盤クラス初期化
-			g_drawer.Clear();	   //!描画配列クリア
-			SetUpDrawBuffer();     //!描画配列に盤情報代入
-			g_drawer.Draw();       //!描画(終了後一度描画しないと見た目上終了しているように見えないため)
+			m_turn = FIRST_TURN;  //!先手のターンに戻す
+			m_bord->Reset();       //!盤クラス初期化
+			g_drawer.Clear();	  //!描画配列クリア
+			SetUpDrawBuffer();    //!描画配列に盤情報代入
+			g_drawer.Draw();      //!描画(終了後一度描画しないと見た目上終了しているように見えないため)
 
 			return false;
 		}
