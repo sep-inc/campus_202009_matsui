@@ -8,34 +8,10 @@
 #include <random>
 #include <stdio.h>
 
-//!初期化
-void Enemy::Init()
+//!コンストラクタ
+Enemy::Enemy(PLAYER_TYPE player_)
 {
-	m_piece[KING] = new PieceKing;                //!王
-	m_piece[KNIGHT] = new PieceKnight;            //!桂
-	m_piece[GOLDGENERAL] = new PieceGoldgeneral;  //!金
-	m_piece[PAWN] = new PiecePawn;  //!金
-
-}
-
-//!更新処理
-void Enemy::Update(Bord* bord_)
-{
-	//!移動先が見つからない場合もう一度移動させる駒を変更するためループする
-	while (true)
-	{
-		//!移動元入力
-		MoveSourceSelect(bord_);
-
-		//!移動先入力
-		if (NextMoveSelect(bord_) == true)
-		{
-			break;
-		}
-	}
-
-	//!移動
-	Move(bord_);
+	m_my_player_type = player_; //!自分が誰かを代入
 }
 
 //!移動元入力
@@ -47,8 +23,16 @@ void Enemy::MoveSourceSelect(Bord* bord_)
 		//!移動させる駒をランダムで決定
 		m_piece_type = static_cast<PIECE_TYPE>(rand() % PIECE_NUM);
 
+		_int8 pawn_pos_x = 0; //!同種が複数あるうちから選ぶ用(今回は「歩」)
+
+		 //!同じ駒が複数ある場合、その中からランダムで選ぶ
+		if (m_piece_type == PAWN)
+		{
+			pawn_pos_x = rand() % PAWN_NUM;  //!複数の中から一つ選ぶ
+		}
+
 		//!ランダムで選ばれた駒の座標を問い合わせ
-		m_now_pos = bord_->SearchPiecePos(m_piece_type, m_my_player_type);
+		m_now_pos = bord_->SearchPiecePos(m_piece_type, m_my_player_type, pawn_pos_x);
 
 		//!座標が見つかった場合
 		if (m_now_pos.x >= 0 && m_now_pos.y >= 0)
@@ -60,7 +44,7 @@ void Enemy::MoveSourceSelect(Bord* bord_)
 }
 
 //!移動先入力
-bool Enemy::NextMoveSelect(Bord* bord_)
+bool Enemy::NextMoveSelect(Bord* bord_, Piece* piece_[])
 {
 	__int8 m_reset_counter = 0;   //!移動先変更時用
 
@@ -79,7 +63,7 @@ bool Enemy::NextMoveSelect(Bord* bord_)
 			////////////////////////////////
 
 			//!駒クラスで移動でpiece.SearchMovきるか判断させる
-			if (m_piece[m_piece_type]->SearchMove(m_now_pos, m_next_pos, m_my_player_type) == true)
+			if (piece_[m_piece_type]->SearchMove(m_now_pos, m_next_pos, m_my_player_type) == true)
 			{
 				m_reset_counter = 0;
 				return true;
@@ -97,43 +81,6 @@ bool Enemy::NextMoveSelect(Bord* bord_)
 	}
 
 	return false;
-}
-
-void Enemy::Move(Bord* bord_)
-{
-	//!移動先を盤クラスに送る
-	bord_->SetPiecePos(m_next_pos, m_piece_type, m_my_player_type);
-}
-
-void Enemy::SearchBord(Bord* bord_)
-{
-	m_piece_type = bord_->SearchPiece(g_inputter.GetSelectFont(), g_inputter.GetSelectNumber());    //!駒の種類判別
-	m_player_type = bord_->SearchPlayer(g_inputter.GetSelectFont(), g_inputter.GetSelectNumber());  //!先手の駒か後手の駒か判別
-}
-
-//!勝敗判定
-bool Enemy::Judgment(Bord* bord_)
-{
-	//!盤クラスに移動後の結果(王を取ったか)を返すようにする
-	if (bord_->GetWinner() == m_my_player_type)
-	{
-		//!勝者表示
-		printf("後手の勝ちです。\n");
-
-		//!GameControllerに結果を返す
-		return true;
-	}
-
-	return false;
-}
-
-//!解放処理
-void Enemy::Delete()
-{
-	for (int i = 0; i < PIECE_NUM; i++)
-	{
-		delete m_piece[i];
-	}
 }
 
 //!移動先決定関数

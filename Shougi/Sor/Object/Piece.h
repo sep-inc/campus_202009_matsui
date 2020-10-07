@@ -37,7 +37,7 @@ public:
 	void DrawPiece(PLAYER_TYPE player_type_, Vec pos);
 
 protected:
-	__int8 m_move[MOVE_MAX_Y][MOVE_MAX_X]; 	//!移動範囲配列
+	const __int8(*m_move)[MOVE_MAX_X]; 	//!移動範囲配列ポインタ
 
     //!移動範囲配列の基準座標
 	static const Vec move_center;  //!駒の移動範囲の基準座標(配列で言う2の箇所)

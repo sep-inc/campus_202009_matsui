@@ -14,7 +14,7 @@
 class Bord
 {
 public:
-	Bord():m_winner(NONE){}
+	Bord();
 	~Bord() {}
 
 	/**
@@ -51,25 +51,20 @@ public:
 	 * @param (object_) 駒の種類
 	 * @detail 指定した駒の座標を返す
 	 */
-	Vec SearchPiecePos(PIECE_TYPE object_, PLAYER_TYPE player_);
+	Vec SearchPiecePos(PIECE_TYPE object_, PLAYER_TYPE player_, __int8 pawn_number);
 
 
 	/**
 	 * @brief  描画配列代入関数
 	 * @detail 描画配列に情報を送る
 	 */
-	void SetUpDrawBuffer();
+	void SetUpDrawBuffer(Piece* piece_[]);
 
 	/**
 	 * @brief  リセット関数
 	 * @detail 盤情報を初期状態に戻す
 	 */
 	void Reset();
-
-	/**
-     * @brief  解放関数
-     */
-	void Delete();
 
 	/**
 	 * @brief  勝利フラグGetter
@@ -81,9 +76,8 @@ private:
 	/* 盤上構造体 */
 	struct BordInfo
 	{
-		PIECE_TYPE m_put_piece;   //!置いている駒の種類
+		PIECE_TYPE m_put_piece;    //!置いている駒の種類
 		PLAYER_TYPE m_put_player;  //!置いているプレイヤーの種類(先手か後手か)
-
 	};
 
 	BordInfo m_bord_info[BORD_HEIGHT][BORD_WIDTH];
@@ -92,8 +86,6 @@ private:
 	Vec m_source_pos;     //!移動元の座標保存用
 
 	PLAYER_TYPE m_winner; //!勝利判定
-
-	Piece* m_piece[PIECE_NUM];    //!各駒
 };
 
 #endif

@@ -13,7 +13,8 @@ const __int8 PiecePawn::m_move_[MOVE_MAX_Y][MOVE_MAX_X] =
 //!コンストラクタ
 PiecePawn::PiecePawn()
 {
-	memcpy(&m_move, &m_move_, sizeof(m_move_));
+	//!先頭ポインタで初期化
+	m_move = m_move_;
 
 	//!描画用文字
 	m_first_draw_font = "歩";   //!先手

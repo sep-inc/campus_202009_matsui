@@ -13,7 +13,8 @@ const __int8 PieceGoldgeneral::m_move_[MOVE_MAX_Y][MOVE_MAX_X] =
 //!コンストラクタ
 PieceGoldgeneral::PieceGoldgeneral()
 {
-	memcpy(&m_move, &m_move_, sizeof(m_move_));
+	//!先頭ポインタで初期化
+	m_move = m_move_;
 
 	//!描画用文字
 	m_first_draw_font = "金";  //!先手

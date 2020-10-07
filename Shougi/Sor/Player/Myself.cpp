@@ -7,39 +7,14 @@
 #include "../Object/Piece_Pawn.h"
 #include <stdio.h>
 
-//!初期化
-void Myself::Init()
+//!コンストラクタ
+Myself::Myself(PLAYER_TYPE player_)
 {
-	m_piece[KING] = new PieceKing;                //!王
-	m_piece[KNIGHT] = new PieceKnight;            //!桂
-	m_piece[GOLDGENERAL] = new PieceGoldgeneral;  //!金
-	m_piece[PAWN] = new PiecePawn;                //!歩
-}
-
-//!更新処理
-void Myself::Update(Bord* bord_)
-{
-	//!移動させる駒を選び直す時用にループする
-	while (true)
-	{
-		//!移動させる駒選択
-		Input(bord_);
-
-		//!移動先入力
-		if (NextMoveInput(bord_) == true)
-		{
-			break;
-		}
-
-		printf("\n");
-	}
-
-	//!移動
-	Move(bord_);
+	m_my_player_type = player_;  //!自分が誰かを代入
 }
 
 //!入力処理
-void Myself::Input(Bord* bord_)
+void Myself::MoveSourceSelect(Bord* bord_)
 {
 	printf("動かす駒を選んでください。\n");
 
@@ -81,7 +56,7 @@ void Myself::Input(Bord* bord_)
 }
 
 //!移動先入力関数
-bool Myself::NextMoveInput(Bord* bord_)
+bool Myself::NextMoveSelect(Bord* bord_,Piece* piece_[])
 {
 	while (true)
 	{
@@ -113,7 +88,7 @@ bool Myself::NextMoveInput(Bord* bord_)
 			//!前にswich文で分けていた箇所//
 			////////////////////////////////
 			//!駒クラスで移動でpiece.SearchMovきるか判断させる
-			if (m_piece[m_piece_type]->SearchMove(m_now_pos, m_next_pos, m_my_player_type) == true)
+			if (piece_[m_piece_type]->SearchMove(m_now_pos, m_next_pos, m_my_player_type) == true)
 			{
 				return true;
 			}
@@ -123,13 +98,6 @@ bool Myself::NextMoveInput(Bord* bord_)
 	}
 
 	return false;
-}
-
-//!移動処理
-void Myself::Move(Bord* bord_)
-{
-	//!移動先を盤クラスに送る
-	bord_->SetPiecePos(m_next_pos, m_piece_type, m_my_player_type);
 }
 
 //!動かそうとしている駒表示関数
@@ -182,36 +150,3 @@ void Myself::NowMovePiece(PIECE_TYPE piece_type_)
 	}
 }
 
-//!指定箇所調査
-void Myself::SearchBord(Bord* bord_)
-{
-	m_piece_type = bord_->SearchPiece(g_inputter.GetSelectFont(), g_inputter.GetSelectNumber());    //!駒の種類判別
-	m_player_type = bord_->SearchPlayer(g_inputter.GetSelectFont(), g_inputter.GetSelectNumber());  //!先手の駒か後手の駒か判別
-}
-
-//!勝敗判定
-bool Myself::Judgment(Bord* bord_)
-{
-	//!盤クラスに移動後の結果(王を取ったか)を返すようにする
-	if (bord_->GetWinner() == m_my_player_type)
-	{
-		//!勝者表示
-		if (m_my_player_type == FIRST)
-		{
-			printf("先手の勝ちです。\n");
-		}
-		//!GameControllerに結果を返す
-		return true;
-	}
-
-	return false;
-}
-
-//!解放処理
-void Myself::Delete()
-{
-	for (int i = 0; i < PIECE_NUM; i++)
-	{
-		delete m_piece[i];
-	}
-}

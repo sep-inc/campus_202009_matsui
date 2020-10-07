@@ -47,12 +47,12 @@
     <ClCompile Include="Sor\Object\Piece.cpp">
       <Filter>Object</Filter>
     </ClCompile>
+    <ClCompile Include="Sor\Player\Player.cpp">
+      <Filter>Player</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sor\Vec.h" />
-    <ClInclude Include="Sor\Object\Bord.h">
-      <Filter>Object</Filter>
-    </ClInclude>
     <ClInclude Include="Sor\Object\Piece.h">
       <Filter>Object</Filter>
     </ClInclude>
@@ -84,6 +84,9 @@
       <Filter>Object</Filter>
     </ClInclude>
     <ClInclude Include="Sor\Object\Piece_Pawn.h">
+      <Filter>Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\Object\Bord.h">
       <Filter>Object</Filter>
     </ClInclude>
   </ItemGroup>

@@ -3,6 +3,12 @@
 #include "System/Drawer.h"
 #include "System/Inputter.h"
 #include "GameController.h"
+#include "Object/Piece.h"
+#include "Object/Piece_King.h"
+#include "Object/Piece_Knight.h"
+#include "Object/Piece_Goldgeneral.h"
+#include "Object/Piece_Pawn.h"
+
 /**
 *@brief 各クラス実体置き場
 */

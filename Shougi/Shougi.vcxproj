@@ -183,6 +183,7 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="Sor\Player\Player.cpp" />
     <ClCompile Include="Sor\System\Drawer.cpp">
       <SubType>
       </SubType>

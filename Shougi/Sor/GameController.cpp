@@ -1,7 +1,10 @@
 ﻿#include "GameController.h"
 #include "Definition.h"
 #include "Entity.h"
-#include "Object/Piece.h"
+#include "Object/Piece_King.h"
+#include "Object/Piece_Knight.h"
+#include "Object/Piece_Goldgeneral.h"
+#include "Object/Piece_Pawn.h"
 #include "Player/Myself.h"
 #include "Player/Enemy.h"
 #include <stdio.h>
@@ -28,12 +31,14 @@ void GameController::Init()
 	m_player[FIRST] = new Myself(FIRST);  //!インスタンス化
 	m_player[SECOND] = new Enemy(SECOND);  //!インスタンス化
 
-	m_bord = new Bord;  //!インスタンス化
+	m_piece[KING] = new PieceKing;                //!王
+	m_piece[KNIGHT] = new PieceKnight;            //!桂
+	m_piece[GOLDGENERAL] = new PieceGoldgeneral;  //!金
+	m_piece[PAWN] = new PiecePawn;                //!歩
 
-	//!初期化
-	m_player[FIRST]->Init();
-	m_player[SECOND]->Init();
+	m_bord = new Bord();  //!インスタンス化
 
+	
 	m_bord->Init();    //盤クラス初期化
 
 	//!次のステップへ
@@ -47,12 +52,12 @@ void GameController::ObjectUpdate()
 	{
 	case GameController::FIRST_TURN:     //!先手
 		printf("先手の番です。\n");
-		m_player[FIRST]->Update(m_bord);  //!プレイヤーの更新処理
+		m_player[FIRST]->Update(m_bord, m_piece);  //!プレイヤーの更新処理
 		m_turn = SECOND_TURN;
 		break;
 	case GameController::SECOND_TURN:    //!後手
 		printf("後手の番です。\n");
-		m_player[SECOND]->Update(m_bord);  //!プレイヤーの更新処理
+		m_player[SECOND]->Update(m_bord, m_piece);  //!プレイヤーの更新処理
 		m_turn = FIRST_TURN;
 		break;
 	default:
@@ -63,7 +68,7 @@ void GameController::ObjectUpdate()
 //!描画情報代入関数
 void GameController::SetUpDrawBuffer()
 {
-	m_bord->SetUpDrawBuffer();  //!盤の情報を描画配列に代入
+	m_bord->SetUpDrawBuffer(m_piece);  //!盤の情報を描画配列に代入
 }
 
 //!終了判定関数

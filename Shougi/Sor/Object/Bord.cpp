@@ -7,6 +7,12 @@
 #include <string.h>
 #include <random>
 
+//!コンストラクタ
+Bord::Bord()
+{
+	m_winner = NONE;  //!空で初期化
+}
+
 //!初期化関数
 void Bord::Init()
 {
@@ -24,12 +30,6 @@ void Bord::Init()
 	//!配列の初期化は宣言と同時にしかできないためコピーで代入する
 	memcpy(&m_bord_info, &map, sizeof(map));
 	memcpy(&m_bord_clear, &map, sizeof(map));
-
-	m_piece[KING] = new PieceKing;                //!王
-	m_piece[KNIGHT] = new PieceKnight;            //!桂
-	m_piece[GOLDGENERAL] = new PieceGoldgeneral;  //!金
-	m_piece[PAWN] = new PiecePawn;                //!歩
-
 }
 
 //!駒調査関数
@@ -65,37 +65,17 @@ void Bord::SetPiecePos(Vec next_pos, PIECE_TYPE object_, PLAYER_TYPE player_)
 }
 
 //!駒座標調査関数
-Vec Bord::SearchPiecePos(PIECE_TYPE object_, PLAYER_TYPE player_)
+Vec Bord::SearchPiecePos(PIECE_TYPE object_, PLAYER_TYPE player_,__int8 pawn_number)
 {
-	//!「歩」の場合(複数あるため)
-	if (object_ == PAWN)
+	for (int y = 0; y < BORD_HEIGHT; y++)
 	{
-		__int8 pawn_pos_x = rand() % PAWN_NUM;  //!複数の中から一つ選ぶ
-
-		//!「歩」はX座標が固定なのでY座標で検索する
-		for (int y = 0; y < BORD_HEIGHT; y++)
+		for (int x = pawn_number; x < BORD_WIDTH; x++)
 		{
-			if (m_bord_info[y][pawn_pos_x].m_put_piece == object_ &&
-				m_bord_info[y][pawn_pos_x].m_put_player == player_)
+			if (m_bord_info[y][x].m_put_piece == object_ &&
+				m_bord_info[y][x].m_put_player == player_)
 			{
-				m_source_pos = Vec(pawn_pos_x, y);   //!移動させる駒の座標を保存
-				return Vec(pawn_pos_x, y);           //!座標を返す
-			}
-		}
-	}
-	//!「歩」以外
-	else
-	{
-		for (int y = 0; y < BORD_HEIGHT; y++)
-		{
-			for (int x = 0; x < BORD_WIDTH; x++)
-			{
-				if (m_bord_info[y][x].m_put_piece == object_ &&
-					m_bord_info[y][x].m_put_player == player_)
-				{
-					m_source_pos = Vec(x, y);  //!移動させる駒の座標を保存
-					return Vec(x, y);          //!座標を返す
-				}
+				m_source_pos = Vec(x, y);  //!移動させる駒の座標を保存
+				return Vec(x, y);          //!座標を返す
 			}
 		}
 	}
@@ -105,7 +85,7 @@ Vec Bord::SearchPiecePos(PIECE_TYPE object_, PLAYER_TYPE player_)
 }
 
 //!描画配列代入関数
-void Bord::SetUpDrawBuffer()
+void Bord::SetUpDrawBuffer(Piece* piece_[])
 {
 	for (int y = 0; y < BORD_HEIGHT; y++)
 	{
@@ -114,8 +94,8 @@ void Bord::SetUpDrawBuffer()
 			//!何か駒が置いてある場合
 			if (m_bord_info[y][x].m_put_piece != BLANK)
 			{
-				//!駒の種類分け
-				m_piece[m_bord_info[y][x].m_put_piece]->DrawPiece(m_bord_info[y][x].m_put_player, Vec(x, y));
+				//!駒にどのような文字で描画するか問う
+				piece_[m_bord_info[y][x].m_put_piece]->DrawPiece(m_bord_info[y][x].m_put_player, Vec(x, y));
 			}
 		}
 	}
@@ -126,14 +106,6 @@ void Bord::Reset()
 {
 	memcpy(&m_bord_info, &m_bord_clear, sizeof(m_bord_clear));
 	m_winner = NONE;
-}
-
-void Bord::Delete()
-{
-	for (int i = 0; i < PIECE_NUM; i++)
-	{
-		delete m_piece[i];
-	}
 }
 
 

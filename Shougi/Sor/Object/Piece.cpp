@@ -34,6 +34,8 @@ bool Piece::SearchMove(Vec center_pos_, Vec input_pos_, PLAYER_TYPE player_type_
 	}
 
 	return false;
+
+	
 }
 
 //!駒表示判別関数
@@ -50,3 +52,4 @@ void Piece::DrawPiece(PLAYER_TYPE player_type_, Vec pos_)
 		g_drawer.SetUpBuffer(pos_, m_second_draw_font);
 	}
 }
+

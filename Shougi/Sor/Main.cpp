@@ -25,13 +25,9 @@ int main()
 		//!もしもゲームが終わった時
 		if (g_game_controller.Judgment() == true)
 		{
-			g_game_controller.Delete();
+			g_game_controller.Delete(); //!解放処理
 			break;
 		}
-
-		//!強制終了
-		g_inputter.InputEnd();
-
 	}
 
 	return 1;

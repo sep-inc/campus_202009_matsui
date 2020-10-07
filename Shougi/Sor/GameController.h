@@ -3,6 +3,7 @@
 #include "Vec.h"
 #include "Player/Player.h"
 #include "Object/Bord.h"
+#include "Object/Piece.h"
 
 class GameController
 {
@@ -62,7 +63,7 @@ protected:
 
 	Player* m_player[PLAYER_NUM];  //!プレイヤー
 	Bord* m_bord;  //!プレイヤー
-
+	Piece* m_piece[PIECE_NUM];    //!各駒
 };
 
 
