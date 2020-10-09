@@ -139,6 +139,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Sor\Object\Cursor.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="Sor\Object\Piece.cpp">
       <SubType>
       </SubType>
@@ -159,7 +163,7 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="Sor\Object\Bord.cpp">
+    <ClCompile Include="Sor\Object\Board.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -202,7 +206,11 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="Sor\Object\Bord.h">
+    <ClInclude Include="Sor\Object\Board.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Sor\Object\Cursor.h">
       <SubType>
       </SubType>
     </ClInclude>

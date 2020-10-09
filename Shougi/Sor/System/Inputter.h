@@ -1,5 +1,6 @@
 ﻿#ifndef INPUTTER_H_
 #define INPUTTER_H_
+#include "../Vec.h"
 #define ESC 27    //!Esc番号
 #define ENTER 13  //!Enter番号
 
@@ -25,6 +26,8 @@ public:
      */
     void InputFont();
 
+    void InputArrowKey();
+
     /**
      * @brief  ctrl+c入力関数
      * @detail ctrl+cが押されたときにゲームを終了する
@@ -49,6 +52,13 @@ public:
      */
     const bool GetSelectCancel() { return m_cancel; }
 
+    /**
+     * @brief  キャンセルフラグ参照関数
+     * @return キャンセルボタンが押されたかどうかを返す
+     */
+    const bool GetDecision() { return m_decision; }
+
+    const Vec2 GetNextPos() { return m_mount; }
 
     /**
      * @brief  コンティニュー関数
@@ -63,6 +73,8 @@ private:
     bool m_cancel;   //!キャンセル時用
     bool m_end;   //!キャンセル時用
 
+    Vec2 m_mount;
+    bool m_decision;
 };
 
 #endif

@@ -7,44 +7,22 @@
 #include "../Object/Piece_Pawn.h"
 #include <stdio.h>
 
-//!更新処理
-void Player::Update(Bord* bord_, Piece* piece_[])
-{
-	//!移動させる駒を選び直す時用にループする
-	while (true)
-	{
-		//!移動させる駒選択
-		MoveSourceSelect(bord_);
-
-		//!移動先入力
-		if (NextMoveSelect(bord_, piece_) == true)
-		{
-			break;
-		}
-
-		printf("\n");
-	}
-
-	//!移動
-	Move(bord_);
-}
-
 //!移動処理
-void Player::Move(Bord* bord_)
+void Player::Move(Board* bord_)
 {
 	//!移動先を盤クラスに送る
 	bord_->SetPiecePos(m_next_pos, m_piece_type, m_my_player_type);
 }
 
 //!指定箇所調査
-void Player::SearchBord(Bord* bord_)
+void Player::SearchBord(Board* bord_,Vec2 pos_)
 {
-	m_piece_type = bord_->SearchPiece(g_inputter.GetSelectFont(), g_inputter.GetSelectNumber());    //!駒の種類判別
-	m_player_type = bord_->SearchPlayer(g_inputter.GetSelectFont(), g_inputter.GetSelectNumber());  //!先手の駒か後手の駒か判別
+	m_piece_type = bord_->SearchPiece(pos_);    //!駒の種類判別
+	m_player_type = bord_->SearchPlayer(pos_);  //!先手の駒か後手の駒か判別
 }
 
 //!勝敗判定
-bool Player::Judgment(Bord* bord_)
+bool Player::Judgment(Board* bord_)
 {
 	//!盤クラスに移動後の結果(王を取ったか)を返すようにする
 	if (bord_->GetWinner() == m_my_player_type)

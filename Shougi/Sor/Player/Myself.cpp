@@ -11,90 +11,132 @@
 Myself::Myself(PLAYER_TYPE player_)
 {
 	m_my_player_type = player_;  //!自分が誰かを代入
+	m_board = g_game_controller.GetBoradPoint();     //!Boardのアドレスを取得
+	m_cursor = g_game_controller.GetCursorPoint();  //!Cursorのアドレスを取得
+
+	m_step = SelectSorce_Step;  //!移動元選択ステップで初期化
+}
+
+//!更新処理
+void Myself::Update(Piece* piece_[])
+{
+	//!駒の移動までの過程でカーソルの移動もあるのでステップで分ける
+	switch (m_step)
+	{
+	case Myself::SelectSorce_Step:   //!移動元選択
+
+		//!移動させる駒が見つかるかどうか
+		if (MoveSourceSelect() == true)
+		{
+			m_step = SelectNext_Step;  //!移動先選択へ
+		}
+		break;
+	case Myself::SelectNext_Step: //!移動先選択 
+
+		//!移動先が決まったかどうか
+		if (NextMoveSelect(piece_) == true) 
+		{
+			m_step = Move_Step; //!移動へ　
+		}
+		//!移動させる駒を変更する場合
+		else if (re_sorce_input == true)
+		{
+			m_step = SelectSorce_Step; //!移動元選択へ
+			re_sorce_input = false;
+		}
+		break;
+	case Myself::Move_Step:   
+		//!移動
+		Move(m_board);
+		m_step = SelectSorce_Step;  //!移動元選択に戻す
+		g_game_controller.SetNextTurn(GameController::SECOND_TURN);  //!敵の駒移動ターンに移る
+		break; 
+	default:
+		break;
+	}
 }
 
 //!入力処理
-void Myself::MoveSourceSelect(Bord* bord_)
+bool Myself::MoveSourceSelect()
 {
 	printf("動かす駒を選んでください。\n");
+	printf("十字キーでカーソル移動\n");
+	printf("Spaceで決定\n");
 
-	g_inputter.InputFont();      //!移動させる駒を選択
-	g_inputter.InputNumber();    //!移動させる駒を選択
+	m_now_pos = m_cursor->Move();   //!カーソル移動
 
-	SearchBord(bord_);   //!指定箇所問い合わせ
-
-	//!指定した場所に何も無かった場合。または相手の駒だった場合、またはキャンセルボタンが押されたとき																								 //!もし選んだ場所に駒がなかったら、また選んだ駒が自分の駒でない場合
-	while (m_piece_type == BLANK || m_player_type != m_my_player_type
-		|| g_inputter.GetSelectCancel() == true)
+	//!決定ボタンが押されたかどうか
+	if (m_cursor->MoveEnd() == true)
 	{
-		if (m_piece_type == BLANK)
-		{
-			printf("そこには何もありません。もう一度選んでください\n");
-		}
-		else if (g_inputter.GetSelectCancel() == true)
-		{
-			printf("キャンセルできません。もう一度選んでください\n");
-		}
-		else if (m_player_type != m_my_player_type)
-		{
-			printf("それは相手の駒です。もう一度選んでください\n");
-		}
+		SearchBord(m_board, m_now_pos);   //!指定箇所問い合わせ
 
+	    //!指定した場所に何も無かった場合。または相手の駒だった場合、またはキャンセルボタンが押されたとき																								 //!もし選んだ場所に駒がなかったら、また選んだ駒が自分の駒でない場合
+		if(m_piece_type == BLANK || m_player_type != m_my_player_type
+			|| g_inputter.GetSelectCancel() == true)
+		{
+			if (m_piece_type == BLANK)
+			{
+				printf("そこには何もありません。もう一度選んでください\n");
+			}
+			else if (g_inputter.GetSelectCancel() == true)
+			{
+				printf("キャンセルできません。もう一度選んでください\n");
+			}
+			else if (m_player_type != m_my_player_type)
+			{
+				printf("それは相手の駒です。もう一度選んでください\n");
+			}
 
-		//!再入力
-		g_inputter.InputFont();     //!文字
-		g_inputter.InputNumber();   //!番号
-		SearchBord(bord_); //!盤上検索
+			//!再入力(表示文字を入力待ちで残す)
+			m_now_pos = m_cursor->Move();
+
+		}
+		else
+		{
+			return true;
+		}
 	}
 
-	NowMovePiece(m_piece_type);  //!現在動かそうとしている駒の表示
-
-	m_now_pos = Vec(g_inputter.GetSelectFont(), g_inputter.GetSelectNumber());   //!動かそうとしている駒座標保存変数
-
-
-	printf("移動先を選んでください\n");
+	return false;
 }
 
 //!移動先入力関数
-bool Myself::NextMoveSelect(Bord* bord_,Piece* piece_[])
+bool Myself::NextMoveSelect(Piece* piece_[])
 {
-	while (true)
+	NowMovePiece(m_piece_type);  //!現在動かそうとしている駒の表示
+
+	printf("移動先を選んでください\n");
+	printf("移動させる駒を変更する場合[r]を押してください。\n");
+	printf("十字キーでカーソル移動\n");
+	printf("Spaceで決定\n");
+
+	m_next_pos = m_cursor->Move();   //!カーソル移動
+
+	//!キャンセルボタンが押されたとき
+	if (g_inputter.GetSelectCancel() == true)
 	{
-		printf("移動させる駒を変更する場合[r]を押してください。\n");
+		re_sorce_input = true;  //!移動させる駒を変更
+		return false;
+	}
 
-		g_inputter.InputFont();      //!移動先文字番号入力
-
-		//!キャンセルボタンが押されたとき
-		if (g_inputter.GetSelectCancel() == true)
-		{
-			return false;
-		}
-
-		g_inputter.InputNumber();    //!移動先数字番号入力
-
-		//!キャンセルボタンが押されたとき
-		if (g_inputter.GetSelectCancel() == true)
-		{
-			return false;
-		}
-
-		m_next_pos = Vec(g_inputter.GetSelectFont(), g_inputter.GetSelectNumber());   //!移動先保存
-		m_player_type = bord_->SearchPlayer(g_inputter.GetSelectFont(), g_inputter.GetSelectNumber());  //!移動先の駒が誰の駒か判別
+	//!決定ボタンが押されたかどうか
+	if (m_cursor->MoveEnd() == true)
+	{
+		m_player_type = m_board->SearchPlayer(m_next_pos);  //!移動先の駒が誰の駒か判別
 
 		//!移動先に自分の駒があった時はもう一度入力させる
 		if (m_player_type != m_my_player_type)
 		{
-			/////////////////////////////////
-			//!前にswich文で分けていた箇所//
-			////////////////////////////////
 			//!駒クラスで移動でpiece.SearchMovきるか判断させる
 			if (piece_[m_piece_type]->SearchMove(m_now_pos, m_next_pos, m_my_player_type) == true)
 			{
 				return true;
 			}
 		}
-
 		printf("移動できない場所です。もう一度入力してください。\n");
+
+		//!再入力(表示文字を入力待ちで残す)
+		m_next_pos = m_cursor->Move();
 	}
 
 	return false;

@@ -2,8 +2,9 @@
 #define GAMECONTROLLER_H_
 #include "Vec.h"
 #include "Player/Player.h"
-#include "Object/Bord.h"
+#include "Object/Board.h"
 #include "Object/Piece.h"
+#include "Object/Cursor.h"
 
 class GameController
 {
@@ -46,14 +47,14 @@ public:
 	 */
 	void Delete();
 
-protected:
-	//!ステップの種類
-	enum STEP
-	{
-		STEP_INIT,       //!初期化
-		STEP_UPDATE,  //!先手の番
-	}m_step;
+	/**
+     * @brief 　オブジェクトポインタ関数
+	 * @detail　オブジェクトのアドレスを返す
+     */
+	Board* GetBoradPoint() { return m_board; }
+	Cursor* GetCursorPoint() { return m_cursor; }
 
+public:
 	//!ステップの種類
 	enum PLAYER_TURN
 	{
@@ -61,9 +62,25 @@ protected:
 		SECOND_TURN  //!後手の番
 	}m_turn;
 
+	void SetNextTurn(PLAYER_TURN turn_);
+
+private:
+	//!ステップの種類
+	enum STEP
+	{
+		STEP_INIT,       //!初期化
+		STEP_UPDATE,  //!先手の番
+	}m_step;
+
+	
+
 	Player* m_player[PLAYER_NUM];  //!プレイヤー
-	Bord* m_bord;  //!プレイヤー
-	Piece* m_piece[PIECE_NUM];    //!各駒
+	Board* m_board;                  //!盤
+	Piece* m_piece[PIECE_NUM];     //!各駒
+	Cursor* m_cursor;              //!カーソル
+
+
+
 };
 
 

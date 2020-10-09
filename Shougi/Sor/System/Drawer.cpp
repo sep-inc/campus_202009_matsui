@@ -3,27 +3,29 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <Windows.h>
 
 
 //!初期化関数
 void Drawer::Init()
 {
 	//!不変的なもの
-	char m_frame_buffer[GAME_HEIGHT][GAME_WIDTH][BYTE] =
+	char m_frame_buffer[GAME_HEIGHT][GAME_WIDTH][FONT_BYTE] =
 	{
-	   "　 "," "  ," a ",  " ",  " b "," ",  " c "," "," d "," ",
-	   " 　","┏ ","━ ","┳ ","━ ","┳ ","━ ","┳ ","━ ","┓ ",
-	   " 0 ","┃ ","　", "┃ ","　", "┃ ","　", "┃ ","　", "┃ ",
-	   " 　","┣ ","━ ","╋ ","━ ","╋ ","━ ","╋ ","━ ","┫ ",
-	   " 1 ","┃ ","　", "┃ ","　", "┃ ","　", "┃ ","　", "┃ ",
-	   " 　","┣ ","━ ","╋ ","━ ","╋ ","━ ","╋ ","━ ","┫ ",
-	   " 2 ","┃ ","　", "┃ ","　", "┃ ","　", "┃ ","　", "┃ ",
-	   "   ","┣ ","━ ","╋ ","━ ","╋ ","━ ","╋ ","━ ","┫ ",
-	   " 3 ","┃ ","　", "┃ ","　", "┃ ","　", "┃ ","  ", "┃ ",
-	   "   ","┣ ","━ ","╋ ","━ ","╋ ","━ ","╋ ","━ ","┫ ",
-	   " 4 ","┃ ","　", "┃ ","　", "┃ ","　", "┃ ","　", "┃ ",
-	   " 　","┗ ","━ ","┻ ","━ ","┻ ","━ ","┻ ","━ ","┛ ",
+	   "　 "," "  ,"   ",  " ",  "   "," ",  "   "," ","   "," ",
+	   " 　","┌ ","─ ","┬ ","─ ","┬ ","─ ","┬ ","─ ","┐ ",
+	   "   ","│ ","　", "│ ","　", "│ ","　", "│ ","　", "│ ",
+	   " 　","├ ","─ ","┼ ","─ ","┼ ","─ ","┼ ","─ ","┤ ",
+	   "   ","│ ","　", "│ ","　", "│ ","　", "│ ","　", "│ ",
+	   " 　","├ ","─ ","┼ ","─ ","┼ ","─ ","┼ ","─ ","┤ ",
+	   "   ","│ ","　", "│ ","　", "│ ","　", "│ ","　", "│ ",
+	   " 　","├ ","─ ","┼ ","─ ","┼ ","─ ","┼ ","─ ","┤ ",
+	   "   ","│ ","　", "│ ","　", "│ ","　", "│ ","  ", "│ ",
+	   " 　","├ ","─ ","┼ ","─ ","┼ ","─ ","┼ ","─ ","┤ ",
+	   "   ","│ ","　", "│ ","　", "│ ","　", "│ ","　", "│ ",
+	   " 　","└ ","─ ","┴ ","─ ","┴ ","─ ","┴ ","─ ","┘ ",
 	};
+
 
 	//!描画配列とクリア用配列に代入
 	memcpy(&m_draw_buffer, &m_frame_buffer, sizeof(m_frame_buffer));
@@ -31,14 +33,9 @@ void Drawer::Init()
 }
 
 //!クリア関数
-void Drawer::SetUpBuffer(Vec pos_, const char* font_)
+void Drawer::SetUpBuffer(Vec2 pos_, const char* font_)
 {
-	Vec pos = pos_;
-
-	pos.x = pos.x * 2 + 2;
-	pos.y = pos.y * 2 + 2;
-
-	strcpy_s(m_draw_buffer[pos.y][pos.x].kind, BYTE, font_);
+	strcpy_s(m_draw_buffer[pos_.y][pos_.x].kind, FONT_BYTE, font_);
 }
 
 //!描画関数
@@ -54,9 +51,22 @@ void Drawer::Draw()
 	}
 }
 
+void Drawer::SetCursorPos(int x, int y)
+{
+	HANDLE hCons = GetStdHandle(STD_OUTPUT_HANDLE);
+	COORD pos;
+	pos.X = x;
+	pos.Y = y;
+	SetConsoleCursorPosition(hCons, pos);
+}
+
+
 //!描画配列クリア関数
 void Drawer::Clear()
 {
 	memcpy(m_draw_buffer, m_clear_buffer, sizeof(m_clear_buffer));
 	system("cls");
+	SetCursorPos(0, 0);
+
 }
+

@@ -122,6 +122,39 @@ void Inputter::InputFont()
     }
 }
 
+//!矢印キー入力
+void Inputter::InputArrowKey()
+{ 
+    char key = 0; //!入力値保存
+    m_mount = Vec2(0, 0); //!移動量保存
+    m_decision = false;  //!決定フラグ
+    m_cancel = false;    //!キャンセルフラグ
+
+    key = _getch();  //!入力待ち
+
+    //!矢印キーが押された場合
+    if (key == 0xFFFFFFE0)
+    {
+        key = _getch();
+
+        if (key == 0x48) { m_mount.y = -1; }       //!↑
+        else if (key == 0x50) { m_mount.y = 1; }   //!↓
+        else if (key == 0x4B) { m_mount.x = -1; }  //!←
+        else if (key == 0x4D) { m_mount.x = 1; }   //!→
+    }
+    //!Spaceキーが押された場合
+    else if (key == ' ')
+    {
+        m_decision = true;   //!決定フラグtrue
+        m_mount = Vec2(0, 0);  //!移動量を0にする
+    }
+    //!キャンセルボタンが押された場合
+    else if (key == 'r')
+    {
+        m_cancel = true;
+    }
+}
+
 
 //!終了待ち関数 
 void Inputter::InputEnd()

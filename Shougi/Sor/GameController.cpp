@@ -28,6 +28,10 @@ void GameController::Update()
 //!初期化関数
 void GameController::Init()
 {
+	m_cursor = new Cursor;
+
+	m_board = new Board();  //!インスタンス化
+
 	m_player[FIRST] = new Myself(FIRST);  //!インスタンス化
 	m_player[SECOND] = new Enemy(SECOND);  //!インスタンス化
 
@@ -36,10 +40,7 @@ void GameController::Init()
 	m_piece[GOLDGENERAL] = new PieceGoldgeneral;  //!金
 	m_piece[PAWN] = new PiecePawn;                //!歩
 
-	m_bord = new Bord();  //!インスタンス化
-
-	
-	m_bord->Init();    //盤クラス初期化
+	m_board->Init();    //盤クラス初期化
 
 	//!次のステップへ
 	m_step = STEP_UPDATE;
@@ -52,13 +53,11 @@ void GameController::ObjectUpdate()
 	{
 	case GameController::FIRST_TURN:     //!先手
 		printf("先手の番です。\n");
-		m_player[FIRST]->Update(m_bord, m_piece);  //!プレイヤーの更新処理
-		m_turn = SECOND_TURN;
+		m_player[FIRST]->Update(m_piece);  //!プレイヤーの更新処理
 		break;
 	case GameController::SECOND_TURN:    //!後手
 		printf("後手の番です。\n");
-		m_player[SECOND]->Update(m_bord, m_piece);  //!プレイヤーの更新処理
-		m_turn = FIRST_TURN;
+		m_player[SECOND]->Update(m_piece);  //!プレイヤーの更新処理
 		break;
 	default:
 		break;
@@ -68,20 +67,20 @@ void GameController::ObjectUpdate()
 //!描画情報代入関数
 void GameController::SetUpDrawBuffer()
 {
-	m_bord->SetUpDrawBuffer(m_piece);  //!盤の情報を描画配列に代入
+	m_board->SetUpDrawBuffer(m_piece, m_cursor);  //!盤の情報を描画配列に代入
 }
 
 //!終了判定関数
 bool GameController::Judgment()
 {
 	//!プレイヤーの結果を受け取る
-	if (m_player[FIRST]->Judgment(m_bord) == true || m_player[SECOND]->Judgment(m_bord) == true)
+	if (m_player[FIRST]->Judgment(m_board) == true || m_player[SECOND]->Judgment(m_board) == true)
 	{
 		//!続けるかどうか
 		if (g_inputter.InputContinue() == true)
 		{
 			m_turn = FIRST_TURN;  //!先手のターンに戻す
-			m_bord->Reset();       //!盤クラス初期化
+			m_board->Reset();       //!盤クラス初期化
 			g_drawer.Clear();	  //!描画配列クリア
 			SetUpDrawBuffer();    //!描画配列に盤情報代入
 			g_drawer.Draw();      //!描画(終了後一度描画しないと見た目上終了しているように見えないため)
@@ -102,5 +101,17 @@ void GameController::Delete()
 {
 	delete m_player[FIRST];
 	delete m_player[SECOND];
-	delete m_bord;
+	delete m_board;
+	delete m_cursor;
+
+	for (int i = 0; i < PIECE_NUM; i++)
+	{
+		delete m_piece[i];
+	}
+}
+
+//!プレイヤーターン変更関数
+void GameController::SetNextTurn(PLAYER_TURN turn_)
+{
+	m_turn = turn_;
 }

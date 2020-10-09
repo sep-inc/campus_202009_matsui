@@ -3,7 +3,11 @@
 #include "../Vec.h"
 #include "../Definition.h"
 
-#define BYTE 4
+#define FONT_BYTE 4  //!文字サイズ
+
+#define FRAME_X 2 //!フレームが盤上をとるサイズ
+#define FRAME_Y 2 //!フレームが盤上をとるサイズ
+
 
 /**
 *@clss   描画クラス
@@ -27,7 +31,7 @@ public:
     * @param (font_) 表示する形
     * @detail 描画座標にオブジェクト情報代入
     */
-    void SetUpBuffer(Vec pos_, const char* font_);
+    void SetUpBuffer(Vec2 pos_, const char* font_);
 
     /**
     * @brief  描画関数
@@ -40,7 +44,7 @@ public:
      */
     void Clear();
 
-
+    void SetCursorPos(int x, int y);
 private:
     struct DrawBuffer
     {

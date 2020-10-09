@@ -12,10 +12,34 @@
 Enemy::Enemy(PLAYER_TYPE player_)
 {
 	m_my_player_type = player_; //!自分が誰かを代入
+	m_board = g_game_controller.GetBoradPoint();
 }
 
+//!更新処理
+void Enemy::Update(Piece* piece_[])
+{
+	//!移動させる駒を選び直す時用にループする
+	while (true)
+	{
+		//!移動させる駒選択
+		MoveSourceSelect();
+
+		//!移動先入力
+		if (NextMoveSelect(piece_) == true)
+		{
+			break;  //!移動先が移動できるならループを抜ける
+		}
+	}
+
+	//!移動
+	Move(m_board);
+	g_game_controller.SetNextTurn(GameController::FIRST_TURN);
+
+}
+
+
 //!移動元入力
-void Enemy::MoveSourceSelect(Bord* bord_)
+void Enemy::MoveSourceSelect()
 {
 	//!移動させる駒が見つからない場合もう選びなおすためループする
 	while (true)
@@ -32,7 +56,7 @@ void Enemy::MoveSourceSelect(Bord* bord_)
 		}
 
 		//!ランダムで選ばれた駒の座標を問い合わせ
-		m_now_pos = bord_->SearchPiecePos(m_piece_type, m_my_player_type, pawn_pos_x);
+		m_now_pos = m_board->SearchPiecePos(m_piece_type, m_my_player_type, pawn_pos_x);
 
 		//!座標が見つかった場合
 		if (m_now_pos.x >= 0 && m_now_pos.y >= 0)
@@ -44,7 +68,7 @@ void Enemy::MoveSourceSelect(Bord* bord_)
 }
 
 //!移動先入力
-bool Enemy::NextMoveSelect(Bord* bord_, Piece* piece_[])
+bool Enemy::NextMoveSelect(Piece* piece_[])
 {
 	__int8 m_reset_counter = 0;   //!移動先変更時用
 
@@ -52,25 +76,20 @@ bool Enemy::NextMoveSelect(Bord* bord_, Piece* piece_[])
 	{
 		NextPos(); //!移動先選択
 
-		m_player_type = bord_->SearchPlayer(m_next_pos.x, m_next_pos.y);  //!移動先の駒が誰の駒か判別
+		m_player_type = m_board->SearchPlayer(m_next_pos);  //!移動先の駒が誰の駒か判別
 
 		//!移動先に自分の駒があった時はもう一度入力させる
 		if (m_player_type != m_my_player_type)
 		{
-
-			/////////////////////////////////
-			//!前にswich文で分けていた箇所//
-			////////////////////////////////
-
 			//!駒クラスで移動でpiece.SearchMovきるか判断させる
 			if (piece_[m_piece_type]->SearchMove(m_now_pos, m_next_pos, m_my_player_type) == true)
 			{
-				m_reset_counter = 0;
-				return true;
+				m_reset_counter = 0;  
+				return true;    //!移動できるならtrue
 			}
 		}
 
-		m_reset_counter++;   //!残り検索できる回数を減らす
+		m_reset_counter++;   //!検索できる残り回数を減らす
 
 		//!一定数以上移動先が決まらなかった場合移動させる駒を変更する
 		if (m_reset_counter >= RESET_NUM)

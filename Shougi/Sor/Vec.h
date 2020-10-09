@@ -6,18 +6,18 @@
 
 #define VEC_SIZE __int8
 
-struct Vec
+struct Vec2
 {
 	VEC_SIZE x;
 	VEC_SIZE y;
 
-	Vec()
+	Vec2()
 	{
 		x = 0;
 		y = 0;
 	}
 
-	Vec(VEC_SIZE x_, VEC_SIZE y_)
+	Vec2(VEC_SIZE x_, VEC_SIZE y_)
 	{
 		x = x_;
 		y = y_;
