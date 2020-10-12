@@ -2,12 +2,12 @@
 #include "../Definition.h"
 #include "../Entity.h"
 
-//!コンストラクタ
-Cursor::Cursor()
+//!初期化
+void Cursor::Init()
 {
-	//!初期化
-	m_pos = Vec2(0, 0);
-	m_decision = false;
+	m_pos = Vec2(0, 3);   //!座標
+	m_decision = false;   //!決定したかどうかのフラグ
+	m_display_timer = 0;        //!表示させる時間
 }
 
 //!移動関数
@@ -46,12 +46,24 @@ void Cursor::SetUpDrawCursor()
 	Vec2 pos = m_pos;
 
 	//!フレーム分座標を直す
-	pos.x = pos.x * FRAME_X + FRAME_X;
-	pos.y = pos.y * FRAME_Y + FRAME_Y;
+	pos.x = pos.x * FRAME_X + 1;
+	pos.y = pos.y * FRAME_Y + 1;
 
-	g_drawer.SetUpBuffer(Vec2(pos.x, pos.y - 1), "━ ");
-	g_drawer.SetUpBuffer(Vec2(pos.x, pos.y + 1), "━ ");
-	g_drawer.SetUpBuffer(Vec2(pos.x - 1, pos.y), "┃ ");
-	g_drawer.SetUpBuffer(Vec2(pos.x + 1, pos.y), "┃ ");
+	m_display_timer++;  //!表示時間加算
 
+	//!表示中
+	if (m_display_timer <= DISPLAY_TIME)
+	{
+		g_drawer.SetUpBuffer(Vec2(pos.x, pos.y - 1), "━ ");
+		g_drawer.SetUpBuffer(Vec2(pos.x, pos.y + 1), "━ ");
+		g_drawer.SetUpBuffer(Vec2(pos.x - 1, pos.y), "┃ ");
+		g_drawer.SetUpBuffer(Vec2(pos.x + 1, pos.y), "┃ ");
+	}
+	
+	//!非表示中
+	if (m_display_timer == NONE_DISPLAY_TIME)
+	{
+		m_display_timer = 0;
+	}
+	
 }

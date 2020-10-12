@@ -20,18 +20,20 @@ public:
     ~Drawer() {}
 
     /**
-     * @brief  初期化関数
-     * @detail メンバ変数の初期化
-     */
-    void Init();
-
-    /**
     * @brief  Object描画座標変換関数
     * @param (pos_) Objectの座標
     * @param (font_) 表示する形
     * @detail 描画座標にオブジェクト情報代入
     */
     void SetUpBuffer(Vec2 pos_, const char* font_);
+
+    /**
+     * @brief クリア配列代入関数
+     * @param (kind_) 配列の先頭アドレス
+     * @param (size_) 渡すサイズ
+     * @detail クリア配列に不変的なものを代入
+     */
+    void SetUpClearBuffer(const void* kind_, int size_);
 
     /**
     * @brief  描画関数
@@ -44,7 +46,7 @@ public:
      */
     void Clear();
 
-    void SetCursorPos(int x, int y);
+    //void SetCursorPos(int x, int y);
 private:
     struct DrawBuffer
     {

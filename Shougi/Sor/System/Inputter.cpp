@@ -130,7 +130,11 @@ void Inputter::InputArrowKey()
     m_decision = false;  //!決定フラグ
     m_cancel = false;    //!キャンセルフラグ
 
-    key = _getch();  //!入力待ち
+    if (_kbhit())
+    {
+        key = _getch();  //!入力待ち
+    }
+
 
     //!矢印キーが押された場合
     if (key == 0xFFFFFFE0)

@@ -12,6 +12,70 @@ Board::Board()
 //!初期化関数
 void Board::Init()
 {
+	//!不変的なもの
+	char m_board_buffer[GAME_HEIGHT][GAME_WIDTH][4];
+
+	//!外枠を除いた枠線を代入
+	for (int y = 0; y < GAME_HEIGHT; y++)
+	{
+		for (int x = 0; x < GAME_WIDTH; x++)
+		{
+			if (y % 2 == 0)
+			{
+				if (x % 2 == 0)
+				{
+					strcpy_s(m_board_buffer[y][x], FONT_BYTE, "┼ ");
+				}
+				else
+				{
+					strcpy_s(m_board_buffer[y][x], FONT_BYTE, "─ ");
+				}
+			}
+			else
+			{
+				if (x % 2 == 0)
+				{
+					strcpy_s(m_board_buffer[y][x], FONT_BYTE, "│ ");
+				}
+				else
+				{
+					strcpy_s(m_board_buffer[y][x], FONT_BYTE, "　");
+				}
+			}
+
+		}
+	}
+	
+	//!x軸方向の外枠線を代入
+	for (int y = 0; y < GAME_HEIGHT; y++)
+	{
+		if (y % 2 == 0)
+		{
+			strcpy_s(m_board_buffer[y][0], FONT_BYTE, "├ ");
+			strcpy_s(m_board_buffer[y][GAME_WIDTH - 1], FONT_BYTE, "┤ ");
+		}
+	}
+
+	//!y軸方向の外枠線を代入
+	for (int x = 0; x < GAME_WIDTH; x++)
+	{
+		if (x % 2 == 0)
+		{
+			strcpy_s(m_board_buffer[0][x], FONT_BYTE, "┬ ");
+			strcpy_s(m_board_buffer[GAME_HEIGHT - 1][x], FONT_BYTE, "┴ ");
+		}
+	}
+
+	//!上下左右の外枠線を代入
+	strcpy_s(m_board_buffer[0][0], FONT_BYTE, "┌ ");
+	strcpy_s(m_board_buffer[0][GAME_WIDTH - 1], FONT_BYTE, "┐ ");
+	strcpy_s(m_board_buffer[GAME_HEIGHT - 1][0], FONT_BYTE, "└ ");
+	strcpy_s(m_board_buffer[GAME_HEIGHT - 1][GAME_WIDTH - 1], FONT_BYTE, "┘ ");
+
+	//!描画配列クリア用に代入
+	g_drawer.SetUpClearBuffer(m_board_buffer,sizeof(m_board_buffer));
+
+
 	//!初期配置コピー用
 	BoardInfo map[BORD_HEIGHT][BORD_WIDTH] =
 	{
@@ -81,8 +145,9 @@ Vec2 Board::SearchPiecePos(PIECE_TYPE object_, PLAYER_TYPE player_,__int8 pawn_n
 }
 
 //!描画配列代入関数
-void Board::SetUpDrawBuffer(Piece* piece_[], Cursor* cursor_)
+void Board::SetUpDrawBuffer(Piece* piece_[])
 {
+
 	for (int y = 0; y < BORD_HEIGHT; y++)
 	{
 		for (int x = 0; x < BORD_WIDTH; x++)
@@ -95,8 +160,6 @@ void Board::SetUpDrawBuffer(Piece* piece_[], Cursor* cursor_)
 			}
 		}
 	}
-
-	cursor_->SetUpDrawCursor();
 }
 
 //!リセット関数

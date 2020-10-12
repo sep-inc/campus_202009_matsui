@@ -62,7 +62,7 @@ public:
 	 * @brief  描画配列代入関数
 	 * @detail 描画配列に情報を送る
 	 */
-	void SetUpDrawBuffer(Piece* piece_[], Cursor* cursor_);
+	void SetUpDrawBuffer(Piece* piece_[]);
 
 	/**
 	 * @brief  リセット関数
@@ -87,9 +87,12 @@ private:
 	BoardInfo m_board_info[BORD_HEIGHT][BORD_WIDTH];
 	BoardInfo m_board_clear[BORD_HEIGHT][BORD_WIDTH];
 
+
+
 	Vec2 m_source_pos;     //!移動元の座標保存用
 
 	PLAYER_TYPE m_winner; //!勝利判定
+
 };
 
 #endif

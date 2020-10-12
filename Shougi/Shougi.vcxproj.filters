@@ -53,6 +53,9 @@
     <ClCompile Include="Sor\Object\Board.cpp">
       <Filter>Object</Filter>
     </ClCompile>
+    <ClCompile Include="Sor\System\FPS.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sor\Vec.h" />
@@ -94,6 +97,9 @@
     </ClInclude>
     <ClInclude Include="Sor\Object\Board.h">
       <Filter>Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\System\FPS.h">
+      <Filter>System</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

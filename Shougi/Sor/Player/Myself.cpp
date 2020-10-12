@@ -6,6 +6,8 @@
 #include "../Object/Piece_Goldgeneral.h"
 #include "../Object/Piece_Pawn.h"
 #include <stdio.h>
+#include <stdlib.h>
+
 
 //!コンストラクタ
 Myself::Myself(PLAYER_TYPE player_)
@@ -32,22 +34,27 @@ void Myself::Update(Piece* piece_[])
 		}
 		break;
 	case Myself::SelectNext_Step: //!移動先選択 
-
 		//!移動先が決まったかどうか
 		if (NextMoveSelect(piece_) == true) 
 		{
+			system("cls"); //!文字が残らないように消す
+
 			m_step = Move_Step; //!移動へ　
 		}
 		//!移動させる駒を変更する場合
 		else if (re_sorce_input == true)
 		{
+			system("cls"); //!文字が残らないように消す
+
 			m_step = SelectSorce_Step; //!移動元選択へ
 			re_sorce_input = false;
 		}
+
 		break;
 	case Myself::Move_Step:   
 		//!移動
 		Move(m_board);
+
 		m_step = SelectSorce_Step;  //!移動元選択に戻す
 		g_game_controller.SetNextTurn(GameController::SECOND_TURN);  //!敵の駒移動ターンに移る
 		break; 
@@ -70,10 +77,12 @@ bool Myself::MoveSourceSelect()
 	{
 		SearchBord(m_board, m_now_pos);   //!指定箇所問い合わせ
 
+
 	    //!指定した場所に何も無かった場合。または相手の駒だった場合、またはキャンセルボタンが押されたとき																								 //!もし選んだ場所に駒がなかったら、また選んだ駒が自分の駒でない場合
 		if(m_piece_type == BLANK || m_player_type != m_my_player_type
 			|| g_inputter.GetSelectCancel() == true)
 		{
+
 			if (m_piece_type == BLANK)
 			{
 				printf("そこには何もありません。もう一度選んでください\n");

@@ -24,8 +24,8 @@ enum PLAYER_TYPE
     NONE           //!空
 };
 
-#define GAME_WIDTH 10    //!全体の横幅
-#define GAME_HEIGHT 12   //!全体の縦幅
+#define GAME_WIDTH 9   //!全体の横幅
+#define GAME_HEIGHT 11   //!全体の縦幅
 
 #define MOVE_MAX_X 3     //!駒の動ける最大範囲範囲
 #define MOVE_MAX_Y 4     //!駒の動ける最大範囲範囲

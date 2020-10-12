@@ -192,6 +192,10 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="Sor\System\FPS.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="Sor\System\Inputter.cpp">
       <SubType>
       </SubType>
@@ -244,6 +248,10 @@
     </ClInclude>
     <ClInclude Include="Sor\Player\Player.h" />
     <ClInclude Include="Sor\System\Drawer.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Sor\System\FPS.h">
       <SubType>
       </SubType>
     </ClInclude>

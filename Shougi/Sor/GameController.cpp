@@ -40,7 +40,8 @@ void GameController::Init()
 	m_piece[GOLDGENERAL] = new PieceGoldgeneral;  //!金
 	m_piece[PAWN] = new PiecePawn;                //!歩
 
-	m_board->Init();    //盤クラス初期化
+	m_cursor->Init();  //!カーソル初期化
+	m_board->Init();   //盤クラス初期化
 
 	//!次のステップへ
 	m_step = STEP_UPDATE;
@@ -52,11 +53,10 @@ void GameController::ObjectUpdate()
 	switch (m_turn)
 	{
 	case GameController::FIRST_TURN:     //!先手
-		printf("先手の番です。\n");
+		printf("先手は手前です\n");
 		m_player[FIRST]->Update(m_piece);  //!プレイヤーの更新処理
 		break;
 	case GameController::SECOND_TURN:    //!後手
-		printf("後手の番です。\n");
 		m_player[SECOND]->Update(m_piece);  //!プレイヤーの更新処理
 		break;
 	default:
@@ -67,7 +67,8 @@ void GameController::ObjectUpdate()
 //!描画情報代入関数
 void GameController::SetUpDrawBuffer()
 {
-	m_board->SetUpDrawBuffer(m_piece, m_cursor);  //!盤の情報を描画配列に代入
+	m_board->SetUpDrawBuffer(m_piece);  //!盤の情報を描画配列に代入
+	m_cursor->SetUpDrawCursor(); 
 }
 
 //!終了判定関数
@@ -80,7 +81,8 @@ bool GameController::Judgment()
 		if (g_inputter.InputContinue() == true)
 		{
 			m_turn = FIRST_TURN;  //!先手のターンに戻す
-			m_board->Reset();       //!盤クラス初期化
+			m_cursor->Init();     //!カーソル初期化 
+			m_board->Reset();     //!盤クラス初期化
 			g_drawer.Clear();	  //!描画配列クリア
 			SetUpDrawBuffer();    //!描画配列に盤情報代入
 			g_drawer.Draw();      //!描画(終了後一度描画しないと見た目上終了しているように見えないため)

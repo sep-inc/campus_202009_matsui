@@ -2,6 +2,7 @@
 #define ENTITY_H_
 #include "System/Drawer.h"
 #include "System/Inputter.h"
+#include "System/FPS.h"
 #include "GameController.h"
 #include "Object/Piece.h"
 #include "Object/Piece_King.h"
@@ -15,6 +16,7 @@
 
 extern Drawer g_drawer;      //!描画クラス
 extern Inputter g_inputter;  //!入力クラス
+extern Fps g_fps;
 extern GameController g_game_controller;        //!駒クラス
 
 

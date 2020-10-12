@@ -41,8 +41,8 @@ bool Piece::SearchMove(Vec2 center_pos_, Vec2 input_pos_, PLAYER_TYPE player_typ
 //!駒表示判別関数
 void Piece::DrawPiece(PLAYER_TYPE player_type_, Vec2 pos_)
 {
-	pos_.x = pos_.x * FRAME_X + FRAME_X;
-	pos_.y = pos_.y * FRAME_Y + FRAME_Y;
+	pos_.x = pos_.x * FRAME_X + 1;
+	pos_.y = pos_.y * FRAME_Y + 1;
 
 	//!先手の場合
 	if (player_type_ == FIRST)

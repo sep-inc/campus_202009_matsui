@@ -6,13 +6,13 @@
 
 int main()
 {
-	g_drawer.Init();  //!描画クラス初期化
-
+	//!乱数テーブル初期化
 	srand((unsigned)time(NULL));
 
 	while (true)
 	{
-		//!Updateを呼ぶ
+		g_fps.TimeBaseLoopExecuter();  //!フレーム時間測定開始
+
 		g_game_controller.Update();       //!ゲームクラスステップ処理
 
 		g_drawer.Clear();                     //!描画配列クリア
@@ -28,6 +28,9 @@ int main()
 			g_game_controller.Delete(); //!解放処理
 			break;
 		}
+
+		g_fps.TimeAdjustment();	 //!フレーム固定関数
+
 	}
 
 	return 1;
