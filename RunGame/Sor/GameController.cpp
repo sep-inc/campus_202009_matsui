@@ -40,13 +40,17 @@ void GameController::ObjectUpdate()
 		return;
 	}
 
-	m_map->Update(); //!マップ
+	//!プレイヤーが移動したら
+	if (m_player->GetPlayerInfo().m_move == true)
+	{
+		m_map->Update(); //!マップ
+	}
 }
 
 //!描画情報代入関数
 void GameController::SetUpDrawBuffer()
 {
-	m_map->SetUpBuffer();//!マップ
+	m_map->SetUpBuffer();    //!マップ
 	m_player->SetUpBuffer(); //!プレイヤー
 }
 
@@ -81,3 +85,9 @@ void GameController::Delete()
 	delete m_map;
 
 }
+
+//Vec GameController::GetMapPos()
+//{
+//	//Vec map_pos = m_map->GroundPos(m_player->GetPlayerInfo().m_next_pos);
+//	return Vec;
+//}

@@ -2,22 +2,27 @@
 #define MAP_H_
 #include "../Utility/Vec.h"
 #include "../Definition.h"
+#include "MapData.h"
+/**
+*@clss   マップクラス
+*/
 
 #define ROAD_MAX 300     //!駒の動ける最大範囲範囲
 
-#define LAND_TIME_MAX 5  //!生成間隔の最大
-#define LAND_TIME_MIN 1	 //!生成間隔の最大
+#define LAND_TIME_MAX 5  //!生成間隔の最大値
+#define LAND_TIME_MIN 1	 //!生成間隔の最小値
 
 #define LAND_WALL_HEIGHT_MAX 4 //!壁の高さの最大値
 
 #define IMMUTABLE_FLOOR_MAX 5  //!平地の高さ
 
-class Player;  //!前方宣言
+#define DRAW_RANGE (GAME_WIDTH - 1) //!描画時に見えるマップの範囲
+
 
 class Map
 {
 public:
-	Map();
+	Map() {}
 	~Map() {}
 
 	/**
@@ -59,7 +64,7 @@ public:
    　* @brief  指定箇所検索関数
 	 * @detail 指定されたX座標の一番上にある床の高さを返す
    　*/
-	Vec GroundPos(Vec pos_);
+	//Vec GroundPos(Vec pos_);
 
 	/**
 	 * @brief  描画情報代入関数
@@ -72,16 +77,16 @@ public:
      */
 	bool GetGoal() { return m_goal; }
 
-private:
-	Player* m_player;  //!プレイヤーアドレス保存用
+	
 
+protected:
 	//!マップ配列情報
-	struct MapBufferInfo
-	{
-		char kind[4];
-	};
+	//struct MapBuffer
+	//{
+	//	char kind[4];
+	//};
 
-	MapBufferInfo m_map_buffer[GAME_HEIGHT][GAME_WIDTH];  //!マップ配列
+	//MapBuffer m_map[GAME_HEIGHT][GAME_WIDTH];  //!マップ配列
 
 	//!マップ情報
 	struct MapInfo
@@ -94,12 +99,10 @@ private:
 
 		unsigned __int16 m_road_counter;  //!進んだ歩数
 
-
 	}m_map_info;
 	
 	bool m_goal;  //!ゴールフラグ
 
 };
-
 
 #endif

@@ -36,6 +36,9 @@
     <ClCompile Include="Sor\System\FPS.cpp">
       <Filter>System</Filter>
     </ClCompile>
+    <ClCompile Include="Sor\Object\MapData.cpp">
+      <Filter>Object</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sor\System\Drawer.h">
@@ -61,6 +64,9 @@
     </ClInclude>
     <ClInclude Include="Sor\System\FPS.h">
       <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\Object\MapData.h">
+      <Filter>Object</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

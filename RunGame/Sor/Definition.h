@@ -9,5 +9,6 @@
 #define GAME_WIDTH 12    //!全体の横幅
 #define GAME_HEIGHT 9   //!全体の縦幅
 
+#define PLAYER_POS_X 1  //!プレイヤーのX座標の位置(マップと相互参照が起こらないようにするため)
 
 #endif

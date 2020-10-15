@@ -2,8 +2,6 @@
 #define DRAWER_H_
 #include "../Utility/Vec.h"
 #include "../Definition.h"
-
-
 /**
 *@clss   描画クラス
 *@brief  各オブジェクトの情報をもとに描画する

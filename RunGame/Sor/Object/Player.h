@@ -1,8 +1,11 @@
 ﻿#ifndef PLAYER_H_
 #define PLAYER_H_
 #include "../Utility/Vec.h"
-
-class Map;
+#include "Map.h"
+#include "MapData.h"
+/**
+*@clss   プレイヤークラス
+*/
 
 class Player
 {
@@ -53,8 +56,6 @@ public:
 	void SetUpBuffer();
 
 private:
-	Map* m_map;  //!マップのアドレス保存用
-	
 	//!プレイヤー情報構造体
 	struct PlayerInfo
 	{

@@ -2,23 +2,13 @@
 
 EdgeInfo Collision::m_edge_info[2];
 
-bool Collision::UnderCollision(Vec player_pos_, Vec rect_pos_,__int8 player_height_)
+//!辺と辺の当たり判定
+bool Collision::EdgeCollision(Vec player_pos_, Vec rect_pos_, __int8 player_height_, __int8 player_width_, __int8 rect_height_, __int8 rect_width_, EdgeType type)
 {
-	if (player_pos_.y + player_height_ >= rect_pos_.y)
-	{
-		return true;
-	}
-	else
-	{
-		return false;
-	}
-}
-
-bool Collision::RectCollision(Vec player_pos_, Vec rect_pos_, __int8 player_height_, __int8 player_width_, __int8 rect_height_, __int8 rect_width_, EdgeType type)
-{
+	//!選んだ辺の当たり判定を行う
 	switch (type)
 	{
-	case TOP:
+	case TOP:   //!上辺
 		m_edge_info[0].top = player_pos_.y;
 		m_edge_info[1].bottom = rect_pos_.y + rect_height_;
 
@@ -27,7 +17,7 @@ bool Collision::RectCollision(Vec player_pos_, Vec rect_pos_, __int8 player_heig
 			return true;
 		}
 		break;
-	case BOTTOM:
+	case BOTTOM: //!下辺
 		m_edge_info[0].bottom = player_pos_.y + player_height_;
 		m_edge_info[1].top = rect_pos_.y;
 
@@ -37,7 +27,7 @@ bool Collision::RectCollision(Vec player_pos_, Vec rect_pos_, __int8 player_heig
 		}
 
 		break;
-	case LEFT:
+	case LEFT: //!左辺
 		m_edge_info[0].left = player_pos_.x;
 		m_edge_info[1].right = rect_pos_.x + rect_width_;
 
@@ -47,7 +37,7 @@ bool Collision::RectCollision(Vec player_pos_, Vec rect_pos_, __int8 player_heig
 		}
 
 		break;
-	case RIGHT:
+	case RIGHT: //!右辺
 		m_edge_info[0].right = player_pos_.x + player_width_;
 		m_edge_info[1].left = rect_pos_.x;
 

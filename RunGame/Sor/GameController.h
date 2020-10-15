@@ -4,6 +4,7 @@
 #include "Object/Map.h"
 #include "Definition.h"
 
+
 class GameController
 {
 public:
@@ -49,6 +50,7 @@ public:
 	//!各オブジェクトのアドレスのGetter
 	Map* GetMapPoint() { return m_map; }
 	Player* GetPlayerPoint() { return m_player; }
+	
 
 
 private:
@@ -61,6 +63,8 @@ private:
 
 	Player* m_player;  //!プレイヤー
 	Map* m_map;        //!マップ
+	
+
 };
 
 
