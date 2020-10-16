@@ -22,6 +22,12 @@ public:
     bool InputJumpKey();
 
     /**
+     * @brief  ゲーム開始入力待ち関数
+     * @detail 指定キーが押されたらゲームを始める
+     */
+    bool InputStart();
+
+    /**
      * @brief  ctrl+c入力関数
      * @detail ctrl+cが押されたときにゲームを終了する
      */
@@ -33,7 +39,7 @@ public:
      */
     bool InputContinue();
 
-    bool GetEndKey() { return m_end; }
+    const bool GetEndKey() { return m_end; }
 
 private:
     bool m_end;  //!ESC時終了フラグ

@@ -34,7 +34,7 @@ void MapData::SetMapPosBuffer(int x_, int y_, MapBufferInfo buffer_)
 }
 
 //!指定箇所検索関数
-Vec MapData::GroundPos(Vec pos_)
+const Vec MapData::GroundPos(Vec pos_)
 {
 	//!指定されたX座標の一番上にある床の座標を返す
 	for (int y = 0; y < GAME_HEIGHT; y++)

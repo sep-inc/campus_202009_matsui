@@ -1,12 +1,14 @@
-﻿#include "Map.h"
+﻿#include "MapManager.h"
+#include "MapData.h"
 #include "../Entity.h"
+#include "../Definition.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
 #include <random>
 
 //!初期化関数
-void Map::Init()
+void MapManager::Init()
 {
 	//!初期状態のマップ
 	char m_frame_buffer[GAME_HEIGHT][GAME_WIDTH][FONT_BYTE_] =
@@ -37,7 +39,7 @@ void Map::Init()
 }
 
 //!更新関数
-void Map::Update()
+void MapManager::Update()
 {
 	CreateMap();  //!マップ生成関数
 
@@ -47,7 +49,7 @@ void Map::Update()
 }
 
 //!マップ生成関数
-void Map::CreateMap()
+void MapManager::CreateMap()
 {
 	//!プレイヤーがゴール手前に来ていない場合
 	if (m_map_info.m_road_counter <= ROAD_MAX - DRAW_RANGE + PLAYER_POS_X)
@@ -103,7 +105,7 @@ void Map::CreateMap()
 	
 }
 //!道更新関数
-void Map::MoveLoad()
+void MapManager::MoveLoad()
 {
 	//!道を1マスずらす
 	for (int y = 0; y < GAME_HEIGHT; y++)
@@ -116,7 +118,7 @@ void Map::MoveLoad()
 }
 
 //!進行距離カウント関数
-void Map::MoveCount()
+void MapManager::MoveCount()
 {
 	m_map_info.m_road_counter++;  //!歩数をカウント
 
@@ -133,17 +135,21 @@ void Map::MoveCount()
 }
 
 //!結果表示関数
-void Map::ResultDraw()
+void MapManager::ResultDraw()
 {
 	if (m_goal == true)
 	{
 		printf("ゴール！       \n");
 	}
+	else
+	{
+		printf("ゲームオーバー       \n");
+	}
 	printf("結果%dマス進んだ\n", m_map_info.m_road_counter);
 }
 
 //!描画情報代入関数
-void Map::SetUpBuffer()
+void MapManager::SetUpBuffer()
 {
 	for (int y = 0; y < GAME_HEIGHT; y++)
 	{

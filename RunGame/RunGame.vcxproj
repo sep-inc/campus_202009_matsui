@@ -151,7 +151,7 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="Sor\Object\Map.cpp">
+    <ClCompile Include="Sor\Object\MapManager.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -193,7 +193,7 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="Sor\Object\Map.h">
+    <ClInclude Include="Sor\Object\MapManager.h">
       <SubType>
       </SubType>
     </ClInclude>

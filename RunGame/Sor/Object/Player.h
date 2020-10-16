@@ -1,8 +1,6 @@
 ﻿#ifndef PLAYER_H_
 #define PLAYER_H_
 #include "../Utility/Vec.h"
-#include "Map.h"
-#include "MapData.h"
 /**
 *@clss   プレイヤークラス
 */

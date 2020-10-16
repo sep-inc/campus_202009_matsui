@@ -25,9 +25,6 @@
     <ClCompile Include="Sor\Object\Player.cpp">
       <Filter>Object</Filter>
     </ClCompile>
-    <ClCompile Include="Sor\Object\Map.cpp">
-      <Filter>Object</Filter>
-    </ClCompile>
     <ClCompile Include="Sor\Utility\Collision.cpp">
       <Filter>Utility</Filter>
     </ClCompile>
@@ -39,6 +36,9 @@
     <ClCompile Include="Sor\Object\MapData.cpp">
       <Filter>Object</Filter>
     </ClCompile>
+    <ClCompile Include="Sor\Object\MapManager.cpp">
+      <Filter>Object</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sor\System\Drawer.h">
@@ -48,9 +48,6 @@
       <Filter>System</Filter>
     </ClInclude>
     <ClInclude Include="Sor\Object\Player.h">
-      <Filter>Object</Filter>
-    </ClInclude>
-    <ClInclude Include="Sor\Object\Map.h">
       <Filter>Object</Filter>
     </ClInclude>
     <ClInclude Include="Sor\Utility\Collision.h">
@@ -66,6 +63,9 @@
       <Filter>System</Filter>
     </ClInclude>
     <ClInclude Include="Sor\Object\MapData.h">
+      <Filter>Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\Object\MapManager.h">
       <Filter>Object</Filter>
     </ClInclude>
   </ItemGroup>

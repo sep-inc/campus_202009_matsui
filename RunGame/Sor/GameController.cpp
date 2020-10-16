@@ -20,13 +20,17 @@ void GameController::Update()
 //!初期化関数
 void GameController::Init()
 {
-	m_map = new Map;       //!マップ
+	m_map = new MapManager;       //!マップ
 	m_player = new Player; //!プレイヤー
 
 	m_map->Init();
 	m_player->Init();
 
-	m_step = STEP_UPDATE;
+	//!スタートキーが入力されたら
+	if (g_inputter.InputStart() == true)
+	{
+		m_step = STEP_UPDATE;
+	}
 }
 
 //!更新処理関数
@@ -72,9 +76,20 @@ bool GameController::Judgment()
 			return false;
 		}
 
+		Delete();
 		return true;
 	}
 
+	return false;
+}
+
+bool GameController::GameEnd()
+{
+	if (g_inputter.GetEndKey() == true)
+	{
+		Delete();
+		return true;
+	}
 	return false;
 }
 
@@ -85,9 +100,3 @@ void GameController::Delete()
 	delete m_map;
 
 }
-
-//Vec GameController::GetMapPos()
-//{
-//	//Vec map_pos = m_map->GroundPos(m_player->GetPlayerInfo().m_next_pos);
-//	return Vec;
-//}

@@ -53,14 +53,14 @@ public:
    　* @brief  指定箇所検索関数
 	 * @detail 指定されたX座標の一番上にある床の高さを返す
    　*/
-	Vec GroundPos(Vec pos_);
+	const Vec GroundPos(Vec pos_);
 
 
 	/**
    　* @brief  マップデータGet関数
 	 * @detail 指定座標のマップデータを返す
    　*/
-	MapBufferInfo GetMapBuffer(__int8 x_, __int8 y_) { return m_map_buffer[y_][x_]; }
+	const MapBufferInfo GetMapBuffer(__int8 x_, __int8 y_) { return m_map_buffer[y_][x_]; }
 
 
 };

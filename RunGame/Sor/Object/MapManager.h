@@ -1,8 +1,6 @@
 ﻿#ifndef MAP_H_
 #define MAP_H_
 #include "../Utility/Vec.h"
-#include "../Definition.h"
-#include "MapData.h"
 /**
 *@clss   マップクラス
 */
@@ -19,11 +17,11 @@
 #define DRAW_RANGE (GAME_WIDTH - 1) //!描画時に見えるマップの範囲
 
 
-class Map
+class MapManager
 {
 public:
-	Map() {}
-	~Map() {}
+	MapManager() {}
+	~MapManager() {}
 
 	/**
 	 * @brief  初期化関数
@@ -61,12 +59,6 @@ public:
 	void ResultDraw();
 
 	/**
-   　* @brief  指定箇所検索関数
-	 * @detail 指定されたX座標の一番上にある床の高さを返す
-   　*/
-	//Vec GroundPos(Vec pos_);
-
-	/**
 	 * @brief  描画情報代入関数
 	 * @detail マップ情報を描画配列に代入
 	 */
@@ -80,16 +72,8 @@ public:
 	
 
 protected:
-	//!マップ配列情報
-	//struct MapBuffer
-	//{
-	//	char kind[4];
-	//};
-
-	//MapBuffer m_map[GAME_HEIGHT][GAME_WIDTH];  //!マップ配列
-
-	//!マップ情報
-	struct MapInfo
+	//!マップ更新時に必要な変数
+	struct MapManagerInfo
 	{
 		__int8 m_wall_width;   //!壁(1マス)の横幅
 		__int8 m_wall_height;  //!壁(1マス)の縦幅

@@ -1,6 +1,8 @@
 ﻿#include "Player.h"
+#include "MapData.h"
 #include "../Entity.h"
 #include "../Utility/Collision.h"
+
 
 const __int8 Player::PlayerInfo::m_width = 1;	    //!縦幅
 const __int8 Player::PlayerInfo::m_height = 2;      //!横幅
@@ -53,7 +55,8 @@ void Player::Jump()
 	if (g_inputter.InputJumpKey() == true)
 	{
 		//!床に脚がついているなら
-		if (Collision::EdgeCollision(m_player_info.m_pos, MapData::Instance()->GroundPos(m_player_info.m_pos), m_player_info.m_height, m_player_info.m_width, 1, 1, EdgeType::BOTTOM) == true)
+		if (Collision::EdgeCollision(m_player_info.m_pos, MapData::Instance()->GroundPos(m_player_info.m_pos),
+			m_player_info.m_height, m_player_info.m_width, WALL_SIZE_X, WALL_SIZE_Y, EdgeType::BOTTOM) == true)
 		{
 			m_player_info.m_pos.y -= m_player_info.m_jump_power;  //!ジャンプ
 		}
@@ -66,7 +69,8 @@ void Player::Collision()
 	if (m_player_info.m_move == true)
 	{
 		//!脚が地面についている場合
-		if (Collision::EdgeCollision(m_player_info.m_pos, MapData::Instance()->GroundPos(m_player_info.m_next_pos), m_player_info.m_height, m_player_info.m_width, 1, 1, EdgeType::BOTTOM) == true)
+		if (Collision::EdgeCollision(m_player_info.m_pos, MapData::Instance()->GroundPos(m_player_info.m_next_pos),
+			m_player_info.m_height, m_player_info.m_width, WALL_SIZE_X, WALL_SIZE_Y, EdgeType::BOTTOM) == true)
 		{
 			m_player_info.m_pos.y -= m_player_info.m_gravity;  //!垂直抗力が働く
 		}
@@ -83,7 +87,8 @@ void Player::DethJudgment()
 	//!壁に当たって死んだかどうか調べる
 	if (m_player_info.m_pos.y + m_player_info.m_height > MapData::Instance()->GroundPos(m_player_info.m_next_pos).y)
 	{
-		if (Collision::EdgeCollision(m_player_info.m_pos, MapData::Instance()->GroundPos(m_player_info.m_next_pos), m_player_info.m_height, m_player_info.m_width, 1, 1, EdgeType::BOTTOM) == true)
+		if (Collision::EdgeCollision(m_player_info.m_pos, MapData::Instance()->GroundPos(m_player_info.m_next_pos),
+			m_player_info.m_height, m_player_info.m_width, WALL_SIZE_X, WALL_SIZE_Y, EdgeType::BOTTOM) == true)
 		{
 			m_player_info.m_deth = true;
 		}

@@ -1,7 +1,7 @@
 ﻿#ifndef GAMECONTROLLER_H_
 #define GAMECONTROLLER_H_
 #include "Object/Player.h"
-#include "Object/Map.h"
+#include "Object/MapManager.h"
 #include "Definition.h"
 
 
@@ -43,12 +43,18 @@ public:
 	bool Judgment();
 
 	/**
+	 * @brief  強制終了関数
+	 * @detail ESCが押されたときにゲームを終了する
+	 */
+	bool GameEnd();
+
+	/**
 	 * @brief 解放処理関数
 	 */
 	void Delete();
 
 	//!各オブジェクトのアドレスのGetter
-	Map* GetMapPoint() { return m_map; }
+	MapManager* GetMapPoint() { return m_map; }
 	Player* GetPlayerPoint() { return m_player; }
 	
 
@@ -62,7 +68,7 @@ private:
 	}m_step;
 
 	Player* m_player;  //!プレイヤー
-	Map* m_map;        //!マップ
+	MapManager* m_map;        //!マップ
 	
 
 };

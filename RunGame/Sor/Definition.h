@@ -11,4 +11,9 @@
 
 #define PLAYER_POS_X 1  //!プレイヤーのX座標の位置(マップと相互参照が起こらないようにするため)
 
+#define WALL_SIZE_X 1  //!1マスの横幅
+#define WALL_SIZE_Y 1  //!1マスの縦幅
+
+
+
 #endif
