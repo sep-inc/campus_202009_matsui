@@ -15,7 +15,7 @@ int main()
 		g_drawer.Draw();               //!描画
 
 		//!もしもゲームが終わった時
-		if (g_game_controller.GameEndJudgment() == true || g_game_controller.GameEnd() == true)
+		if (g_game_controller.GameEnd() == true)
 		{
 			break;
 		}
