@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Object">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="System">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Object\Player">
+      <UniqueIdentifier>{ba5aa7b7-6758-4e8f-80a6-e8f5dc483e9e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utility">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Sor\Main.cpp" />
+    <ClCompile Include="Sor\System\Drawer.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\System\Inputter.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\Entity.cpp" />
+    <ClCompile Include="Sor\GameController.cpp" />
+    <ClCompile Include="Sor\Object\Player\TronEnemy.cpp">
+      <Filter>Object\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\Object\Player\TronMyself.cpp">
+      <Filter>Object\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\Object\Player\TronPlayer.cpp">
+      <Filter>Object\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\Object\TronStage.cpp">
+      <Filter>Object</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Sor\System\Drawer.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\System\Inputter.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\Utility\Vec.h">
+      <Filter>Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\Definition.h" />
+    <ClInclude Include="Sor\GameController.h" />
+    <ClInclude Include="Sor\Entity.h" />
+    <ClInclude Include="Sor\Object\Player\TronEnemy.h">
+      <Filter>Object\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\Object\Player\TronMyself.h">
+      <Filter>Object\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\Object\Player\TronPlayer.h">
+      <Filter>Object\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\Object\TronStage.h">
+      <Filter>Object</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

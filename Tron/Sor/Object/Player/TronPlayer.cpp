@@ -1,0 +1,67 @@
+﻿#include "TronPlayer.h"
+#include "../../Entity.h"
+#include <stdio.h>
+
+//!更新関数
+void TronPlayer::Update()
+{
+	SelectDirection(); //!移動方向選択
+
+	//!移動先が死ぬ場所かどうか(死んでいる場合は移動しない)
+	if (m_deth == false)
+	{
+		Move();  //!移動
+	}
+
+	//!ステージに移動後の情報を送る
+	m_stage->SetUpStageBuffer(m_pos, m_player_type);
+}
+
+//!移動関数
+void TronPlayer::Move()
+{
+	m_pos.x += m_direction.x;  
+	m_pos.y += m_direction.y;
+}
+
+//!当たり判定
+bool TronPlayer::Collision()
+{
+	Vec pos = m_pos;   //!座標保存用
+	pos.x += m_direction.x;
+	pos.y += m_direction.y;
+
+	//!移動先で何かにぶつかっているかどうか
+	if (m_stage->SearchObjectType(pos) != NONE)
+	{
+		return true;
+	}
+
+	return false;
+}
+
+//!描画配列代入関数
+void TronPlayer::SetUpDrawBuffer()
+{
+	g_drawer.SetUpBuffer(m_pos, m_draw_font);
+}
+
+//!結果表示関数
+void TronPlayer::ResultDraw()
+{
+	if (m_deth == true)
+	{
+		switch (m_player_type)
+		{
+		case MYSELF:
+			printf("あなたの負けです。\n");
+			break;
+		case ENEMY:
+			printf("あなたの勝ちです。\n");
+			break;
+		default:
+			break;
+		}
+	}
+}
+
