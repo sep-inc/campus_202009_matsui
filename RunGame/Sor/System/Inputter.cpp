@@ -54,6 +54,12 @@ bool Inputter::InputStart()
                 system("cls");
                 return true;
             }
+            else if (input_ == ESC)
+            {
+                m_end = true;
+                system("cls");
+                return true;
+            }
         }
 
         //!強制終了
