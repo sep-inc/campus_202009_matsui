@@ -9,7 +9,7 @@ class GameController
 {
 public:
 	GameController();
-	~GameController() {}
+	~GameController();
 
 
 	/**

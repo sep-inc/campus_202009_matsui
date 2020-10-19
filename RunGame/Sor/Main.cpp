@@ -18,7 +18,7 @@ int main()
 
 		g_drawer.Draw();               //!描画
 
-	    //!ESCが押されたとき
+	    //!ESCが押されたとき(どのタイミングでも)
 		if (g_game_controller.GameEnd() == true)
 		{
 			break;

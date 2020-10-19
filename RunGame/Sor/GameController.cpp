@@ -5,10 +5,12 @@
 GameController::GameController()
 {
 	m_step = STEP_INIT; //!ステップ初期化
+}
 
-	//!インスタンス化
-	m_map = new MapManager;  //!マップ
-	m_player = new Player;   //!プレイヤー
+//!デストラクタ
+GameController::~GameController()
+{
+	Delete(); //!解放処理
 }
 
 //!ステップ処理関数
@@ -40,6 +42,10 @@ void GameController::Update()
 //!初期化関数
 void GameController::Init()
 {
+	//!インスタンス化
+	if (m_map == nullptr) { m_map = new MapManager; }//!マップ
+	if (m_player == nullptr) { m_player = new Player; }//!プレイヤー
+
 	m_map->Init();    //!マップ
 	m_player->Init(); //!プレイヤー
 
@@ -80,7 +86,7 @@ void GameController::GameResult()
 	//!結果表示
 	m_map->ResultDraw();
 
-	//!続けるかどうか
+	//!続けるかどうか(続けるボタンが押されるまでは結果を表示)
 	if (g_inputter.InputContinue() == true)
 	{
 		//!続けるなら初期化ステップへ
@@ -88,15 +94,15 @@ void GameController::GameResult()
 	}
 }
 
-//!強制終了関数
+//!ゲーム終了関数
 bool GameController::GameEnd()
 {
 	//!ESCキーが押されたら
 	if (g_inputter.GetESCKey() == true)
 	{
-		Delete();  //!解放処理
 		return true;
 	}
+
 	return false;
 }
 
