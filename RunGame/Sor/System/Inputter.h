@@ -25,13 +25,13 @@ public:
      * @brief  ゲーム開始入力待ち関数
      * @detail 指定キーが押されたらゲームを始める
      */
-    bool InputStart();
+    bool InputStartKey();
 
     /**
-     * @brief  ctrl+c入力関数
+     * @brief  ctrl+c(強制終了)入力関数
      * @detail ctrl+cが押されたときにゲームを終了する
      */
-    void InputEnd();
+    void InputForcedKey();
 
     /**
      * @brief  コンティニュー関数
@@ -39,10 +39,14 @@ public:
      */
     bool InputContinue();
 
-    const bool GetEndKey() { return m_end; }
+    /**
+     * @brief  ESC入力関数
+     * @return ESCキーどうかを判定
+     */
+    const bool GetESCKey() { return m_esc; }
 
 private:
-    bool m_end;  //!ESC時終了フラグ
+    bool m_esc;  //!ESC時終了フラグ
 };
 
 #endif

@@ -11,6 +11,7 @@ bool Inputter::InputJumpKey()
 
     char input_; //!入力保存用
 
+    //!入力判定(入力があったら通る)
     if (_kbhit())
     {
         input_ = _getch(); //!入力
@@ -20,20 +21,21 @@ bool Inputter::InputJumpKey()
         {
             return true;
         }
+        //!ESCが押された場合
         else if (input_ == ESC)
         {
-            m_end = true;
+            m_esc = true;  //!ESCフラグをtrue
         }
     }
 
-    InputEnd();
+    InputForcedKey();  //!強制終了判定
 
     return false;
 
 }
 
 //!ゲーム開始入力待ち関数
-bool Inputter::InputStart()
+bool Inputter::InputStartKey()
 {
     printf("Enterでゲームスタート\n");
     printf("操作方法：Rキーでジャンプ\n");
@@ -42,35 +44,33 @@ bool Inputter::InputStart()
 
     char input_; //!入力保存用
 
-    while (true)
+    //!コンティニュー関数と似ているが、押すキーが違った場合if文が変わってくるため分ける
+    if (_kbhit())
     {
-        if (_kbhit())
+        input_ = _getch(); //!入力
+
+        //!Enterキーなら
+        if (input_ == ENTER)
         {
-            input_ = _getch(); //!入力
-
-            //!Enterキーなら
-            if (input_ == ENTER)
-            {
-                system("cls");
-                return true;
-            }
-            else if (input_ == ESC)
-            {
-                m_end = true;
-                system("cls");
-                return true;
-            }
+            system("cls");
+            return true;
         }
-
-        //!強制終了
-        InputEnd();
+        else if (input_ == ESC)
+        {
+            m_esc = true;
+            system("cls");
+            return true;
+        }
     }
+
+    //!強制終了
+    InputForcedKey();
 
     return false;
 }
 
 //!終了待ち関数 
-void Inputter::InputEnd()
+void Inputter::InputForcedKey()
 {
     //!ctrl+cが押されたとき
     signal(SIGINT, SIG_DFL); //!終了
@@ -83,15 +83,29 @@ bool Inputter::InputContinue()
 
     printf("まだ続けますか?\n");
     printf("続けるならEnter\n");
+    printf("終わるならESC、もしくはctr+c\n");
 
-    input_ = _getch(); //!入力
 
-    //!Enterキーなら
-    if (input_ == ENTER)
+    if (_kbhit())
     {
-        system("cls");
-        return true;
+        input_ = _getch(); //!入力
+
+        //!Enterキーなら
+        if (input_ == ENTER)
+        {
+            system("cls");
+            return true;
+        }
+        else if (input_ == ESC)
+        {
+            m_esc = true;
+            system("cls");
+            return false;
+        }
     }
+
+    //!強制終了
+    InputForcedKey();
 
     return false;
 }

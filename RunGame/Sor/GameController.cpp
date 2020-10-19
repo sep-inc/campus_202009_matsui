@@ -1,6 +1,16 @@
 ﻿#include "GameController.h"
 #include "Entity.h"
 
+//!コンストラクタ
+GameController::GameController()
+{
+	m_step = STEP_INIT; //!ステップ初期化
+
+	//!インスタンス化
+	m_map = new MapManager;  //!マップ
+	m_player = new Player;   //!プレイヤー
+}
+
 //!ステップ処理関数
 void GameController::Update()
 {
@@ -9,8 +19,18 @@ void GameController::Update()
 	case GameController::STEP_INIT:     //!初期化
 		Init();
 		break;
-	case GameController::STEP_UPDATE:   //!更新
+	case GameController::STEP_START:    //!開始待ち
+	    //!スタートキーが入力されたら
+		if (g_inputter.InputStartKey() == true)
+		{
+			m_step = STEP_UPDATE;
+		}
+		break;
+	case GameController::STEP_UPDATE:  //!更新
 		ObjectUpdate();
+		break;
+	case GameController::STEP_RESULT:  //!結果
+		GameResult();
 		break;
 	default:
 		break;
@@ -20,17 +40,11 @@ void GameController::Update()
 //!初期化関数
 void GameController::Init()
 {
-	m_map = new MapManager;       //!マップ
-	m_player = new Player; //!プレイヤー
+	m_map->Init();    //!マップ
+	m_player->Init(); //!プレイヤー
 
-	m_map->Init();
-	m_player->Init();
-
-	//!スタートキーが入力されたら
-	if (g_inputter.InputStart() == true)
-	{
-		m_step = STEP_UPDATE;
-	}
+	//!開始待ちステップへ
+	m_step = STEP_START;
 }
 
 //!更新処理関数
@@ -39,8 +53,10 @@ void GameController::ObjectUpdate()
 	m_player->Update();  //!プレイヤー
 	
 	//!プレイヤーが死んだ場合マップの更新は行わないようにする
-	if (m_player->GetPlayerInfo().m_deth == true)
+	if (m_player->GetPlayerInfo().m_deth == true || m_map->GetGoal() == true)
 	{
+		//!結果ステップへ
+		m_step = STEP_RESULT;
 		return;
 	}
 
@@ -59,35 +75,26 @@ void GameController::SetUpDrawBuffer()
 }
 
 //!終了判定関数
-bool GameController::Judgment()
+void GameController::GameResult()
 {
-	//!プレイヤーが死んだとき、もしくはゴールした時
-	if (m_player->GetPlayerInfo().m_deth == true || m_map->GetGoal() == true)
+	//!結果表示
+	m_map->ResultDraw();
+
+	//!続けるかどうか
+	if (g_inputter.InputContinue() == true)
 	{
-		//!結果表示
-		m_map->ResultDraw();
-
-		//!続けるかどうか
-		if (g_inputter.InputContinue() == true)
-		{
-			//!続けるなら初期化ステップへ
-			m_step = STEP_INIT;
-
-			return false;
-		}
-
-		Delete();
-		return true;
+		//!続けるなら初期化ステップへ
+		m_step = STEP_INIT;
 	}
-
-	return false;
 }
 
+//!強制終了関数
 bool GameController::GameEnd()
 {
-	if (g_inputter.GetEndKey() == true)
+	//!ESCキーが押されたら
+	if (g_inputter.GetESCKey() == true)
 	{
-		Delete();
+		Delete();  //!解放処理
 		return true;
 	}
 	return false;
@@ -98,5 +105,4 @@ void GameController::Delete()
 {
 	delete m_player;
 	delete m_map;
-
 }

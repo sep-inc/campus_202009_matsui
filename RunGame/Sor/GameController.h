@@ -8,7 +8,7 @@
 class GameController
 {
 public:
-	GameController() {}
+	GameController();
 	~GameController() {}
 
 
@@ -40,7 +40,7 @@ public:
 	 * @brief  勝敗判定関数
 	 * @detail 先手か後手のどちらが勝ったかを判定する
 	 */
-	bool Judgment();
+	void GameResult();
 
 	/**
 	 * @brief  強制終了関数
@@ -63,8 +63,10 @@ private:
 	//!ステップの種類
 	enum STEP
 	{
-		STEP_INIT,       //!初期化
-		STEP_UPDATE,  //!先手の番
+		STEP_INIT,    //!初期化
+		STEP_START,   //!開始待ち
+		STEP_UPDATE,  //!更新
+		STEP_RESULT,  //!結果
 	}m_step;
 
 	Player* m_player;  //!プレイヤー

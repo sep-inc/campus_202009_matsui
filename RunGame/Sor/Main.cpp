@@ -18,8 +18,8 @@ int main()
 
 		g_drawer.Draw();               //!描画
 
-	    //!もしもゲームが終わった時
-		if (g_game_controller.Judgment() == true || g_game_controller.GameEnd() == true)
+	    //!ESCが押されたとき
+		if (g_game_controller.GameEnd() == true)
 		{
 			break;
 		}
