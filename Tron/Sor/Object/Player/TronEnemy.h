@@ -1,11 +1,13 @@
 ﻿#ifndef TRON_ENEMY_H_
 #define TRON_ENEMY_H_
 #include "TronPlayer.h"
-
 /**
 *@clss   敵クラス
 *@brief  移動方向をランダムで決め動く
 */
+
+#define ENEMY_INIT_POS_X 16 //!初期X座標
+#define ENEMY_INIT_POS_Y 5	//!初期Y座標
 
 //!移動方向の種類
 enum DIRECTION_TYPE
@@ -21,14 +23,8 @@ enum DIRECTION_TYPE
 class TronEnemy :public TronPlayer
 {
 public:
-	TronEnemy() {}
+	TronEnemy();
 	~TronEnemy() {}
-
-	/**
-	 * @brief  初期化関数
-	 * @detail メンバ変数初期化
-	 */
-	virtual void Init()override;
 
 	/**
 	 * @brief  移動方向選択関数

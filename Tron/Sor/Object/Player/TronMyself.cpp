@@ -1,19 +1,11 @@
 ﻿#include "TronMyself.h"
 #include "../../Entity.h"
 
-//!初期化関数
-void TornMyself::Init()
+//!コンストラクタ(初期化が共通でないものを初期化)
+TornMyself::TornMyself()
 {
-	m_stage = g_game_controller.GetStagePoint();  //!ステージクラスのアドレス代入
-	m_pos = Vec(2, 5);       //!座標
-	m_direction = Vec(0, 0); //!移動方向ベクトル
 	m_player_type = MYSELF;  //!自分のプレイヤータイプ
 	m_draw_font = "■";      //!描画スタイル
-	m_deth = false;          //!死亡フラグ
-	m_move = false;          //!移動フラグ
-
-	//!ステージクラスに情報を送る
-	m_stage->SetUpStageBuffer(m_pos, m_player_type);
 }
 
 //!移動方向選択関数

@@ -2,16 +2,11 @@
 #include "../../Entity.h"
 #include <random>
 
-//!初期化関数
-void TronEnemy::Init()
+//!コンストラクタ(初期化が共通でないものを初期化)
+TronEnemy::TronEnemy()
 {
-	m_stage = g_game_controller.GetStagePoint();  //!ステージクラスのアドレスを代入
-	m_pos = Vec(16, 5);      //!座標
-	m_direction = Vec(0, 0); //!移動方向ベクトル
-	m_player_type = ENEMY;   //!自分のプレイヤータイプ
-	m_draw_font = "□";      //!描画スタイル
-	m_deth = false;          //!死亡フラグ
-	m_move = false;          //!移動フラグ
+	m_player_type = ENEMY;  //!自分のプレイヤータイプ
+	m_draw_font = "□";            //!描画スタイル
 
 	//!移動方向情報
 	for (int i = 0; i < DIRECTION_MAX; i++)
@@ -22,10 +17,6 @@ void TronEnemy::Init()
 
 	//!移動方向初期化
 	m_rand_direction = static_cast<DIRECTION_TYPE>(rand() % DIRECTION_MAX);
-
-
-	//!ステージクラスに情報を送る
-	m_stage->SetUpStageBuffer(m_pos, m_player_type);
 }
 
 //!移動方向選択関数
@@ -47,6 +38,12 @@ void TronEnemy::SelectDirection()
 			if (memcmp(m_direction_array, m_none_array, DIRECTION_MAX) == 0)
 			{
 				m_deth = true;  //!死亡フラグtrue
+
+				//!方向配列を元に戻す
+				for (int i = 0; i < DIRECTION_MAX; i++)
+				{
+					m_direction_array[i] = i;
+				}
 				break;
 			}
 		}

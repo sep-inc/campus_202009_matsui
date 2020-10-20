@@ -50,10 +50,7 @@ public:
 	/**
 	 * @brief 解放処理関数
 	 */
-	void Delete();
-
-	//!各オブジェクトのアドレスのGetter
-	TronStage* GetStagePoint() { return m_stage; }
+	void Delete();	
 
 private:
 	//!ステップの種類

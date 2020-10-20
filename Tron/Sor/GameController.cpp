@@ -9,9 +9,10 @@ GameController::GameController()
 	m_step = STEP_INIT;
 }
 
+//!デストラクタ
 GameController::~GameController()
 {
-	Delete();
+	Delete(); //!オブジェクトの解放
 }
 
 //!ステップ処理関数
@@ -52,8 +53,8 @@ void GameController::Init()
 
 	//!初期化
 	m_stage->Init();          
-	m_player[MYSELF]->Init();
-	m_player[ENEMY]->Init();
+	m_player[MYSELF]->Init(Vec(MYSELF_INIT_POS_X, MYSELF_INIT_POS_Y),m_stage);
+	m_player[ENEMY]->Init(Vec(ENEMY_INIT_POS_X, ENEMY_INIT_POS_Y),m_stage);
 
 	//!次のステップへ
 	m_step = STEP_START;
@@ -89,6 +90,8 @@ void GameController::SetUpDrawBuffer()
 void GameController::GameResult()
 {
 	m_player[MYSELF]->ResultDraw();
+	m_player[ENEMY]->ResultDraw();
+
 
 	if (g_inputter.InputContinue() == true)
 	{
@@ -101,6 +104,7 @@ void GameController::GameResult()
 //!強制終了関数
 bool GameController::GameEnd()
 {
+	//!ESCキーが押されたとき
 	if (g_inputter.GetESCKey() == true)
 	{
 		return true;

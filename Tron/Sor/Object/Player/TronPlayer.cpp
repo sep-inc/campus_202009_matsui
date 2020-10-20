@@ -2,6 +2,18 @@
 #include "../../Entity.h"
 #include <stdio.h>
 
+void TronPlayer::Init(Vec pos_,TronStage* p_stage_)
+{
+	m_stage = p_stage_;  //!ステージクラスのアドレス代入
+	m_pos = pos_;       //!座標
+	m_direction = Vec(0, 0); //!移動方向ベクトル
+	m_deth = false;          //!死亡フラグ
+	m_move = false;          //!移動フラグ
+
+	//!ステージクラスに情報を送る
+	m_stage->SetUpStageBuffer(m_pos, m_player_type);
+}
+
 //!更新関数
 void TronPlayer::Update()
 {

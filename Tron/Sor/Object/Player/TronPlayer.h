@@ -20,7 +20,7 @@ public:
 	 * @brief  初期化関数
 	 * @detail メンバ変数初期化
 	 */
-	virtual void Init() = 0;
+	void Init(Vec pos_, TronStage* p_stage_);
 
 	/**
 	 * @brief  更新関数
