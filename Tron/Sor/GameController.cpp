@@ -6,6 +6,17 @@
 //!コンストラクタ
 GameController::GameController()
 {
+	/////////////////////////////
+	//!null初期化(忘れないよう)//
+	/////////////////////////////
+	for (int i = 0; i < PLAYER_MAX; i++)
+	{
+		m_player[i] = nullptr;  //!プレイヤー
+	}
+
+	m_stage = nullptr;        //!マップ
+
+	//!初期化ステップへ
 	m_step = STEP_INIT;
 }
 
@@ -115,9 +126,15 @@ bool GameController::GameEnd()
 //!解放処理
 void GameController::Delete()
 {
+	//!deleteはnullではないのでnullにしておく
 	for (int i = 0; i < PLAYER_MAX; i++)
 	{
-		delete m_player[i];
+		delete m_player[i]; 
+		m_player[i] = nullptr;
+
 	}
+
 	delete m_stage;
+	m_stage = nullptr;
+
 }
