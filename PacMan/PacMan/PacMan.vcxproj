@@ -159,7 +159,15 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="Sor\Object\Player\AI\AIController.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="Sor\Object\Player\AI\ChaseAI.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Sor\Object\Player\AI\StopAI.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -209,11 +217,15 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="Sor\Object\Player\AI\AIBase.h">
+    <ClInclude Include="Sor\Object\Player\AI\AIController.h">
       <SubType>
       </SubType>
     </ClInclude>
     <ClInclude Include="Sor\Object\Player\AI\ChaseAI.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Sor\Object\Player\AI\StopAI.h">
       <SubType>
       </SubType>
     </ClInclude>

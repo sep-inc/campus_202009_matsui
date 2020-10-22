@@ -5,11 +5,23 @@
 
 const __int16 PacManEnemy::m_move_maxcount = 30; //!移動までに掛かる時間
 
+//!コンストラクタ
+PacManEnemy::PacManEnemy()
+{
+	m_ai = nullptr;
+}
+
+//!デストラクタ
+PacManEnemy::~PacManEnemy()
+{
+	m_ai->DeleteAI();
+}
 
 //!共通外変数初期化関数
 void PacManEnemy::InitAnother()
 {
-	m_ai_base = new ChaseAI(m_stage);  //!AIインスタンス化
+	
+	if (m_ai == nullptr) { m_ai = new AIController(m_stage); }  //!AIインスタンス化
 
 	m_player_type = ENEMY;   //!自分のオブジェクトタイプ
 	m_draw_font = "＠";		 //!描画文字
@@ -30,6 +42,8 @@ void PacManEnemy::Update()
     //!移動カウントが指定時間を満たしたら
 	if (m_move_counter >= m_move_maxcount)
 	{
+		m_ai->ChangeAI(m_pos);
+
 		//!移動方向選択
 		SelectDirection();
 
@@ -100,7 +114,7 @@ bool PacManEnemy::SearchRange(Vec pos_)
 void PacManEnemy::Move()
 {
 	//!追跡中
-	if (m_ai_base->GetChase() == true)
+	if (m_ai->ChaseMode() == true)
 	{
 		m_move_speed = 3;  //!スピードを上げる
 	}
@@ -120,6 +134,6 @@ void PacManEnemy::SelectDirection()
 {
 	m_sorce_pos = m_pos;  //!移動前の座標保存
 
-	m_direction = m_ai_base->SelectDirection(m_pos); //!移動方向をAIで決める
+	m_direction = m_ai->GetDirection(); //!移動方向をAIで決める
 	
 }

@@ -1,14 +1,14 @@
 ﻿#ifndef CHASE_AI_H_
 #define CHASE_AI_H_
-#include "AIBase.h"
 #include "../../../Utility/Vec2.h"
 #include "../../../Definition.h"
+#include "../../PacManStage.h"
 /**
 *@clss   追跡型AIクラス
 *@brief  壁越しを除く同じ軸上にプレイヤーを見つけたら速度を上げ追跡するAI
 */
 
-class ChaseAI:public AIBase
+class ChaseAI
 {
 public:
 	ChaseAI(PacManStage* stage_);
@@ -16,18 +16,21 @@ public:
 
 	/**
 　   * @brief  プレイヤー捜索関数
+	 * @param (pos_) Enemyの座標
 	 * @detail 壁越しを除く同じ軸上にプレイヤーがいるかどうか調べる
 　   */
 	bool SearchPlayer(Vec pos_);
 
 	/**
 　   * @brief  移動方向選択関数
+	 * @param (pos_) Enemyの座標
 	 * @detail ランダムで移動方向を決める
 　   */
-	virtual Vec SelectDirection(Vec pos_)override;
+	Vec SelectDirection(Vec pos_);
 
 	/**
 　   * @brief  ランダム方向選択関数
+	 * @param (pos_) Enemyの座標
 	 * @detail 追跡以外の場合に行う
 	 * @detail ランダムで移動方向を決める
 　   */
@@ -36,6 +39,8 @@ public:
 
 	/**
 	 * @brief  壁当たり判定関数
+	 * @param (pos_) Enemyの座標
+	 * @param (direction_) 方向ベクトル
 	 * @detail 移動先が壁に当たっているかどうか
 	 */
 	bool CollisionWall(Vec pos_, Vec direction_);
@@ -48,19 +53,24 @@ public:
 
 	/**
      * @brief  後退方向更新関数
+	 * @param (pos_) Enemyの座標
      * @detail 移動方向を更新した際後退の方向も更新する
      */
 	void SetDirection(Vec vec_);
 
-	
+	/**
+　   * @brief  追跡フラグGetter
+　   */
+    bool GetChase() { return m_chase; }
 
 private:
+	PacManStage* m_stage;       //!ステージクラスアドレス保存用
+
+	Vec m_direction;  //!方向ベクトル
 	DIRECTION_TYPE m_rand_direction;          //!選択用移動方向ベクトル
 	__int8 m_direction_array[DIRECTION_MAX];  //!移動可能方向配列
 
-	Vec m_direction;  //!方向ベクトル
-
-	
+	bool m_chase;  //!追跡フラグ
 };
 
 #endif

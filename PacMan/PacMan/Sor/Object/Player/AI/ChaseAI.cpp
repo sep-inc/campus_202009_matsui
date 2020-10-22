@@ -19,6 +19,45 @@ ChaseAI::ChaseAI(PacManStage* stage_)
 }
 
 
+//!移動方向選択関数
+Vec ChaseAI::SelectDirection(Vec pos_)
+{
+	//!追跡範囲にプレイヤーがいる場合
+	if (SearchPlayer(pos_) == true)
+	{
+		//!プレイヤーまでのベクトルを出す
+		m_direction.x -= pos_.x;
+		m_direction.y -= pos_.y;
+
+		//!方向ベクトルを出す
+		if (m_direction.x != 0)
+		{
+			m_direction.x /= abs(m_direction.x);
+		}
+		if (m_direction.y != 0)
+		{
+			m_direction.y /= abs(m_direction.y);
+		}
+
+		//!後退更新
+		SetDirection(m_direction);
+
+		m_chase = true;  //!追跡フラグtrue
+
+		return m_direction;
+
+	}
+	//!プレイヤーが見つかっていない場合
+	else
+	{
+		m_chase = false;
+
+		return RandDirection(pos_);
+	}
+
+	return Vec(0, 0);
+}
+
 //!プレイヤー捜索関数
 bool ChaseAI::SearchPlayer(Vec pos_)
 {
@@ -99,41 +138,6 @@ bool ChaseAI::SearchPlayer(Vec pos_)
 	}
 
 	return false;
-}
-
-//!移動方向選択関数
-Vec ChaseAI::SelectDirection(Vec pos_)
-{
-	//!追跡範囲にプレイヤーがいる場合
-	if (SearchPlayer(pos_) == true)
-	{
-		m_direction.x -= pos_.x;
-		m_direction.y -= pos_.y;
-
-		if (m_direction.x != 0)
-		{
-			m_direction.x /= abs(m_direction.x);
-		}
-		if (m_direction.y != 0)
-		{
-			m_direction.y /= abs(m_direction.y);
-		}
-
-		SetDirection(m_direction);
-
-		m_chase = true;
-
-		return m_direction;
-	}
-	//!プレイヤーが見つかっていない場合
-	else
-	{
-		m_chase = false;
-
-		return RandDirection(pos_);
-	}
-
-	return Vec(0, 0);
 }
 
 //!ランダム方向選択関数

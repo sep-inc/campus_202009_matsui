@@ -51,6 +51,12 @@
     <ClCompile Include="Sor\Object\Player\AI\ChaseAI.cpp">
       <Filter>Object\Player\AI</Filter>
     </ClCompile>
+    <ClCompile Include="Sor\Object\Player\AI\AIController.cpp">
+      <Filter>Object\Player\AI</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\Object\Player\AI\StopAI.cpp">
+      <Filter>Object\Player\AI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sor\Definition.h" />
@@ -83,10 +89,13 @@
     <ClInclude Include="Sor\System\Fps.h">
       <Filter>System</Filter>
     </ClInclude>
-    <ClInclude Include="Sor\Object\Player\AI\AIBase.h">
+    <ClInclude Include="Sor\Object\Player\AI\ChaseAI.h">
       <Filter>Object\Player\AI</Filter>
     </ClInclude>
-    <ClInclude Include="Sor\Object\Player\AI\ChaseAI.h">
+    <ClInclude Include="Sor\Object\Player\AI\AIController.h">
+      <Filter>Object\Player\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\Object\Player\AI\StopAI.h">
       <Filter>Object\Player\AI</Filter>
     </ClInclude>
   </ItemGroup>

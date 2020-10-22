@@ -5,8 +5,12 @@
 
 
 #define ITEM_NUM 5 //!アイテムの数
+
 #define ITEM_RANGE_X 5  //!生成間隔範囲のX軸最大値
 #define ITEM_RANGE_Y 5	//!生成間隔範囲のY軸最大値
+
+#define ITEM_CENTER_X (ITEM_RANGE_X / 2)	 //!生成間隔範囲のX軸中心値
+#define ITEM_CENTER_Y (ITEM_RANGE_Y / 2)	 //!生成間隔範囲のY軸中心値
 
 
 class PacManItem
@@ -17,6 +21,7 @@ public:
 
 	/**
 　   * @brief  初期化関数
+	 * @param (stage_) ステージのアドレス
 	 * @detail メンバ変数の初期化
 　   */
 	void Init(PacManStage* stage_m);
@@ -35,6 +40,7 @@ public:
 
 	/**
 　   * @brief  生成間隔検索関数
+	 * @param (pos_) アイテムの座標
 	 * @detail アイテムの生成範囲の中に他のアイテム、またプレイヤーがあるかどうか
 　   */
 	bool SearchRange(Vec pos_);
@@ -47,6 +53,7 @@ public:
 
 	/**
 　   * @brief  アイテム消去関数
+	 * @param (pos_) アイテムの座標
 	 * @detail プレイヤーがアイテムを取った場合そこに合ったアイテムを消す関数
 　   */
 	void SetLostItem(Vec pos_);

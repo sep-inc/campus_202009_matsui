@@ -13,6 +13,8 @@ public:
 
 	/**
 　   * @brief  初期化関数
+	 * @param (stage_) ステージのアドレス
+　　 * @param (item_) アイテムのアドレス
 	 * @detail メンバ変数の初期化
 　   */
 	void Init(PacManStage* stage_, PacManItem* item_);

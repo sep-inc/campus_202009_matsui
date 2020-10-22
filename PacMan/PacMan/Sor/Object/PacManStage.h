@@ -24,12 +24,16 @@ public:
 
 	/**
 　   * @brief  ステージ情報更新関数
+	 * @param (sorce_pos_) 更新前の座標
+	 * @param (pos_) 更新後の座標
+	 * @param (obje_type_) オブジェクトの種類
 	 * @detail ステージの情報を他のオブジェクトから座標を受け取り更新する
 　   */
 	void SetUpStageBuffer(Vec sorce_pos_, Vec pos_, OBJECT_TYPE obje_type_);
 
 	/**
 　   * @brief  指定箇所検索関数
+	 * @param (pos_) 指定座標
 	 * @detail 指定された場所に何があるか返す
 　   */
 	OBJECT_TYPE SearchObject(Vec pos_);

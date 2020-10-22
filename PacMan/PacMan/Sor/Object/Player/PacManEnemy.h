@@ -1,9 +1,11 @@
 ﻿#ifndef PACMAN_ENEMY_H_
 #define PACMAN_ENEMY_H_
 #include "PacManPlayer.h"
-#include "AI/AIBase.h"
+#include "AI/AIController.h"
+
 
 #define ENEMY_NUM 3 //!敵の数
+
 #define ENEMY_RANGE_X 5  //!生成間隔範囲のX軸最大値
 #define ENEMY_RANGE_Y 5	 //!生成間隔範囲のY軸最大値
 
@@ -15,8 +17,8 @@
 class PacManEnemy :public PacManPlayer
 {
 public:
-	PacManEnemy() {}
-	~PacManEnemy() {}
+	PacManEnemy();
+	~PacManEnemy();
 
 	/**
 　   * @brief  共通外変数初期化関数
@@ -44,6 +46,7 @@ public:
 
 	/**
      * @brief  自分の周り調査関数
+	 * @param (pos_) Enemyの座標
      * @detail 自分の検索範囲内に壁以外何があるか調べる
      */
 	bool SearchRange(Vec pos_);
@@ -57,7 +60,7 @@ public:
 
 
 private:
-	AIBase* m_ai_base;
+	AIController* m_ai;
 
 	__int16 m_move_counter;
 	__int16 m_move_speed;
