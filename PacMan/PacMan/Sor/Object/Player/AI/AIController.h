@@ -16,6 +16,12 @@ public:
 	~AIController() {}
 
 	/**
+　   * @brief  初期化関数(繰り返し)
+	 * @detail コンティニュー後値が残っていると困るメンバ変数の初期化
+　   */
+	void Reset();
+
+	/**
 　   * @brief  AIパターン更新関数
 	 * @param (pos_) Enemyの座標
 	 * @detail 時間経過でAIパターンを切り替える
@@ -43,12 +49,12 @@ protected:
 	ChaseAI* m_chase_ai;  //!追跡
 	StopAI* m_stop_ai;    //!停止
 
-
 	Vec m_direction;  //!方向ベクトル
 
 	__int16 m_change_counter;   //!AI切り替え時間カウンター
-	__int16 m_chase_ai_count;	//!ChaseAI中の時間
-	__int16 m_change_maxcount;	//!StopAIからChaseAIまでの時間
+
+	static const __int16 m_chase_ai_count;	//!ChaseAI中の時間
+	static const __int16 m_change_maxcount;	//!StopAIからChaseAIまでの時間
 
 	bool m_chase;  //!追跡フラグ
 

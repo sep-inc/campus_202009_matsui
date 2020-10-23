@@ -4,7 +4,6 @@
 #include "Object/PacManStage.h"
 #include "Object/PacManItem.h"
 #include "Object/Player/PacManPlayer.h"
-#include "Object/Player/PacManEnemy.h"
 
 
 
@@ -15,8 +14,9 @@ public:
 	~GameController();
 
 	/**
-	 * @brief  初期化関数
+	 * @brief  初期化関数(繰り返し)
 	 * @detail メンバ変数の初期化
+	 * @detail コンティニュー後値が残っていると困るメンバ変数の初期化
 	 */
 	void Init();
 

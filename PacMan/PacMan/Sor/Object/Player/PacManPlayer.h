@@ -8,22 +8,29 @@
 class PacManPlayer
 {
 public:
-	PacManPlayer() {}
+	/**
+　   * @brief  コンストラクタ
+	 * @param (stage_) ステージのアドレス
+　　 * @param (item_) アイテムのアドレス
+　　 * @param (player_type_) プレイヤータイプ(自分がだれかが分かるように)
+　　 * @param (m_font_) 描画スタイル
+　   */
+	PacManPlayer(PacManStage* stage_, PacManItem* item_, OBJECT_TYPE player_type_, const char* m_font_);
 	~PacManPlayer() {}
 
 	/**
-　   * @brief  初期化関数
+　   * @brief  初期化関数(繰り返し)
 	 * @param (stage_) ステージのアドレス
 　　 * @param (item_) アイテムのアドレス
-	 * @detail メンバ変数の初期化
+	 * @detail コンティニュー後値が残っていると困るメンバ変数の初期化
 　   */
-	void Init(PacManStage* stage_, PacManItem* item_);
+	void Reset();
 
 	/**
 　   * @brief  共通外変数初期化関数
 	 * @detail 子クラスで初期化の値が違う変数を初期化する
 　   */
-	virtual void InitAnother() = 0;
+	virtual void ResetAnother() = 0;
 
 	/**
 　   * @brief  更新関数
@@ -54,34 +61,34 @@ public:
 　   */
 	void ResultDraw();
 
-	/**
-	 * @brief  死亡フラグGetter関数
-	 * @detail プレイヤー(EnemyとMyself)が死んだかどうかを返す
-	 */
-	const bool GetDeth() { return m_deth; }
-
-	/**
-	 * @brief  死亡フラグGetter関数
-	 * @detail プレイヤー(EnemyとMyself)が死んだかどうかを返す
-	 */
-	const bool GetClear() { return m_clear; }
-
 protected:
 	PacManStage* m_stage;       //!ステージクラスアドレス保存用
 	PacManItem* m_item;         //!アイテムクラスのアドレス保存用
 
-	OBJECT_TYPE m_player_type;  //!プレイヤータイプ(自分がだれかが分かるように)
+	const OBJECT_TYPE m_player_type;  //!プレイヤータイプ(自分がだれかが分かるように)
 
-	Vec m_pos;           //!座標
-	Vec m_sorce_pos;     //!移動前座標
-
+	Vec m_pos;               //!座標
+	Vec m_sorce_pos;         //!移動前座標
 	Vec m_direction;         //!方向ベクトル
 
 	const char* m_draw_font; //!描画スタイル
-	bool m_deth;	         //!死亡フラグ
-	bool m_clear;	         //!クリアフラグ
 
-	bool m_wall_hit;         //!壁との当たり判定フラグ
+	//!フラグ情報
+	struct FlgInfo
+	{
+		bool m_deth;	         //!死亡フラグ
+		bool m_clear;	         //!クリアフラグ
+		bool m_wall_hit;         //!壁との当たり判定フラグ
+	};
+	
+	FlgInfo m_flg_info;
+
+public:
+	/**
+	 * @brief  各フラグGetter関数
+	 * @detail フラグ構造体の中身を返す
+	 */
+	const FlgInfo GetFlgInfo() { return m_flg_info; }
 };
 
 #endif

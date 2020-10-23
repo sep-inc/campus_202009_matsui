@@ -4,20 +4,23 @@
 #include "Entity.h"
 
 //!コンストラクタ
-GameController::GameController()
+GameController::GameController() :
+	m_stage(nullptr), m_player(nullptr), m_enemy{ nullptr }, m_item(nullptr),
+	m_step(STEP_INIT) //!初期化ステップ
 {
-	//!各オブジェクト初期化
-	m_stage = nullptr;
-	m_player = nullptr;
+	//!各オブジェクトインスタンス化
+	if (m_stage == nullptr) { m_stage = new PacManStage; }
+	if (m_item == nullptr) { m_item = new PacManItem; }
+	if (m_player == nullptr) { m_player = new PacManMyself(m_stage, m_item); }
+
+	//!敵の数分回す
 	for (int i = 0; i < ENEMY_NUM; i++)
 	{
-		m_enemy[i] = nullptr;
+		if (m_enemy[i] == nullptr)
+		{
+			m_enemy[i] = new PacManEnemy(m_stage, m_item);
+		}
 	}
-	m_item = nullptr;
-
-
-	//!初期化ステップへ
-	m_step = STEP_INIT;
 }
 
 //!デストラクタ
@@ -35,7 +38,7 @@ void GameController::Update()
 		Init();
 		break;
 	case GameController::STEP_START:    //!開始待ち
-	//!スタートキーが入力されたら
+	    //!スタートキーが入力されたら
 		if (g_inputter.InputStartKey() == true)
 		{
 			m_step = STEP_UPDATE;
@@ -57,32 +60,13 @@ void GameController::Update()
 //!初期化関数
 void GameController::Init()
 {
-	//!各オブジェクトインスタンス化
-	if (m_stage == nullptr) { m_stage = new PacManStage; }
-	if (m_player == nullptr) { m_player = new PacManMyself; }
-	if (m_item == nullptr) { m_item = new PacManItem; }
+	m_stage->Reset();   //!ステージ
 
-	//!敵の数分回す
-	for (int i = 0; i < ENEMY_NUM; i++)
-	{
-		if (m_enemy[i] == nullptr)
-		{
-			m_enemy[i] = new PacManEnemy;
-		}
-	}
+	m_player->Reset();//!プレイヤー
 
-	
-	m_stage->Init();   //!ステージ
+	for (int i = 0; i < ENEMY_NUM; i++) { m_enemy[i]->Reset(); }	//!敵
 
-	m_player->Init(m_stage, m_item);//!プレイヤー
-
-	//!敵
-	for (int i = 0; i < ENEMY_NUM; i++)
-	{
-		m_enemy[i]->Init(m_stage, m_item);
-	}
-
-	m_item->Init(m_stage);//!アイテム
+	m_item->Reset(m_stage);//!アイテム
 
 	//!次のステップへ
 	m_step = STEP_START;
@@ -102,8 +86,8 @@ void GameController::ObjectUpdate()
 
 	m_item->Update();    //!アイテム
 	
-	//!プレイヤーのどちらかが死亡した時
-	if (m_player->GetDeth() == true || m_player->GetClear() == true)
+	//!プレイヤーが死ぬか、ゲームクリアした時
+	if (m_player->GetFlgInfo().m_clear == true || m_player->GetFlgInfo().m_deth == true)
 	{
 		m_step = STEP_RESULT;
 	}

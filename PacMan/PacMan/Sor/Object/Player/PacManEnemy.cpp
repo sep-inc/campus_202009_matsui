@@ -6,25 +6,23 @@
 const __int16 PacManEnemy::m_move_maxcount = 30; //!移動までに掛かる時間
 
 //!コンストラクタ
-PacManEnemy::PacManEnemy()
+PacManEnemy::PacManEnemy(PacManStage* stage_, PacManItem* item_) :
+	PacManPlayer(stage_, item_, ENEMY, "＠"),
+	m_ai(nullptr)
 {
-	m_ai = nullptr;
+	if (m_ai == nullptr) { m_ai = new AIController(stage_); }  //!AIインスタンス化
 }
 
 //!デストラクタ
 PacManEnemy::~PacManEnemy()
 {
-	m_ai->DeleteAI();
+	m_ai->DeleteAI();  //!AIクラス解放
 }
 
 //!共通外変数初期化関数
-void PacManEnemy::InitAnother()
+void PacManEnemy::ResetAnother()
 {
-	
-	if (m_ai == nullptr) { m_ai = new AIController(m_stage); }  //!AIインスタンス化
-
-	m_player_type = ENEMY;   //!自分のオブジェクトタイプ
-	m_draw_font = "＠";		 //!描画文字
+	m_ai->Reset();  //!AIのパラメーター初期化
 
 	m_move_counter = 0;      //!移動時間加算用
 	m_move_speed = 1;        //!移動速度
@@ -90,8 +88,8 @@ bool PacManEnemy::SearchRange(Vec pos_)
 	{
 		for (int x = 0; x < ENEMY_RANGE_X; x++)
 		{
-			range.x = pos_.x - RANGE_CENTER_X + x;  //!敵座標を中心として範囲の左上を指定
-			range.y = pos_.y - RANGE_CENTER_Y + y;  //!敵座標を中心として範囲の左上を指定
+			range.x = pos_.x - ENEMY_RANGE_CENTER_X + x;  //!敵座標を中心として範囲の左上を指定
+			range.y = pos_.y - ENEMY_RANGE_CENTER_Y + y;  //!敵座標を中心として範囲の左上を指定
 
 			//!ステージ範囲内の座標の場合のみ調べる
 			if (range.x > 0 && range.x < GAME_WIDTH &&

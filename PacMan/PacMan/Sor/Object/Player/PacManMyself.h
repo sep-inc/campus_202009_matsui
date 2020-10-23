@@ -8,14 +8,20 @@
 class PacManMyself :public PacManPlayer
 {
 public:
-	PacManMyself() {}
+	/**
+　   * @brief  コンストラクタ
+	 * @param (stage_) ステージのアドレス
+　　 * @param (item_) アイテムのアドレス
+　   */
+	PacManMyself(PacManStage* stage_, PacManItem* item_);
 	~PacManMyself() {}
 
 	/**
 　   * @brief  共通外変数初期化関数
 	 * @detail 子クラスで初期化の値が違う変数を初期化する
+	 * @detail コンティニュー後値が残っていると困るメンバ変数の初期化 
 　   */
-	virtual void InitAnother()override;
+	virtual void ResetAnother()override;
 
 	/**
 　   * @brief  更新関数
@@ -43,6 +49,10 @@ public:
 
 private:
 	__int8 m_item_counter;
+
+	__int16 m_iput_counter;
+	static const __int16 m_speed_count;
+
 };
 
 #endif

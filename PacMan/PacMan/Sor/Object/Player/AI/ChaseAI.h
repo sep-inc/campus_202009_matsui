@@ -15,6 +15,12 @@ public:
 	~ChaseAI() {}
 
 	/**
+　   * @brief  初期化関数
+	 * @detail コンティニュー後値が残っていると困るメンバ変数の初期化
+　   */
+	void Reset();
+
+	/**
 　   * @brief  プレイヤー捜索関数
 	 * @param (pos_) Enemyの座標
 	 * @detail 壁越しを除く同じ軸上にプレイヤーがいるかどうか調べる

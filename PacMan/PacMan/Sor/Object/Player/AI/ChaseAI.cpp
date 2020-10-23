@@ -2,13 +2,14 @@
 #include <stdlib.h>
 
 //!コンストラクタ
-ChaseAI::ChaseAI(PacManStage* stage_)
-{
-	m_stage = stage_;  //!ステージアドレス取得
+ChaseAI::ChaseAI(PacManStage* stage_) :m_stage(stage_) {} //!ステージアドレス取得
 
+//! 初期化関数
+void ChaseAI::Reset()
+{
 	m_rand_direction = static_cast<DIRECTION_TYPE>(rand() % DIRECTION_MAX);//!選択用移動方向ベクトル
 
-	//!移動可能方向配列初期化
+    //!移動可能方向配列初期化
 	for (int i = 0; i < DIRECTION_MAX; i++)
 	{
 		m_direction_array[i] = i;
@@ -57,6 +58,8 @@ Vec ChaseAI::SelectDirection(Vec pos_)
 
 	return Vec(0, 0);
 }
+
+
 
 //!プレイヤー捜索関数
 bool ChaseAI::SearchPlayer(Vec pos_)

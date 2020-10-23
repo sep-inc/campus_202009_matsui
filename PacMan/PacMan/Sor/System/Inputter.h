@@ -8,7 +8,6 @@
 
 #define ESC 27    //!Esc番号
 #define ENTER 13  //!Enter番号
-#define SPACE 32  //!Enter番号
 
 class Inputter
 {

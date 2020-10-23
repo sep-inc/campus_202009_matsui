@@ -12,9 +12,9 @@ public:
 
 	/**
 　   * @brief  初期化関数
-	 * @detail メンバ変数の初期化
+	 * @detail コンティニュー後値が残っていると困るメンバ変数の初期化
 　   */
-	void Init();
+	void Reset();
 
 	/**
 　   * @brief  描画情報送信関数
@@ -45,7 +45,9 @@ private:
 		OBJECT_TYPE m_obj; //!オブジェクトの種類
 	};
 
-	StageInfo m_stage[GAME_HEIGHT][GAME_WIDTH];
+	StageInfo m_stage[GAME_HEIGHT][GAME_WIDTH];  //!ステージ配列
+
+	static const StageInfo m_stage_copy[GAME_HEIGHT][GAME_WIDTH];   //初期化用ステージ配列
 
 };
 

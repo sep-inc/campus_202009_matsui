@@ -3,7 +3,7 @@
 #include <stdlib.h>
 
 //!初期化関数
-void PacManItem::Init(PacManStage* stage_)
+void PacManItem::Reset(PacManStage* stage_)
 {
 	m_stage = stage_;  //!ステージアドレス取得
 
@@ -71,8 +71,8 @@ bool PacManItem::SearchRange(Vec pos_)
 	{
 		for (int x = 0; x < ITEM_RANGE_X; x++)
 		{
-			range.x = pos_.x - RANGE_CENTER_X + x;  
-			range.y = pos_.y - RANGE_CENTER_Y + y;  
+			range.x = pos_.x - ITEM_RANGE_CENTER_X + x;
+			range.y = pos_.y - ITEM_RANGE_CENTER_Y + y;
 
 			//!座標がステージの範囲内である場合
 			if (range.x > 0 && range.x < GAME_WIDTH &&

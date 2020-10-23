@@ -1,20 +1,23 @@
 ﻿#include "AIController.h"
 
+const __int16 AIController::m_chase_ai_count = 10;  //!ChaseAI中の時間
+const __int16 AIController::m_change_maxcount = 20;	//!StopAIからChaseAIまでの時間
+
 //!コンストラクタ
-AIController::AIController(PacManStage* stage_)
+AIController::AIController(PacManStage* stage_):
+	m_chase_ai(nullptr), m_stop_ai(nullptr)
+{
+	if (m_chase_ai == nullptr) { m_chase_ai = new ChaseAI(stage_); }  //!追跡AI
+	if (m_stop_ai == nullptr) { m_stop_ai = new StopAI(); }           //!停止AI 
+}
+
+//!初期化関数
+void AIController::Reset()
 {
 	m_change_counter = 0;    //!AI切り替え時間カウンター
-	m_chase_ai_count = 10;   //!ChaseAI中の時間
-	m_change_maxcount = 20;  //!StopAIからChaseAIまでの時間
-
 	m_direction = Vec(0, 0);  //!方向ベクトル
 
-	m_chase_ai = nullptr;   //!追跡AI
-	m_stop_ai = nullptr;    //!停止AI
-
-	if (m_chase_ai == nullptr) { m_chase_ai = new ChaseAI(stage_); }
-	if (m_stop_ai == nullptr) { m_stop_ai = new StopAI(); }
-
+	m_chase_ai->Reset();   //!追跡AI初期化
 }
 
 //!AIパターン更新関数

@@ -4,27 +4,32 @@
 #include "AI/AIController.h"
 
 
-#define ENEMY_NUM 3 //!敵の数
 
 #define ENEMY_RANGE_X 5  //!生成間隔範囲のX軸最大値
 #define ENEMY_RANGE_Y 5	 //!生成間隔範囲のY軸最大値
 
-#define RANGE_CENTER_X (ENEMY_RANGE_X / 2)	 //!生成間隔範囲のX軸中心値
-#define RANGE_CENTER_Y (ENEMY_RANGE_Y / 2)	 //!生成間隔範囲のY軸中心値
+#define ENEMY_RANGE_CENTER_X (ENEMY_RANGE_X / 2)	 //!生成間隔範囲のX軸中心値
+#define ENEMY_RANGE_CENTER_Y (ENEMY_RANGE_Y / 2)	 //!生成間隔範囲のY軸中心値
 
 
 
 class PacManEnemy :public PacManPlayer
 {
 public:
-	PacManEnemy();
+	/**
+　   * @brief  コンストラクタ
+	 * @param (stage_) ステージのアドレス
+　　 * @param (item_) アイテムのアドレス
+　   */
+	PacManEnemy(PacManStage* stage_, PacManItem* item_);
 	~PacManEnemy();
 
 	/**
 　   * @brief  共通外変数初期化関数
 	 * @detail 子クラスで初期化の値が違う変数を初期化する
+	 * @detail コンティニュー後値が残っていると困るメンバ変数の初期化
 　   */
-	virtual void InitAnother()override;
+	virtual void ResetAnother()override;
 
 	/**
 　   * @brief  更新関数

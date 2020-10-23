@@ -10,7 +10,11 @@
 #define GAME_WIDTH 13    //!全体の横幅
 #define GAME_HEIGHT 13   //!全体の縦幅
 
-#define PLAYER_MAX 2   //!プレイヤーの数
+#define PLAYER_NUM 2   //!プレイヤーの数
+
+#define ENEMY_NUM 3    //!敵の数
+#define ITEM_NUM 5 //!アイテムの数
+
 
  //1オブジェクトの種類
 enum OBJECT_TYPE

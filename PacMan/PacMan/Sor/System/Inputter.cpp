@@ -4,7 +4,7 @@
 #include <conio.h>
 #include <signal.h>
 
-//!ジャンプキー入力待ち関数
+//!十字キー入力待ち関数
 Vec Inputter::InpuMoveKey()
 {
     printf("十字キーで移動\n");
@@ -16,7 +16,7 @@ Vec Inputter::InpuMoveKey()
     {
         key = _getch();  //!入力待ち
 
-         //!矢印キーが押された場合
+         //!十字キーが押された場合
         if (key == 0xFFFFFFE0)
         {
             key = _getch();
@@ -92,6 +92,7 @@ bool Inputter::InputContinue()
 
     printf("まだ続けますか?\n");
     printf("続けるならEnter\n");
+    printf("終わるならESC、またはctrl+c\n");
 
     if (_kbhit())
     {

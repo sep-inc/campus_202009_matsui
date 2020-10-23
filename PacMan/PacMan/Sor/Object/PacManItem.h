@@ -3,14 +3,11 @@
 #include "../Utility/Vec2.h"
 #include "../Object/PacManStage.h"
 
-
-#define ITEM_NUM 5 //!アイテムの数
-
 #define ITEM_RANGE_X 5  //!生成間隔範囲のX軸最大値
 #define ITEM_RANGE_Y 5	//!生成間隔範囲のY軸最大値
 
-#define ITEM_CENTER_X (ITEM_RANGE_X / 2)	 //!生成間隔範囲のX軸中心値
-#define ITEM_CENTER_Y (ITEM_RANGE_Y / 2)	 //!生成間隔範囲のY軸中心値
+#define ITEM_RANGE_CENTER_X (ITEM_RANGE_X / 2)	 //!生成間隔範囲のX軸中心値
+#define ITEM_RANGE_CENTER_Y (ITEM_RANGE_Y / 2)	 //!生成間隔範囲のY軸中心値
 
 
 class PacManItem
@@ -22,9 +19,9 @@ public:
 	/**
 　   * @brief  初期化関数
 	 * @param (stage_) ステージのアドレス
-	 * @detail メンバ変数の初期化
+	 * @detail コンティニュー後値が残っていると困るメンバ変数の初期化
 　   */
-	void Init(PacManStage* stage_m);
+	void Reset(PacManStage* stage_m);
 
 	/**
 　   * @brief  更新関数
