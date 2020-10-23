@@ -74,7 +74,7 @@ private:
 
 	Vec m_direction;  //!方向ベクトル
 	DIRECTION_TYPE m_rand_direction;          //!選択用移動方向ベクトル
-	__int8 m_direction_array[DIRECTION_MAX];  //!移動可能方向配列
+	__int16 m_direction_array[DIRECTION_MAX];  //!移動可能方向配列
 
 	bool m_chase;  //!追跡フラグ
 };

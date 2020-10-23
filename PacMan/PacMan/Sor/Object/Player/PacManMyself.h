@@ -48,10 +48,10 @@ public:
 	virtual void Move()override;
 
 private:
-	__int8 m_item_counter;
+	__int8 m_item_counter;   //!アイテム取得数
+	__int16 m_iput_timer;	 //!入力間隔時間
 
-	__int16 m_iput_counter;
-	static const __int16 m_speed_count;
+	static const __int16 m_move_possible;  //!移動可能時間
 
 };
 

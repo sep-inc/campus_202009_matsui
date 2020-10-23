@@ -4,8 +4,10 @@
 #include "Object/PacManStage.h"
 #include "Object/PacManItem.h"
 #include "Object/Player/PacManPlayer.h"
-
-
+/**
+*@clss   ゲーム管理クラス
+*@brief  各オブジェクトの処理を管理する
+*/
 
 class GameController
 {

@@ -49,7 +49,7 @@ protected:
 	ChaseAI* m_chase_ai;  //!追跡
 	StopAI* m_stop_ai;    //!停止
 
-	Vec m_direction;  //!方向ベクトル
+	Vec m_direction;      //!方向ベクトル
 
 	__int16 m_change_counter;   //!AI切り替え時間カウンター
 

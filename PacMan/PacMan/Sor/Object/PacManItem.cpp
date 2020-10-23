@@ -1,18 +1,10 @@
 ﻿#include "PacManItem.h"
 #include "../Entity.h"
-#include <stdlib.h>
 
-//!初期化関数
-void PacManItem::Reset(PacManStage* stage_)
+//!コンストラクタ
+PacManItem::PacManItem(PacManStage* stage_):
+	m_stage(stage_) //!ステージアドレス取得
 {
-	m_stage = stage_;  //!ステージアドレス取得
-
-	//!存在フラグ初期化
-	for (int i = 0; i < ITEM_NUM; i++)
-	{
-		m_item_info[i].m_exists = true;
-	}
-
 	//!描画スタイル初期化
 	m_item_info[0].m_draw_font = "１";
 	m_item_info[1].m_draw_font = "２";
@@ -20,7 +12,18 @@ void PacManItem::Reset(PacManStage* stage_)
 	m_item_info[3].m_draw_font = "４";
 	m_item_info[4].m_draw_font = "５";
 
-	RandCreate();
+}
+
+//!初期化関数
+void PacManItem::Reset()
+{
+	//!存在フラグ初期化
+	for (int i = 0; i < ITEM_NUM; i++)
+	{
+		m_item_info[i].m_exists = true;
+	}
+
+	RandCreate();  //!座標初期化
 }
 
 //!更新処理

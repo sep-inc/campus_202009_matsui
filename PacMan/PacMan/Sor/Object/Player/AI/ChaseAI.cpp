@@ -2,7 +2,10 @@
 #include <stdlib.h>
 
 //!コンストラクタ
-ChaseAI::ChaseAI(PacManStage* stage_) :m_stage(stage_) {} //!ステージアドレス取得
+ChaseAI::ChaseAI(PacManStage* stage_) :
+	m_stage(stage_),      //!ステージアドレス取得
+	m_rand_direction(UP)  //!選択用移動方向ベクトル
+{} 
 
 //! 初期化関数
 void ChaseAI::Reset()
@@ -14,6 +17,7 @@ void ChaseAI::Reset()
 	{
 		m_direction_array[i] = i;
 	}
+
 	m_direction_array[m_rand_direction] = DIRECTION_NONE;
 
 	m_chase = false;  //!追跡フラグ

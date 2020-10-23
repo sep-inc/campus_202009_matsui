@@ -22,6 +22,7 @@ public:
 
 private:
 	Vec m_direction;  //!方向ベクトル
+
 };
 
 #endif

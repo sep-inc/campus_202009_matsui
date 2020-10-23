@@ -7,7 +7,7 @@
 class PacManStage
 {
 public:
-	PacManStage() {}
+	PacManStage();
 	~PacManStage() {}
 
 	/**

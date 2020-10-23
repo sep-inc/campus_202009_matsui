@@ -22,6 +22,12 @@ const PacManStage::StageInfo PacManStage::m_stage_copy[GAME_HEIGHT][GAME_WIDTH] 
 	WALL,WALL,WALL,WALL,WALL,WALL,WALL,WALL,WALL,WALL,WALL,WALL,WALL,
 };
 
+//!コンストラクタ
+PacManStage::PacManStage()
+{
+	memcpy(m_stage, m_stage_copy, sizeof(m_stage_copy));  //!不変的なもので初期化
+}
+
 //!初期化関数
 void PacManStage::Reset()
 {
@@ -54,9 +60,9 @@ void PacManStage::SetUpDrawBuffer()
 //!ステージ情報更新関数
 void PacManStage::SetUpStageBuffer(Vec sorce_pos_,Vec pos_, OBJECT_TYPE obje_type_)
 {
-	m_stage[sorce_pos_.y][sorce_pos_.x].m_obj = NONE;
+	m_stage[sorce_pos_.y][sorce_pos_.x].m_obj = NONE;   //!移動前座標を空にする
 
-	m_stage[pos_.y][pos_.x].m_obj = obje_type_;
+	m_stage[pos_.y][pos_.x].m_obj = obje_type_;   //!移動先を更新
 }
 
 //!ステージ検索関数

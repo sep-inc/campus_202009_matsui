@@ -13,7 +13,7 @@
 class PacManItem
 {
 public:
-	PacManItem() {}
+	PacManItem(PacManStage* stage_);
 	~PacManItem() {}
 
 	/**
@@ -21,7 +21,7 @@ public:
 	 * @param (stage_) ステージのアドレス
 	 * @detail コンティニュー後値が残っていると困るメンバ変数の初期化
 　   */
-	void Reset(PacManStage* stage_m);
+	void Reset();
 
 	/**
 　   * @brief  更新関数
@@ -61,12 +61,19 @@ private:
 	//!アイテム情報
 	struct ItemInfo
 	{
+		ItemInfo() :
+			m_pos(Vec(0, 0)), //!座標
+			m_exists(false),  //!存在フラグ初期化
+			m_draw_font("　") //!描画スタイル
+		{}
+
 		Vec m_pos;               //!座標
-		bool m_exists;          //!存在フラグ
+		bool m_exists;           //!存在フラグ
 		const char* m_draw_font; //!描画スタイル
 	};
 
 	ItemInfo m_item_info[ITEM_NUM];
+
 };
 
 #endif

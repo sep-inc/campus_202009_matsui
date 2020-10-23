@@ -1,10 +1,13 @@
 ﻿#include "PacManMyself.h"
 #include "../../Entity.h"
 
-const __int16 PacManMyself::m_speed_count = 10;
+const __int16 PacManMyself::m_move_possible = 10; //!移動可能時間
 
 PacManMyself::PacManMyself(PacManStage* stage_, PacManItem* item_) :
-	PacManPlayer(stage_, item_, MYSELF, "●") {}
+	PacManPlayer(stage_, item_, MYSELF, "●"),
+	m_item_counter(0), //!アイテム取得数
+	m_iput_timer(0)    //!入力間隔時間
+{}
 
 //!共通外変数初期化関数
 void PacManMyself::ResetAnother()
@@ -12,7 +15,7 @@ void PacManMyself::ResetAnother()
 	m_pos = Vec(MYSELF_INIT_POS_X, MYSELF_INIT_POS_Y);   //!座標
 	m_sorce_pos = m_pos;      //!移動前座標
 	m_item_counter = 0;       //!アイテム取得数
-	m_iput_counter = 0;
+	m_iput_timer = 0;         //!入力間隔時間
 }
 
 //!更新処理
@@ -33,19 +36,19 @@ void PacManMyself::SelectDirection()
 {
 	m_sorce_pos = m_pos;  //!移動前座標更新
 
-	m_iput_counter++; //!次の入力までの間隔をカウント
+	m_iput_timer++; //!次の入力までの間隔をカウント
 
 	//!次の入力までの時間が経つと再入力できる
-	if (m_iput_counter >= m_speed_count)
+	if (m_iput_timer >= m_move_possible)
 	{
-		m_iput_counter = m_speed_count;  //!入力されるまで値は増やさない
+		m_iput_timer = m_move_possible;  //!入力されるまで値は増やさない
 
 		m_direction = g_inputter.InpuMoveKey();   //!十字キー入力
 
 		//!何かしら方向が選択された場合
 		if (m_direction.x != 0 || m_direction.y != 0)
 		{
-			m_iput_counter = 0;
+			m_iput_timer = 0;
 		}
 	}
 	//!移動方向を0にする

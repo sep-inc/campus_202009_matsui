@@ -1,14 +1,15 @@
 ﻿#include "PacManEnemy.h"
 #include "AI/ChaseAI.h"
 #include <stdlib.h>
-#include <string.h>
 
 const __int16 PacManEnemy::m_move_maxcount = 30; //!移動までに掛かる時間
 
 //!コンストラクタ
 PacManEnemy::PacManEnemy(PacManStage* stage_, PacManItem* item_) :
 	PacManPlayer(stage_, item_, ENEMY, "＠"),
-	m_ai(nullptr)
+	m_ai(nullptr),      //!AI
+	m_move_counter(0),  //!移動時間加算用
+	m_move_speed(1)     //!移動速度
 {
 	if (m_ai == nullptr) { m_ai = new AIController(stage_); }  //!AIインスタンス化
 }

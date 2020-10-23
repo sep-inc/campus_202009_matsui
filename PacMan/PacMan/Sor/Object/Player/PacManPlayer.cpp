@@ -4,16 +4,18 @@
 //!コンストラクタ
 PacManPlayer::PacManPlayer(PacManStage* stage_, PacManItem* item_, OBJECT_TYPE player_type_, const char* m_font_) :
 	m_player_type(player_type_),  //!プレイヤーの種類
-	m_draw_font(m_font_),   //!描画スタイル
-	m_stage(stage_), //!ステージアドレス取得
-	m_item(item_)    //!アイテムアドレス取得
+	m_draw_font(m_font_),         //!描画スタイル
+	m_stage(stage_),              //!ステージアドレス取得
+	m_item(item_),                //!アイテムアドレス取得
+	m_direction(Vec(0, 0)),       //!方向ベクトル
+	m_flg_info{ false,false,false }           //!各フラグ初期化
 {}
 
 //!初期化関数
 void PacManPlayer::Reset()
 {
 	m_direction = Vec(0, 0);  //!方向ベクトル
-
+	
 	m_flg_info = { false,false,false }; //!各フラグ初期化
 
 	ResetAnother();   //!共通外変数初期化

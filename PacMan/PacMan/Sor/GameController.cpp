@@ -10,7 +10,7 @@ GameController::GameController() :
 {
 	//!各オブジェクトインスタンス化
 	if (m_stage == nullptr) { m_stage = new PacManStage; }
-	if (m_item == nullptr) { m_item = new PacManItem; }
+	if (m_item == nullptr) { m_item = new PacManItem(m_stage); }
 	if (m_player == nullptr) { m_player = new PacManMyself(m_stage, m_item); }
 
 	//!敵の数分回す
@@ -66,7 +66,7 @@ void GameController::Init()
 
 	for (int i = 0; i < ENEMY_NUM; i++) { m_enemy[i]->Reset(); }	//!敵
 
-	m_item->Reset(m_stage);//!アイテム
+	m_item->Reset();//!アイテム
 
 	//!次のステップへ
 	m_step = STEP_START;
