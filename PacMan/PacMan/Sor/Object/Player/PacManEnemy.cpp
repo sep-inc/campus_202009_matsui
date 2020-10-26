@@ -17,7 +17,7 @@ PacManEnemy::PacManEnemy(PacManStage* stage_, PacManItem* item_) :
 //!デストラクタ
 PacManEnemy::~PacManEnemy()
 {
-	m_ai->DeleteAI();  //!AIクラス解放
+	DeleteAI(); //!AIクラス解放
 }
 
 //!共通外変数初期化関数
@@ -126,6 +126,14 @@ void PacManEnemy::Move()
 	//!移動
 	m_pos.x += m_direction.x;
 	m_pos.y += m_direction.y;
+}
+
+//!AI解放関数
+void PacManEnemy::DeleteAI()
+{
+	delete m_ai;
+	m_ai = nullptr;
+
 }
 
 //!移動方向選択関数

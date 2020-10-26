@@ -98,5 +98,8 @@
     <ClInclude Include="Sor\Object\Player\AI\StopAI.h">
       <Filter>Object\Player\AI</Filter>
     </ClInclude>
+    <ClInclude Include="Sor\Object\Player\AI\AIBase.h">
+      <Filter>Object\Player\AI</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

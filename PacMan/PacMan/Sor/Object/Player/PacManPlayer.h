@@ -16,7 +16,7 @@ public:
 　　 * @param (m_font_) 描画スタイル
 　   */
 	PacManPlayer(PacManStage* stage_, PacManItem* item_, OBJECT_TYPE player_type_, const char* m_font_);
-	~PacManPlayer() {}
+	virtual ~PacManPlayer() {}
 
 	/**
 　   * @brief  初期化関数(繰り返し)

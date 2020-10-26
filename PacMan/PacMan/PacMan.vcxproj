@@ -217,6 +217,10 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="Sor\Object\Player\AI\AIBase.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="Sor\Object\Player\AI\AIController.h">
       <SubType>
       </SubType>

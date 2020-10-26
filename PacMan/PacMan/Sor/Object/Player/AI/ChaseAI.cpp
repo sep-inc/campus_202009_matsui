@@ -3,14 +3,17 @@
 
 //!コンストラクタ
 ChaseAI::ChaseAI(PacManStage* stage_) :
-	m_stage(stage_),      //!ステージアドレス取得
 	m_rand_direction(UP)  //!選択用移動方向ベクトル
-{} 
+{
+	m_stage = stage_; //!ステージアドレス取得
+}
 
 //! 初期化関数
 void ChaseAI::Reset()
 {
-	m_rand_direction = static_cast<DIRECTION_TYPE>(rand() % DIRECTION_MAX);//!選択用移動方向ベクトル
+	m_direction = Vec(0, 0);  //!方向ベクトル
+
+	m_rand_direction = static_cast<DIRECTION_TYPE>(rand() % DIRECTION_MAX);//!ランダム選択用移動方向ベクトル
 
     //!移動可能方向配列初期化
 	for (int i = 0; i < DIRECTION_MAX; i++)
@@ -20,7 +23,8 @@ void ChaseAI::Reset()
 
 	m_direction_array[m_rand_direction] = DIRECTION_NONE;
 
-	m_chase = false;  //!追跡フラグ
+	m_param_change = false;  //!敵のパラメーター(スピード変更フラグ)
+
 }
 
 
@@ -47,7 +51,7 @@ Vec ChaseAI::SelectDirection(Vec pos_)
 		//!後退更新
 		SetDirection(m_direction);
 
-		m_chase = true;  //!追跡フラグtrue
+		m_param_change = true;//!追跡フラグtrue
 
 		return m_direction;
 
@@ -55,7 +59,7 @@ Vec ChaseAI::SelectDirection(Vec pos_)
 	//!プレイヤーが見つかっていない場合
 	else
 	{
-		m_chase = false;
+		m_param_change = false;
 
 		return RandDirection(pos_);
 	}

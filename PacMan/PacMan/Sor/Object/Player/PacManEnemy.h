@@ -22,7 +22,7 @@ public:
 　　 * @param (item_) アイテムのアドレス
 　   */
 	PacManEnemy(PacManStage* stage_, PacManItem* item_);
-	~PacManEnemy();
+	virtual ~PacManEnemy();
 
 	/**
 　   * @brief  共通外変数初期化関数
@@ -62,7 +62,7 @@ public:
 　   */
 	virtual void Move()override;
 
-
+	void DeleteAI();
 
 private:
 	AIController* m_ai;

@@ -1,19 +1,28 @@
 ﻿#ifndef AICONTROLLER_H_
 #define AICONTROLLER_H_
-#include "../../PacManStage.h"
 #include "ChaseAI.h"
 #include "StopAI.h"
+#include "AIBase.h"
 
 /**
 *@clss   AIの管理クラス
 *@brief  各AI(現在は追跡のみ)の移動方向選択処理の継承元を持っている
 */
 
+//!AIの種類
+enum AI_TYPE
+{
+	CHASE,
+	STOP,
+	AI_NUM
+};
+
+
 class AIController
 {
 public:
 	AIController(PacManStage* stage_);
-	~AIController() {}
+	~AIController();
 
 	/**
 　   * @brief  初期化関数(繰り返し)
@@ -46,8 +55,7 @@ public:
 	void DeleteAI();
 
 protected:
-	ChaseAI* m_chase_ai;  //!追跡
-	StopAI* m_stop_ai;    //!停止
+	AIBase* m_ai[AI_NUM]; //!各AI
 
 	Vec m_direction;      //!方向ベクトル
 
