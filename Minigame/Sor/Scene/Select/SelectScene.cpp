@@ -4,22 +4,16 @@
 #include "../../System/DrawController.h"
 
 //!コンストラクタ
-SelectScene::SelectScene()
-{
-	m_step = STEP_INIT;
-}
-
-//!初期化関数(繰り返し)
-void SelectScene::Reset()
+SelectScene::SelectScene() :
+	m_select_arrow(Vec2(0, 0)),
+	m_now_select(0),
+	m_select_font("→"),
+	m_none_font("　")
 {
 	m_game_type = SelectMode;     //!ゲームの種類(描画クラスに情報を送るため)
-
-	m_select_arrow = Vec2(0, 0);  //!矢印座標
 	m_next_scene = false;         //!シーン切り替えフラグ
-	m_now_select = 0;             //!現在矢印が示すゲームの位置用
-	m_select_font = "→";         //!矢印
-	m_none_font = "　";           //!空白
 
+	m_controller_step = CONTROLLER_INIT;
 	//!各ゲーム名
 	m_game_nmae[Hanoi_Tower] = "ハノイの塔";
 	m_game_nmae[OX_Game] = "OXゲーム";
@@ -27,21 +21,34 @@ void SelectScene::Reset()
 	m_game_nmae[RunGame] = "Runゲーム";
 	m_game_nmae[Shougi] = "将棋";
 	m_game_nmae[Tron] = "トロン";
+}
 
+//!初期化関数(繰り返し)
+void SelectScene::Reset()
+{
 	//!描画で使うクラス指定
 	DrawController::Instance()->SetNowGameDraw(m_game_type);
 
 	//!入力クラス初期化
 	Inputter::Instance()->Reset();
-
-	//!次のステップへ
-	m_step = STEP_UPDATE;
 }
 
 //!各ゲーム管理処理関数
-void SelectScene::GameControllerUpdate()
+void SelectScene::Update()
 {
-	ArrowUpdate();	//!矢印更新関数
+	switch (m_controller_step)
+	{
+	case SelectScene::CONTROLLER_INIT:     //!初期化
+		Reset();
+		m_controller_step = CONTROLLER_UPDATE;
+		break;
+	case SelectScene::CONTROLLER_UPDATE:   //!更新
+		ArrowUpdate();	//!矢印更新関数
+		break;
+	default:
+		break;
+	}
+	
 }
 
 //!描画情報送信関数関数

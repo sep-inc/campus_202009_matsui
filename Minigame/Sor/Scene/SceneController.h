@@ -18,23 +18,10 @@ public:
 	static SceneController* Instance();
 
 	/**
-	 * @brief  初期化関数(繰り返し)
-	 * @detail メンバ変数の初期化
-	 * @detail コンティニュー後値が残っていると困るメンバ変数の初期化
-	 */
-	void Reset();
-
-	/**
 	 * @brief  ステップ処理関数
 	 * @detail ステップ変更処理
 	 */
 	void Update();
-
-	/**
-   　* @brief  シーン更新関数
-	 * @detail 各シーン更新処理をまとめた関数
-   　*/
-	void SceneUpdate();
 
 	/**
 	 * @brief  描画情報代入関数

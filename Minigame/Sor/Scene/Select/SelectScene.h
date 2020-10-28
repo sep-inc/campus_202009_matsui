@@ -24,7 +24,7 @@ public:
 	 * @brief  各ゲーム管理処理関数
 	 * @detail 各ゲーム管理クラスの更新処理を行う
 	 */
-	virtual void GameControllerUpdate()override;
+	virtual void Update()override;
 
 	/**
 	 * @brief  描画情報送信関数関数

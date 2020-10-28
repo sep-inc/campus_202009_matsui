@@ -16,13 +16,7 @@ public:
 	 * @detail メンバ変数の初期化
 	 * @detail コンティニュー後値が残っていると困るメンバ変数の初期化
 	 */
-	virtual void Init() {}
-
-	/**
-	 * @brief  ステップ処理関数
-	 * @detail ステップ変更処理
-	 */
-	virtual void Update();
+	virtual void Reset() {}
 
 	/**
    　* @brief  更新関数
@@ -36,12 +30,16 @@ public:
 	 */
 	virtual void SetUpDrawBuffer() {}
 
+	/**
+	 * @brief  ルール関数
+	 * @detail 各ゲームのルールを表示する
+	 */
 	virtual void DrawRule() {}
 
 	/**
-	 * @brief  勝敗判定関数
-	 * @detail 先手か後手のどちらが勝ったかを判定する
-	 */
+　　 * @brief  結果表示関数
+　　 * @detail 各ゲームの結果を表示する
+　　 */
 	virtual void GameResult() {}
 
 	/**
@@ -55,16 +53,11 @@ public:
 	 */
 	virtual void Delete() {}
 
-protected:
-	//!ステップの種類
-	enum STEP
-	{
-		STEP_INIT,    //!初期化
-		STEP_START,   //!初期化
-		STEP_UPDATE,  //!更新
-		STEP_RESULT,  //!結果
-	}m_step;
-
+	/**
+	 * @brief  結果ステップ移行判定関数
+	 * @detail 更新から結果へ行く条件が満たされておるか調べる
+	 */
+	virtual bool ResultStep() = 0;
 };
 
 #endif

@@ -35,15 +35,17 @@ SceneController* SceneController::Instance()
 	return p_instance;
 }
 
-//!初期化関数(繰り返し)
-void SceneController::Reset()
+//!ステップ処理関数
+void SceneController::Update()
 {
 	//!シーン切り替え時
 	if (m_next_scene == true)
 	{
 		//!初期化
-		delete m_scene;     
+		delete m_scene;
 		m_scene = nullptr;
+
+		m_next_scene = false;
 
 		//!選択シーン時
 		if (m_select_game == SelectMode)
@@ -57,31 +59,7 @@ void SceneController::Reset()
 		}
 	}
 
-	m_scene->Reset();  //!シーンの初期化
-
-	//!次のステップへ
-	m_step = STEP_UPDATE;
-}
-
-//!ステップ処理関数
-void SceneController::Update()
-{
-	switch (m_step)
-	{
-	case SceneController::STEP_INIT:     //!初期化
-		Reset();
-		break;
-	case SceneController::STEP_UPDATE:   //!更新
-		SceneUpdate();
-		break;
-	default:
-		break;
-	}
-}
-
-//!シーン更新関数
-void SceneController::SceneUpdate()
-{
+	//!更新
 	m_scene->Update();
 }
 

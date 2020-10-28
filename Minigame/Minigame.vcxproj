@@ -143,10 +143,6 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="Sor\Scene\Game\GameControllerBase.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
     <ClCompile Include="Sor\Scene\Game\GameScene.cpp">
       <SubType>
       </SubType>
@@ -188,10 +184,6 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="Sor\Scene\Game\PacMan\System\PacManDrawer.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="Sor\Scene\SceneBase.cpp">
       <SubType>
       </SubType>
     </ClCompile>

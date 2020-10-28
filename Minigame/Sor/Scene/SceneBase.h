@@ -24,13 +24,7 @@ public:
 	 * @brief  ステップ処理関数
 	 * @detail ステップ変更処理
 	 */
-	virtual void Update();
-
-	/**
-	 * @brief  各ゲーム管理処理関数
-	 * @detail 各ゲーム管理クラスの更新処理を行う
-	 */
-	virtual void GameControllerUpdate() = 0;
+	virtual void Update() = 0;
 
 	/**
 	 * @brief  描画情報送信関数関数
@@ -65,11 +59,13 @@ public:
 
 protected:
 	//!ステップの種類
-	enum STEP
+	enum CONTROLLER_STEP
 	{
-		STEP_INIT,    //!初期化
-		STEP_UPDATE,  //!更新
-	}m_step;
+		CONTROLLER_INIT,    //!初期化
+		CONTROLLER_START,   //!初期化
+		CONTROLLER_UPDATE,  //!更新
+		CONTROLLER_RESULT,  //!結果
+	}m_controller_step;
 
 	GAME_TYPE m_game_type;   //!ゲームの種類
 

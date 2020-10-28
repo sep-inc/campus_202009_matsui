@@ -21,8 +21,6 @@ PacManGameController::PacManGameController() :
 			m_enemy[i] = new PacManEnemy(m_stage, m_item);
 		}
 	}
-
-	m_step = STEP_INIT; //!初期化ステップ
 }
 
 //!デストラクタ
@@ -32,7 +30,7 @@ PacManGameController::~PacManGameController()
 }
 
 //!初期化関数
-void PacManGameController::Init()
+void PacManGameController::Reset()
 {
 	m_stage->Reset();   //!ステージ
 
@@ -43,10 +41,6 @@ void PacManGameController::Init()
 	for (int i = 0; i < ENEMY_NUM; i++) { m_enemy[i]->Reset(); }	//!敵
 
 	m_item->Reset();//!アイテム
-
-
-	//!次のステップへ
-	m_step = STEP_START;
 
 }
 
@@ -63,11 +57,7 @@ void PacManGameController::ObjectUpdate()
 
 	m_item->Update();    //!アイテム
 
-	//!プレイヤーが死ぬか、ゲームクリアした時
-	if (m_player->GetFlgInfo().m_clear == true || m_player->GetFlgInfo().m_deth == true)
-	{
-		m_step = STEP_RESULT;
-	}
+	ResultStep();
 }
 
 void PacManGameController::DrawRule()
@@ -77,6 +67,17 @@ void PacManGameController::DrawRule()
    printf("操作方法：十字キーで移動\n");
    printf("勝利条件：アイテムをすべて集める。(順番関係なし)\n");
    printf("敗北条件：敵にぶつかる\n");
+}
+
+bool PacManGameController::ResultStep()
+{
+	//!プレイヤーが死ぬか、ゲームクリアした時
+	if (m_player->GetFlgInfo().m_clear == true || m_player->GetFlgInfo().m_deth == true)
+	{
+		return true;
+	}
+
+	return false;
 }
 
 //!描画情報代入関数
@@ -97,12 +98,6 @@ void PacManGameController::SetUpDrawBuffer()
 void PacManGameController::GameResult()
 {
 	m_player->ResultDraw();   //!結果表示
-
-	//!続けるかどうか
-	if (Inputter::Instance()->InputContinue() == true)
-	{
-		m_step = STEP_INIT;
-	}
 }
 
 //!強制終了関数

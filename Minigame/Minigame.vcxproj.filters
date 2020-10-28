@@ -178,9 +178,6 @@
     <ClCompile Include="Sor\Scene\SceneController.cpp">
       <Filter>Scene</Filter>
     </ClCompile>
-    <ClCompile Include="Sor\Scene\SceneBase.cpp">
-      <Filter>Scene</Filter>
-    </ClCompile>
     <ClCompile Include="Sor\Scene\Select\SelectScene.cpp">
       <Filter>Scene\Select</Filter>
     </ClCompile>
@@ -189,9 +186,6 @@
     </ClCompile>
     <ClCompile Include="Sor\System\DrawController.cpp">
       <Filter>System</Filter>
-    </ClCompile>
-    <ClCompile Include="Sor\Scene\Game\GameControllerBase.cpp">
-      <Filter>Scene\Game</Filter>
     </ClCompile>
     <ClCompile Include="Sor\System\Inputter.cpp">
       <Filter>System</Filter>
