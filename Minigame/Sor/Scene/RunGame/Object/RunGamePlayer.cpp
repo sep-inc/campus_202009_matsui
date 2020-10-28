@@ -18,7 +18,7 @@ const unsigned __int8 Player::PlayerInfo::m_speed_max = 9; //!移動までにか
 //!初期化関数
 void Player::Reset()
 {
-	m_player_info.m_pos = Vec2(PLAYER_POS_X, 3);     //!現在座標初期化
+	m_player_info.m_pos = Vec2(RUNGAME_PLAYER_POS_X, 3);     //!現在座標初期化
 	m_player_info.m_next_pos = Vec2(m_player_info.m_pos.x + 1, m_player_info.m_pos.y); //!次のフレームの座標
 
 	m_player_info.m_speed_counter = 0;
@@ -61,7 +61,7 @@ void Player::Jump()
 	{
 		//!床に脚がついているなら
 		if (Collision::EdgeCollision(m_player_info.m_pos, RunGameMapData::Instance()->GroundPos(m_player_info.m_pos),
-			m_player_info.m_height, m_player_info.m_width, WALL_SIZE_X, WALL_SIZE_Y, EdgeType::EDGE_BOTTOM) == true)
+			m_player_info.m_height, m_player_info.m_width, RUNGAME_WALL_SIZE_X, RUNGAME_WALL_SIZE_Y, EdgeType::EDGE_BOTTOM) == true)
 		{
 			m_player_info.m_pos.y -= m_player_info.m_jump_power;  //!ジャンプ
 		}
@@ -75,7 +75,7 @@ void Player::Collision()
 	{
 		//!脚が地面についている場合
 		if (Collision::EdgeCollision(m_player_info.m_pos, RunGameMapData::Instance()->GroundPos(m_player_info.m_next_pos),
-			m_player_info.m_height, m_player_info.m_width, WALL_SIZE_X, WALL_SIZE_Y, EdgeType::EDGE_BOTTOM) == true)
+			m_player_info.m_height, m_player_info.m_width, RUNGAME_WALL_SIZE_X, RUNGAME_WALL_SIZE_Y, EdgeType::EDGE_BOTTOM) == true)
 		{
 			m_player_info.m_pos.y -= m_player_info.m_gravity;  //!垂直抗力が働く
 		}
@@ -93,7 +93,7 @@ void Player::DethJudgment()
 	if (m_player_info.m_pos.y + m_player_info.m_height > RunGameMapData::Instance()->GroundPos(m_player_info.m_next_pos).y)
 	{
 		if (Collision::EdgeCollision(m_player_info.m_pos, RunGameMapData::Instance()->GroundPos(m_player_info.m_next_pos),
-			m_player_info.m_height, m_player_info.m_width, WALL_SIZE_X, WALL_SIZE_Y, EdgeType::EDGE_BOTTOM) == true)
+			m_player_info.m_height, m_player_info.m_width, RUNGAME_WALL_SIZE_X, RUNGAME_WALL_SIZE_Y, EdgeType::EDGE_BOTTOM) == true)
 		{
 			m_player_info.m_deth = true;
 		}

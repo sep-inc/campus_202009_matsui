@@ -4,7 +4,6 @@
 #include <string>
 #include <Windows.h>
 
-
 //!クリア関数
 void PacManDrawer::SetUpBuffer(Vec2 pos_, const char* font_)
 {

@@ -2,6 +2,8 @@
 #include "../Scene/Select/System/SelectSceneDrawer.h"
 #include "../Scene/PacMan/System/PacManDrawer.h"
 #include "../Scene/RunGame/System/RunGameDrawer.h"
+#include "../Scene/Tron/System/TronDrawer.h"
+#include "../Scene/Shougi/System/SyougiDrawer.h"
 
 
 
@@ -75,6 +77,18 @@ void DrawController::SetNowGameDraw(GAME_TYPE game_type_)
 		if (m_drawer == nullptr)
 		{
 			m_drawer = new RunGameDrawer;
+		}
+		break;
+	case Tron:
+		if (m_drawer == nullptr)
+		{
+			m_drawer = new TronDrawer;
+		}
+		break;
+	case Syougi:
+		if (m_drawer == nullptr)
+		{
+			m_drawer = new SyougiDrawer;
 		}
 		break;
 	case SelectMode:

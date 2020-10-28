@@ -170,6 +170,54 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="Sor\Scene\Shougi\Object\Player\SyougiEnemy.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Sor\Scene\Shougi\Object\Player\SyougiMyself.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Sor\Scene\Shougi\Object\Player\SyougiPlayer.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Sor\Scene\Shougi\Object\SyougiBoard.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Sor\Scene\Shougi\Object\SyougiCursor.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Sor\Scene\Shougi\Object\SyougiPiece.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Sor\Scene\Shougi\Object\SyougiPiece_Goldgeneral.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Sor\Scene\Shougi\Object\SyougiPiece_King.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Sor\Scene\Shougi\Object\SyougiPiece_Knight.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Sor\Scene\Shougi\Object\SyougiPiece_Pawn.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Sor\Scene\Shougi\SyougiGameController.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Sor\Scene\Shougi\System\SyougiDrawer.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="Sor\Scene\Tron\Object\Player\TronEnemy.cpp" />
     <ClCompile Include="Sor\Scene\Tron\Object\Player\TronMyself.cpp" />
     <ClCompile Include="Sor\Scene\Tron\Object\Player\TronPlayer.cpp" />
@@ -224,6 +272,54 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="Sor\Scene\Select\System\SelectSceneDrawer.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Sor\Scene\Shougi\Object\Player\SyougiEnemy.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Sor\Scene\Shougi\Object\Player\SyougiMyself.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Sor\Scene\Shougi\Object\Player\SyougiPlayer.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Sor\Scene\Shougi\Object\SyougiBoard.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Sor\Scene\Shougi\Object\SyougiCursor.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Sor\Scene\Shougi\Object\SyougiPiece.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Sor\Scene\Shougi\Object\SyougiPiece_Goldgeneral.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Sor\Scene\Shougi\Object\SyougiPiece_King.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Sor\Scene\Shougi\Object\SyougiPiece_Knight.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Sor\Scene\Shougi\Object\SyougiPiece_Pawn.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Sor\Scene\Shougi\SyougiGameController.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Sor\Scene\Shougi\System\SyougiDrawer.h">
       <SubType>
       </SubType>
     </ClInclude>

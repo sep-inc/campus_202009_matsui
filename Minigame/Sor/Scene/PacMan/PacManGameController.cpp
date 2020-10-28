@@ -25,7 +25,7 @@ PacManGameController::PacManGameController() :
 
 	m_game_type = PacMan;
 	m_next_scene = false;
-	m_controller_step = CONTROLLER_INIT;
+	m_step = STEP_INIT;
 }
 
 //!デストラクタ
@@ -55,30 +55,30 @@ void PacManGameController::Reset()
 
 
 
-	m_controller_step = CONTROLLER_START;  //!次のステップへ
+	m_step = STEP_START;  //!次のステップへ
 
 }
 
 void PacManGameController::Update()
 {
-	switch (m_controller_step)
+	switch (m_step)
 	{
-	case PacManGameController::CONTROLLER_INIT:     //!初期化
+	case PacManGameController::STEP_INIT:     //!初期化
 		Reset();
 		break;
-	case PacManGameController::CONTROLLER_START:    //!開始待ち
+	case PacManGameController::STEP_START:    //!開始待ち
 		DrawRule();
 
 		//!スタートキーが入力されたら
 		if (Inputter::Instance()->InputStartKey() == true)
 		{
-			m_controller_step = CONTROLLER_UPDATE;
+			m_step = STEP_UPDATE;
 		}
 		break;
-	case PacManGameController::CONTROLLER_UPDATE:   //!更新
+	case PacManGameController::STEP_UPDATE:   //!更新
 		ObjectUpdate();
 		break;
-	case PacManGameController::CONTROLLER_RESULT:  //!結果
+	case PacManGameController::STEP_RESULT:  //!結果
 		GameResult();
 		break;
 	default:
@@ -103,7 +103,7 @@ void PacManGameController::ObjectUpdate()
 	//!プレイヤーが死ぬか、ゲームクリアした時
 	if (m_player->GetFlgInfo().m_clear == true || m_player->GetFlgInfo().m_deth == true)
 	{
-		m_controller_step = CONTROLLER_RESULT;
+		m_step = STEP_RESULT;
 	}
 }
 
@@ -149,7 +149,7 @@ void PacManGameController::GameResult()
 	//!続けるかどうか
 	if (Inputter::Instance()->InputContinue() == true)
 	{
-		m_controller_step = CONTROLLER_INIT;
+		m_step = STEP_INIT;
 	}
 }
 

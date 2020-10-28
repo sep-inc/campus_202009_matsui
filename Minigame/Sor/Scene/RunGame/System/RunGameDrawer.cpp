@@ -21,9 +21,9 @@ void RunGameDrawer::Draw()
 {
 	std::string linking;  //!文字連結用
 
-	for (int i = 0; i < GAME_HEIGHT; i++)
+	for (int i = 0; i < RUNGAME_HEIGHT; i++)
 	{
-		for (int j = 0; j < GAME_WIDTH - 1; j++)
+		for (int j = 0; j < RUNGAME_WIDTH - 1; j++)
 		{
 			linking += m_draw_buffer[i][j].kind;  //!文字連結
 		}

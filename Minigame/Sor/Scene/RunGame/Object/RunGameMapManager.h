@@ -14,7 +14,7 @@
 
 #define IMMUTABLE_FLOOR_MAX 5  //!平地の高さ
 
-#define DRAW_RANGE (GAME_WIDTH - 1) //!描画時に見えるマップの範囲
+#define DRAW_RANGE (RUNGAME_WIDTH - 1) //!描画時に見えるマップの範囲
 
 
 class RunGameMapManager

@@ -11,7 +11,7 @@
 void RunGameMapManager::Reset()
 {
 	//!初期状態のマップ
-	char m_frame_buffer[GAME_HEIGHT][GAME_WIDTH][FONT_BYTE_] =
+	char m_frame_buffer[RUNGAME_HEIGHT][RUNGAME_WIDTH][FONT_BYTE_] =
 	{
 	   "　","　","　","　","　","　","　","　","　","　","　","　",
 	   "　","　","　","　","　","　","　","　","　","　","　","　",
@@ -28,11 +28,11 @@ void RunGameMapManager::Reset()
 	RunGameMapData::Instance()->SetCopyMapBuffer(m_frame_buffer, sizeof(m_frame_buffer));
 
 	//!クリア用配列に代入
-	for (int y = 0; y < GAME_HEIGHT; y++)
+	for (int y = 0; y < RUNGAME_HEIGHT; y++)
 	{
-		for (int x = 0; x < GAME_WIDTH; x++)
+		for (int x = 0; x < RUNGAME_WIDTH; x++)
 		{
-			DrawController::Instance()->SetUpClearBuffer(Vec2(x, y), (char*)m_frame_buffer);
+			DrawController::Instance()->SetUpClearBuffer(Vec2(x, y), m_frame_buffer[y][x]);
 		}
 	}
 
@@ -58,7 +58,7 @@ void RunGameMapManager::Update()
 void RunGameMapManager::CreateMap()
 {
 	//!プレイヤーがゴール手前に来ていない場合
-	if (m_map_info.m_road_counter <= ROAD_MAX - DRAW_RANGE + PLAYER_POS_X)
+	if (m_map_info.m_road_counter <= ROAD_MAX - DRAW_RANGE + RUNGAME_PLAYER_POS_X)
 	{
 		//!前のフレームで生成した地形をリセット
 		for (int y = 0; y <= IMMUTABLE_FLOOR_MAX; y++)
@@ -103,7 +103,7 @@ void RunGameMapManager::CreateMap()
 	else
 	{
 		//!ゴールから先は消す
-		for (int y = 3; y < GAME_HEIGHT; y++)
+		for (int y = 3; y < RUNGAME_HEIGHT; y++)
 		{
 			RunGameMapData::Instance()->SetMapBuffer(11, y, "　");
 		}
@@ -114,9 +114,9 @@ void RunGameMapManager::CreateMap()
 void RunGameMapManager::MoveLoad()
 {
 	//!道を1マスずらす
-	for (int y = 0; y < GAME_HEIGHT; y++)
+	for (int y = 0; y < RUNGAME_HEIGHT; y++)
 	{
-		for (int x = 0; x < GAME_WIDTH - 1; x++)
+		for (int x = 0; x < RUNGAME_WIDTH - 1; x++)
 		{
 			RunGameMapData::Instance()->SetMapPosBuffer(x, y, RunGameMapData::Instance()->GetMapBuffer(x + 1, y));
 		}
@@ -157,9 +157,9 @@ void RunGameMapManager::ResultDraw()
 //!描画情報代入関数
 void RunGameMapManager::SetUpBuffer()
 {
-	for (int y = 0; y < GAME_HEIGHT; y++)
+	for (int y = 0; y < RUNGAME_HEIGHT; y++)
 	{
-		for (int x = 0; x < GAME_WIDTH - 1; x++)
+		for (int x = 0; x < RUNGAME_WIDTH - 1; x++)
 		{
 			DrawController::Instance()->SetUpBuffer(Vec2(x, y), RunGameMapData::Instance()->GetMapBuffer(x, y).kind);
 		}

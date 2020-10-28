@@ -37,7 +37,7 @@ void RunGameMapData::SetMapPosBuffer(int x_, int y_, MapBufferInfo buffer_)
 const Vec2 RunGameMapData::GroundPos(Vec2 pos_)
 {
 	//!指定されたX座標の一番上にある床の座標を返す
-	for (int y = 0; y < GAME_HEIGHT; y++)
+	for (int y = 0; y < RUNGAME_HEIGHT; y++)
 	{
 		if (strcmp(m_map_buffer[y][pos_.x].kind, "■") == 0)
 		{
@@ -45,5 +45,5 @@ const Vec2 RunGameMapData::GroundPos(Vec2 pos_)
 		}
 	}
 
-	return Vec2(pos_.x, GAME_HEIGHT - 1);
+	return Vec2(pos_.x, RUNGAME_HEIGHT - 1);
 }

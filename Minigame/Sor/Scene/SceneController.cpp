@@ -4,6 +4,10 @@
 #include "Select/SelectGameController.h"
 #include "PacMan/PacManGameController.h"
 #include "RunGame/RunGameGameController.h"
+#include "Tron/TronGameController.h"
+#include "Shougi/SyougiGameController.h"
+
+
 
 
 SceneController* SceneController::p_instance = 0;
@@ -14,7 +18,11 @@ SceneController::SceneController() :
 	m_gamecontroller(nullptr)
 {
 	//if (m_gamecontroller == nullptr) { m_gamecontroller = new SelectGameController; }
-	if (m_gamecontroller == nullptr) { m_gamecontroller = new RunGameGameController; }
+	//if (m_gamecontroller == nullptr) { m_gamecontroller = new RunGameGameController; }
+	//if (m_gamecontroller == nullptr) { m_gamecontroller = new TronGameController; }
+	if (m_gamecontroller == nullptr) { m_gamecontroller = new SyougiGameController; }
+
+
 }
 
 //!デストラクタ

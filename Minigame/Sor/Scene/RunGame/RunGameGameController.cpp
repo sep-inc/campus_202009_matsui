@@ -7,7 +7,7 @@ RunGameGameController::RunGameGameController()
 {
 	m_game_type = RunGame;
 	m_next_scene = false;
-	m_controller_step = CONTROLLER_INIT;//!ステップ初期化
+	m_step = STEP_INIT;//!ステップ初期化
 }
 
 //!デストラクタ
@@ -19,24 +19,24 @@ RunGameGameController::~RunGameGameController()
 //!ステップ処理関数
 void RunGameGameController::Update()
 {
-	switch (m_controller_step)
+	switch (m_step)
 	{
-	case RunGameGameController::CONTROLLER_INIT:     //!初期化
+	case RunGameGameController::STEP_INIT:     //!初期化
 		Reset();
 		break;
-	case RunGameGameController::CONTROLLER_START:    //!開始待ち
+	case RunGameGameController::STEP_START:    //!開始待ち
 		DrawRule();
 
 		//!スタートキーが入力されたら
 		if (Inputter::Instance()->InputStartKey() == true)
 		{
-			m_controller_step = CONTROLLER_UPDATE;
+			m_step = STEP_UPDATE;
 		}
 		break;
-	case RunGameGameController::CONTROLLER_UPDATE:  //!更新
+	case RunGameGameController::STEP_UPDATE:  //!更新
 		ObjectUpdate();
 		break;
-	case RunGameGameController::CONTROLLER_RESULT:  //!結果
+	case RunGameGameController::STEP_RESULT:  //!結果
 		GameResult();
 		break;
 	default:
@@ -61,7 +61,7 @@ void RunGameGameController::Reset()
 	m_player->Reset(); //!プレイヤー
 
 	//!開始待ちステップへ
-	m_controller_step = CONTROLLER_START;
+	m_step = STEP_START;
 }
 
 //!更新処理関数
@@ -73,7 +73,7 @@ void RunGameGameController::ObjectUpdate()
 	if (m_player->GetPlayerInfo().m_deth == true || m_map->GetGoal() == true)
 	{
 		//!結果ステップへ
-		m_controller_step = CONTROLLER_RESULT;
+		m_step = STEP_RESULT;
 		return;
 	}
 
@@ -108,7 +108,7 @@ void RunGameGameController::GameResult()
 	if (Inputter::Instance()->InputContinue() == true)
 	{
 		//!続けるなら初期化ステップへ
-		m_controller_step = CONTROLLER_INIT;
+		m_step = STEP_INIT;
 	}
 }
 

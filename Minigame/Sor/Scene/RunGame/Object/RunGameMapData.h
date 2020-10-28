@@ -20,7 +20,7 @@ private:
 		char kind[4];
 	};
 
-	MapBufferInfo m_map_buffer[GAME_HEIGHT][GAME_WIDTH];  //!マップ配列
+	MapBufferInfo m_map_buffer[RUNGAME_HEIGHT][RUNGAME_WIDTH];  //!マップ配列
 
 	static RunGameMapData* p_instance; //!インスタンス
 

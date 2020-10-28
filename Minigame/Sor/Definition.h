@@ -12,7 +12,7 @@ enum GAME_TYPE
 	OX_Game,
 	PacMan,
 	RunGame,
-	Shougi,
+	Syougi,
 	Tron,
 	SelectMode,
 	Game_Num,
@@ -46,13 +46,65 @@ enum PACMAN_OBJECT_TYPE
 /////////////////////////////////////////////////////////
 
 
-#define GAME_WIDTH 12    //!全体の横幅
-#define GAME_HEIGHT 9   //!全体の縦幅
+/////////////////////////////////////////////////////////
+#define RUNGAME_WIDTH 12    //!全体の横幅
+#define RUNGAME_HEIGHT 9   //!全体の縦幅
 
-#define PLAYER_POS_X 1  //!プレイヤーのX座標の位置(マップと相互参照が起こらないようにするため)
+#define RUNGAME_PLAYER_POS_X 1  //!プレイヤーのX座標の位置(マップと相互参照が起こらないようにするため)
 
-#define WALL_SIZE_X 1  //!1マスの横幅
-#define WALL_SIZE_Y 1  //!1マスの縦幅
+#define RUNGAME_WALL_SIZE_X 1  //!1マスの横幅
+#define RUNGAME_WALL_SIZE_Y 1  //!1マスの縦幅
+/////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////
+#define TRON_GAME_WIDTH 19    //!全体の横幅
+#define TRON_GAME_HEIGHT 12   //!全体の縦幅
+
+#define TRON_PLAYER_MAX 2   //!プレイヤーの数
+
+//1オブジェクトの種類
+enum TRON_OBJECT_TYPE
+{
+	TRON_MYSELF,       //!自分
+	TRON_ENEMY,        //!敵
+	TRON_WALL,         //!壁
+	TRON_NONE          //!空
+};
+
+/////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////
+/* オブジェクトの種類 */
+enum PIECE_TYPE
+{
+	KING,        //!王
+	KNIGHT,      //!桂
+	GOLDGENERAL, //!金
+	PAWN,        //!歩
+	PIECE_NUM,   //!駒の種類の数
+	BLANK,       //!空
+};
+
+//!プレイヤーの種類
+enum SYOUGI_PLAYER_TYPE
+{
+	SYOUGI_FIRST,         //!先手
+	SYOUGI_SECOND,        //!後手
+	SYOUGI_PLAYER_NUM,    //!プレイヤーの人数
+	SYOUGI_NONE           //!空
+};
+
+#define SYOUGI_GAME_WIDTH 9   //!全体の横幅
+#define SYOUGI_GAME_HEIGHT 11   //!全体の縦幅
+
+#define PIECE_MOVE_MAX_X 3     //!駒の動ける最大範囲範囲
+#define PIECE_MOVE_MAX_Y 4     //!駒の動ける最大範囲範囲
+
+#define PIECE_MOVE_MIN 0     //!駒の動ける最小範囲範囲
+
+/////////////////////////////////////////////////////////
 
 //!移動方向の種類
 enum DIRECTION_TYPE

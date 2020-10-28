@@ -60,14 +60,19 @@ Vec2 Inputter::InpuMoveKey()
         //!Enterキーなら
         if (key == ENTER)
         {
-            system("cls");
             m_decide = true;
+        }
+        //!キャンセルボタンが押された場合
+        else if (key == 'r')
+        {
+            m_cancel = true;
         }
     }
     else
     {
         m_esc = false;
         m_decide = false;
+        m_cancel = false;
     }
 
     InputForcedKey();  //!ctrl+cが押されたとき
@@ -101,6 +106,7 @@ bool Inputter::InputJumpKey()
 
     return false;
 }
+
 
 //!ゲーム開始入力待ち関数
 bool Inputter::InputStartKey()

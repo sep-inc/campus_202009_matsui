@@ -76,6 +76,9 @@
     <Filter Include="Scene\Tron\System">
       <UniqueIdentifier>{2b26ee3b-4d2d-4a99-99ce-53ea5f85dcfe}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Scene\Shougi\System">
+      <UniqueIdentifier>{dd9719d2-0abf-46f1-ae20-f253f7c52132}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sor\Utility\Vec2.h">
@@ -175,6 +178,42 @@
     <ClInclude Include="Sor\Scene\Tron\TronGameController.h">
       <Filter>Scene\Tron</Filter>
     </ClInclude>
+    <ClInclude Include="Sor\Scene\Shougi\Object\Player\SyougiPlayer.h">
+      <Filter>Scene\Shougi\Object\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\Scene\Shougi\Object\Player\SyougiMyself.h">
+      <Filter>Scene\Shougi\Object\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\Scene\Shougi\Object\Player\SyougiEnemy.h">
+      <Filter>Scene\Shougi\Object\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\Scene\Shougi\Object\SyougiBoard.h">
+      <Filter>Scene\Shougi\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\Scene\Shougi\Object\SyougiCursor.h">
+      <Filter>Scene\Shougi\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\Scene\Shougi\Object\SyougiPiece.h">
+      <Filter>Scene\Shougi\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\Scene\Shougi\Object\SyougiPiece_Goldgeneral.h">
+      <Filter>Scene\Shougi\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\Scene\Shougi\Object\SyougiPiece_King.h">
+      <Filter>Scene\Shougi\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\Scene\Shougi\Object\SyougiPiece_Knight.h">
+      <Filter>Scene\Shougi\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\Scene\Shougi\Object\SyougiPiece_Pawn.h">
+      <Filter>Scene\Shougi\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\Scene\Shougi\System\SyougiDrawer.h">
+      <Filter>Scene\Shougi\System</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\Scene\Shougi\SyougiGameController.h">
+      <Filter>Scene\Shougi</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Sor\Main.cpp" />
@@ -261,6 +300,42 @@
     </ClCompile>
     <ClCompile Include="Sor\Scene\Tron\TronGameController.cpp">
       <Filter>Scene\Tron</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\Scene\Shougi\Object\Player\SyougiPlayer.cpp">
+      <Filter>Scene\Shougi\Object\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\Scene\Shougi\Object\Player\SyougiMyself.cpp">
+      <Filter>Scene\Shougi\Object\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\Scene\Shougi\Object\Player\SyougiEnemy.cpp">
+      <Filter>Scene\Shougi\Object\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\Scene\Shougi\Object\SyougiBoard.cpp">
+      <Filter>Scene\Shougi\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\Scene\Shougi\Object\SyougiCursor.cpp">
+      <Filter>Scene\Shougi\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\Scene\Shougi\Object\SyougiPiece.cpp">
+      <Filter>Scene\Shougi\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\Scene\Shougi\Object\SyougiPiece_Goldgeneral.cpp">
+      <Filter>Scene\Shougi\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\Scene\Shougi\Object\SyougiPiece_King.cpp">
+      <Filter>Scene\Shougi\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\Scene\Shougi\Object\SyougiPiece_Knight.cpp">
+      <Filter>Scene\Shougi\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\Scene\Shougi\Object\SyougiPiece_Pawn.cpp">
+      <Filter>Scene\Shougi\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\Scene\Shougi\System\SyougiDrawer.cpp">
+      <Filter>Scene\Shougi\System</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\Scene\Shougi\SyougiGameController.cpp">
+      <Filter>Scene\Shougi</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

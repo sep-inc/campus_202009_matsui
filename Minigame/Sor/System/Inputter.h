@@ -68,10 +68,17 @@ public:
      */
     const bool GetDecideKey() { return m_decide; }
 
+    /**
+    * @brief  キャンセルフラグ参照関数
+    * @return キャンセルボタンが押されたかどうかを返す
+    */
+    const bool GetSelectCancel() { return m_cancel; }
+
 private:
     static Inputter* p_instance;
 
     bool m_decide;  //!決定キーフラグ
+    bool m_cancel;   //!キャンセル時用
     bool m_esc;     //!ESC時終了フラグ
 };
 

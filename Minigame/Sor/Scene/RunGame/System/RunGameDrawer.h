@@ -48,8 +48,8 @@ private:
         char kind[4];
     };
 
-    DrawBuffer m_draw_buffer[GAME_HEIGHT][GAME_WIDTH];  //!描画用配列
-    DrawBuffer m_clear_buffer[GAME_HEIGHT][GAME_WIDTH]; //!クリア用配列
+    DrawBuffer m_draw_buffer[RUNGAME_HEIGHT][RUNGAME_WIDTH];  //!描画用配列
+    DrawBuffer m_clear_buffer[RUNGAME_HEIGHT][RUNGAME_WIDTH]; //!クリア用配列
 
 };
 

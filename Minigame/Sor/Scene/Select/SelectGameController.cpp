@@ -10,7 +10,7 @@ SelectGameController::SelectGameController() :
 	m_select_font("→"),
 	m_none_font("　")
 {
-	m_controller_step = CONTROLLER_INIT;
+	m_step = STEP_INIT;
 	m_game_type = SelectMode;     //!ゲームの種類(描画クラスに情報を送るため)
 	m_next_scene = false;         //!シーン切り替えフラグ
 
@@ -19,7 +19,7 @@ SelectGameController::SelectGameController() :
 	m_game_nmae[OX_Game] = "OXゲーム";
 	m_game_nmae[PacMan] = "パックマン";
 	m_game_nmae[RunGame] = "Runゲーム";
-	m_game_nmae[Shougi] = "将棋";
+	m_game_nmae[Syougi] = "将棋";
 	m_game_nmae[Tron] = "トロン";
 }
 
@@ -32,30 +32,30 @@ void SelectGameController::Reset()
 	//!入力クラス初期化
 	Inputter::Instance()->Reset();
 
-	m_controller_step = CONTROLLER_UPDATE;
+	m_step = STEP_UPDATE;
 
 }
 
 void SelectGameController::Update()
 {
-	switch (m_controller_step)
+	switch (m_step)
 	{
-	case SelectGameController::CONTROLLER_INIT:     //!初期化
+	case SelectGameController::STEP_INIT:     //!初期化
 		Reset();
 		break;
-	case SelectGameController::CONTROLLER_START:    //!開始待ち
+	case SelectGameController::STEP_START:    //!開始待ち
 		DrawRule();
 
 		//!スタートキーが入力されたら
 		if (Inputter::Instance()->InputStartKey() == true)
 		{
-			m_controller_step = CONTROLLER_UPDATE;
+			m_step = STEP_UPDATE;
 		}
 		break;
-	case SelectGameController::CONTROLLER_UPDATE:   //!更新
+	case SelectGameController::STEP_UPDATE:   //!更新
 		ObjectUpdate();
 		break;
-	case SelectGameController::CONTROLLER_RESULT:  //!結果
+	case SelectGameController::STEP_RESULT:  //!結果
 		GameResult();
 		break;
 	default:
@@ -119,6 +119,7 @@ void SelectGameController::ChangeState()
 	//!決定キーが押された場合
 	if (Inputter::Instance()->GetDecideKey() == true)
 	{
+		system("cls");
 		m_game_type = (GAME_TYPE)m_now_select;  //!選択したゲームの種類
 		m_next_scene = true;                    //!シーン切り替えフラグtrue
 	}

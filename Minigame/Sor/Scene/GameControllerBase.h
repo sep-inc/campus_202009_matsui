@@ -88,11 +88,11 @@ protected:
 	//!ステップの種類
 	enum CONTROLLER_STEP
 	{
-		CONTROLLER_INIT,    //!初期化
-		CONTROLLER_START,   //!初期化
-		CONTROLLER_UPDATE,  //!更新
-		CONTROLLER_RESULT,  //!結果
-	}m_controller_step;
+		STEP_INIT,    //!初期化
+		STEP_START,   //!初期化
+		STEP_UPDATE,  //!更新
+		STEP_RESULT,  //!結果
+	}m_step;
 
 	GAME_TYPE m_game_type;   //!ゲームの種類
 

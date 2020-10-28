@@ -37,6 +37,10 @@ public:
 	 */
 	virtual void SetUpDrawBuffer()override;
 
+	/**
+	 * @brief  ルール関数
+	 * @detail ゲームのルールを表示する
+	 */
 	virtual void DrawRule()override;
 
 	/**
