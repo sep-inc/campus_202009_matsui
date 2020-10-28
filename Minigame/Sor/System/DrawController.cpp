@@ -1,6 +1,8 @@
 ﻿#include "DrawController.h"
 #include "../Scene/Select/System/SelectSceneDrawer.h"
-#include "../Scene/Game/PacMan/System/PacManDrawer.h"
+#include "../Scene/PacMan/System/PacManDrawer.h"
+#include "../Scene/RunGame/System/RunGameDrawer.h"
+
 
 
 DrawController* DrawController::p_instance = 0;
@@ -67,6 +69,12 @@ void DrawController::SetNowGameDraw(GAME_TYPE game_type_)
 		if (m_drawer == nullptr)
 		{
 			m_drawer = new PacManDrawer;
+		}
+		break;
+	case RunGame:
+		if (m_drawer == nullptr)
+		{
+			m_drawer = new RunGameDrawer;
 		}
 		break;
 	case SelectMode:

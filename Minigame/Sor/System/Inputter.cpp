@@ -75,6 +75,33 @@ Vec2 Inputter::InpuMoveKey()
     return direction;
 }
 
+bool Inputter::InputJumpKey()
+{
+
+    char input_; //!入力保存用
+
+    //!入力判定(入力があったら通る)
+    if (_kbhit())
+    {
+        input_ = _getch(); //!入力
+
+        //!R or rキーなら
+        if (input_ == 'r' || input_ == 'R')
+        {
+            return true;
+        }
+        //!ESCが押された場合
+        else if (input_ == ESC)
+        {
+            m_esc = true;  //!ESCフラグをtrue
+        }
+    }
+
+    InputForcedKey();  //!強制終了判定
+
+    return false;
+}
+
 //!ゲーム開始入力待ち関数
 bool Inputter::InputStartKey()
 {

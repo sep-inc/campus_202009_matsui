@@ -5,7 +5,7 @@
  * @brief 共通定数、列挙体配置場所
  */
 
-//!ゲームの種類
+ //!ゲームの種類
 enum GAME_TYPE
 {
 	Hanoi_Tower,
@@ -25,27 +25,34 @@ enum GAME_TYPE
 //////////////////////////////////////////////////////////
 //!パックマン
 
-#define GAME_WIDTH 13    //!全体の横幅
-#define GAME_HEIGHT 13   //!全体の縦幅
+#define PACMAN_GAME_WIDTH 13    //!全体の横幅
+#define PACMAN_GAME_HEIGHT 13   //!全体の縦幅
 
-#define PLAYER_NUM 2   //!プレイヤーの数
+#define PACMAN_PLAYER_NUM 2   //!プレイヤーの数
 
-#define ENEMY_NUM 3    //!敵の数
-#define ITEM_NUM 5 //!アイテムの数
+#define PACMAN_ENEMY_NUM 3    //!敵の数
+#define PACMAN_ITEM_NUM 5 //!アイテムの数
 
  //1オブジェクトの種類
 enum PACMAN_OBJECT_TYPE
 {
-	MYSELF,       //!自分
-	ENEMY,        //!敵
-	ITEM,
-	WALL,         //!壁
-	NONE          //!空
+	PACMAN_MYSELF,       //!自分
+	PACMAN_ENEMY,        //!敵
+	PACMAN_ITEM,
+	PACMAN_WALL,         //!壁
+	PACMAN_NONE          //!空
 };
 
 /////////////////////////////////////////////////////////
 
 
+#define GAME_WIDTH 12    //!全体の横幅
+#define GAME_HEIGHT 9   //!全体の縦幅
+
+#define PLAYER_POS_X 1  //!プレイヤーのX座標の位置(マップと相互参照が起こらないようにするため)
+
+#define WALL_SIZE_X 1  //!1マスの横幅
+#define WALL_SIZE_Y 1  //!1マスの縦幅
 
 //!移動方向の種類
 enum DIRECTION_TYPE

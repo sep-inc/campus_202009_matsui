@@ -33,6 +33,12 @@ public:
     Vec2 InpuMoveKey();
 
     /**
+    * @brief  ジャンプキー入力待ち関数
+    * @detail ジャンプキーが押されたらtrueを返す
+    */
+    bool InputJumpKey();
+
+    /**
      * @brief  ゲーム開始入力待ち関数
      * @detail 指定キーが押されたらゲームを始める
      */

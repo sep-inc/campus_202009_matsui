@@ -1,6 +1,6 @@
 ﻿#ifndef SCENE_CONTROLLER_H_
 #define SCENE_CONTROLLER_H_
-#include "SceneBase.h"
+#include "GameControllerBase.h"
 /**
 *@clss   シーン管理クラス
 *@brief  各シーンを管理する
@@ -13,8 +13,8 @@ public:
 	~SceneController();
 
 	/**
-     * @brief  インスタンス化関数
-     */
+	 * @brief  インスタンス化関数
+	 */
 	static SceneController* Instance();
 
 	/**
@@ -50,25 +50,9 @@ public:
 private:
 	static SceneController* p_instance; //!インスタンス
 
-	//!ステップの種類
-	enum STEP
-	{
-		STEP_INIT,    //!初期化
-		STEP_UPDATE,  //!更新
-	};
+	GameControllerBase* m_gamecontroller;  //!各ゲームの管理クラス格納用
 
-	STEP m_step;
-
-	//!シーンの種類
-	enum SCENE_STEP
-	{
-		Select,     //!選択シーン
-		Game,		//!ゲームシーン
-	}m_scene_step;
-
-	SceneBase* m_scene;  //!各シーン格納用
-
-	bool m_next_scene;   //!シーン切り替えフラグ
+	GAME_TYPE m_game_type;   //!ゲームの種類
 
 	GAME_TYPE m_select_game;  //!選択ゲーム保存用
 };

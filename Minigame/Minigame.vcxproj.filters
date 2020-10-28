@@ -9,57 +9,6 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Scene\Game">
-      <UniqueIdentifier>{f1d7a57e-aeb6-4bf6-89da-1d07f7aff19c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Scene\Game\Hanoi_Tower">
-      <UniqueIdentifier>{d3f531bc-fd00-4046-9321-57b630e5f4a6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Scene\Game\OX_Game">
-      <UniqueIdentifier>{b2baae3b-e75e-494b-9933-af5f5f5cb0cb}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Scene\Game\PacMan">
-      <UniqueIdentifier>{044b3bc8-19b3-4112-8ebc-034759c6e011}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Scene\Game\RunGame">
-      <UniqueIdentifier>{5ad72b1d-aeed-4f61-8bb9-cbbbf7d34f14}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Scene\Game\Shougi">
-      <UniqueIdentifier>{6d396163-1d11-4907-9fa6-228d89d16dc2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Scene\Game\Tron">
-      <UniqueIdentifier>{8fba49e0-36c1-4a51-8a10-12208922e62f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Scene\Game\Hanoi_Tower\Object">
-      <UniqueIdentifier>{6cafff20-59f4-4048-bc08-88aafa719b57}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Scene\Game\Tron\Object">
-      <UniqueIdentifier>{53df79da-29d2-4529-a6f5-f99fefd76e9c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Scene\Game\Shougi\Object">
-      <UniqueIdentifier>{c1b06e2a-73b6-4d2b-89f5-3e9d87e7fd01}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Scene\Game\RunGame\Object">
-      <UniqueIdentifier>{bc48f009-c0e7-478e-8457-4550af3deb1b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Scene\Game\PacMan\Object">
-      <UniqueIdentifier>{82719e53-1624-4e7a-9909-1c783d4bd485}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Scene\Game\OX_Game\Object">
-      <UniqueIdentifier>{2af55a1b-ac38-40e2-9197-0e28aa43d2f8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Scene\Game\Tron\Object\Player">
-      <UniqueIdentifier>{239798b2-f2c0-4e36-9c77-eab577d1159d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Scene\Game\Shougi\Object\Player">
-      <UniqueIdentifier>{f32b50fa-e201-4df6-80cc-22a0dd5f7f17}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Scene\Game\PacMan\Object\Player">
-      <UniqueIdentifier>{32e11039-94d9-4f58-871d-3b29ad6806ec}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Scene\Game\PacMan\Object\Player\AI">
-      <UniqueIdentifier>{a803d836-0750-4a34-b179-dacea5c973e7}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Scene\Select">
       <UniqueIdentifier>{50f91bb8-0312-4ef1-9467-7f7fc6413392}</UniqueIdentifier>
     </Filter>
@@ -67,11 +16,65 @@
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
     </Filter>
-    <Filter Include="Scene\Game\PacMan\System">
-      <UniqueIdentifier>{66737087-ca9d-499e-8a64-95a461a76315}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Scene\Select\System">
       <UniqueIdentifier>{609049a5-5b28-4d7a-bcdd-4f03a0066f25}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\Hanoi_Tower">
+      <UniqueIdentifier>{d3f531bc-fd00-4046-9321-57b630e5f4a6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\Hanoi_Tower\Object">
+      <UniqueIdentifier>{6cafff20-59f4-4048-bc08-88aafa719b57}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\OX_Game">
+      <UniqueIdentifier>{b2baae3b-e75e-494b-9933-af5f5f5cb0cb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\OX_Game\Object">
+      <UniqueIdentifier>{2af55a1b-ac38-40e2-9197-0e28aa43d2f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\RunGame">
+      <UniqueIdentifier>{5ad72b1d-aeed-4f61-8bb9-cbbbf7d34f14}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\RunGame\Object">
+      <UniqueIdentifier>{bc48f009-c0e7-478e-8457-4550af3deb1b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\RunGame\System">
+      <UniqueIdentifier>{d1f5dec1-0b0d-4464-8eda-d0f08e2b87fc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\Shougi">
+      <UniqueIdentifier>{6d396163-1d11-4907-9fa6-228d89d16dc2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\Shougi\Object">
+      <UniqueIdentifier>{c1b06e2a-73b6-4d2b-89f5-3e9d87e7fd01}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\Shougi\Object\Player">
+      <UniqueIdentifier>{f32b50fa-e201-4df6-80cc-22a0dd5f7f17}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\Tron">
+      <UniqueIdentifier>{8fba49e0-36c1-4a51-8a10-12208922e62f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\Tron\Object">
+      <UniqueIdentifier>{53df79da-29d2-4529-a6f5-f99fefd76e9c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\Tron\Object\Player">
+      <UniqueIdentifier>{239798b2-f2c0-4e36-9c77-eab577d1159d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\PacMan">
+      <UniqueIdentifier>{044b3bc8-19b3-4112-8ebc-034759c6e011}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\PacMan\Object">
+      <UniqueIdentifier>{82719e53-1624-4e7a-9909-1c783d4bd485}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\PacMan\Object\Player">
+      <UniqueIdentifier>{32e11039-94d9-4f58-871d-3b29ad6806ec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\PacMan\Object\Player\AI">
+      <UniqueIdentifier>{a803d836-0750-4a34-b179-dacea5c973e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\PacMan\System">
+      <UniqueIdentifier>{66737087-ca9d-499e-8a64-95a461a76315}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\Tron\System">
+      <UniqueIdentifier>{2b26ee3b-4d2d-4a99-99ce-53ea5f85dcfe}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -81,45 +84,9 @@
     <ClInclude Include="Sor\System\Fps.h">
       <Filter>System</Filter>
     </ClInclude>
-    <ClInclude Include="Sor\Scene\Game\PacMan\PacManGameController.h">
-      <Filter>Scene\Game\PacMan</Filter>
-    </ClInclude>
-    <ClInclude Include="Sor\Scene\Game\PacMan\Object\PacManStage.h">
-      <Filter>Scene\Game\PacMan\Object</Filter>
-    </ClInclude>
-    <ClInclude Include="Sor\Scene\Game\PacMan\Object\PacManItem.h">
-      <Filter>Scene\Game\PacMan\Object</Filter>
-    </ClInclude>
-    <ClInclude Include="Sor\Scene\Game\PacMan\Object\Player\PacManPlayer.h">
-      <Filter>Scene\Game\PacMan\Object\Player</Filter>
-    </ClInclude>
-    <ClInclude Include="Sor\Scene\Game\PacMan\Object\Player\PacManMyself.h">
-      <Filter>Scene\Game\PacMan\Object\Player</Filter>
-    </ClInclude>
-    <ClInclude Include="Sor\Scene\Game\PacMan\Object\Player\PacManEnemy.h">
-      <Filter>Scene\Game\PacMan\Object\Player</Filter>
-    </ClInclude>
-    <ClInclude Include="Sor\Scene\Game\PacMan\Object\Player\AI\AIController.h">
-      <Filter>Scene\Game\PacMan\Object\Player\AI</Filter>
-    </ClInclude>
-    <ClInclude Include="Sor\Scene\Game\PacMan\Object\Player\AI\ChaseAI.h">
-      <Filter>Scene\Game\PacMan\Object\Player\AI</Filter>
-    </ClInclude>
-    <ClInclude Include="Sor\Scene\Game\PacMan\Object\Player\AI\StopAI.h">
-      <Filter>Scene\Game\PacMan\Object\Player\AI</Filter>
-    </ClInclude>
     <ClInclude Include="Sor\Definition.h" />
-    <ClInclude Include="Sor\Scene\Game\PacMan\Object\Player\AI\AIBase.h">
-      <Filter>Scene\Game\PacMan\Object\Player\AI</Filter>
-    </ClInclude>
     <ClInclude Include="Sor\Scene\SceneController.h">
       <Filter>Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="Sor\Scene\SceneBase.h">
-      <Filter>Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="Sor\Scene\Select\SelectScene.h">
-      <Filter>Scene\Select</Filter>
     </ClInclude>
     <ClInclude Include="Sor\System\DrawController.h">
       <Filter>System</Filter>
@@ -127,20 +94,86 @@
     <ClInclude Include="Sor\System\DrawBase.h">
       <Filter>System</Filter>
     </ClInclude>
-    <ClInclude Include="Sor\Scene\Game\GameControllerBase.h">
-      <Filter>Scene\Game</Filter>
-    </ClInclude>
     <ClInclude Include="Sor\System\Inputter.h">
       <Filter>System</Filter>
     </ClInclude>
     <ClInclude Include="Sor\Scene\Select\System\SelectSceneDrawer.h">
       <Filter>Scene\Select\System</Filter>
     </ClInclude>
-    <ClInclude Include="Sor\Scene\Game\GameScene.h">
-      <Filter>Scene\Game</Filter>
+    <ClInclude Include="Sor\Utility\Collision.h">
+      <Filter>Utility</Filter>
     </ClInclude>
-    <ClInclude Include="Sor\Scene\Game\PacMan\System\PacManDrawer.h">
-      <Filter>Scene\Game\PacMan\System</Filter>
+    <ClInclude Include="Sor\Scene\PacMan\Object\Player\AI\AIBase.h">
+      <Filter>Scene\PacMan\Object\Player\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\Scene\PacMan\Object\Player\AI\AIController.h">
+      <Filter>Scene\PacMan\Object\Player\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\Scene\PacMan\Object\Player\AI\ChaseAI.h">
+      <Filter>Scene\PacMan\Object\Player\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\Scene\PacMan\Object\Player\AI\StopAI.h">
+      <Filter>Scene\PacMan\Object\Player\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\Scene\PacMan\Object\Player\PacManMyself.h">
+      <Filter>Scene\PacMan\Object\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\Scene\PacMan\Object\Player\PacManPlayer.h">
+      <Filter>Scene\PacMan\Object\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\Scene\PacMan\Object\Player\PacManEnemy.h">
+      <Filter>Scene\PacMan\Object\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\Scene\PacMan\Object\PacManStage.h">
+      <Filter>Scene\PacMan\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\Scene\PacMan\Object\PacManItem.h">
+      <Filter>Scene\PacMan\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\Scene\PacMan\System\PacManDrawer.h">
+      <Filter>Scene\PacMan\System</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\Scene\PacMan\PacManGameController.h">
+      <Filter>Scene\PacMan</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\Scene\RunGame\System\RunGameDrawer.h">
+      <Filter>Scene\RunGame\System</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\Scene\RunGame\Object\RunGameMapData.h">
+      <Filter>Scene\RunGame\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\Scene\RunGame\Object\RunGameMapManager.h">
+      <Filter>Scene\RunGame\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\Scene\RunGame\Object\RunGamePlayer.h">
+      <Filter>Scene\RunGame\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\Scene\RunGame\RunGameGameController.h">
+      <Filter>Scene\RunGame</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\Scene\GameControllerBase.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\Scene\Select\SelectGameController.h">
+      <Filter>Scene\Select</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\Scene\Tron\System\TronDrawer.h">
+      <Filter>Scene\Tron\System</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\Scene\Tron\Object\TronStage.h">
+      <Filter>Scene\Tron\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\Scene\Tron\Object\Player\TronEnemy.h">
+      <Filter>Scene\Tron\Object\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\Scene\Tron\Object\Player\TronMyself.h">
+      <Filter>Scene\Tron\Object\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\Scene\Tron\Object\Player\TronPlayer.h">
+      <Filter>Scene\Tron\Object\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\Scene\Tron\TronGameController.h">
+      <Filter>Scene\Tron</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -148,41 +181,8 @@
     <ClCompile Include="Sor\System\Fps.cpp">
       <Filter>System</Filter>
     </ClCompile>
-    <ClCompile Include="Sor\Scene\Game\PacMan\PacManGameController.cpp">
-      <Filter>Scene\Game\PacMan</Filter>
-    </ClCompile>
-    <ClCompile Include="Sor\Scene\Game\PacMan\Object\PacManStage.cpp">
-      <Filter>Scene\Game\PacMan\Object</Filter>
-    </ClCompile>
-    <ClCompile Include="Sor\Scene\Game\PacMan\Object\PacManItem.cpp">
-      <Filter>Scene\Game\PacMan\Object</Filter>
-    </ClCompile>
-    <ClCompile Include="Sor\Scene\Game\PacMan\Object\Player\PacManPlayer.cpp">
-      <Filter>Scene\Game\PacMan\Object\Player</Filter>
-    </ClCompile>
-    <ClCompile Include="Sor\Scene\Game\PacMan\Object\Player\PacManMyself.cpp">
-      <Filter>Scene\Game\PacMan\Object\Player</Filter>
-    </ClCompile>
-    <ClCompile Include="Sor\Scene\Game\PacMan\Object\Player\PacManEnemy.cpp">
-      <Filter>Scene\Game\PacMan\Object\Player</Filter>
-    </ClCompile>
-    <ClCompile Include="Sor\Scene\Game\PacMan\Object\Player\AI\AIController.cpp">
-      <Filter>Scene\Game\PacMan\Object\Player\AI</Filter>
-    </ClCompile>
-    <ClCompile Include="Sor\Scene\Game\PacMan\Object\Player\AI\ChaseAI.cpp">
-      <Filter>Scene\Game\PacMan\Object\Player\AI</Filter>
-    </ClCompile>
-    <ClCompile Include="Sor\Scene\Game\PacMan\Object\Player\AI\StopAI.cpp">
-      <Filter>Scene\Game\PacMan\Object\Player\AI</Filter>
-    </ClCompile>
     <ClCompile Include="Sor\Scene\SceneController.cpp">
       <Filter>Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="Sor\Scene\Select\SelectScene.cpp">
-      <Filter>Scene\Select</Filter>
-    </ClCompile>
-    <ClCompile Include="Sor\Scene\Game\GameScene.cpp">
-      <Filter>Scene\Game</Filter>
     </ClCompile>
     <ClCompile Include="Sor\System\DrawController.cpp">
       <Filter>System</Filter>
@@ -193,8 +193,74 @@
     <ClCompile Include="Sor\Scene\Select\System\SelectSceneDrawer.cpp">
       <Filter>Scene\Select\System</Filter>
     </ClCompile>
-    <ClCompile Include="Sor\Scene\Game\PacMan\System\PacManDrawer.cpp">
-      <Filter>Scene\Game\PacMan\System</Filter>
+    <ClCompile Include="Sor\Utility\Collision.cpp">
+      <Filter>Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\Scene\PacMan\Object\Player\AI\ChaseAI.cpp">
+      <Filter>Scene\PacMan\Object\Player\AI</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\Scene\PacMan\Object\Player\AI\AIController.cpp">
+      <Filter>Scene\PacMan\Object\Player\AI</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\Scene\PacMan\Object\Player\AI\StopAI.cpp">
+      <Filter>Scene\PacMan\Object\Player\AI</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\Scene\PacMan\Object\Player\PacManEnemy.cpp">
+      <Filter>Scene\PacMan\Object\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\Scene\PacMan\Object\Player\PacManMyself.cpp">
+      <Filter>Scene\PacMan\Object\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\Scene\PacMan\Object\Player\PacManPlayer.cpp">
+      <Filter>Scene\PacMan\Object\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\Scene\PacMan\Object\PacManItem.cpp">
+      <Filter>Scene\PacMan\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\Scene\PacMan\Object\PacManStage.cpp">
+      <Filter>Scene\PacMan\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\Scene\PacMan\System\PacManDrawer.cpp">
+      <Filter>Scene\PacMan\System</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\Scene\PacMan\PacManGameController.cpp">
+      <Filter>Scene\PacMan</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\Scene\RunGame\System\RunGameDrawer.cpp">
+      <Filter>Scene\RunGame\System</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\Scene\RunGame\RunGameGameController.cpp">
+      <Filter>Scene\RunGame</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\Scene\RunGame\Object\RunGameMapData.cpp">
+      <Filter>Scene\RunGame\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\Scene\RunGame\Object\RunGameMapManager.cpp">
+      <Filter>Scene\RunGame\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\Scene\RunGame\Object\RunGamePlayer.cpp">
+      <Filter>Scene\RunGame\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\Scene\Select\SelectGameController.cpp">
+      <Filter>Scene\Select</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\Scene\Tron\System\TronDrawer.cpp">
+      <Filter>Scene\Tron\System</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\Scene\Tron\Object\TronStage.cpp">
+      <Filter>Scene\Tron\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\Scene\Tron\Object\Player\TronEnemy.cpp">
+      <Filter>Scene\Tron\Object\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\Scene\Tron\Object\Player\TronMyself.cpp">
+      <Filter>Scene\Tron\Object\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\Scene\Tron\Object\Player\TronPlayer.cpp">
+      <Filter>Scene\Tron\Object\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\Scene\Tron\TronGameController.cpp">
+      <Filter>Scene\Tron</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

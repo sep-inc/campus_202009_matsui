@@ -143,55 +143,26 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="Sor\Scene\Game\GameScene.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="Sor\Scene\Game\PacMan\Object\PacManItem.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="Sor\Scene\Game\PacMan\Object\PacManStage.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="Sor\Scene\Game\PacMan\Object\Player\AI\AIController.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="Sor\Scene\Game\PacMan\Object\Player\AI\ChaseAI.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="Sor\Scene\Game\PacMan\Object\Player\AI\StopAI.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="Sor\Scene\Game\PacMan\Object\Player\PacManEnemy.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="Sor\Scene\Game\PacMan\Object\Player\PacManMyself.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="Sor\Scene\Game\PacMan\Object\Player\PacManPlayer.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="Sor\Scene\Game\PacMan\PacManGameController.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="Sor\Scene\Game\PacMan\System\PacManDrawer.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
+    <ClCompile Include="Sor\Scene\PacMan\Object\PacManItem.cpp" />
+    <ClCompile Include="Sor\Scene\PacMan\Object\PacManStage.cpp" />
+    <ClCompile Include="Sor\Scene\PacMan\Object\Player\AI\AIController.cpp" />
+    <ClCompile Include="Sor\Scene\PacMan\Object\Player\AI\ChaseAI.cpp" />
+    <ClCompile Include="Sor\Scene\PacMan\Object\Player\AI\StopAI.cpp" />
+    <ClCompile Include="Sor\Scene\PacMan\Object\Player\PacManEnemy.cpp" />
+    <ClCompile Include="Sor\Scene\PacMan\Object\Player\PacManMyself.cpp" />
+    <ClCompile Include="Sor\Scene\PacMan\Object\Player\PacManPlayer.cpp" />
+    <ClCompile Include="Sor\Scene\PacMan\PacManGameController.cpp" />
+    <ClCompile Include="Sor\Scene\PacMan\System\PacManDrawer.cpp" />
+    <ClCompile Include="Sor\Scene\RunGame\Object\RunGameMapData.cpp" />
+    <ClCompile Include="Sor\Scene\RunGame\Object\RunGameMapManager.cpp" />
+    <ClCompile Include="Sor\Scene\RunGame\Object\RunGamePlayer.cpp" />
+    <ClCompile Include="Sor\Scene\RunGame\RunGameGameController.cpp" />
+    <ClCompile Include="Sor\Scene\RunGame\System\RunGameDrawer.cpp" />
     <ClCompile Include="Sor\Scene\SceneController.cpp">
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="Sor\Scene\Select\SelectScene.cpp">
+    <ClCompile Include="Sor\Scene\Select\SelectGameController.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -199,6 +170,12 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="Sor\Scene\Tron\Object\Player\TronEnemy.cpp" />
+    <ClCompile Include="Sor\Scene\Tron\Object\Player\TronMyself.cpp" />
+    <ClCompile Include="Sor\Scene\Tron\Object\Player\TronPlayer.cpp" />
+    <ClCompile Include="Sor\Scene\Tron\Object\TronStage.cpp" />
+    <ClCompile Include="Sor\Scene\Tron\System\TronDrawer.cpp" />
+    <ClCompile Include="Sor\Scene\Tron\TronGameController.cpp" />
     <ClCompile Include="Sor\System\DrawController.cpp">
       <SubType>
       </SubType>
@@ -211,73 +188,38 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="Sor\Utility\Collision.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sor\Definition.h">
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="Sor\Scene\Game\GameControllerBase.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="Sor\Scene\Game\GameScene.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="Sor\Scene\Game\PacMan\Object\PacManItem.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="Sor\Scene\Game\PacMan\Object\PacManStage.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="Sor\Scene\Game\PacMan\Object\Player\AI\AIBase.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="Sor\Scene\Game\PacMan\Object\Player\AI\AIController.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="Sor\Scene\Game\PacMan\Object\Player\AI\ChaseAI.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="Sor\Scene\Game\PacMan\Object\Player\AI\StopAI.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="Sor\Scene\Game\PacMan\Object\Player\PacManEnemy.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="Sor\Scene\Game\PacMan\Object\Player\PacManMyself.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="Sor\Scene\Game\PacMan\Object\Player\PacManPlayer.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="Sor\Scene\Game\PacMan\PacManGameController.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="Sor\Scene\Game\PacMan\System\PacManDrawer.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="Sor\Scene\SceneBase.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
+    <ClInclude Include="Sor\Scene\GameControllerBase.h" />
+    <ClInclude Include="Sor\Scene\PacMan\Object\PacManItem.h" />
+    <ClInclude Include="Sor\Scene\PacMan\Object\PacManStage.h" />
+    <ClInclude Include="Sor\Scene\PacMan\Object\Player\AI\AIBase.h" />
+    <ClInclude Include="Sor\Scene\PacMan\Object\Player\AI\AIController.h" />
+    <ClInclude Include="Sor\Scene\PacMan\Object\Player\AI\ChaseAI.h" />
+    <ClInclude Include="Sor\Scene\PacMan\Object\Player\AI\StopAI.h" />
+    <ClInclude Include="Sor\Scene\PacMan\Object\Player\PacManEnemy.h" />
+    <ClInclude Include="Sor\Scene\PacMan\Object\Player\PacManMyself.h" />
+    <ClInclude Include="Sor\Scene\PacMan\Object\Player\PacManPlayer.h" />
+    <ClInclude Include="Sor\Scene\PacMan\PacManGameController.h" />
+    <ClInclude Include="Sor\Scene\PacMan\System\PacManDrawer.h" />
+    <ClInclude Include="Sor\Scene\RunGame\Object\RunGameMapData.h" />
+    <ClInclude Include="Sor\Scene\RunGame\Object\RunGameMapManager.h" />
+    <ClInclude Include="Sor\Scene\RunGame\Object\RunGamePlayer.h" />
+    <ClInclude Include="Sor\Scene\RunGame\RunGameGameController.h" />
+    <ClInclude Include="Sor\Scene\RunGame\System\RunGameDrawer.h" />
     <ClInclude Include="Sor\Scene\SceneController.h">
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="Sor\Scene\Select\SelectScene.h">
+    <ClInclude Include="Sor\Scene\Select\SelectGameController.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -285,6 +227,12 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="Sor\Scene\Tron\Object\Player\TronEnemy.h" />
+    <ClInclude Include="Sor\Scene\Tron\Object\Player\TronMyself.h" />
+    <ClInclude Include="Sor\Scene\Tron\Object\Player\TronPlayer.h" />
+    <ClInclude Include="Sor\Scene\Tron\Object\TronStage.h" />
+    <ClInclude Include="Sor\Scene\Tron\System\TronDrawer.h" />
+    <ClInclude Include="Sor\Scene\Tron\TronGameController.h" />
     <ClInclude Include="Sor\System\DrawBase.h" />
     <ClInclude Include="Sor\System\DrawController.h">
       <SubType>
@@ -295,6 +243,10 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="Sor\System\Inputter.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Sor\Utility\Collision.h">
       <SubType>
       </SubType>
     </ClInclude>
