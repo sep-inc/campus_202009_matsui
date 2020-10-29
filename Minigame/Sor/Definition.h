@@ -22,8 +22,8 @@ enum GAME_TYPE
 #define FONT_BYTE_ 4   //!文字サイズ
 
 
-//////////////////////////////////////////////////////////
-//!パックマン
+///////////////////////////////////////////////////////////
+//!パックマン                                     
 
 #define PACMAN_GAME_WIDTH 13    //!全体の横幅
 #define PACMAN_GAME_HEIGHT 13   //!全体の縦幅
@@ -84,7 +84,7 @@ enum PIECE_TYPE
 	GOLDGENERAL, //!金
 	PAWN,        //!歩
 	PIECE_NUM,   //!駒の種類の数
-	BLANK,       //!空
+	PIECE_BLANK,       //!空
 };
 
 //!プレイヤーの種類
@@ -105,6 +105,34 @@ enum SYOUGI_PLAYER_TYPE
 #define PIECE_MOVE_MIN 0     //!駒の動ける最小範囲範囲
 
 /////////////////////////////////////////////////////////
+
+/////////////////////////////////////////////////////////
+enum HANOITOWER_OBJECT_TYPE
+{
+	BOX,
+	DISK
+};
+
+#define START_UNIT 0        //最初の要素数
+
+#define BUFFER_WIDTH 19       //Bufferの横幅
+#define BUFFER_HEIGHT 6       //Bufferの縦幅
+
+#define BOX_NUM 3            //箱の数
+#define BOX_WIDTH 5          //箱の横幅
+#define BOX_HEIGHT 3         //箱の縦幅
+
+#define BUFFER_BOX_POS_Y 2         //箱の縦幅
+
+#define DISK_NUM 3           //円盤の数
+#define SMALL_DISK_WIDTH 1   //小円盤の横幅
+#define NOMAL_DISK_WIDTH 3   //中盤の横幅
+#define BIG_DISK_WIDTH 5     //大盤の横幅
+#define DISK_HEIGHT 1        //円盤の縦幅
+
+#define DISK_MAX_WIDTH 6        //円盤の縦幅
+/////////////////////////////////////////////////////////
+
 
 //!移動方向の種類
 enum DIRECTION_TYPE

@@ -138,6 +138,44 @@ bool Inputter::InputStartKey()
     return false;
 }
 
+void Inputter::InputNumber()
+{
+    printf("移す場所を選んでください\n");
+    printf("1or2or3\n");
+    m_start_number = ReInputNumber();
+
+    printf("送る場所を選んでください\n");
+    printf("1or2or3\n");
+
+    m_end_number = ReInputNumber();
+}
+
+int Inputter::ReInputNumber()
+{
+    char input_number = 0;
+
+    input_number = _getch();
+
+    while (input_number != '1' && input_number != '2' && input_number != '3'&& input_number != ESC)
+    {
+        printf("もう一度選んでください\n");
+        printf("1or2or3\n");
+        input_number = _getch();
+    }
+
+    if (input_number == '1') { return 1; }
+    else if (input_number == '2') { return 2; }
+    else if (input_number == '3') { return 3; }
+    //!ESCキーなら
+    else if (input_number == ESC)
+    {
+        system("cls");
+        m_esc = true;
+    }
+
+    return 0;
+}
+
 //!終了待ち関数 
 void Inputter::InputForcedKey()
 {

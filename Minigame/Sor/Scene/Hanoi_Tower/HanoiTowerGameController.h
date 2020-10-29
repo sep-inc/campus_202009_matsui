@@ -1,20 +1,20 @@
-﻿#ifndef PACMAN_GAMECONTROLLER_H_
-#define PACMAN_GAMECONTROLLER_H_
+﻿#ifndef HANOITOWER_GAMECONTROLLER_H_
+#define HANOITOWER_GAMECONTROLLER_H_
 #include "../../Definition.h"
-#include "Object/PacManStage.h"
-#include "Object/PacManItem.h"
-#include "Object/Player/PacManPlayer.h"
 #include "../GameControllerBase.h"
+#include "Object/HanoiTowerBoxArray.h"
+#include "Object/HanoiTowerDiskArray.h"
+
 /**
 *@clss   ゲーム管理クラス
 *@brief  各オブジェクトの処理を管理する
 */
 
-class PacManGameController :public GameControllerBase
+class HanoiTowerGameController :public GameControllerBase
 {
 public:
-	PacManGameController();
-	~PacManGameController();
+	HanoiTowerGameController();
+	~HanoiTowerGameController();
 
 	/**
 	 * @brief  初期化関数(繰り返し)
@@ -36,9 +36,9 @@ public:
 	virtual void ObjectUpdate()override;
 
 	/**
-     * @brief  ルール関数
-     * @detail ゲームのルールを表示する
-     */
+	 * @brief  ルール関数
+	 * @detail ゲームのルールを表示する
+	 */
 	virtual void DrawRule()override;
 
 	/**
@@ -54,9 +54,9 @@ public:
 	virtual void GameResult()override;
 
 	/**
-     * @brief  強制終了関数
-     * @detail ESCが押されたときにゲームを終了する
-     */
+	 * @brief  強制終了関数
+	 * @detail ESCが押されたときにゲームを終了する
+	 */
 	virtual bool GameEnd()override;
 
 	/**
@@ -65,16 +65,9 @@ public:
 	 */
 	virtual void ChangeState()override;
 
-	/**
-	 * @brief 解放処理関数
-	 */
-	virtual void Delete()override;
-
 private:
-	PacManStage* m_stage;
-	PacManPlayer* m_player;
-	PacManPlayer* m_enemy[PACMAN_ENEMY_NUM];
-	PacManItem* m_item;
+	HanoiTowerBoxArray* m_box_array;
+	HanoiTowerDiskArray* m_disk_array;
 
 };
 

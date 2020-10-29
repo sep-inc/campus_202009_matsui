@@ -4,6 +4,8 @@
 #include "../Scene/RunGame/System/RunGameDrawer.h"
 #include "../Scene/Tron/System/TronDrawer.h"
 #include "../Scene/Shougi/System/SyougiDrawer.h"
+#include "../Scene/Hanoi_Tower/System/HanoiTowerDrawer.h"
+
 
 
 
@@ -89,6 +91,12 @@ void DrawController::SetNowGameDraw(GAME_TYPE game_type_)
 		if (m_drawer == nullptr)
 		{
 			m_drawer = new SyougiDrawer;
+		}
+		break;
+	case Hanoi_Tower:
+		if (m_drawer == nullptr)
+		{
+			m_drawer = new HanoiTowerDrawer;
 		}
 		break;
 	case SelectMode:

@@ -116,17 +116,6 @@ void PacManGameController::DrawRule()
 	printf("敗北条件：敵にぶつかる\n");
 }
 
-bool PacManGameController::ResultStep()
-{
-	//!プレイヤーが死ぬか、ゲームクリアした時
-	if (m_player->GetFlgInfo().m_clear == true || m_player->GetFlgInfo().m_deth == true)
-	{
-		return true;
-	}
-
-	return false;
-}
-
 //!描画情報代入関数
 void PacManGameController::SetUpDrawBuffer()
 {
@@ -151,6 +140,18 @@ void PacManGameController::GameResult()
 	{
 		m_step = STEP_INIT;
 	}
+}
+
+//!ゲーム終了関数
+bool PacManGameController::GameEnd()
+{
+	//!ESCキーが押されたら
+	if (Inputter::Instance()->GetESCKey() == true)
+	{
+		return true;
+	}
+
+	return false;
 }
 
 //!強制終了関数

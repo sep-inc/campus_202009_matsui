@@ -6,6 +6,8 @@
 #include "RunGame/RunGameGameController.h"
 #include "Tron/TronGameController.h"
 #include "Shougi/SyougiGameController.h"
+#include "Hanoi_Tower/HanoiTowerGameController.h"
+
 
 
 
@@ -18,9 +20,12 @@ SceneController::SceneController() :
 	m_gamecontroller(nullptr)
 {
 	//if (m_gamecontroller == nullptr) { m_gamecontroller = new SelectGameController; }
+	//if (m_gamecontroller == nullptr) { m_gamecontroller = new PacManGameController; }
 	//if (m_gamecontroller == nullptr) { m_gamecontroller = new RunGameGameController; }
 	//if (m_gamecontroller == nullptr) { m_gamecontroller = new TronGameController; }
-	if (m_gamecontroller == nullptr) { m_gamecontroller = new SyougiGameController; }
+	//if (m_gamecontroller == nullptr) { m_gamecontroller = new SyougiGameController; }
+	if (m_gamecontroller == nullptr) { m_gamecontroller = new HanoiTowerGameController; }
+
 
 
 }

@@ -25,7 +25,7 @@ void SyougiMyself::Reset()
 	m_move = false;  //!移動フラグ
 	m_now_pos = Vec2(0, 0);
 	m_next_pos = Vec2(0, 0);
-	m_piece_type = BLANK;
+	m_piece_type = PIECE_BLANK;
 }
 
 //!更新処理
@@ -88,11 +88,11 @@ bool SyougiMyself::MoveSourceSelect()
 
 
 		//!指定した場所に何も無かった場合。または相手の駒だった場合、またはキャンセルボタンが押されたとき																								 //!もし選んだ場所に駒がなかったら、また選んだ駒が自分の駒でない場合
-		if (m_piece_type == BLANK || m_player_type != m_my_player_type
+		if (m_piece_type == PIECE_BLANK || m_player_type != m_my_player_type
 			|| Inputter::Instance()->GetSelectCancel() == true)
 		{
 
-			if (m_piece_type == BLANK)
+			if (m_piece_type == PIECE_BLANK)
 			{
 				printf("そこには何もありません。もう一度選んでください\n");
 			}

@@ -81,11 +81,11 @@ SyougiBoard::SyougiBoard()
 	BoardInfo map[BORD_HEIGHT][BORD_WIDTH] =
 	{
 		//!{駒の種類 , プレイヤー}
-		   {{GOLDGENERAL, SYOUGI_SECOND},{KING,  SYOUGI_SECOND},{BLANK, SYOUGI_NONE  },{KNIGHT,      SYOUGI_SECOND}},
+		   {{GOLDGENERAL, SYOUGI_SECOND},{KING,  SYOUGI_SECOND},{PIECE_BLANK, SYOUGI_NONE  },{KNIGHT,      SYOUGI_SECOND}},
 		   {{PAWN,        SYOUGI_SECOND},{PAWN,  SYOUGI_SECOND},{PAWN,  SYOUGI_SECOND},{PAWN,        SYOUGI_SECOND}},
-		   {{BLANK,       SYOUGI_NONE  },{BLANK, SYOUGI_NONE  },{BLANK, SYOUGI_NONE  },{BLANK,       SYOUGI_NONE  }},
+		   {{PIECE_BLANK,       SYOUGI_NONE  },{PIECE_BLANK, SYOUGI_NONE  },{PIECE_BLANK, SYOUGI_NONE  },{PIECE_BLANK,       SYOUGI_NONE  }},
 		   {{PAWN,        SYOUGI_FIRST },{PAWN,  SYOUGI_FIRST },{PAWN,  SYOUGI_FIRST },{PAWN,        SYOUGI_FIRST }},
-		   {{KNIGHT,      SYOUGI_FIRST },{BLANK, SYOUGI_NONE  },{KING,  SYOUGI_FIRST },{GOLDGENERAL, SYOUGI_FIRST }}
+		   {{KNIGHT,      SYOUGI_FIRST },{PIECE_BLANK, SYOUGI_NONE  },{KING,  SYOUGI_FIRST },{GOLDGENERAL, SYOUGI_FIRST }}
 	};
 
 	//!配列の初期化は宣言と同時にしかできないためコピーで代入する
@@ -125,7 +125,7 @@ void SyougiBoard::SetPiecePos(Vec2 next_pos, PIECE_TYPE object_, SYOUGI_PLAYER_T
 	}
 
 	//!移動元を0にして何もない状態にする
-	m_board_info[m_source_pos.y][m_source_pos.x].m_put_piece = BLANK;
+	m_board_info[m_source_pos.y][m_source_pos.x].m_put_piece = PIECE_BLANK;
 	m_board_info[m_source_pos.y][m_source_pos.x].m_put_player = SYOUGI_NONE;
 
 	//!駒を移動させる
@@ -162,7 +162,7 @@ void SyougiBoard::SetUpDrawBuffer(SyougiPiece* piece_[])
 		for (int x = 0; x < BORD_WIDTH; x++)
 		{
 			//!何か駒が置いてある場合
-			if (m_board_info[y][x].m_put_piece != BLANK)
+			if (m_board_info[y][x].m_put_piece != PIECE_BLANK)
 			{
 				//!駒にどのような文字で描画するか問う
 				piece_[m_board_info[y][x].m_put_piece]->DrawPiece(m_board_info[y][x].m_put_player, Vec2(x, y));

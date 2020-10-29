@@ -19,7 +19,7 @@ void SyougiEnemy::Reset()
 	m_move = false;  //!移動フラグ
 	m_now_pos = Vec2(0, 0);
 	m_next_pos = Vec2(0, 0);
-	m_piece_type = BLANK;
+	m_piece_type = PIECE_BLANK;
 }
 
 //!更新処理

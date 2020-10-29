@@ -143,6 +143,34 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="Sor\Scene\Hanoi_Tower\HanoiTowerGameController.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Sor\Scene\Hanoi_Tower\Object\HanoiTowerBox.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Sor\Scene\Hanoi_Tower\Object\HanoiTowerBoxArray.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Sor\Scene\Hanoi_Tower\Object\HanoiTowerDisk.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Sor\Scene\Hanoi_Tower\Object\HanoiTowerDiskArray.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Sor\Scene\Hanoi_Tower\Object\HanoiTowerObjectBase.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Sor\Scene\Hanoi_Tower\System\HanoiTowerDrawer.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="Sor\Scene\PacMan\Object\PacManItem.cpp" />
     <ClCompile Include="Sor\Scene\PacMan\Object\PacManStage.cpp" />
     <ClCompile Include="Sor\Scene\PacMan\Object\Player\AI\AIController.cpp" />
@@ -247,6 +275,34 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="Sor\Scene\GameControllerBase.h" />
+    <ClInclude Include="Sor\Scene\Hanoi_Tower\HanoiTowerGameController.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Sor\Scene\Hanoi_Tower\Object\HanoiTowerBox.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Sor\Scene\Hanoi_Tower\Object\HanoiTowerBoxArray.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Sor\Scene\Hanoi_Tower\Object\HanoiTowerDisk.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Sor\Scene\Hanoi_Tower\Object\HanoiTowerDiskArray.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Sor\Scene\Hanoi_Tower\Object\HanoiTowerObjectBase.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Sor\Scene\Hanoi_Tower\System\HanoiTowerDrawer.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="Sor\Scene\PacMan\Object\PacManItem.h" />
     <ClInclude Include="Sor\Scene\PacMan\Object\PacManStage.h" />
     <ClInclude Include="Sor\Scene\PacMan\Object\Player\AI\AIBase.h" />

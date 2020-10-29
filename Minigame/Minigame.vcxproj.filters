@@ -79,6 +79,9 @@
     <Filter Include="Scene\Shougi\System">
       <UniqueIdentifier>{dd9719d2-0abf-46f1-ae20-f253f7c52132}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Scene\Hanoi_Tower\System">
+      <UniqueIdentifier>{b33eab5c-2054-4963-89b3-145db0766642}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sor\Utility\Vec2.h">
@@ -214,6 +217,27 @@
     <ClInclude Include="Sor\Scene\Shougi\SyougiGameController.h">
       <Filter>Scene\Shougi</Filter>
     </ClInclude>
+    <ClInclude Include="Sor\Scene\Hanoi_Tower\System\HanoiTowerDrawer.h">
+      <Filter>Scene\Hanoi_Tower\System</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\Scene\Hanoi_Tower\Object\HanoiTowerBox.h">
+      <Filter>Scene\Hanoi_Tower\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\Scene\Hanoi_Tower\Object\HanoiTowerBoxArray.h">
+      <Filter>Scene\Hanoi_Tower\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\Scene\Hanoi_Tower\Object\HanoiTowerDisk.h">
+      <Filter>Scene\Hanoi_Tower\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\Scene\Hanoi_Tower\Object\HanoiTowerDiskArray.h">
+      <Filter>Scene\Hanoi_Tower\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\Scene\Hanoi_Tower\Object\HanoiTowerObjectBase.h">
+      <Filter>Scene\Hanoi_Tower\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\Scene\Hanoi_Tower\HanoiTowerGameController.h">
+      <Filter>Scene\Hanoi_Tower</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Sor\Main.cpp" />
@@ -336,6 +360,27 @@
     </ClCompile>
     <ClCompile Include="Sor\Scene\Shougi\SyougiGameController.cpp">
       <Filter>Scene\Shougi</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\Scene\Hanoi_Tower\System\HanoiTowerDrawer.cpp">
+      <Filter>Scene\Hanoi_Tower\System</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\Scene\Hanoi_Tower\Object\HanoiTowerBox.cpp">
+      <Filter>Scene\Hanoi_Tower\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\Scene\Hanoi_Tower\Object\HanoiTowerBoxArray.cpp">
+      <Filter>Scene\Hanoi_Tower\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\Scene\Hanoi_Tower\Object\HanoiTowerDisk.cpp">
+      <Filter>Scene\Hanoi_Tower\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\Scene\Hanoi_Tower\Object\HanoiTowerDiskArray.cpp">
+      <Filter>Scene\Hanoi_Tower\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\Scene\Hanoi_Tower\Object\HanoiTowerObjectBase.cpp">
+      <Filter>Scene\Hanoi_Tower\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\Scene\Hanoi_Tower\HanoiTowerGameController.cpp">
+      <Filter>Scene\Hanoi_Tower</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

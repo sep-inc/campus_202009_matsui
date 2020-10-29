@@ -44,6 +44,9 @@ public:
      */
     bool InputStartKey();
 
+    void InputNumber();   //入力した値をメンバ変数に保存する
+    int ReInputNumber();   //入力した値をメンバ変数に保存する
+
     /**
      * @brief  ctrl+c入力関数
      * @detail ctrl+cが押されたときにゲームを終了する
@@ -74,12 +77,19 @@ public:
     */
     const bool GetSelectCancel() { return m_cancel; }
 
+    const int GetStartNumber() { return m_start_number; }   //移動元の番号を返す
+    const int GetEndNumber() { return m_end_number; }       //移動先の番号を返す
+
 private:
     static Inputter* p_instance;
 
     bool m_decide;  //!決定キーフラグ
     bool m_cancel;   //!キャンセル時用
     bool m_esc;     //!ESC時終了フラグ
+
+    //!数字キー用
+    int m_start_number;    
+    int m_end_number;      
 };
 
 #endif
