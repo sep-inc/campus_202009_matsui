@@ -5,11 +5,11 @@
 *@clss   プレイヤークラス
 */
 
-class Player
+class RunGamePlayer
 {
 public:
-	Player() {}
-	~Player() {}
+	RunGamePlayer() {}
+	~RunGamePlayer() {}
 
 	/**
 	 * @brief  初期化関数

@@ -6,11 +6,16 @@
 *@brief  各オブジェクトの処理を管理する
 */
 
+///////////////////////////////////////////////////
+//!基底クラスはまとめられるものはまとめて良いが、//
+//上下関係(独立性)がちゃんとある場合に限る       //
+///////////////////////////////////////////////////
+
 class GameControllerBase
 {
 public:
 	GameControllerBase() {}
-	~GameControllerBase() {}
+	virtual ~GameControllerBase() {}
 
 	/**
 	 * @brief  初期化関数(繰り返し)
@@ -93,6 +98,8 @@ protected:
 		STEP_UPDATE,  //!更新
 		STEP_RESULT,  //!結果
 	}m_step;
+
+
 
 	GAME_TYPE m_game_type;   //!ゲームの種類
 

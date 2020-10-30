@@ -7,16 +7,16 @@
 #include "../../../Definition.h"
 
 
-const __int8 Player::PlayerInfo::m_width = 1;	    //!縦幅
-const __int8 Player::PlayerInfo::m_height = 2;      //!横幅
-const __int8 Player::PlayerInfo::m_gravity = 1;     //!重力
-const __int8 Player::PlayerInfo::m_jump_power = 3;  //!ジャンプ力
+const __int8 RunGamePlayer::PlayerInfo::m_width = 1;	    //!縦幅
+const __int8 RunGamePlayer::PlayerInfo::m_height = 2;      //!横幅
+const __int8 RunGamePlayer::PlayerInfo::m_gravity = 1;     //!重力
+const __int8 RunGamePlayer::PlayerInfo::m_jump_power = 3;  //!ジャンプ力
 
-const unsigned __int8 Player::PlayerInfo::m_speed_max = 9; //!移動までにかかるフレーム数
+const unsigned __int8 RunGamePlayer::PlayerInfo::m_speed_max = 9; //!移動までにかかるフレーム数
 
 
 //!初期化関数
-void Player::Reset()
+void RunGamePlayer::Reset()
 {
 	m_player_info.m_pos = Vec2(RUNGAME_PLAYER_POS_X, 3);     //!現在座標初期化
 	m_player_info.m_next_pos = Vec2(m_player_info.m_pos.x + 1, m_player_info.m_pos.y); //!次のフレームの座標
@@ -27,7 +27,7 @@ void Player::Reset()
 }
 
 //!更新関数
-void Player::Update()
+void RunGamePlayer::Update()
 {
 	Run();  //!移動関数
 
@@ -37,7 +37,7 @@ void Player::Update()
 }
 
 //!移動関数
-void Player::Run()
+void RunGamePlayer::Run()
 {
 	m_player_info.m_move = false;  //!移動フラグをfalse
 
@@ -52,7 +52,7 @@ void Player::Run()
 }
 
 //!ジャンプ関数
-void Player::Jump()
+void RunGamePlayer::Jump()
 {
 	printf("Rキーでジャンプ\n");
 
@@ -69,7 +69,7 @@ void Player::Jump()
 }
 
 //!当たり判定関数
-void Player::Collision()
+void RunGamePlayer::Collision()
 {
 	if (m_player_info.m_move == true)
 	{
@@ -87,7 +87,7 @@ void Player::Collision()
 }
 
 //!死亡判定関数
-void Player::DethJudgment()
+void RunGamePlayer::DethJudgment()
 {
 	//!壁に当たって死んだかどうか調べる
 	if (m_player_info.m_pos.y + m_player_info.m_height > RunGameMapData::Instance()->GroundPos(m_player_info.m_next_pos).y)
@@ -101,7 +101,7 @@ void Player::DethJudgment()
 }
 
 //!描画情報代入関数
-void Player::SetUpBuffer()
+void RunGamePlayer::SetUpBuffer()
 {
 	//!体を頭とくっつける
 	m_player_info.m_body_pos = m_player_info.m_pos;

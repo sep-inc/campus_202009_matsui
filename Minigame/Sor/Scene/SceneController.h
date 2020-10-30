@@ -9,13 +9,19 @@
 class SceneController
 {
 public:
-	SceneController();
-	~SceneController();
+	SceneController() {}
+	~SceneController() {}
 
 	/**
 	 * @brief  インスタンス化関数
 	 */
 	static SceneController* Instance();
+
+	/**
+	 * @brief  初期化関数
+	 * @detail メンバ変数の初期化
+	 */
+	void Init();
 
 	/**
 	 * @brief  ステップ処理関数
@@ -46,6 +52,17 @@ public:
 	 * @detail 選択したゲームの種類を返す
 	 */
 	GAME_TYPE GetSelectGame() { return m_select_game; }
+
+	/**
+	 * @brief 解放処理関数
+	 */
+	void Delete();
+
+	/**
+	 * @brief  各ゲーム管理クラスアドレス配列
+	 * @detail 配列に指定したゲームを入れるとそのゲームの管理クラスのnewが返ってくる
+	 */
+	static GameControllerBase* (*s_controller_array[static_cast<int>(GAME_TYPE::Game_Num)])();
 
 private:
 	static SceneController* p_instance; //!インスタンス

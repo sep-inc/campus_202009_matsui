@@ -17,6 +17,11 @@ SyougiGameController::SyougiGameController()
 	m_step = STEP_INIT;//!ステップ初期化
 }
 
+SyougiGameController::~SyougiGameController()
+{
+	Delete();
+}
+
 //!ステップ処理関数
 void SyougiGameController::Update()
 {
@@ -153,15 +158,25 @@ void SyougiGameController::GameResult()
 	}
 }
 
-bool SyougiGameController::GameEnd()
+//bool SyougiGameController::GameEnd()
+//{
+//	//!ESCキーが押されたら
+//	if (Inputter::Instance()->GetESCKey() == true)
+//	{
+//		return true;
+//	}
+//
+//	return false;
+//}
+
+void SyougiGameController::ChangeState()
 {
-	//!ESCキーが押されたら
+	//!ESCキーが押されたとき
 	if (Inputter::Instance()->GetESCKey() == true)
 	{
-		return true;
+		m_game_type = SelectMode;  //!選択したゲームの種類
+		m_next_scene = true;       //!シーン切り替えフラグtrue
 	}
-
-	return false;
 }
 
 //!解放関数
@@ -176,6 +191,11 @@ void SyougiGameController::Delete()
 	{
 		delete m_piece[i];
 	}
+}
+
+GameControllerBase* SyougiGameController::InstanceSyougi()
+{
+	return static_cast<GameControllerBase*>(new SyougiGameController);
 }
 
 //!プレイヤーターン変更関数

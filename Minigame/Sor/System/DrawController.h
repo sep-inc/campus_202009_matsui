@@ -12,13 +12,19 @@
 class DrawController
 {
 public:
-    DrawController();
+    DrawController() {}
     ~DrawController() {}
 
     /**
      * @brief  インスタンス化関数
      */
     static DrawController* Instance();
+
+    /**
+     * @brief  初期化関数
+     * @detail メンバ変数の初期化
+     */
+    void Init();
 
     /**
      * @brief  描画関数
@@ -61,10 +67,21 @@ public:
     */
     void SetNowGameDraw(GAME_TYPE game_type_);
 
+    /**
+     * @brief 解放処理関数
+     */
+    void Delete();
+
+    /**
+     * @brief  各ゲーム管理クラスアドレス配列
+     * @detail 配列に指定したゲームを入れるとそのゲームの管理クラスのnewが返ってくる
+     */
+    static DrawBase* (*s_drawer_array[static_cast<int>(GAME_TYPE::Game_Num)])();
+
 private:
     static DrawController* p_instance; //!インスタンス
 
-    DrawBase* m_drawer;
+    DrawBase* m_drawer;   //!各ゲームの描画クラス格納用
 
     GAME_TYPE m_game_type;
 };

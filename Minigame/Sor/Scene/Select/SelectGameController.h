@@ -58,6 +58,11 @@ public:
 	 */
 	virtual bool GameEnd()override;
 
+	/**
+	 * @brief  インスタンス返還関数
+	 * @detail 管理クラスのポインタ配列に返す
+	 */
+	static GameControllerBase* InstanceSelect();
 
 private:
 

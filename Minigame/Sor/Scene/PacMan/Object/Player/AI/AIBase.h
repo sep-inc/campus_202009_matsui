@@ -11,7 +11,7 @@ class AIBase
 {
 public:
 	AIBase() {}
-	~AIBase() {}
+	virtual ~AIBase() {}
 
 	/**
 　   * @brief  初期化関数

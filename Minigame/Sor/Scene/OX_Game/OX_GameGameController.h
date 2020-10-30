@@ -1,16 +1,16 @@
-﻿#ifndef TRON_GAMECONTROLLER_H_
-#define TRON_GAMECONTROLLER_H_
-#include "Object/Player/TronPlayer.h"
-#include "../../Definition.h"
+﻿#ifndef OX_GAME_GAMECONTROLLER_H_
+#define OX_GAME_GAMECONTROLLER_H_
+#include "../../Utility/Vec2.h"
 #include "../GameControllerBase.h"
+#include "Object/OX_GameBoard.h"
+#include "Object/OX_GamePlayer.h"
+#include "Object/OX_GameEnemy.h"
 
-
-class TronGameController :public GameControllerBase
+class OX_GameGameController :public GameControllerBase
 {
 public:
-	TronGameController();
-	~TronGameController();
-
+	OX_GameGameController();
+	virtual ~OX_GameGameController();
 
 	/**
 	 * @brief  初期化関数
@@ -61,19 +61,20 @@ public:
 	virtual void ChangeState()override;
 
 	/**
-	 * @brief 解放処理関数
-	 */
-	virtual void Delete()override;
-
-	/**
-	 * @brief  インスタンス返還関数
-	 * @detail 管理クラスのポインタ配列に返す
-	 */
-	static GameControllerBase* InstanceTron();
-
+     * @brief  インスタンス返還関数
+     * @detail 管理クラスのポインタ配列に返す
+     */
+	static GameControllerBase* InstanceOX_Game();
 private:
-	TronPlayer* m_player[TRON_PLAYER_MAX];  //!プレイヤー
-	TronStage* m_stage;        //!マップ
+	enum TURN
+	{
+		TURN_PLAYER,  //!プレイヤーのターン
+		TURN_ENEMY	  //!敵のターン
+	}m_turn;
+
+	OX_GameBoard* m_board;
+	OX_GamePlayer* m_player;
+	OX_GameEnemy* m_enemy;
 };
 
 

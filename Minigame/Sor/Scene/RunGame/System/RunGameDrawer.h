@@ -41,6 +41,11 @@ public:
      */
     virtual void Clear()override;
 
+    /**
+     * @brief  インスタンス返還関数
+     * @detail 管理クラスのポインタ配列に返す
+     */
+    static DrawBase* InstanceRunGame();
 
 private:
     struct DrawBuffer

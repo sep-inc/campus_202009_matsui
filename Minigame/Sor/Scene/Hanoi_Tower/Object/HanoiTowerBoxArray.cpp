@@ -6,10 +6,10 @@ void HanoiTowerBoxArray::Init()
 {
     Vec2 pos = Vec2(1, 2); //左端の箱の座標で初期化
 
-    for (int i = 0; i < BOX_NUM; i++)
+    for (int i = 0; i < HANOITOWER_BOX_NUM; i++)
     {
-        m_box[i].Init(pos, BOX_WIDTH, BOX_HEIGHT);
-        pos.x += BOX_WIDTH + 1; //Boxの横幅+1の感覚で配置する
+        m_box[i].Init(pos, HANOITOWER_BOX_WIDTH, HANOITOWER_BOX_HEIGHT);
+        pos.x += HANOITOWER_BOX_WIDTH + 1; //Boxの横幅+1の感覚で配置する
     }
 
     ClearBoxBuffer();
@@ -33,10 +33,10 @@ unsigned __int8 HanoiTowerBoxArray::SearchBox(unsigned __int8 pos_x_)
     unsigned __int8 disk_size = 0;   //diskの横幅を返す用
 
     /* for文でm_box_bufferの中身を調べる(上の段から調べる) */
-    for (int y = BUFFER_BOX_POS_Y; y < BOX_WIDTH; y++)
+    for (int y = HANOITOWER_BUFFER_BOX_POS_Y; y < HANOITOWER_BOX_WIDTH; y++)
     {
         /* 指定したboxのx座標～ Boxの横幅 */
-        for (int x = pos_x_; x < pos_x_ + BOX_WIDTH; x++)
+        for (int x = pos_x_; x < pos_x_ + HANOITOWER_BOX_WIDTH; x++)
         {
             if (m_box_buffer[y][x] == HANOITOWER_OBJECT_TYPE::DISK)
             {
@@ -52,7 +52,7 @@ unsigned __int8 HanoiTowerBoxArray::SearchBox(unsigned __int8 pos_x_)
     }
 
     /* diskがなければ一番下に置けるようにサイズをでかくして置けるようにする */
-    return DISK_MAX_WIDTH;
+    return HANOITOWER_DISK_MAX_WIDTH;
 }
 
 /* 右端の箱にすべての円盤があるかどうか調べる処理 */
@@ -60,7 +60,7 @@ bool HanoiTowerBoxArray::SearchRightBox()
 {
     m_disk_counter = 0;
 
-    for (int y = BUFFER_BOX_POS_Y; y <= BUFFER_BOX_POS_Y + BOX_HEIGHT; y++)
+    for (int y = HANOITOWER_BUFFER_BOX_POS_Y; y <= HANOITOWER_BUFFER_BOX_POS_Y + HANOITOWER_BOX_HEIGHT; y++)
     {
         /* x軸は箱の真ん中だけ知れればよいので固定 */
         if (m_box_buffer[y][15] == HANOITOWER_OBJECT_TYPE::DISK)
@@ -175,7 +175,7 @@ unsigned __int8 HanoiTowerBoxArray::SetDiskPos_Y()
     unsigned __int8 pos_y = 0;
 
     /* for文でm_box_bufferの中身を調べる(上の段から調べる) */
-    for (int y = BUFFER_BOX_POS_Y; y < BOX_WIDTH; y++)
+    for (int y = HANOITOWER_BUFFER_BOX_POS_Y; y < HANOITOWER_BOX_WIDTH; y++)
     {
         /* 移動先の座標～ Boxの横幅 */
         for (int x = m_next_investigation_pos; x < m_next_investigation_pos + 5; x++)
@@ -213,7 +213,7 @@ void HanoiTowerBoxArray::SetUpDisk(Vec2 pos, unsigned  __int8 width_, unsigned  
 /* 描画配列に代入 */
 void HanoiTowerBoxArray::SetUpDrawBuffer()
 {
-    for (int i = 0; i < BOX_NUM; i++)
+    for (int i = 0; i < HANOITOWER_BOX_NUM; i++)
     {
         m_box[i].SetUpBuffer();
     }

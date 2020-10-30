@@ -1,12 +1,22 @@
-﻿#include "System/Fps.h"
+﻿#define _CRTDBG_MAP_ALLOC
+#include "System/Fps.h"
 #include "Scene/SceneController.h"
+#include "System/Inputter.h"
 #include "../Sor/System/DrawController.h"
 #include <time.h>
 #include <random>
+#include <stdlib.h>
+#include <crtdbg.h>
 
 int main()
 {
+	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
+
 	srand((unsigned)time(NULL)); //!乱数テーブル初期化
+
+
+	SceneController::Instance()->Init();   //!シーン管理クラス初期化
+	DrawController::Instance()->Init();    //!描画管理クラス初期化
 
 	while (true)
 	{
@@ -20,16 +30,23 @@ int main()
 
 		DrawController::Instance()->Draw();         //!描画
 
-		SceneController::Instance()->ChangeScene();      //!シーン切り替え判定
-
 		//!選択シーン時に終了キーが押された場合
 		if (SceneController::Instance()->GameEnd() == true)
 		{
 			break;
 		}
 
+		SceneController::Instance()->ChangeScene();      //!シーン切り替え判定
+
 		Fps::Instance()->TimeAdjustment();  //!フレーム固定関数
 	}
 
-	return -1;
+	//!解放処理
+	DrawController::Instance()->Delete();
+	Inputter::Instance()->Delete();
+	SceneController::Instance()->Delete();
+
+	_CrtDumpMemoryLeaks();
+
+	return 0;
 }

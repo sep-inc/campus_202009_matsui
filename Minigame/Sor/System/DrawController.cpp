@@ -5,21 +5,17 @@
 #include "../Scene/Tron/System/TronDrawer.h"
 #include "../Scene/Shougi/System/SyougiDrawer.h"
 #include "../Scene/Hanoi_Tower/System/HanoiTowerDrawer.h"
-
-
-
+#include "../Scene/OX_Game/System/OX_GameDrawer.h"
 
 DrawController* DrawController::p_instance = 0;
-
-//!コンストラクタ
-DrawController::DrawController() :
-	m_game_type(SelectMode),
-	m_drawer(nullptr)
-{}
 
 //!インスタンス化関数
 DrawController* DrawController::Instance()
 {
+	//static DrawController drawer;
+
+	//return &drawer;
+
 	if (p_instance == 0)
 	{
 		p_instance = new DrawController; //!インスタンス化
@@ -27,6 +23,13 @@ DrawController* DrawController::Instance()
 
 	return p_instance;
 }
+
+void DrawController::Init()
+{
+	m_game_type = SelectMode;
+	m_drawer = nullptr;
+}
+
 
 //!描画関数
 void DrawController::Draw()
@@ -66,48 +69,31 @@ void DrawController::SetNowGameDraw(GAME_TYPE game_type_)
 	delete m_drawer;
 	m_drawer = nullptr;
 
-	//!各ゲームに切り替え
-	switch (m_game_type)
-	{
-	case PacMan:
-		if (m_drawer == nullptr)
-		{
-			m_drawer = new PacManDrawer;
-		}
-		break;
-	case RunGame:
-		if (m_drawer == nullptr)
-		{
-			m_drawer = new RunGameDrawer;
-		}
-		break;
-	case Tron:
-		if (m_drawer == nullptr)
-		{
-			m_drawer = new TronDrawer;
-		}
-		break;
-	case Syougi:
-		if (m_drawer == nullptr)
-		{
-			m_drawer = new SyougiDrawer;
-		}
-		break;
-	case Hanoi_Tower:
-		if (m_drawer == nullptr)
-		{
-			m_drawer = new HanoiTowerDrawer;
-		}
-		break;
-	case SelectMode:
-		if (m_drawer == nullptr)
-		{
-			m_drawer = new SelectSceneDrawer;
-		}
-		break;
-	default:
-		break;
-	}
+	//!指定のゲームの管理クラスに切り替える
+	m_drawer = s_drawer_array[static_cast<int>(m_game_type)]();
+}
+
+//!各ゲーム管理クラスアドレス配列
+DrawBase* (*DrawController::s_drawer_array[static_cast<int>(GAME_TYPE::Game_Num)])() =
+{
+	HanoiTowerDrawer::InstanceHanoiTower,  //!ハノイの塔
+	OX_GameDrawer::InstanceOX_Game,		   //!●×ゲーム
+	PacManDrawer::InstancePacMan,		   //!パックマン
+	RunGameDrawer::InstanceRunGame,		   //!RunGame
+	SyougiDrawer::InstanceSyougi,		   //!将棋
+	TronDrawer::InstanceTron,			   //!トロン
+	SelectSceneDrawer::InstanceSelect	   //!選択シーン
+};
+
+//!解放処理関数
+void DrawController::Delete()
+{
+
+	delete m_drawer;
+	m_drawer = nullptr;
+
+	delete p_instance;
+	p_instance = nullptr;
 }
 
 

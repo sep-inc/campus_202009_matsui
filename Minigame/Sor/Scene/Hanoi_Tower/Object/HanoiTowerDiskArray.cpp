@@ -8,23 +8,23 @@ void HanoiTowerDiskArray::Init(HanoiTowerBoxArray* boxarray_)
 {
 	Vec2 pos = Vec2(3, 2);  //最初は一番上に置いてある円盤の座標(左上を基点として)で初期化
 
-	__int8 width = SMALL_DISK_WIDTH;   //最初は一番上に置いてある円盤のWidthで初期化
+	__int8 width = HANOITOWER_SMALL_DISK_WIDTH;   //最初は一番上に置いてある円盤のWidthで初期化
 
 	/* 円盤の数分回す */
-	for (int i = 0; i < DISK_NUM; i++)
+	for (int i = 0; i < HANOITOWER_DISK_NUM; i++)
 	{
-		m_disk[i].Init(pos, width, DISK_HEIGHT);
+		m_disk[i].Init(pos, width, HANOITOWER_DISK_HEIGHT);
 
 		pos.x--;  //左上を基点とした場合x座標は大きくなるにつれ広くなるため
 		pos.y++;  //下に積んであるため
 
 		if (i == 0)
 		{
-			width = NOMAL_DISK_WIDTH;  //普通サイズ
+			width = HANOITOWER_NOMAL_DISK_WIDTH;  //普通サイズ
 		}
 		else if (i == 1)
 		{
-			width = BIG_DISK_WIDTH;   //大サイズ
+			width = HANOITOWER_BIG_DISK_WIDTH;   //大サイズ
 		}
 	}
 
@@ -53,9 +53,9 @@ void HanoiTowerDiskArray::Move(HanoiTowerBoxArray* boxarray_)
 		}
 	}*/
 
-	Inputter::Instance()->InputNumber();
+	Inputter::Instance()->InputNumber2();
 
-	for (int num = 0; num < DISK_NUM; num++)
+	for (int num = 0; num < HANOITOWER_DISK_NUM; num++)
 	{
 		/* 動かす円盤が箱を調べた円盤と同じサイ^ズ(一番上に円盤がある)なら動かす */
 		if (boxarray_->SearchMoveDiskSize(m_disk[num].GetWidth(), Inputter::Instance()->GetStartNumber(), Inputter::Instance()->GetEndNumber()) == true)
@@ -75,7 +75,7 @@ void HanoiTowerDiskArray::Move(HanoiTowerBoxArray* boxarray_)
 /* 描画座標更新 */
 void HanoiTowerDiskArray::SetUpDrawBuffer()
 {
-	for (int i = 0; i < DISK_NUM; i++)
+	for (int i = 0; i < HANOITOWER_DISK_NUM; i++)
 	{
 		m_disk[i].SetUpBuffer();
 	}
@@ -84,8 +84,8 @@ void HanoiTowerDiskArray::SetUpDrawBuffer()
 /* 調査用配列に円盤を代入 */
 void HanoiTowerDiskArray::SetUpBox(HanoiTowerBoxArray* boxarray_)
 {
-	for (int i = 0; i < DISK_NUM; i++)
+	for (int i = 0; i < HANOITOWER_DISK_NUM; i++)
 	{
-		boxarray_->SetUpDisk(m_disk[i].GetPos(), m_disk[i].GetWidth(), DISK_HEIGHT);
+		boxarray_->SetUpDisk(m_disk[i].GetPos(), m_disk[i].GetWidth(), HANOITOWER_DISK_HEIGHT);
 	}
 }

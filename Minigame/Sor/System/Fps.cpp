@@ -1,15 +1,10 @@
 ﻿#include "FPS.h"
 
-Fps* Fps::p_instance = 0;
-
 Fps* Fps::Instance()
 {
-	if (p_instance == 0)
-	{
-		p_instance = new Fps; //!インスタンス化
-	}
+	static Fps fps;
 
-	return p_instance;
+	return &fps;
 }
 
 //!フレーム時間測定開始関数

@@ -43,3 +43,8 @@ void PacManDrawer::Clear()
 	memcpy(m_draw_buffer, m_clear_buffer, sizeof(m_clear_buffer));
 }
 
+DrawBase* PacManDrawer::InstancePacMan()
+{
+	return static_cast<DrawBase*>(new PacManDrawer);
+}
+

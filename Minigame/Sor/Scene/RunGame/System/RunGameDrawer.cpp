@@ -42,3 +42,9 @@ void RunGameDrawer::Clear()
 	//!カーソル座標を左上に
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), COORD{ 0,0 });
 }
+
+DrawBase* RunGameDrawer::InstanceRunGame()
+{
+	return static_cast<DrawBase*>(new RunGameDrawer);
+
+}

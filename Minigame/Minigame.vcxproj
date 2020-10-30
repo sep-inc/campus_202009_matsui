@@ -171,6 +171,23 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="Sor\Scene\OX_Game\Object\OX_GameBoard.cpp" />
+    <ClCompile Include="Sor\Scene\OX_Game\Object\OX_GameEnemy.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Sor\Scene\OX_Game\Object\OX_GamePlayer.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Sor\Scene\OX_Game\OX_GameGameController.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Sor\Scene\OX_Game\System\OX_GameDrawer.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="Sor\Scene\PacMan\Object\PacManItem.cpp" />
     <ClCompile Include="Sor\Scene\PacMan\Object\PacManStage.cpp" />
     <ClCompile Include="Sor\Scene\PacMan\Object\Player\AI\AIController.cpp" />
@@ -300,6 +317,23 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="Sor\Scene\Hanoi_Tower\System\HanoiTowerDrawer.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Sor\Scene\OX_Game\Object\OX_GameBoard.h" />
+    <ClInclude Include="Sor\Scene\OX_Game\Object\OX_GameEnemy.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Sor\Scene\OX_Game\Object\OX_GamePlayer.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Sor\Scene\OX_Game\OX_GameGameController.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Sor\Scene\OX_Game\System\OX_GameDrawer.h">
       <SubType>
       </SubType>
     </ClInclude>

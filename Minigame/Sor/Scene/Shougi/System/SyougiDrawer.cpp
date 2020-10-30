@@ -44,3 +44,8 @@ void SyougiDrawer::Clear()
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), COORD{ 0,0 }); //!左上に描画のカーソルを戻す
 }
 
+DrawBase* SyougiDrawer::InstanceSyougi()
+{
+	return static_cast<DrawBase*>(new SyougiDrawer);
+}
+

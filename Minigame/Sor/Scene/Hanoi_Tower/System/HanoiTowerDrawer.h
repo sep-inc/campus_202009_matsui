@@ -13,9 +13,7 @@ public:
 	HanoiTowerDrawer();
 	~HanoiTowerDrawer() {}
 
-	//void Init();           //初期化関数
-
-	   /**
+   /**
 	* @brief  Object描画座標変換関数
 	* @param (pos_) Objectの座標
 	* @param (font_) 表示する形
@@ -32,25 +30,24 @@ public:
 	virtual void SetUpClearBuffer(Vec2 pos_, const char* font_)override;
 
 	void Clear();          //クリア関数
-	//void SetUpBuffer(Vec2 pos_, __int16 width_, __int16 height_, HANOITOWER_OBJECT_TYPE kind_);    //オブジェクトセット関数
+	
+
 	void Draw();           //描画関数
 
-private:
-	/*struct Buffer
-	{
-		HANOITOWER_OBJECT_TYPE m_kind;
-	};*/
+	/**
+	 * @brief  インスタンス返還関数
+	 * @detail 管理クラスのポインタ配列に返す
+	 */
+	static DrawBase* InstanceHanoiTower();
 
+private:
 	struct DrawBuffer
 	{
 		char kind[4];
 	};
 
-	//Buffer m_draw_buffer[BUFFER_HEIGHT][BUFFER_WIDTH];   //描画用配列
-	//Buffer m_clear_buffer[BUFFER_HEIGHT][BUFFER_WIDTH];   //描画用配列
-
-	DrawBuffer m_draw_buffer[BUFFER_HEIGHT][BUFFER_WIDTH];  //!描画用配列
-	DrawBuffer m_clear_buffer[BUFFER_HEIGHT][BUFFER_WIDTH];  //!描画用配列
+	DrawBuffer m_draw_buffer[HANOITOWER_BUFFER_HEIGHT][HANOITOWER_BUFFER_WIDTH];  //!描画用配列
+	DrawBuffer m_clear_buffer[HANOITOWER_BUFFER_HEIGHT][HANOITOWER_BUFFER_WIDTH];  //!描画用配列
 };
 
 

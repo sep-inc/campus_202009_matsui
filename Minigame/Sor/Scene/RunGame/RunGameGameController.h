@@ -10,7 +10,7 @@ class RunGameGameController :public GameControllerBase
 {
 public:
 	RunGameGameController();
-	~RunGameGameController();
+	virtual ~RunGameGameController();
 
 
 	/**
@@ -53,21 +53,26 @@ public:
 	 * @brief  強制終了関数
 	 * @detail ESCが押されたときにゲームを終了する
 	 */
-	virtual bool GameEnd()override;
+	//virtual bool GameEnd()override;
+
+	/**
+	 * @brief  シーン切り替え判定関数
+	 * @detail ESCキーを押された時の処理を行う
+	 */
+	virtual void ChangeState()override;
 
 	/**
 	 * @brief 解放処理関数
 	 */
 	virtual void Delete()override;
 
-	//!各オブジェクトのアドレスのGetter
-	RunGameMapManager* GetMapPoint() { return m_map; }
-	Player* GetPlayerPoint() { return m_player; }
-
-
-
+	/**
+     * @brief  インスタンス返還関数
+     * @detail 管理クラスのポインタ配列に返す
+     */
+	static GameControllerBase* InstanceRunGame();
 private:
-	Player* m_player;  //!プレイヤー
+	RunGamePlayer* m_player;  //!プレイヤー
 	RunGameMapManager* m_map;        //!マップ
 };
 

@@ -12,7 +12,7 @@ class DrawBase
 {
 public:
     DrawBase() {}
-    ~DrawBase() {}
+    virtual ~DrawBase() {}
 
     /**
      * @brief  描画関数

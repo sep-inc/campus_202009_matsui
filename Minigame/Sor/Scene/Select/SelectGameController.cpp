@@ -135,3 +135,8 @@ bool SelectGameController::GameEnd()
 	}
 	return false;
 }
+
+GameControllerBase* SelectGameController::InstanceSelect()
+{
+	return static_cast<GameControllerBase*>(new SelectGameController);
+}

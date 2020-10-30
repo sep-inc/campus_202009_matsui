@@ -33,8 +33,6 @@ public:
 	void TimeAdjustment();
 
 private:
-	static Fps* p_instance; //!インスタンス
-
 	double FRAME_TIME = 0.0;
 	//計測開始時間
 	LARGE_INTEGER mTimeStart;

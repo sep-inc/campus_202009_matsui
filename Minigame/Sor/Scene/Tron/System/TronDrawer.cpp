@@ -30,3 +30,8 @@ void TronDrawer::Draw()
 	printf("%s", linking.c_str());  //!表示
 }
 
+DrawBase* TronDrawer::InstanceTron()
+{
+	return static_cast<DrawBase*>(new TronDrawer);
+}
+

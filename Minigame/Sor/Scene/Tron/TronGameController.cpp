@@ -129,15 +129,25 @@ void TronGameController::GameResult()
 	}
 }
 
-//!強制終了関数
-bool TronGameController::GameEnd()
+////!強制終了関数
+//bool TronGameController::GameEnd()
+//{
+//	//!ESCキーが押されたとき
+//	if (Inputter::Instance()->GetESCKey() == true)
+//	{
+//		return true;
+//	}
+//	return false;
+//}
+
+void TronGameController::ChangeState()
 {
 	//!ESCキーが押されたとき
 	if (Inputter::Instance()->GetESCKey() == true)
 	{
-		return true;
+		m_game_type = SelectMode;  //!選択したゲームの種類
+		m_next_scene = true;       //!シーン切り替えフラグtrue
 	}
-	return false;
 }
 
 //!解放処理
@@ -154,4 +164,9 @@ void TronGameController::Delete()
 	delete m_stage;
 	m_stage = nullptr;
 
+}
+
+GameControllerBase* TronGameController::InstanceTron()
+{
+	return static_cast<GameControllerBase*>(new TronGameController);
 }

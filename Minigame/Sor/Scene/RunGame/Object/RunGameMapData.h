@@ -22,7 +22,7 @@ private:
 
 	MapBufferInfo m_map_buffer[RUNGAME_HEIGHT][RUNGAME_WIDTH];  //!マップ配列
 
-	static RunGameMapData* p_instance; //!インスタンス
+	//static RunGameMapData* p_instance; //!インスタンス
 
 public:
 	/**

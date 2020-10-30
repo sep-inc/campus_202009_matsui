@@ -12,7 +12,7 @@
 class Inputter
 {
 public:
-    Inputter();
+    Inputter(){}
     ~Inputter() {}
 
     /**
@@ -44,7 +44,13 @@ public:
      */
     bool InputStartKey();
 
-    void InputNumber();   //入力した値をメンバ変数に保存する
+    /**
+    * @brief  入力待ち関数まとめ
+    * @detail 選んだ文字と数字を値に代入する
+    */
+    void InputNumber();
+
+    void InputNumber2();   //入力した値をメンバ変数に保存する
     int ReInputNumber();   //入力した値をメンバ変数に保存する
 
     /**
@@ -80,6 +86,23 @@ public:
     const int GetStartNumber() { return m_start_number; }   //移動元の番号を返す
     const int GetEndNumber() { return m_end_number; }       //移動先の番号を返す
 
+        /**
+     * @brief  選択文字参照関数
+     * @return 入力した文字を変えす
+     */
+    const __int8 GetSelectFont() { return m_input_font; }
+
+    /**
+     * @brief  選択数字参照関数
+     * @return 入力した数字を変えす
+     */
+    const __int8 GetSelectNumber() { return m_input_number; }
+
+    /**
+     * @brief 解放処理関数
+     */
+    void Delete();
+
 private:
     static Inputter* p_instance;
 
@@ -90,6 +113,9 @@ private:
     //!数字キー用
     int m_start_number;    
     int m_end_number;      
+
+    __int8 m_input_font;    //!入力文字変数
+    __int8 m_input_number;  //!入力数字変数
 };
 
 #endif

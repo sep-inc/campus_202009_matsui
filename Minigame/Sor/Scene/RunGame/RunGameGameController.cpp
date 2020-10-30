@@ -49,7 +49,7 @@ void RunGameGameController::Reset()
 {
 	//!インスタンス化
 	if (m_map == nullptr) { m_map = new RunGameMapManager; }//!マップ
-	if (m_player == nullptr) { m_player = new Player; }//!プレイヤー
+	if (m_player == nullptr) { m_player = new RunGamePlayer; }//!プレイヤー
 
 	//!描画で使うクラス指定
 	DrawController::Instance()->SetNowGameDraw(m_game_type);
@@ -112,16 +112,26 @@ void RunGameGameController::GameResult()
 	}
 }
 
-//!ゲーム終了関数
-bool RunGameGameController::GameEnd()
+////!ゲーム終了関数
+//bool RunGameGameController::GameEnd()
+//{
+//	//!ESCキーが押されたら
+//	if (Inputter::Instance()->GetESCKey() == true)
+//	{
+//		return true;
+//	}
+//
+//	return false;
+//}
+
+void RunGameGameController::ChangeState()
 {
-	//!ESCキーが押されたら
+	//!ESCキーが押されたとき
 	if (Inputter::Instance()->GetESCKey() == true)
 	{
-		return true;
+		m_game_type = SelectMode;  //!選択したゲームの種類
+		m_next_scene = true;       //!シーン切り替えフラグtrue
 	}
-
-	return false;
 }
 
 //!解放処理
@@ -129,4 +139,9 @@ void RunGameGameController::Delete()
 {
 	delete m_player;
 	delete m_map;
+}
+
+GameControllerBase* RunGameGameController::InstanceRunGame()
+{
+	return static_cast<GameControllerBase*>(new RunGameGameController);
 }

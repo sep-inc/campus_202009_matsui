@@ -7,35 +7,10 @@
 #include "Tron/TronGameController.h"
 #include "Shougi/SyougiGameController.h"
 #include "Hanoi_Tower/HanoiTowerGameController.h"
-
-
-
-
+#include "OX_Game/OX_GameGameController.h"
 
 SceneController* SceneController::p_instance = 0;
 
-//!コンストラクタ
-SceneController::SceneController() :
-	m_select_game(SelectMode),
-	m_gamecontroller(nullptr)
-{
-	//if (m_gamecontroller == nullptr) { m_gamecontroller = new SelectGameController; }
-	//if (m_gamecontroller == nullptr) { m_gamecontroller = new PacManGameController; }
-	//if (m_gamecontroller == nullptr) { m_gamecontroller = new RunGameGameController; }
-	//if (m_gamecontroller == nullptr) { m_gamecontroller = new TronGameController; }
-	//if (m_gamecontroller == nullptr) { m_gamecontroller = new SyougiGameController; }
-	if (m_gamecontroller == nullptr) { m_gamecontroller = new HanoiTowerGameController; }
-
-
-
-}
-
-//!デストラクタ
-SceneController::~SceneController()
-{
-	delete m_gamecontroller;
-	m_gamecontroller = nullptr;
-}
 
 //!インスタンス化関数
 SceneController* SceneController::Instance()
@@ -48,13 +23,24 @@ SceneController* SceneController::Instance()
 	return p_instance;
 }
 
-//!ステップ処理関数
+//!初期化関数
+void SceneController::Init()
+{
+	m_gamecontroller = nullptr;
+
+	//!最初は選択シーンで初期化
+	if (m_gamecontroller == nullptr) { m_gamecontroller = new SelectGameController; }
+
+	m_select_game = SelectMode;
+}
+
+//!各シーン更新処理関数
 void SceneController::Update()
 {
 	m_gamecontroller->Update();
 }
 
-//! 描画情報代入関数
+//! 各シーン描画情報代入関数
 void SceneController::SetUpDrawBuffer()
 {
 	m_gamecontroller->SetUpDrawBuffer();
@@ -63,14 +49,35 @@ void SceneController::SetUpDrawBuffer()
 //!シーン切り替え判定関数
 void SceneController::ChangeScene()
 {
+	//!各シーン切り替え判定
 	m_gamecontroller->ChangeState();
 
 	//!シーンが切り替えられたら
-	//if (m_gamecontroller->GetNextScene() == true)
-	//{
-	//	m_select_game = m_gamecontroller->GetSelectGame();  //!選択したゲーム(もしくは選択シーン)を代入
-	//}
+	if (m_gamecontroller->GetNextScene() == true)
+	{
+		system("cls");  
+
+		m_select_game = m_gamecontroller->GetSelectGame();  //!選択したゲーム(もしくは選択シーン)を代入
+
+		delete m_gamecontroller;
+		m_gamecontroller = nullptr;
+
+		//!指定のゲームの管理クラスに切り替える
+		m_gamecontroller = s_controller_array[static_cast<int>(m_select_game)]();
+	}
 }
+
+//!各ゲーム管理クラスアドレス配列
+GameControllerBase* (*SceneController::s_controller_array[static_cast<int>(GAME_TYPE::Game_Num)])() =
+{
+	HanoiTowerGameController::InstanceHanoiTower,  //!ハノイの塔
+	OX_GameGameController::InstanceOX_Game,		   //!●×ゲーム
+	PacManGameController::InstancePacMan,		   //!パックマン
+	RunGameGameController::InstanceRunGame,		   //!RunGame
+	SyougiGameController::InstanceSyougi,		   //!将棋
+	TronGameController::InstanceTron,			   //!トロン
+	SelectGameController::InstanceSelect		   //!選択シーン
+};
 
 //! 強制終了関数
 bool SceneController::GameEnd()
@@ -84,4 +91,14 @@ bool SceneController::GameEnd()
 		return false;
 	}
 	return false;
+}
+
+//!解放処理関数
+void SceneController::Delete()
+{
+	delete m_gamecontroller;
+	m_gamecontroller = nullptr;
+
+	delete p_instance;
+	p_instance = nullptr;
 }

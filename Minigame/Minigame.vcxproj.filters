@@ -12,10 +12,6 @@
     <Filter Include="Scene\Select">
       <UniqueIdentifier>{50f91bb8-0312-4ef1-9467-7f7fc6413392}</UniqueIdentifier>
     </Filter>
-    <Filter Include="System">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
-    </Filter>
     <Filter Include="Scene\Select\System">
       <UniqueIdentifier>{609049a5-5b28-4d7a-bcdd-4f03a0066f25}</UniqueIdentifier>
     </Filter>
@@ -81,6 +77,13 @@
     </Filter>
     <Filter Include="Scene\Hanoi_Tower\System">
       <UniqueIdentifier>{b33eab5c-2054-4963-89b3-145db0766642}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\OX_Game\System">
+      <UniqueIdentifier>{fae0b0a5-c4ab-4a49-901a-698a17b89576}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="System">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -238,6 +241,21 @@
     <ClInclude Include="Sor\Scene\Hanoi_Tower\HanoiTowerGameController.h">
       <Filter>Scene\Hanoi_Tower</Filter>
     </ClInclude>
+    <ClInclude Include="Sor\Scene\OX_Game\Object\OX_GameEnemy.h">
+      <Filter>Scene\OX_Game\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\Scene\OX_Game\Object\OX_GamePlayer.h">
+      <Filter>Scene\OX_Game\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\Scene\OX_Game\System\OX_GameDrawer.h">
+      <Filter>Scene\OX_Game\System</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\Scene\OX_Game\OX_GameGameController.h">
+      <Filter>Scene\OX_Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\Scene\OX_Game\Object\OX_GameBoard.h">
+      <Filter>Scene\OX_Game\Object</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Sor\Main.cpp" />
@@ -381,6 +399,21 @@
     </ClCompile>
     <ClCompile Include="Sor\Scene\Hanoi_Tower\HanoiTowerGameController.cpp">
       <Filter>Scene\Hanoi_Tower</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\Scene\OX_Game\Object\OX_GameEnemy.cpp">
+      <Filter>Scene\OX_Game\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\Scene\OX_Game\Object\OX_GamePlayer.cpp">
+      <Filter>Scene\OX_Game\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\Scene\OX_Game\System\OX_GameDrawer.cpp">
+      <Filter>Scene\OX_Game\System</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\Scene\OX_Game\OX_GameGameController.cpp">
+      <Filter>Scene\OX_Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\Scene\OX_Game\Object\OX_GameBoard.cpp">
+      <Filter>Scene\OX_Game\Object</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

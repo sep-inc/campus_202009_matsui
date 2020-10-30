@@ -143,16 +143,16 @@ void PacManGameController::GameResult()
 }
 
 //!ゲーム終了関数
-bool PacManGameController::GameEnd()
-{
-	//!ESCキーが押されたら
-	if (Inputter::Instance()->GetESCKey() == true)
-	{
-		return true;
-	}
-
-	return false;
-}
+//bool PacManGameController::GameEnd()
+//{
+//	//!ESCキーが押されたら
+//	if (Inputter::Instance()->GetESCKey() == true)
+//	{
+//		return true;
+//	}
+//
+//	return false;
+//}
 
 //!強制終了関数
 void PacManGameController::ChangeState()
@@ -182,4 +182,9 @@ void PacManGameController::Delete()
 
 	delete m_item;
 	m_item = nullptr;
+}
+
+GameControllerBase* PacManGameController::InstancePacMan()
+{
+	return static_cast<GameControllerBase*>(new PacManGameController);
 }

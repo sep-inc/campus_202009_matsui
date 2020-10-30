@@ -2,17 +2,21 @@
 #include <string.h>
 #include <stdlib.h>
 
-RunGameMapData* RunGameMapData::p_instance = 0;
+//RunGameMapData* RunGameMapData::p_instance = 0;
 
 //!インスタンス化関数
 RunGameMapData* RunGameMapData::Instance()
 {
-	if (p_instance == 0)
-	{
-		p_instance = new RunGameMapData; //!インスタンス化
-	}
+	static RunGameMapData mapdata;
 
-	return p_instance;
+	return &mapdata;
+
+	//if (p_instance == 0)
+	//{
+	//	p_instance = new RunGameMapData; //!インスタンス化
+	//}
+
+	//return p_instance;
 }
 
 //!マップ配列Set関数(配列丸ごと)

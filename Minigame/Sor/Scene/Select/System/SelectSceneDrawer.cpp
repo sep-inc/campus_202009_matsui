@@ -30,3 +30,8 @@ void SelectSceneDrawer::Clear()
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), COORD{ 0,0 });
 }
 
+DrawBase* SelectSceneDrawer::InstanceSelect()
+{
+	return static_cast<DrawBase*>(new SelectSceneDrawer);
+}
+

@@ -106,17 +106,17 @@ void HanoiTowerGameController::GameResult()
 	}
 }
 
-//!ゲーム終了関数
-bool HanoiTowerGameController::GameEnd()
-{
-	//!ESCキーが押されたら
-	if (Inputter::Instance()->GetESCKey() == true)
-	{
-		return true;
-	}
-
-	return false;
-}
+////!ゲーム終了関数
+//bool HanoiTowerGameController::GameEnd()
+//{
+//	//!ESCキーが押されたら
+//	if (Inputter::Instance()->GetESCKey() == true)
+//	{
+//		return true;
+//	}
+//
+//	return false;
+//}
 
 //!強制終了関数
 void HanoiTowerGameController::ChangeState()
@@ -127,4 +127,9 @@ void HanoiTowerGameController::ChangeState()
 		m_game_type = SelectMode;  //!選択したゲームの種類
 		m_next_scene = true;       //!シーン切り替えフラグtrue
 	}
+}
+
+GameControllerBase* HanoiTowerGameController::InstanceHanoiTower()
+{
+	return static_cast<GameControllerBase*>(new HanoiTowerGameController);
 }

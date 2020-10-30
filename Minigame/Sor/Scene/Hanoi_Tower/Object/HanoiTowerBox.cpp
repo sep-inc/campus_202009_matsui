@@ -12,9 +12,9 @@ void HanoiTowerBox::SetUpBuffer()
 {
 	//Vec2 pos = m_pos;
 	/* 描画に必要な数分回す */
-	for (int x2 = START_UNIT; x2 < m_width; x2++)
+	for (int x2 = HANOITOWER_START_UNIT; x2 < m_width; x2++)
 	{
-		for (int y2 = START_UNIT; y2 < m_height; y2++)
+		for (int y2 = HANOITOWER_START_UNIT; y2 < m_height; y2++)
 		{
 			DrawController::Instance()->SetUpBuffer(Vec2(m_pos.x + x2, m_pos.y + y2), "□");
 			//m_draw_buffer[m_pos.y + y2][m_pos.x + x2].m_kind = kind_;

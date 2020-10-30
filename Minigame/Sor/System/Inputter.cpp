@@ -4,22 +4,22 @@
 #include <conio.h>
 #include <signal.h>
 
-Inputter* Inputter::p_instance = 0;  //!実体
-
-//!コンストラクタ
-Inputter::Inputter() :
-    m_decide(false), m_esc(false)
-{}
+Inputter* Inputter::p_instance = 0;
 
 //!インスタンス化関数
 Inputter* Inputter::Instance()
 {
+   /* static Inputter inputter;
+
+    return &inputter;*/
+
     if (p_instance == 0)
     {
         p_instance = new Inputter; //!インスタンス化
     }
 
     return p_instance;
+
 }
 
 //!メンバ変数リセット関数
@@ -27,6 +27,13 @@ void Inputter::Reset()
 {
     m_esc = false;      //!決定キーフラグ
     m_decide = false;   //!ESC時終了フラグ
+
+     //!数字キー用
+    m_start_number = 0;
+    m_end_number = 0;
+
+    m_input_font = 0;    //!入力文字変数
+    m_input_number = 0;  //!入力数字変数
 }
 
 //!十字キー入力待ち関数
@@ -140,6 +147,51 @@ bool Inputter::InputStartKey()
 
 void Inputter::InputNumber()
 {
+    char input_font = 0;    //!文字保存用
+    char input_number = 0;  //!数字保存用
+
+    printf("A,B,Cを選んでください\n");
+    input_font = _getch();
+
+
+    while (input_font != 'A' && input_font != 'B' && input_font != 'C' && input_font != ESC)
+    {
+        printf("もう一度A,B,Cを選んでください。\n");
+        input_font = _getch();
+    }
+
+    printf("1,2,3を選んでください\n\n");
+    input_number = _getch();
+
+    while (input_number != '1' && input_number != '2' && input_number != '3' && input_number != ESC)
+    {
+        printf("もう一度1,2,3を選んでください。\n");
+        input_number = _getch();
+    }
+
+    //!文字を数字に変換
+    if (input_font == 'A') { m_input_font = 0; }
+    else  if (input_font == 'B') { m_input_font = 1; }
+    else  if (input_font == 'C') { m_input_font = 2; }
+    else if (input_font == ESC)
+    {
+        m_esc = true;
+        m_input_font = 0;
+    }
+
+    //!文字を数字に変換
+    if (input_number == '1') { m_input_number = 0; }
+    else  if (input_number == '2') { m_input_number = 1; }
+    else  if (input_number == '3') { m_input_number = 2; }
+    else if (input_number == ESC)
+    {
+        m_esc = true;
+        m_input_number = 0;
+    }
+}
+
+void Inputter::InputNumber2()
+{
     printf("移す場所を選んでください\n");
     printf("1or2or3\n");
     m_start_number = ReInputNumber();
@@ -215,6 +267,15 @@ bool Inputter::InputContinue()
 
     return false;
 }
+
+//!解放処理関数
+void Inputter::Delete()
+{
+    delete p_instance;
+    p_instance = nullptr;
+
+}
+
 
 
 

@@ -27,6 +27,12 @@ public:
      */
     void Draw();
 
+    /**
+     * @brief  インスタンス返還関数
+     * @detail 管理クラスのポインタ配列に返す
+     */
+    static DrawBase* InstanceTron();
+
 private:
     struct DrawBuffer
     {

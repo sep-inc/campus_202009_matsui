@@ -14,7 +14,7 @@ class PacManGameController :public GameControllerBase
 {
 public:
 	PacManGameController();
-	~PacManGameController();
+	virtual~PacManGameController();
 
 	/**
 	 * @brief  初期化関数(繰り返し)
@@ -57,11 +57,11 @@ public:
      * @brief  強制終了関数
      * @detail ESCが押されたときにゲームを終了する
      */
-	virtual bool GameEnd()override;
+	//virtual bool GameEnd()override;
 
 	/**
 	 * @brief  シーン切り替え判定関数
-	 * @detail 決定キーを押された時の処理を行う
+	 * @detail ESCキーを押された時の処理を行う
 	 */
 	virtual void ChangeState()override;
 
@@ -70,6 +70,11 @@ public:
 	 */
 	virtual void Delete()override;
 
+	/**
+     * @brief  インスタンス返還関数
+     * @detail 管理クラスのポインタ配列に返す
+     */
+	static GameControllerBase* InstancePacMan();
 private:
 	PacManStage* m_stage;
 	PacManPlayer* m_player;

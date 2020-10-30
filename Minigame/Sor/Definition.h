@@ -113,26 +113,48 @@ enum HANOITOWER_OBJECT_TYPE
 	DISK
 };
 
-#define START_UNIT 0        //最初の要素数
+#define HANOITOWER_START_UNIT 0        //最初の要素数
 
-#define BUFFER_WIDTH 19       //Bufferの横幅
-#define BUFFER_HEIGHT 6       //Bufferの縦幅
+#define HANOITOWER_BUFFER_WIDTH 19       //Bufferの横幅
+#define HANOITOWER_BUFFER_HEIGHT 6       //Bufferの縦幅
 
-#define BOX_NUM 3            //箱の数
-#define BOX_WIDTH 5          //箱の横幅
-#define BOX_HEIGHT 3         //箱の縦幅
+#define HANOITOWER_BOX_NUM 3            //箱の数
+#define HANOITOWER_BOX_WIDTH 5          //箱の横幅
+#define HANOITOWER_BOX_HEIGHT 3         //箱の縦幅
 
-#define BUFFER_BOX_POS_Y 2         //箱の縦幅
+#define HANOITOWER_BUFFER_BOX_POS_Y 2         //箱の縦幅
 
-#define DISK_NUM 3           //円盤の数
-#define SMALL_DISK_WIDTH 1   //小円盤の横幅
-#define NOMAL_DISK_WIDTH 3   //中盤の横幅
-#define BIG_DISK_WIDTH 5     //大盤の横幅
-#define DISK_HEIGHT 1        //円盤の縦幅
+#define HANOITOWER_DISK_NUM 3           //円盤の数
+#define HANOITOWER_SMALL_DISK_WIDTH 1   //小円盤の横幅
+#define HANOITOWER_NOMAL_DISK_WIDTH 3   //中盤の横幅
+#define HANOITOWER_BIG_DISK_WIDTH 5     //大盤の横幅
+#define HANOITOWER_DISK_HEIGHT 1        //円盤の縦幅
 
-#define DISK_MAX_WIDTH 6        //円盤の縦幅
+#define HANOITOWER_DISK_MAX_WIDTH 6        //円盤の縦幅
 /////////////////////////////////////////////////////////
 
+/////////////////////////////////////////////////////////
+/* オブジェクトの種類 */
+enum OX_GAME_OBJECT_TYPE
+{
+	OX_GAME_BLANK,
+	OX_GAME_PLAYER_PIECE,
+	OX_GAME_ENEMY_PIECE,
+};
+
+enum JUDGMENT_TYPE
+{
+	WIN,
+	LOSE,
+	DRAW
+};
+
+#define GAME_WIDTH 8    //!全体の横幅
+#define GAME_HEIGHT 8   //!全体の縦幅
+
+#define BORD_SIZE 3     //!盤のサイズ
+
+/////////////////////////////////////////////////////////
 
 //!移動方向の種類
 enum DIRECTION_TYPE
