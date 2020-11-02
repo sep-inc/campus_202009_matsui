@@ -24,9 +24,10 @@ DrawController* DrawController::Instance()
 	return p_instance;
 }
 
+//!初期化関数
 void DrawController::Init()
 {
-	m_game_type = SelectMode;
+	m_game_type = SELECTSCENE;
 	m_drawer = nullptr;
 }
 
@@ -74,7 +75,7 @@ void DrawController::SetNowGameDraw(GAME_TYPE game_type_)
 }
 
 //!各ゲーム管理クラスアドレス配列
-DrawBase* (*DrawController::s_drawer_array[static_cast<int>(GAME_TYPE::Game_Num)])() =
+DrawBase* (*DrawController::s_drawer_array[static_cast<int>(GAME_TYPE::GAME_NUM)])() =
 {
 	HanoiTowerDrawer::InstanceHanoiTower,  //!ハノイの塔
 	OX_GameDrawer::InstanceOX_Game,		   //!●×ゲーム

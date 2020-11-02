@@ -17,7 +17,7 @@ TronGameController::TronGameController()
 
 	m_stage = nullptr;        //!マップ
 
-	m_game_type = Tron;
+	m_game_type = TRON;
 	m_next_scene = false;
 	m_step = STEP_INIT;//!ステップ初期化
 }
@@ -145,7 +145,7 @@ void TronGameController::ChangeState()
 	//!ESCキーが押されたとき
 	if (Inputter::Instance()->GetESCKey() == true)
 	{
-		m_game_type = SelectMode;  //!選択したゲームの種類
+		m_game_type = SELECTSCENE;  //!選択したゲームの種類
 		m_next_scene = true;       //!シーン切り替えフラグtrue
 	}
 }

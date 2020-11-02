@@ -73,7 +73,7 @@ private:
 	std::string m_select_font;  //!矢印
 	std::string m_none_font;    //!空白
 
-	std::string m_game_nmae[Game_Num];  //!各ゲーム名
+	std::string m_game_nmae[GAME_NUM];  //!各ゲーム名
 
 	std::string m_draw_font;   //!文字連結用
 };

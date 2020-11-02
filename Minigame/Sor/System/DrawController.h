@@ -76,7 +76,7 @@ public:
      * @brief  各ゲーム管理クラスアドレス配列
      * @detail 配列に指定したゲームを入れるとそのゲームの管理クラスのnewが返ってくる
      */
-    static DrawBase* (*s_drawer_array[static_cast<int>(GAME_TYPE::Game_Num)])();
+    static DrawBase* (*s_drawer_array[static_cast<int>(GAME_TYPE::GAME_NUM)])();
 
 private:
     static DrawController* p_instance; //!インスタンス

@@ -11,16 +11,16 @@ SelectGameController::SelectGameController() :
 	m_none_font("　")
 {
 	m_step = STEP_INIT;
-	m_game_type = SelectMode;     //!ゲームの種類(描画クラスに情報を送るため)
+	m_game_type = SELECTSCENE;     //!ゲームの種類(描画クラスに情報を送るため)
 	m_next_scene = false;         //!シーン切り替えフラグ
 
 	//!各ゲーム名
-	m_game_nmae[Hanoi_Tower] = "ハノイの塔";
-	m_game_nmae[OX_Game] = "OXゲーム";
-	m_game_nmae[PacMan] = "パックマン";
-	m_game_nmae[RunGame] = "Runゲーム";
-	m_game_nmae[Syougi] = "将棋";
-	m_game_nmae[Tron] = "トロン";
+	m_game_nmae[HANOI_TOWER] = "ハノイの塔";
+	m_game_nmae[OX_GAME] = "OXゲーム";
+	m_game_nmae[PACMAN] = "パックマン";
+	m_game_nmae[RUNGAME] = "Runゲーム";
+	m_game_nmae[SYOUGI] = "将棋";
+	m_game_nmae[TRON] = "トロン";
 }
 
 //!初期化関数(繰り返し)
@@ -79,7 +79,7 @@ void SelectGameController::SetUpDrawBuffer()
 	DrawController::Instance()->SetUpFont(kai);
 
 	//!ゲーム文字代入
-	for (int i = 0; i < SelectMode; i++)
+	for (int i = 0; i < SELECTSCENE; i++)
 	{
 		//!矢印がある場合
 		if (m_now_select == i)
@@ -107,7 +107,7 @@ void SelectGameController::ArrowUpdate()
 
 	//!矢印が選択外に言った場合
 	if (m_select_arrow.y < 0) { m_select_arrow.y = 0; }
-	else if (m_select_arrow.y >= SelectMode) { m_select_arrow.y = 5; }
+	else if (m_select_arrow.y >= SELECTSCENE) { m_select_arrow.y = 5; }
 
 	//!現在の座標の位置のゲームを保存
 	m_now_select = m_select_arrow.y;

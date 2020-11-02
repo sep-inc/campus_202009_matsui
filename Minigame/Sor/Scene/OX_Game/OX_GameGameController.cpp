@@ -7,7 +7,7 @@
 OX_GameGameController::OX_GameGameController() :
 	m_board(nullptr), m_player(nullptr), m_enemy(nullptr)
 {
-	m_game_type = OX_Game;
+	m_game_type = OX_GAME;
 	m_next_scene = false;
 	m_step = STEP_INIT;//!ステップ初期化
 }
@@ -135,7 +135,7 @@ void OX_GameGameController::ChangeState()
 	//!ESCキーが押されたとき
 	if (Inputter::Instance()->GetESCKey() == true)
 	{
-		m_game_type = SelectMode;  //!選択したゲームの種類
+		m_game_type = SELECTSCENE;  //!選択したゲームの種類
 		m_next_scene = true;       //!シーン切り替えフラグtrue
 	}
 }
@@ -145,15 +145,5 @@ GameControllerBase* OX_GameGameController::InstanceOX_Game()
 	return static_cast<GameControllerBase*>(new OX_GameGameController);
 }
 
-//bool OX_GameGameController::GameEnd()
-//{
-//	//!ESCキーが押されたら
-//	if (Inputter::Instance()->GetESCKey() == true)
-//	{
-//		return true;
-//	}
-//
-//	return false;
-//}
 
 

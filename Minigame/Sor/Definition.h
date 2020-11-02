@@ -8,14 +8,14 @@
  //!ゲームの種類
 enum GAME_TYPE
 {
-	Hanoi_Tower,
-	OX_Game,
-	PacMan,
-	RunGame,
-	Syougi,
-	Tron,
-	SelectMode,
-	Game_Num,
+	HANOI_TOWER,
+	OX_GAME,
+	PACMAN,
+	RUNGAME,
+	SYOUGI,
+	TRON,
+	SELECTSCENE,
+	GAME_NUM,
 
 };
 

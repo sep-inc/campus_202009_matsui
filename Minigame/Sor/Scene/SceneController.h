@@ -62,7 +62,10 @@ public:
 	 * @brief  各ゲーム管理クラスアドレス配列
 	 * @detail 配列に指定したゲームを入れるとそのゲームの管理クラスのnewが返ってくる
 	 */
-	static GameControllerBase* (*s_controller_array[static_cast<int>(GAME_TYPE::Game_Num)])();
+	static GameControllerBase* (*s_controller_array[static_cast<int>(GAME_TYPE::GAME_NUM)])();
+
+
+	void SetNextScene(GAME_TYPE next_scene_);
 
 private:
 	static SceneController* p_instance; //!インスタンス

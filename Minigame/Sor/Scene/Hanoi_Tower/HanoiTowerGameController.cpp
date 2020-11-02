@@ -7,7 +7,7 @@
 HanoiTowerGameController::HanoiTowerGameController() :
 	m_box_array(nullptr), m_disk_array(nullptr)
 {
-	m_game_type = Hanoi_Tower;
+	m_game_type = HANOI_TOWER;
 	m_next_scene = false;
 	m_step = STEP_INIT;
 }
@@ -106,25 +106,13 @@ void HanoiTowerGameController::GameResult()
 	}
 }
 
-////!ゲーム終了関数
-//bool HanoiTowerGameController::GameEnd()
-//{
-//	//!ESCキーが押されたら
-//	if (Inputter::Instance()->GetESCKey() == true)
-//	{
-//		return true;
-//	}
-//
-//	return false;
-//}
-
 //!強制終了関数
 void HanoiTowerGameController::ChangeState()
 {
 	//!ESCキーが押されたとき
 	if (Inputter::Instance()->GetESCKey() == true)
 	{
-		m_game_type = SelectMode;  //!選択したゲームの種類
+		m_game_type = SELECTSCENE;  //!選択したゲームの種類
 		m_next_scene = true;       //!シーン切り替えフラグtrue
 	}
 }

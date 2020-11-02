@@ -100,7 +100,6 @@ protected:
 	}m_step;
 
 
-
 	GAME_TYPE m_game_type;   //!ゲームの種類
 
 	bool m_next_scene;   //!シーン切り替えフラグ

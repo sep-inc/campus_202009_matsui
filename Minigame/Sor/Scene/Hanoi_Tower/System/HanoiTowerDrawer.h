@@ -29,9 +29,15 @@ public:
 	 */
 	virtual void SetUpClearBuffer(Vec2 pos_, const char* font_)override;
 
+	/**
+	 * @brief  描画配列クリア関数
+	 */
 	void Clear();          //クリア関数
 	
-
+	/**
+	 * @brief  描画関数
+	 * @detail 描画
+	 */
 	void Draw();           //描画関数
 
 	/**
@@ -46,8 +52,8 @@ private:
 		char kind[4];
 	};
 
-	DrawBuffer m_draw_buffer[HANOITOWER_BUFFER_HEIGHT][HANOITOWER_BUFFER_WIDTH];  //!描画用配列
-	DrawBuffer m_clear_buffer[HANOITOWER_BUFFER_HEIGHT][HANOITOWER_BUFFER_WIDTH];  //!描画用配列
+	DrawBuffer m_draw_buffer[HANOITOWER_BUFFER_HEIGHT][HANOITOWER_BUFFER_WIDTH];   //!描画用配列
+	DrawBuffer m_clear_buffer[HANOITOWER_BUFFER_HEIGHT][HANOITOWER_BUFFER_WIDTH];  //!クリア用配列
 };
 
 

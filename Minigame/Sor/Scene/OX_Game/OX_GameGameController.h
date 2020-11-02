@@ -49,12 +49,6 @@ public:
 	virtual void GameResult()override;
 
 	/**
-	 * @brief  強制終了関数
-	 * @detail ESCが押されたときにゲームを終了する
-	 */
-	//virtual bool GameEnd()override;
-
-	/**
 	 * @brief  シーン切り替え判定関数
 	 * @detail ESCキーを押された時の処理を行う
 	 */

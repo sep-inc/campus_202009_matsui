@@ -10,8 +10,6 @@
 
 int main()
 {
-	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
-
 	srand((unsigned)time(NULL)); //!乱数テーブル初期化
 
 
@@ -36,7 +34,7 @@ int main()
 			break;
 		}
 
-		SceneController::Instance()->ChangeScene();      //!シーン切り替え判定
+		//SceneController::Instance()->ChangeScene();      
 
 		Fps::Instance()->TimeAdjustment();  //!フレーム固定関数
 	}
@@ -45,8 +43,6 @@ int main()
 	DrawController::Instance()->Delete();
 	Inputter::Instance()->Delete();
 	SceneController::Instance()->Delete();
-
-	_CrtDumpMemoryLeaks();
 
 	return 0;
 }

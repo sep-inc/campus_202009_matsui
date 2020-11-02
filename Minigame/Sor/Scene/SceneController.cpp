@@ -11,7 +11,6 @@
 
 SceneController* SceneController::p_instance = 0;
 
-
 //!インスタンス化関数
 SceneController* SceneController::Instance()
 {
@@ -28,15 +27,14 @@ void SceneController::Init()
 {
 	m_gamecontroller = nullptr;
 
-	//!最初は選択シーンで初期化
-	if (m_gamecontroller == nullptr) { m_gamecontroller = new SelectGameController; }
-
-	m_select_game = SelectMode;
+	m_select_game = SELECTSCENE;
 }
 
 //!各シーン更新処理関数
 void SceneController::Update()
 {
+	ChangeScene(); //!シーン切り替え判定
+
 	m_gamecontroller->Update();
 }
 
@@ -49,13 +47,16 @@ void SceneController::SetUpDrawBuffer()
 //!シーン切り替え判定関数
 void SceneController::ChangeScene()
 {
+	//!最初は選択シーンで初期化
+	if (m_gamecontroller == nullptr) { m_gamecontroller = new SelectGameController; }
+
 	//!各シーン切り替え判定
 	m_gamecontroller->ChangeState();
 
 	//!シーンが切り替えられたら
 	if (m_gamecontroller->GetNextScene() == true)
 	{
-		system("cls");  
+		system("cls");    //!遊んでいたゲームの描画を消す
 
 		m_select_game = m_gamecontroller->GetSelectGame();  //!選択したゲーム(もしくは選択シーン)を代入
 
@@ -68,7 +69,7 @@ void SceneController::ChangeScene()
 }
 
 //!各ゲーム管理クラスアドレス配列
-GameControllerBase* (*SceneController::s_controller_array[static_cast<int>(GAME_TYPE::Game_Num)])() =
+GameControllerBase* (*SceneController::s_controller_array[static_cast<int>(GAME_TYPE::GAME_NUM)])() =
 {
 	HanoiTowerGameController::InstanceHanoiTower,  //!ハノイの塔
 	OX_GameGameController::InstanceOX_Game,		   //!●×ゲーム

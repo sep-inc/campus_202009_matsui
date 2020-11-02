@@ -12,7 +12,7 @@
 
 SyougiGameController::SyougiGameController()
 {
-	m_game_type = Syougi;
+	m_game_type = SYOUGI;
 	m_next_scene = false;
 	m_step = STEP_INIT;//!ステップ初期化
 }
@@ -174,7 +174,7 @@ void SyougiGameController::ChangeState()
 	//!ESCキーが押されたとき
 	if (Inputter::Instance()->GetESCKey() == true)
 	{
-		m_game_type = SelectMode;  //!選択したゲームの種類
+		m_game_type = SELECTSCENE;  //!選択したゲームの種類
 		m_next_scene = true;       //!シーン切り替えフラグtrue
 	}
 }
