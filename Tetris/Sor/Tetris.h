@@ -3,6 +3,7 @@
 #include "Definition.h"
 #include "Object/Stage.h"
 #include "Object/Block/BlockController.h"
+#include "Player/PlayerBase.h"
 
 /**
 *@clss   ゲームクラス
@@ -69,6 +70,7 @@ private:
 
 	Tetris_Stage* m_stage;             //!ステージ
 	Tetris_BlockController* m_block;   //!ブロック
+	Tetris_Player_Base* m_player;
 };
 
 #endif

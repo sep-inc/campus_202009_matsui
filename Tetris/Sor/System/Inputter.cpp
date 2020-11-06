@@ -4,7 +4,7 @@
 #include <conio.h>
 #include <signal.h>
 
-//!十字キー入力待ち関数
+//!移動キー入力関数
 Vec2 Inputter::InpuMoveKey()
 {
     char key;      //!入力保存用
@@ -23,6 +23,16 @@ Vec2 Inputter::InpuMoveKey()
             else if (key == 0x4B) { direction.x = -1; }  //!←
             else if (key == 0x4D) { direction.x = 1; }   //!→
         }
+        //!右回転キーが押された場合
+        if (key == 'R' || key == 'r')
+        {
+            m_right_rote = true;
+        }
+        //!左回転キーが押された場合
+        else if (key == 'L' || key == 'l')
+        {
+            m_left_rote = true;
+        }
         //!ESCキーが押された場合
         else if (key == ESC)
         {
@@ -32,12 +42,18 @@ Vec2 Inputter::InpuMoveKey()
             direction = Vec2(0, 0);
         }
     }
+    else
+    {
+        m_right_rote = false;
+        m_left_rote = false;;
+    }
 
     InputForcedKey();  //!ctrl+cが押されたとき
 
     return direction;
 }
 
+//!回転キー入力関数
 void Inputter::InpuRoteKey()
 {
     char key;      //!入力保存用

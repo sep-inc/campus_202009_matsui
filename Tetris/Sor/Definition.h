@@ -7,8 +7,6 @@
 
 #define FONT_BYTE_ 4   //!文字サイズ
 
-
-
 #define GAME_WIDTH 12    //!全体の横幅
 #define GAME_HEIGHT 22   //!全体の縦幅
 
@@ -36,14 +34,14 @@ enum OBJECT_TYPE
 
 enum BLOCK_TYPE
 {
-	I_BLOCK,
-	J_BLOCK,
-	L_BLOCK,
-	O_BLOCK,
-	S_BLOCK,
-	T_BLOCK,
-	Z_BLOCK,
-	TYPE_NUM
+	I_BLOCK,   //!I型
+	J_BLOCK,   //!J型
+	L_BLOCK,   //!L型
+	O_BLOCK,   //!O型
+	S_BLOCK,   //!S型
+	T_BLOCK,   //!T型
+	Z_BLOCK,   //!Z型
+	TYPE_NUM   //!種類の数
 };
 
 //!移動方向の種類

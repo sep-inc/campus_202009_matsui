@@ -7,6 +7,11 @@
 *@brief  各オブジェクトの情報をもとに描画する
 */
 
+///////////////////////////////////////////////////////////////////////
+//!今回の場合ゲームを2つ描画するが指定箇所に                         //
+//!オブジェクトを1つ1つ入れるのではなく、ゲームの形にしたものを入れる//
+///////////////////////////////////////////////////////////////////////
+
 #define DRAW_WIDTH 50    //!全体の横幅
 #define DRAW_HEIGHT 25   //!全体の縦幅
 
@@ -20,6 +25,7 @@ public:
     * @brief  Object描画座標変換関数
     * @param (pos_) Objectの座標
     * @param (font_) 表示する形
+    * @param (type_) 描画位置選択
     * @detail 描画座標にオブジェクト情報代入
     */
     void SetUpBuffer(Vec2 pos_, const char* font_, GAME_TYPE type_);
@@ -50,10 +56,8 @@ private:
     };
 
 
-   // DrawBuffer m_draw_buffer[GAME_HEIGHT][GAME_WIDTH];  //!描画用配列
-
-    DrawBuffer m_draw_buffer[DRAW_HEIGHT][DRAW_WIDTH];  //!描画用配列
-    DrawBuffer m_clear_buffer[DRAW_HEIGHT][DRAW_WIDTH];  //!描画用配列
+    DrawBuffer m_draw_buffer[DRAW_HEIGHT][DRAW_WIDTH];   //!描画用配列
+    DrawBuffer m_clear_buffer[DRAW_HEIGHT][DRAW_WIDTH];  //!クリア用配列
 
 
 

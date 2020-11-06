@@ -45,8 +45,35 @@ Tetris_Z_Block::Tetris_Z_Block(Tetris_Stage* stage_) :
 {
 }
 
-//!使用ブロック更新関数
-void Tetris_Z_Block::SetBlock()
+//!形更新(回転)関数
+void Tetris_Z_Block::SetBlockAngle(__int8 angle_)
 {
-	m_block = m_block_0;
+	m_angle_type += angle_;
+
+	if (m_angle_type < 0)
+	{
+		m_angle_type = 3;
+	}
+	else if (m_angle_type > 3)
+	{
+		m_angle_type = 0;
+	}
+
+	switch (m_angle_type)
+	{
+	case 0:
+		m_block = m_block_0;
+		break;
+	case 1:
+		m_block = m_block_90;
+		break;
+	case 2:
+		m_block = m_block_180;
+		break;
+	case 3:
+		m_block = m_block_270;
+		break;
+	default:
+		break;
+	}
 }

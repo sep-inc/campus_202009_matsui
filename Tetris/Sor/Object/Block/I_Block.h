@@ -14,10 +14,11 @@ public:
     ~Tetris_I_Block() {}
 
     /**
-　   * @brief  使用ブロック更新関数
-     * @detail 次使うブロックの形をブロック配列ポインタに代入する
+　   * @brief  形更新(回転)関数関数
+     * @param (angle_) 回転方向(1か-1か)
+     * @detail 現在移動しているブロックの形を回転させる
 　   */
-    virtual void SetBlock();
+    virtual void SetBlockAngle(__int8 angle_)override;
 
 
 private:

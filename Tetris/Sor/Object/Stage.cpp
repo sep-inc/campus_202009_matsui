@@ -5,9 +5,9 @@
 //!コンストラクタ
 Tetris_Stage::Tetris_Stage()
 {
-	memset(m_stage, NONE, sizeof(m_stage));
+	memset(m_stage, NONE, sizeof(m_stage));   //!ステージ配列を空で初期化
 
-	//!壁(不変的なもの)と空で初期化
+	//!壁(不変的なもの)で初期化
 	for (int y = 0; y < GAME_HEIGHT; y++)
 	{
 		m_stage[y][0].m_obj = WALL;
@@ -20,9 +20,9 @@ Tetris_Stage::Tetris_Stage()
 	
 	}
 
-	memset(m_next_block, NONE, sizeof(m_next_block));
+	memset(m_next_block, NONE, sizeof(m_next_block));   //!予測枠を空で初期化
 
-	//!壁(不変的なもの)と空で初期化
+	//!壁(不変的なもの)で初期化
 	for (int y = 0; y < NEXT_BLOCK_HEIGHT; y++)
 	{
 		m_next_block[y][0].m_obj = WALL;
@@ -34,7 +34,7 @@ Tetris_Stage::Tetris_Stage()
 		m_next_block[NEXT_BLOCK_WIDTH - WALL_SIZE][x].m_obj = WALL;
 	}
 
-	memcpy(m_next_block_clear, m_next_block, sizeof(m_next_block));
+	memcpy(m_next_block_clear, m_next_block, sizeof(m_next_block));  //!予測枠クリア用配列に予測枠配列をコピー
 }
 
 //!ステージ描画情報代入関数
@@ -47,7 +47,7 @@ void Tetris_Stage::SetUpDrawStageBuffer(GAME_TYPE type_)
 			//!オブジェクトの種類
 			switch (m_stage[y][x].m_obj)
 			{
-			case FIXED_BLOCK: //!壁
+			case FIXED_BLOCK: //!固定されたブロック
 				g_drawer.SetUpBuffer(Vec2(x, y), "■", type_);
 				break;
 			case WALL: //!壁
@@ -63,7 +63,7 @@ void Tetris_Stage::SetUpDrawStageBuffer(GAME_TYPE type_)
 	}
 }
 
-//!次のブロック枠描画情報代入関数
+//!予測枠描画情報代入関数
 void Tetris_Stage::SetUpDrawBlockBuffer(GAME_TYPE type_)
 {
 	//!壁(不変的なもの)と空で初期化
@@ -74,7 +74,7 @@ void Tetris_Stage::SetUpDrawBlockBuffer(GAME_TYPE type_)
 			//!オブジェクトの種類
 			switch (m_next_block[y][x].m_obj)
 			{
-			case FIXED_BLOCK: //!壁
+			case FIXED_BLOCK: //!固定されたブロック
 				g_drawer.SetUpBuffer(Vec2(x + GAME_WIDTH + WALL_SIZE, y), "■", type_);
 				break;
 			case WALL: //!壁
@@ -93,16 +93,18 @@ void Tetris_Stage::SetUpDrawBlockBuffer(GAME_TYPE type_)
 //!ブロック固定関数
 void Tetris_Stage::SetUpBlock(Vec2 pos_, OBJECT_TYPE obj_)
 {
+	//!壁を除いた指定箇所にオブジェクト代入
 	m_stage[pos_.y + WALL_SIZE][pos_.x + WALL_SIZE].m_obj = obj_;
 }
 
-//!次のブロック枠更新関数
+//!予測枠更新関数
 void Tetris_Stage::SetUpNextBlock(Vec2 pos_, OBJECT_TYPE obj_)
 {
+	//!壁を除いた指定箇所にオブジェクト代入
 	m_next_block[pos_.y + WALL_SIZE][pos_.x + WALL_SIZE].m_obj = obj_;
 }
 
-//!次のブロック枠クリア関数
+//!予測枠クリア関数
 void Tetris_Stage::NextBlockClear()
 {
 	memcpy(m_next_block, m_next_block_clear, sizeof(m_next_block_clear));

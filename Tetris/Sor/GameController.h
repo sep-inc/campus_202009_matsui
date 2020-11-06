@@ -23,14 +23,14 @@ public:
 	void Init();
 
 	/**
-	 * @brief  ステップ処理関数
-	 * @detail ステップ変更処理
+	 * @brief  更新処理関数
+	 * @detail 各ゲームの更新処理を行う
 	 */
 	void Update();
 
 	/**
 	 * @brief  描画情報代入関数
-	 * @detail 盤情報を描画配列に代入
+	 * @detail 各ゲームの情報を描画配列に代入
 	 */
 	void SetUpDrawBuffer();
 
@@ -46,7 +46,7 @@ public:
 	void Delete();
 
 private:
-	Tetris* m_tetris[GAME_NUM];
+	Tetris* m_tetris[GAME_NUM];  //!テトリス
 };
 
 #endif

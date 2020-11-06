@@ -41,11 +41,31 @@ public:
     void CreateBlock();
 
     /**
+　   * @brief  当たり判定関数
+     * @detail 現在移動しているブロックの当たり判定を呼び出す(Myselfで使う)
+　   */
+    bool Collision();
+
+    /**
 　   * @brief  ブロック描画情報代入関数
      * @param (type_) 描画位置選択
      * @detail 現在移動しているブロックの描画情報を送る
 　   */
     void SetUpDrawBuffer(GAME_TYPE type_);
+
+    /**
+　   * @brief  形更新(回転)関数
+     * @param (angle_) 回転方向(1か-1か)
+     * @detail 現在移動しているブロックの形更新(回転)関数を呼び出す(Myselfで使う)
+　   */
+    void SetBlockAngle(__int8 angle_);
+
+
+    /**
+　   * @brief  使用ブロック座標更新関数
+     * @detail 移動しているブロックの座標を更新
+　   */
+    void SetBlockPos(float x_, float y_);
 
 private:
     //!ステップの種類

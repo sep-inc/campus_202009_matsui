@@ -15,8 +15,8 @@ Tetris_O_Block::Tetris_O_Block(Tetris_Stage* stage_) :
 {
 }
 
-//!使用ブロック更新関数
-void Tetris_O_Block::SetBlock()
+//!形更新(回転)関数
+void Tetris_O_Block::SetBlockAngle(__int8 angle_)
 {
 	m_block = m_block_0;
 }

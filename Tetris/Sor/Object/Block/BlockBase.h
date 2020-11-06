@@ -7,6 +7,14 @@
 *@clss   Blockの基底クラス
 */
 
+enum BLOCK_ANGLE_TYPE
+{
+    ZERO,
+    ONE,
+    TWO,
+    THREE
+};
+
 class Tetris_BlockBase
 {
 public:
@@ -58,17 +66,23 @@ public:
     virtual void SetUpDrawBuffer(GAME_TYPE type_);
 
     /**
-　   * @brief  使用ブロック更新関数
-     * @detail 次使うブロックの形をブロック配列ポインタに代入する
+　   * @brief  形更新(回転)関数関数
+     * @param (angle_) 回転方向(1か-1か)
+     * @detail 現在移動しているブロックの形を回転させる
 　   */
-    virtual void SetBlock() {}
+    virtual void SetBlockAngle(__int8 angle_) {}
+
+    /**
+　   * @brief  使用ブロック座標更新関数
+     * @detail 移動しているブロックの座標を更新
+　   */
+    void SetBlockPos(float x_, float y_);
 
     /**
 　   * @brief  ブロック停止(固定)フラグGetter関数
 　   */
     bool GetStop() { return m_stop; }
 
-    void SetBlockPos(float x_,float y_) {}
 protected:
     Tetris_Stage* m_stage;  //!ステージアドレス保存用
 
@@ -85,6 +99,8 @@ protected:
     float m_speed;        //!移動スピード
 
     bool m_stop;          //!停止(固定)フラグ
+
+    __int8 m_angle_type;  //!現在角度保存用
 };
 
 #endif

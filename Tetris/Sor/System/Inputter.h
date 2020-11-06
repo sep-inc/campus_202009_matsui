@@ -16,14 +16,14 @@ public:
     ~Inputter() {}
 
     /**
-    * @brief  ジャンプキー入力待ち関数
+    * @brief  移動キー入力関数
     * @detail ジャンプキーが押されたらtrueを返す
     */
     Vec2 InpuMoveKey();
 
     /**
-     * @brief  ジャンプキー入力待ち関数
-     * @detail ジャンプキーが押されたらtrueを返す
+     * @brief  回転キー入力関数
+     * @detail 回転キー押された場合押された回転方向のフラグをtrueにする
      */
     void InpuRoteKey();
 
