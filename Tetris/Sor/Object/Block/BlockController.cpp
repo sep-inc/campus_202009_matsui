@@ -75,6 +75,11 @@ void Tetris_BlockController::CreateBlock()
 
 	m_next_block_type = static_cast<BLOCK_TYPE>(rand() % TYPE_NUM);//!ランダム
 
+	while (m_block_type == m_next_block_type)
+	{
+		m_next_block_type = static_cast<BLOCK_TYPE>(rand() % TYPE_NUM);//!ランダム
+	}
+
 	m_stage->NextBlockClear();   //!予測枠クリア
 
 	//!次に降ってくるブロックを予測枠にセット

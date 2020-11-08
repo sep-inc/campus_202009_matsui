@@ -58,6 +58,8 @@ void Tetris::ObjectUpdate()
 {
 	m_block->Update();   //!ブロック
 	m_player->Update();  //!プレイヤー
+	m_stage->Update();  //!プレイヤー
+
 
 	//m_step = STEP_RESULT;
 }

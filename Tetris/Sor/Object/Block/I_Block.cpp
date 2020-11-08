@@ -15,9 +15,11 @@ const __int8 Tetris_I_Block::m_block_90[BLOCK_HEIGHT][BLOCK_WIDTH] =
 {
 	0,0,0,0,0,
 	0,0,0,0,0,
-	0,1,1,1,1,
+	1,1,1,1,0,
 	0,0,0,0,0,
 	0,0,0,0,0
+
+	
 };
 
 //!形配列(180度)
@@ -35,7 +37,7 @@ const __int8 Tetris_I_Block::m_block_270[BLOCK_HEIGHT][BLOCK_WIDTH] =
 {
 	0,0,0,0,0,
 	0,0,0,0,0,
-	1,1,1,1,0,
+	0,1,1,1,1,
 	0,0,0,0,0,
 	0,0,0,0,0
 };

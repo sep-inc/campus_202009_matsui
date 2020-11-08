@@ -15,6 +15,12 @@ public:
     ~Tetris_Stage() {}
 
     /**
+　   * @brief  更新関数
+     * @detail 各更新処理をまとめた関数
+　   */
+    void Update();
+
+    /**
 　   * @brief  ステージ描画情報代入関数
      * @param (type_) 描画位置選択
      * @detail 現在のステージの壁と固定されたブロックの描画情報を送る
@@ -50,6 +56,19 @@ public:
     void NextBlockClear();
 
     /**
+     * @brief  ブロック消去判定関数
+     * @detail 1列横にブロックが並んだかどうかを調べる
+     */
+    void SearchDeleteBlock();
+
+    /**
+    * @brief  ブロック消去関数
+    * @param (y_) 消去段
+    * @detail 1列横にブロックが並んだ場合その列を消去する
+    */
+    void DeleteBlock(__int8 y_);
+
+    /**
      * @brief  初期化関数(繰り返し)
      * @detail メンバ変数の初期化
      * @detail コンティニュー後値が残っていると困るメンバ変数の初期化
@@ -67,6 +86,8 @@ private:
 
     StageInfo m_next_block[7][7];        //!予測枠配列
     StageInfo m_next_block_clear[7][7];  //!予測枠クリア用配列
+
+    __int8 m_block_counter;
 
 };
 
