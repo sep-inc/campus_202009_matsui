@@ -4,7 +4,8 @@
 
 //!コンストラクタ
 Tetris::Tetris() :
-	m_stage(nullptr), m_block(nullptr), m_player(nullptr)
+	m_stage(nullptr), m_block(nullptr), m_player(nullptr),
+	m_game_over(false)
 {
 }
 
@@ -17,27 +18,9 @@ Tetris::~Tetris()
 //!ステップ処理関数
 void Tetris::Update()
 {
-	switch (m_step)
-	{
-	case Tetris::STEP_INIT:     //!初期化
-		Init();
-		break;
-	case Tetris::STEP_START:    //!開始待ち
-		//!スタートキーが入力されたら
-		if (g_inputter.InputStartKey() == true)
-		{
-			m_step = STEP_UPDATE;
-		}
-		break;
-	case Tetris::STEP_UPDATE:   //!更新
-		ObjectUpdate();
-		break;
-	case Tetris::STEP_RESULT:  //!結果
-		GameResult();
-		break;
-	default:
-		break;
-	}
+	m_block->Update();   //!ブロック
+	m_player->Update();  //!プレイヤー
+	m_stage->Update();  //!プレイヤー
 }
 
 //!初期化関数
@@ -47,21 +30,9 @@ void Tetris::Init()
 	if (m_block == nullptr) { m_block = new Tetris_BlockController; }   //!ブロック
 	if (m_player == nullptr) { m_player = new Tetris_Myself(m_block); }
 
+	m_stage->Reset();  //!ステージ初期化
+
 	m_block->Rest(m_stage);  //!ブロック初期化
-
-	//!次のステップへ
-	m_step = STEP_START;
-}
-
-//!更新処理関数
-void Tetris::ObjectUpdate()
-{
-	m_block->Update();   //!ブロック
-	m_player->Update();  //!プレイヤー
-	m_stage->Update();  //!プレイヤー
-
-
-	//m_step = STEP_RESULT;
 }
 
 //!描画情報代入関数
@@ -72,23 +43,11 @@ void Tetris::SetUpDrawBuffer(GAME_TYPE type_)
 	m_block->SetUpDrawBuffer(type_);       //!ブロック
 }
 
-//!終了判定関数
-void Tetris::GameResult()
+//!ゲームオーバー判定関数
+bool Tetris::GameOver()
 {
-
-
-	//!続けるかどうか
-	if (g_inputter.InputContinue() == true)
-	{
-		m_step = STEP_INIT;
-	}
-}
-
-//!強制終了関数
-bool Tetris::GameEnd()
-{
-	//!ESCキーが押されたとき
-	if (g_inputter.GetESCKey() == true)
+	//!ステージの上にブロックがついた場合
+	if (m_stage->GameOver() == true)
 	{
 		return true;
 	}
@@ -103,4 +62,7 @@ void Tetris::Delete()
 
 	delete m_block;
 	m_block = nullptr;
+
+	delete m_player;
+	m_player = nullptr;
 }

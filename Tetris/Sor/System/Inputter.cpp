@@ -92,13 +92,7 @@ void Inputter::InpuRoteKey()
 //!ゲーム開始入力待ち関数
 bool Inputter::InputStartKey()
 {
-   /* printf("Enterでゲームスタート\n");
-    printf("あなたは「●」を操作してください。\n");
-    printf("操作方法：十字キーで移動\n");
-    printf("勝利条件：アイテムをすべて集める。(順番関係なし)\n");
-    printf("敗北条件：敵にぶつかる\n");*/
-
-
+  
     char input_; //!入力保存用
 
     if (_kbhit())
@@ -109,6 +103,7 @@ bool Inputter::InputStartKey()
         if (input_ == ENTER)
         {
             system("cls");
+            m_start = true;
             return true;
         }
         //!ESCキーなら

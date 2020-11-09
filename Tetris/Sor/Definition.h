@@ -10,9 +10,6 @@
 #define GAME_WIDTH 12    //!全体の横幅
 #define GAME_HEIGHT 22   //!全体の縦幅
 
-#define NEXT_BLOCK_WIDTH 7    //!全体の横幅
-#define NEXT_BLOCK_HEIGHT 7   //!全体の縦幅
-
 #define BLOCK_WIDTH 5    //!全体の横幅
 #define BLOCK_HEIGHT 5   //!全体の縦幅
 

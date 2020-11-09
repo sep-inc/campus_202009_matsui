@@ -46,12 +46,15 @@ public:
     bool InputContinue();
 
     const bool GetESCKey() { return m_esc; }
+    const bool GetStartKey() { return m_start; }
+
     const bool GetRigthRoteKey() { return m_right_rote; }
     const bool GetLeftRoteKey() { return m_left_rote; }
 
 
 private:
     bool m_esc;  //!ESC時終了フラグ
+    bool m_start;
 
     bool m_right_rote;
     bool m_left_rote;

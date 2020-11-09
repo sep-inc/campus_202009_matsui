@@ -8,11 +8,21 @@
 
 #define WALL_SIZE 1  //!壁(フレーム)のサイズ(描画や当たり判定時に使う)
 
+#define NEXT_BLOCKBOX_WIDTH 7
+#define NEXT_BLOCKBOX_HEIGHT 7
+
+
 class Tetris_Stage
 {
 public:
     Tetris_Stage();
     ~Tetris_Stage() {}
+
+    /**
+　   * @brief  初期化関数
+     * @detail ステージと予測枠を初期化する
+　   */
+    void Reset();
 
     /**
 　   * @brief  更新関数
@@ -69,6 +79,12 @@ public:
     void DeleteBlock(__int8 y_);
 
     /**
+   　* @brief  ゲームオーバー判定関数
+   　* @detail ステージの一番上にブロックが当たっているかどうかを調べる
+   　*/
+    bool GameOver();
+
+    /**
      * @brief  初期化関数(繰り返し)
      * @detail メンバ変数の初期化
      * @detail コンティニュー後値が残っていると困るメンバ変数の初期化
@@ -83,9 +99,11 @@ private:
     };
 
     StageInfo m_stage[GAME_HEIGHT][GAME_WIDTH];  //!ステージ配列
+    StageInfo m_stage_clear[GAME_HEIGHT][GAME_WIDTH];  //!ステージ配列
 
-    StageInfo m_next_block[7][7];        //!予測枠配列
-    StageInfo m_next_block_clear[7][7];  //!予測枠クリア用配列
+
+    StageInfo m_next_block[NEXT_BLOCKBOX_HEIGHT][NEXT_BLOCKBOX_WIDTH];        //!予測枠配列
+    StageInfo m_next_block_clear[NEXT_BLOCKBOX_HEIGHT][NEXT_BLOCKBOX_WIDTH];  //!予測枠クリア用配列
 
     __int8 m_block_counter;
 

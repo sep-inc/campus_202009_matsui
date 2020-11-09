@@ -24,16 +24,10 @@ public:
 	void Init();
 
 	/**
-	 * @brief  ステップ処理関数
-	 * @detail ステップ変更処理
-	 */
-	void Update();
-
-	/**
    　* @brief  更新関数
 	 * @detail 各更新処理をまとめた関数
    　*/
-	void ObjectUpdate();
+	void Update();
 
 	/**
 	 * @brief  描画情報代入関数
@@ -42,16 +36,9 @@ public:
 	void SetUpDrawBuffer(GAME_TYPE type_);
 
 	/**
-	 * @brief  勝敗判定関数
-	 * @detail 先手か後手のどちらが勝ったかを判定する
+	 * @brief  ゲームオーバー判定関数
 	 */
-	void GameResult();
-
-	/**
-	 * @brief  強制終了関数
-	 * @detail ESCが押されたときにゲームを終了する
-	 */
-	bool GameEnd();
+	bool GameOver();
 
 	/**
 	 * @brief 解放処理関数
@@ -59,18 +46,11 @@ public:
 	void Delete();
 
 private:
-	//!ステップの種類
-	enum STEP
-	{
-		STEP_INIT,    //!初期化
-		STEP_START,   //!初期化
-		STEP_UPDATE,  //!更新
-		STEP_RESULT,  //!結果
-	}m_step;
-
 	Tetris_Stage* m_stage;             //!ステージ
 	Tetris_BlockController* m_block;   //!ブロック
 	Tetris_Player_Base* m_player;
+
+	bool m_game_over;
 };
 
 #endif

@@ -18,6 +18,11 @@ Tetris_BlockController::Tetris_BlockController() :
 {
 }
 
+///////////////////////////////////////////////////////
+//!現在の考え方はブロックを使い回している            //
+//!本来はブロックが固定された時そのブロックは破棄する//
+///////////////////////////////////////////////////////
+
 //!初期化関数(繰り返し)
 void Tetris_BlockController::Rest(Tetris_Stage* stage_)
 {
@@ -32,12 +37,26 @@ void Tetris_BlockController::Rest(Tetris_Stage* stage_)
 
 	m_stage = stage_;  //!ステージアドレス
 
+	m_block_type = static_cast<BLOCK_TYPE>(rand() % TYPE_NUM);//!現在降ってくるブロックをランダムで選択
+
+	m_next_block_type = static_cast<BLOCK_TYPE>(rand() % TYPE_NUM);//!次に降ってくるブロックをランダムで選択
+
+	//!次に降ってくるブロックが同じ場合もう一度選び直す
+	while (m_block_type == m_next_block_type)
+	{
+		m_next_block_type = static_cast<BLOCK_TYPE>(rand() % TYPE_NUM);
+	}
+
+	m_block[m_block_type]->Reset();  //!現在降ってくるブロックのパラメーターを初期化
+
 	//!次に降ってくるブロックを予測枠にセット
 	m_block[m_next_block_type]->SetBlockAngle(0);
 	m_block[m_next_block_type]->SetNextBlockBuffer();
 
 	//!現在降ってくるブロックの形をブロック配列にセット 
 	m_block[m_block_type]->SetBlockAngle(0);
+
+	m_step = STEP_UPDATE;  //!更新ステップへ
 }
 
 //!ステップ処理関数

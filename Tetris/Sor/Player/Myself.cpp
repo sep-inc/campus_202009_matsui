@@ -17,6 +17,7 @@ void Tetris_Myself::Update()
 //! 移動関数
 void Tetris_Myself::MoveBlock()
 {
+	
 	m_direction = g_inputter.InpuMoveKey();  //!方向ベクトル代入
 
 	m_block->SetBlockPos((float)m_direction.x, (float)m_direction.y); //!ブロックの座標更新

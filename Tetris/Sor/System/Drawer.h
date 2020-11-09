@@ -13,7 +13,7 @@
 ///////////////////////////////////////////////////////////////////////
 
 #define DRAW_WIDTH 50    //!全体の横幅
-#define DRAW_HEIGHT 25   //!全体の縦幅
+#define DRAW_HEIGHT 22   //!全体の縦幅
 
 class Drawer
 {

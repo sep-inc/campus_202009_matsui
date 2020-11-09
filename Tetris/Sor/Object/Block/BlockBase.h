@@ -41,6 +41,12 @@ public:
     void Move();
 
     /**
+　   * @brief  遊び時間関数
+     * @detail ブロックが固定されるまでの遊びの時間を作る
+　   */
+    void PlayMove();
+
+    /**
 　   * @brief  当たり判定関数
      * @detail 動いているブロックと壁や固定されたブロックとの当たり判定を行う
 　   */
@@ -99,8 +105,11 @@ protected:
     float m_speed;        //!移動スピード
 
     bool m_stop;          //!停止(固定)フラグ
+    bool m_play;
 
     __int8 m_angle_type;  //!現在角度保存用
+
+    __int8 m_counter;
 };
 
 #endif

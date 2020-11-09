@@ -4,9 +4,9 @@
 const __int8 Tetris_O_Block::m_block_0[BLOCK_HEIGHT][BLOCK_WIDTH] =
 {
 	0,0,0,0,0,
+	0,1,1,0,0,
+	0,1,1,0,0,
 	0,0,0,0,0,
-	0,0,1,1,0,
-	0,0,1,1,0,
 	0,0,0,0,0
 };
 

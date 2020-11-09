@@ -5,10 +5,12 @@
 Tetris_BlockBase::Tetris_BlockBase(Tetris_Stage* stage_) :
 	m_stage(stage_),   //!ステージアドレス
 	m_font("■"),      //!表示スタイル
-	m_pos_x(2.0f), m_pos_y(0.0f), m_next_pos_x(m_pos_x), m_next_pos_y(m_pos_y),   //!座標
+	m_pos_x(3.0f), m_pos_y(-1.0f), m_next_pos_x(m_pos_x), m_next_pos_y(m_pos_y),   //!座標
 	m_speed(0.03f),     //!落下速度
 	m_stop(false),      //!停止フラグ
-	m_angle_type(0)     //!現在角度保存用
+	m_angle_type(0),    //!現在角度保存用
+	m_counter(0),
+	m_play(false)
 {
 }
 
@@ -16,10 +18,12 @@ Tetris_BlockBase::Tetris_BlockBase(Tetris_Stage* stage_) :
 void Tetris_BlockBase::Reset()
 {
 	m_pos_x = 2.0f;  //!座標
-	m_pos_y = 0.0f;	 //!座標
+	m_pos_y = -1.0f;	 //!座標
 
 	m_next_pos_x = m_pos_x; //!移動後座標
 	m_next_pos_y = m_pos_y; //!移動後座標 
+
+	m_angle_type = 0;
 
 	m_stop = false;  //!停止フラグ
 }
@@ -28,24 +32,57 @@ void Tetris_BlockBase::Reset()
 void Tetris_BlockBase::Update()
 {
 	Move();
+	PlayMove();
 }
 
 //!移動関数
 void Tetris_BlockBase::Move()
 {
-	m_next_pos_y += m_speed; //!落下
+	//!何かに乗っていない場合
+	if (m_play != true)
+	{
+		m_next_pos_y += m_speed;    //!落下
+	}
+
 	
 	//!床、もしくは固定されたブロックに当たった場合
 	if (Collision() == true)
 	{
-		SetStageBuffer();  //!ステージに固定
-		m_stop = true;     //!停止フラグtrue
+		m_next_pos_y -= m_speed; //!遊びの時間の間動けるように座標を戻す
+		m_play = true;  //!遊び判定true
 	}
 	else
 	{
 		m_pos_x = m_next_pos_x;   //!現在位置を移動後に変更
 		m_pos_y = m_next_pos_y;   //!現在位置を移動後に変更
 	}
+}
+
+//!遊び時間関数
+void Tetris_BlockBase::PlayMove()
+{
+	//!何かの上に乗った場合
+	if (m_play == true)
+	{
+		m_counter++;
+
+		//!少しの時間動けるようにする
+		if (m_counter == 30)
+		{
+			m_next_pos_y += m_speed; //!時間が過ぎると落下
+
+			//!落下時にもう一度何かの上にちゃんと乗っているか判定
+			if (Collision() == true)
+			{
+				SetStageBuffer();  //!ステージに固定
+				m_stop = true;     //!停止フラグtrue
+			}
+			
+			m_play = false;
+			m_counter = 0;
+		}
+	}
+	
 }
 
 //!ステージ更新関数
