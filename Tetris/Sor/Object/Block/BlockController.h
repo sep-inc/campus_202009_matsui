@@ -67,6 +67,12 @@ public:
 　   */
     void SetBlockPos(float x_, float y_);
 
+    /**
+ * @brief  各ゲーム管理クラスアドレス配列
+ * @detail 配列に指定したゲームを入れるとそのゲームの管理クラスのnewが返ってくる
+ */
+    static Tetris_BlockBase* (*b_controller_array[static_cast<int>(BLOCK_TYPE::TYPE_NUM)])(Tetris_Stage* stage_);
+
 private:
     //!ステップの種類
     enum STEP

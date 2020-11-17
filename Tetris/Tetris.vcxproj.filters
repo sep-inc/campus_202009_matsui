@@ -19,6 +19,9 @@
     <Filter Include="Utility">
       <UniqueIdentifier>{6c35336e-d055-4aab-b7c2-e44265e74749}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Player\AI">
+      <UniqueIdentifier>{e0e60e32-6304-48bc-89a3-b6b7c4035faa}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Sor\Main.cpp" />

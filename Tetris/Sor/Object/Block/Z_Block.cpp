@@ -77,3 +77,8 @@ void Tetris_Z_Block::SetBlockAngle(__int8 angle_)
 		break;
 	}
 }
+
+Tetris_BlockBase* Tetris_Z_Block::InstanceZ_Block(Tetris_Stage* stage_)
+{
+	return static_cast<Tetris_BlockBase*>(new Tetris_Z_Block(stage_));
+}

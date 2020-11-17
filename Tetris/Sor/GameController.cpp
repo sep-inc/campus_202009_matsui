@@ -48,7 +48,7 @@ void Tetris_GameController::Init()
 	if (m_tetris[TYPE_A] == nullptr) { m_tetris[TYPE_A] = new Tetris; }     //!テトリスA
 	if (m_tetris[TYPE_B] == nullptr) { m_tetris[TYPE_B] = new Tetris; }     //!テトリスB
 
-	for (int i = 0; i < GAME_NUM; i++)
+	for (int i = 0; i < 1; i++)
 	{
 		m_tetris[i]->Init();
 	}
@@ -60,7 +60,7 @@ void Tetris_GameController::Init()
 void Tetris_GameController::GameUpdate()
 {
 	
-	for (int i = 0; i < GAME_NUM; i++)
+	for (int i = 0; i < 1; i++)
 	{
 		m_tetris[i]->Update();
 
@@ -108,7 +108,7 @@ void Tetris_GameController::DrawRule()
 void Tetris_GameController::SetUpDrawBuffer()
 {
 	m_tetris[TYPE_A]->SetUpDrawBuffer(TYPE_A);
-	m_tetris[TYPE_B]->SetUpDrawBuffer(TYPE_B);
+	//m_tetris[TYPE_B]->SetUpDrawBuffer(TYPE_B);
 }
 
 //!強制終了関数
@@ -125,7 +125,7 @@ bool Tetris_GameController::GameEnd()
 //!解放処理
 void Tetris_GameController::Delete()
 {
-	for (int i = 0; i < GAME_NUM; i++)
+	for (int i = 0; i < 1; i++)
 	{
 		delete m_tetris[i];
 		m_tetris[i] = nullptr;

@@ -82,3 +82,8 @@ void Tetris_I_Block::SetBlockAngle(__int8 angle_)
 	}
 	
 }
+
+Tetris_BlockBase* Tetris_I_Block::InstanceI_Block(Tetris_Stage* stage_)
+{
+	return static_cast<Tetris_BlockBase*>(new Tetris_I_Block(stage_));
+}

@@ -20,3 +20,9 @@ void Tetris_O_Block::SetBlockAngle(__int8 angle_)
 {
 	m_block = m_block_0;
 }
+
+
+Tetris_BlockBase* Tetris_O_Block::InstanceO_Block(Tetris_Stage* stage_)
+{
+	return static_cast<Tetris_BlockBase*>(new Tetris_O_Block(stage_));
+}

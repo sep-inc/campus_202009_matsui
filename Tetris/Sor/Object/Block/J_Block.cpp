@@ -77,3 +77,8 @@ void Tetris_J_Block::SetBlockAngle(__int8 angle_)
 		break;
 	}
 }
+
+Tetris_BlockBase* Tetris_J_Block::InstanceJ_Block(Tetris_Stage* stage_)
+{
+	return static_cast<Tetris_BlockBase*>(new Tetris_J_Block(stage_));
+}

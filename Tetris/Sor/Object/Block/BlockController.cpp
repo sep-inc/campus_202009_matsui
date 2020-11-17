@@ -27,13 +27,13 @@ Tetris_BlockController::Tetris_BlockController() :
 void Tetris_BlockController::Rest(Tetris_Stage* stage_)
 {
 	//!インスタンス化
-	if (m_block[I_BLOCK] == nullptr) { m_block[I_BLOCK] = new Tetris_I_Block(stage_); }
+	/*if (m_block[I_BLOCK] == nullptr) { m_block[I_BLOCK] = new Tetris_I_Block(stage_); }
 	if (m_block[J_BLOCK] == nullptr) { m_block[J_BLOCK] = new Tetris_J_Block(stage_); }
 	if (m_block[L_BLOCK] == nullptr) { m_block[L_BLOCK] = new Tetris_L_Block(stage_); }
 	if (m_block[O_BLOCK] == nullptr) { m_block[O_BLOCK] = new Tetris_O_Block(stage_); }
 	if (m_block[S_BLOCK] == nullptr) { m_block[S_BLOCK] = new Tetris_S_Block(stage_); }
 	if (m_block[T_BLOCK] == nullptr) { m_block[T_BLOCK] = new Tetris_T_Block(stage_); }
-	if (m_block[Z_BLOCK] == nullptr) { m_block[Z_BLOCK] = new Tetris_Z_Block(stage_); }
+	if (m_block[Z_BLOCK] == nullptr) { m_block[Z_BLOCK] = new Tetris_Z_Block(stage_); }*/
 
 	m_stage = stage_;  //!ステージアドレス
 
@@ -46,6 +46,9 @@ void Tetris_BlockController::Rest(Tetris_Stage* stage_)
 	{
 		m_next_block_type = static_cast<BLOCK_TYPE>(rand() % TYPE_NUM);
 	}
+
+	if (m_block[m_block_type] == nullptr) { m_block[m_block_type] = b_controller_array[static_cast<int>(m_block_type)](m_stage); }
+	if (m_block[m_next_block_type] == nullptr) { m_block[m_next_block_type] = b_controller_array[static_cast<int>(m_next_block_type)](m_stage); }
 
 	m_block[m_block_type]->Reset();  //!現在降ってくるブロックのパラメーターを初期化
 
@@ -90,6 +93,13 @@ void Tetris_BlockController::BlockUpdate()
 //!更新関数
 void Tetris_BlockController::CreateBlock()
 {
+	delete m_block[m_block_type];
+	delete m_block[m_next_block_type];
+
+	m_block[m_block_type] = nullptr;
+	m_block[m_next_block_type] = nullptr;
+
+
 	m_block_type = m_next_block_type;   //!現在降ってくるブロックを前に決めたブロックの形で代入
 
 	m_next_block_type = static_cast<BLOCK_TYPE>(rand() % TYPE_NUM);//!ランダム
@@ -100,6 +110,9 @@ void Tetris_BlockController::CreateBlock()
 	}
 
 	m_stage->NextBlockClear();   //!予測枠クリア
+
+	m_block[m_block_type] = b_controller_array[static_cast<int>(m_block_type)](m_stage);
+    m_block[m_next_block_type] = b_controller_array[static_cast<int>(m_next_block_type)](m_stage);
 
 	//!次に降ってくるブロックを予測枠にセット
 	m_block[m_next_block_type]->SetBlockAngle(0);  
@@ -142,3 +155,14 @@ void Tetris_BlockController::SetBlockPos(float x_, float y_)
 {
 	m_block[m_block_type]->SetBlockPos(x_, y_);
 }
+
+Tetris_BlockBase* (*Tetris_BlockController::b_controller_array[static_cast<int>(BLOCK_TYPE::TYPE_NUM)])(Tetris_Stage* stage_) =
+{
+	Tetris_I_Block::InstanceI_Block,
+	Tetris_J_Block::InstanceJ_Block,
+	Tetris_L_Block::InstanceL_Block,
+	Tetris_O_Block::InstanceO_Block,
+	Tetris_S_Block::InstanceS_Block,
+	Tetris_T_Block::InstanceT_Block,
+	Tetris_Z_Block::InstanceZ_Block
+};

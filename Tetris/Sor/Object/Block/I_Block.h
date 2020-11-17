@@ -20,6 +20,7 @@ public:
 　   */
     virtual void SetBlockAngle(__int8 angle_)override;
 
+    static Tetris_BlockBase* InstanceI_Block(Tetris_Stage* stage_);
 
 private:
     static const __int8 m_block_0[BLOCK_HEIGHT][BLOCK_WIDTH];    //!形配列(0度)
