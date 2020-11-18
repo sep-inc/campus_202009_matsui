@@ -19,6 +19,9 @@ Tetris_O_Block::Tetris_O_Block(Tetris_Stage* stage_) :
 void Tetris_O_Block::SetBlockAngle(__int8 angle_)
 {
 	m_block = m_block_0;
+
+	m_block_min_array = Vec2(1, 1);
+	m_block_max_array = Vec2(2, 2);
 }
 
 

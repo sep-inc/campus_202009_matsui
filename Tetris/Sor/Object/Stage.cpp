@@ -21,6 +21,8 @@ Tetris_Stage::Tetris_Stage()
 	}
 
 	memcpy(m_stage_clear, m_stage, sizeof(m_stage));  //!予測枠クリア用配列に予測枠配列をコピー
+	memcpy(m_stage_reset, m_stage, sizeof(m_stage));  //!予測枠クリア用配列に予測枠配列をコピー
+
 
 	memset(m_next_block, NONE, sizeof(m_next_block));   //!予測枠を空で初期化
 
@@ -42,13 +44,15 @@ Tetris_Stage::Tetris_Stage()
 //!初期化関数
 void Tetris_Stage::Reset()
 {
-	memcpy(m_stage, m_stage_clear, sizeof(m_stage_clear));  //!ステージクリア
+	memcpy(m_stage, m_stage_reset, sizeof(m_stage_reset));  //!ステージクリア
+	memcpy(m_stage_clear, m_stage_reset, sizeof(m_stage_reset));  //!予測枠クリア用配列に予測枠配列をコピー
 	NextBlockClear();  //!予測枠クリア
 }
 
 //!更新関数
 void Tetris_Stage::Update()
 {
+	StageClear();         //!ステージを壁と固定されたブロックで初期化
 	SearchDeleteBlock();  //!ブロック消去判定
 }
 
@@ -112,6 +116,18 @@ void Tetris_Stage::SetUpBlock(Vec2 pos_, OBJECT_TYPE obj_)
 	m_stage[pos_.y + WALL_SIZE][pos_.x + WALL_SIZE].m_obj = obj_;
 }
 
+void Tetris_Stage::SetUpStageClear(Vec2 pos_, OBJECT_TYPE obj_)
+{
+	//!壁を除いた指定箇所にオブジェクト代入
+	m_stage_clear[pos_.y + WALL_SIZE][pos_.x + WALL_SIZE].m_obj = obj_;
+}
+
+//!予測枠クリア関数
+void Tetris_Stage::StageClear()
+{
+	memcpy(m_stage, m_stage_clear, sizeof(m_stage_clear));  //!ステージクリア
+}
+
 //!予測枠更新関数
 void Tetris_Stage::SetUpNextBlock(Vec2 pos_, OBJECT_TYPE obj_)
 {
@@ -159,6 +175,7 @@ void Tetris_Stage::SearchDeleteBlock()
 //!ブロック消去関数
 void Tetris_Stage::DeleteBlock(__int8 y_)
 {
+
 	for (int y = y_; y > 0 + WALL_SIZE; y--)
 	{
 		for (int x = 0; x < GAME_WIDTH; x++)
@@ -167,13 +184,17 @@ void Tetris_Stage::DeleteBlock(__int8 y_)
 		}
 	}
 	
+	memcpy(m_stage_clear, m_stage, sizeof(m_stage));  //!ステージクリア用配列に消去した後の状態をコピー
 }
 
+//!ゲームオーバー判定関数
 bool Tetris_Stage::GameOver()
 {
+	//!ステージの一番上の段を見る
 	for (int x = 0; x < GAME_WIDTH; x++)
 	{
-		if (m_stage[0 + WALL_SIZE][x].m_obj == FIXED_BLOCK)
+		//!固定されたブロックがそこまで達しいている場合
+		if (m_stage[WALL_SIZE][x].m_obj == FIXED_BLOCK)
 		{
 			return true;
 		}

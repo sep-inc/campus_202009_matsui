@@ -61,17 +61,25 @@ void Tetris_T_Block::SetBlockAngle(__int8 angle_)
 
 	switch (m_angle_type)
 	{
-	case 0:
+	case BLOCK_ANGLE_TYPE::ZERO:
 		m_block = m_block_0;
+		m_block_min_array = Vec2(1, 1);
+		m_block_max_array = Vec2(3, 2);
 		break;
-	case 1:
+	case BLOCK_ANGLE_TYPE::ONE:
 		m_block = m_block_90;
+		m_block_min_array = Vec2(1, 1);
+		m_block_max_array = Vec2(2, 3);
 		break;
-	case 2:
+	case BLOCK_ANGLE_TYPE::TWO:
 		m_block = m_block_180;
+		m_block_min_array = Vec2(1, 2);
+		m_block_max_array = Vec2(3, 3);
 		break;
-	case 3:
+	case BLOCK_ANGLE_TYPE::THREE:
 		m_block = m_block_270;
+		m_block_min_array = Vec2(2, 1);
+		m_block_max_array = Vec2(3, 3);
 		break;
 	default:
 		break;

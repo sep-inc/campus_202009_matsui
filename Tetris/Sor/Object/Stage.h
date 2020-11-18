@@ -51,6 +51,19 @@ public:
     void SetUpBlock(Vec2 pos_, OBJECT_TYPE obj_);
 
     /**
+     * @brief  ブロック固定関数
+     * @detail ステージにブロックを固定する
+     */
+    void SetUpStageClear(Vec2 pos_, OBJECT_TYPE obj_);
+
+    /**
+     * @brief  予測枠クリア関数
+     * @detail 予測枠を空にする
+     * @detail 予測枠を更新する際に使う
+     */
+    void StageClear();
+
+    /**
      * @brief  予測枠更新関数
      * @param (pos_) 描画座標
      * @param (obj_) 代入するオブジェクト
@@ -100,6 +113,8 @@ private:
 
     StageInfo m_stage[GAME_HEIGHT][GAME_WIDTH];  //!ステージ配列
     StageInfo m_stage_clear[GAME_HEIGHT][GAME_WIDTH];  //!ステージ配列
+    StageInfo m_stage_reset[GAME_HEIGHT][GAME_WIDTH];  //!ステージ配列
+
 
 
     StageInfo m_next_block[NEXT_BLOCKBOX_HEIGHT][NEXT_BLOCKBOX_WIDTH];        //!予測枠配列

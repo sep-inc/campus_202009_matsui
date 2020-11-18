@@ -73,6 +73,18 @@
     <ClCompile Include="Sor\Player\Myself.cpp">
       <Filter>Player</Filter>
     </ClCompile>
+    <ClCompile Include="Sor\Player\Enemy.cpp">
+      <Filter>Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\Player\AI\AIBase.cpp">
+      <Filter>Player\AI</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\Player\AI\AutoAI.cpp">
+      <Filter>Player\AI</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\Player\AI\AIController.cpp">
+      <Filter>Player\AI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sor\System\Drawer.h">
@@ -126,6 +138,18 @@
     </ClInclude>
     <ClInclude Include="Sor\Player\Myself.h">
       <Filter>Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\Player\Enemy.h">
+      <Filter>Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\Player\AI\AIBase.h">
+      <Filter>Player\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\Player\AI\AutoAI.h">
+      <Filter>Player\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\Player\AI\AIController.h">
+      <Filter>Player\AI</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

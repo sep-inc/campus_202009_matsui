@@ -33,6 +33,7 @@ void Tetris_BlockBase::Update()
 {
 	Move();
 	PlayMove();
+	SetStageBuffer();
 }
 
 //!移動関数
@@ -74,7 +75,8 @@ void Tetris_BlockBase::PlayMove()
 			//!落下時にもう一度何かの上にちゃんと乗っているか判定
 			if (Collision() == true)
 			{
-				SetStageBuffer();  //!ステージに固定
+				SetStageClearBuffer(); //!ステージに固定
+
 				m_stop = true;     //!停止フラグtrue
 			}
 			
@@ -85,17 +87,61 @@ void Tetris_BlockBase::PlayMove()
 	
 }
 
+//!当たり判定関数
+bool Tetris_BlockBase::Collision()
+{
+	//!型配列とステージ配列の差分を比較するよう
+	__int8 value = 0;
+
+	//!ブロック型配列の中身を渡す
+	for (int y = m_block_min_array.y; y <= m_block_max_array.y; y++)
+	{
+		for (int x = m_block_min_array.x; x <= m_block_max_array.x; x++)
+		{
+			if (m_block[y][x] == 1)
+			{
+				//!型配列とステージ配列の差分を出す
+				value = m_stage->SearchStage(Vec2((int)floor(m_next_pos_x + x), (int)floor(m_next_pos_y + y)));
+			}
+
+			//!ブロックが重なっていた(当たっていた)場合
+			if (value == WALL || value == FIXED_BLOCK)
+			{
+				return true;
+			}
+		}
+	}
+
+	return false;
+}
+
 //!ステージ更新関数
 void Tetris_BlockBase::SetStageBuffer()
 {
 	//!ブロック型配列の中身を渡す
-	for (int y = 0; y < BLOCK_HEIGHT; y++)
+	for (int y = m_block_min_array.y; y <= m_block_max_array.y; y++)
 	{
-		for (int x = 0; x < BLOCK_WIDTH; x++)
+		for (int x = m_block_min_array.x; x <= m_block_max_array.x; x++)
 		{
 			if (m_block[y][x] == 1)
 			{
-				m_stage->SetUpBlock(Vec2((int)floor(m_pos_x + x), (int)floor(m_pos_y + y)), (OBJECT_TYPE)m_block[y][x]);
+				m_stage->SetUpBlock(Vec2((int)floor(m_pos_x + x), (int)floor(m_pos_y + y)), BLOCK);
+			}
+		}
+	}
+}
+
+//!ステージクリア配列更新関数
+void Tetris_BlockBase::SetStageClearBuffer()
+{
+	//!ブロック型配列の中身を渡す
+	for (int y = m_block_min_array.y; y <= m_block_max_array.y; y++)
+	{
+		for (int x = m_block_min_array.x; x <= m_block_max_array.x; x++)
+		{
+			if (m_block[y][x] == 1)
+			{
+				m_stage->SetUpStageClear(Vec2((int)floor(m_pos_x + x), (int)floor(m_pos_y + y)), FIXED_BLOCK);
 			}
 		}
 	}
@@ -105,9 +151,9 @@ void Tetris_BlockBase::SetStageBuffer()
 void Tetris_BlockBase::SetNextBlockBuffer()
 {
 	//!ブロック型配列の中身を渡す
-	for (int y = 0; y < BLOCK_HEIGHT; y++)
+	for (int y = m_block_min_array.y; y <= m_block_max_array.y; y++)
 	{
-		for (int x = 0; x < BLOCK_WIDTH; x++)
+		for (int x = m_block_min_array.x; x <= m_block_max_array.x; x++)
 		{
 			if (m_block[y][x] == 1)
 			{
@@ -123,9 +169,9 @@ void Tetris_BlockBase::SetUpDrawBuffer(GAME_TYPE type_)
 	__int8 wall = 1;
 
 	//!ブロック型配列の中身を渡す
-	for (int y = 0; y < BLOCK_HEIGHT; y++)
+	for (int y = m_block_min_array.y; y <= m_block_max_array.y; y++)
 	{
-		for (int x = 0; x < BLOCK_WIDTH; x++)
+		for (int x = m_block_min_array.x; x <= m_block_max_array.x; x++)
 		{
 			if (m_block[y][x] == 1)
 			{
@@ -144,30 +190,37 @@ void Tetris_BlockBase::SetBlockPos(float x_, float y_)
 	m_next_pos_y += y_;
 }
 
-//!当たり判定関数
-bool Tetris_BlockBase::Collision()
+
+//!固定箇所判定関数
+bool Tetris_BlockBase::SearchFixedPos()
 {
 	//!型配列とステージ配列の差分を比較するよう
 	__int8 value = 3;
+	float m_next_pos_y_ = m_next_pos_y;   //!移動後Y座標(移動時に小数を使うためfloat)
 
-	//!ブロック型配列の中身を渡す
-	for (int y = 0; y < BLOCK_HEIGHT; y++)
+	//!ステージの上から下へ調べる
+	for (int y = 0; y <= GAME_HEIGHT; y++)
 	{
-		for (int x = 0; x < BLOCK_WIDTH; x++)
+		//!ブロック型配列の中身を渡す
+		for (int y = m_block_min_array.y; y <= m_block_max_array.y; y++)
 		{
-			if (m_block[y][x] == 1)
+			for (int x = m_block_min_array.x; x <= m_block_max_array.x; x++)
 			{
-				//!型配列とステージ配列の差分を出す
-				value = m_block[y][x] - m_stage->SearchStage(Vec2((int)floor(m_next_pos_x + x), (int)floor(m_next_pos_y + y)));
-			}
-		
-			//!ブロックが重なっていた(当たっていた)場合
-			if (value <= 0)
-			{
-				return true;
+				if (m_block[y][x] == 1)
+				{
+					//!型配列とステージ配列の差分を出す
+					value = m_block[y + 1][x] - m_stage->SearchStage(Vec2((int)floor(m_pos_x + x), (int)floor(m_next_pos_y_ + y)));
+				}
+
+				//!ブロックが重なっていた(当たっていた)場合
+				if (value <= 0)
+				{
+					return true;
+				}
 			}
 		}
 	}
+	
 
 	return false;
 }

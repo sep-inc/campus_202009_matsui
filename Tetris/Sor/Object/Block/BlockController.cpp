@@ -144,6 +144,11 @@ void Tetris_BlockController::SetUpDrawBuffer(GAME_TYPE type_)
 	m_block[m_block_type]->SetUpDrawBuffer(type_);
 }
 
+void Tetris_BlockController::SetStageBuffer()
+{
+	m_block[m_block_type]->SetStageBuffer();
+}
+
 //!形更新(回転)関数
 void Tetris_BlockController::SetBlockAngle(__int8 angle_)
 {

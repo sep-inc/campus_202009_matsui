@@ -27,7 +27,6 @@ private:
     static const __int8 m_block_90[BLOCK_HEIGHT][BLOCK_WIDTH];   //!形配列(90度)
     static const __int8 m_block_180[BLOCK_HEIGHT][BLOCK_WIDTH];  //!形配列(180度)
     static const __int8 m_block_270[BLOCK_HEIGHT][BLOCK_WIDTH];  //!形配列(270度)
-
 };
 
 #endif

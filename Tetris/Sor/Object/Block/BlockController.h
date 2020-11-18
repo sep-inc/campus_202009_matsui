@@ -54,6 +54,12 @@ public:
     void SetUpDrawBuffer(GAME_TYPE type_);
 
     /**
+　   * @brief  ステージ更新関数
+     * @detail 動いているブロックが固定される時、ステージに何処に固定するかを送る
+　   */
+    void SetStageBuffer();
+
+    /**
 　   * @brief  形更新(回転)関数
      * @param (angle_) 回転方向(1か-1か)
      * @detail 現在移動しているブロックの形更新(回転)関数を呼び出す(Myselfで使う)

@@ -53,23 +53,35 @@ public:
     bool Collision();
 
     /**
+　   * @brief  固定箇所判定関数
+     * @detail 現在操作しているブロックを下におろした時キレイにはまるかどうか判定する
+　   */
+    bool SearchFixedPos();
+
+    /**
 　   * @brief  ステージ更新関数
      * @detail 動いているブロックが固定される時、ステージに何処に固定するかを送る
 　   */
-    virtual void SetStageBuffer();
+    void SetStageBuffer();
+
+    /**
+　   * @brief  ステージクリア配列更新関数
+     * @detail ブロックを固定するときに毎フレームステージをクリアする配列に情報を渡す
+　   */
+    void SetStageClearBuffer();
 
     /**
 　   * @brief  予測枠更新関数
      * @detail 次に降ってくるブロックの形を表示する枠に情報を送る
 　   */
-    virtual void SetNextBlockBuffer();
+    void SetNextBlockBuffer();
 
     /**
 　   * @brief  ブロック描画情報代入関数
      * @param (type_) 描画位置選択
      * @detail 現在移動しているブロックの描画情報を送る
 　   */
-    virtual void SetUpDrawBuffer(GAME_TYPE type_);
+    void SetUpDrawBuffer(GAME_TYPE type_);
 
     /**
 　   * @brief  形更新(回転)関数関数
@@ -95,6 +107,9 @@ protected:
     const char* m_font;     //!描画スタイル
 
     const __int8(*m_block)[BLOCK_WIDTH]; 	//!ブロック配列ポインタ  
+
+    Vec2 m_block_max_array;  //!ブロック配列の中のブロックの最大範囲
+    Vec2 m_block_min_array;  //!ブロック配列の中のブロックの最小範囲
 
     float m_pos_x;        //!現在X座標(移動時に小数を使うためfloat)
     float m_pos_y;        //!現在Y座標(移動時に小数を使うためfloat)

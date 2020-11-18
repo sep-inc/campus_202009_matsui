@@ -21,6 +21,8 @@ void Tetris::Update()
 	m_block->Update();   //!ブロック
 	m_player->Update();  //!プレイヤー
 	m_stage->Update();  //!プレイヤー
+
+	m_block->SetStageBuffer();
 }
 
 //!初期化関数
